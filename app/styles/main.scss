@@ -71,7 +71,10 @@ body {
     margin-top: 28px;
 }
 
-.payment-panel {
-  height: 500px;
+.payment-section {
+  height: 1000px;
   padding: 20px;
+  overflow-y: scroll;
 }
+
+
