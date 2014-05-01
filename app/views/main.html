@@ -953,30 +953,34 @@
 										<td>
 											<div class="content">
 
-                        <angucomplete id="origin-account"
-                          placeholder="Selecciona la cuenta origen"
-                          pause="20"
-                          selectedobject="payingAccount.source"
-                          url="http://localhost:4567/api/accounts?query="
-                          datafield="docs"
-                          titlefield="name"
-                          minlength="1"
-                          enabledefault="true"
-                          amount="amount_d"
-                          inputclass="form-control form-control-small"/>
+                        <div>
+                          <angucomplete id="origin-account"
+                            placeholder="Selecciona la cuenta origen"
+                            pause="20"
+                            selectedobject="payingAccount.source"
+                            url="http://projects.anzen.com.mx:4567/api/accounts?query="
+                            datafield="docs"
+                            titlefield="name"
+                            minlength="1"
+                            enabledefault="true"
+                            amount="amount_d"
+                            inputclass="form-control form-control-small"/>
+                        </div>
 
 												<br>
 
-                        <angucomplete id="origin-account"
-                          placeholder="Selecciona la cuenta destino"
-                          pause="20"
-                          selectedobject="payingAccount.target"
-                          url="http://localhost:4567/api/interbank?query="
-                          datafield="docs"
-                          titlefield="name,bank_t"
-                          minlength="1"
-                          enabledefault="true"
-                          inputclass="form-control form-control-small"/>
+                        <div>
+                          <angucomplete id="target-account"
+                            placeholder="Selecciona la cuenta destino"
+                            pause="20"
+                            selectedobject="payingAccount.target"
+                            url="http://projects.anzen.com.mx:4567/api/interbank?query="
+                            datafield="docs"
+                            titlefield="name,bank_t"
+                            minlength="1"
+                            enabledefault="true"
+                            inputclass="form-control form-control-small"/>
+                        </div>
 
 											</div>
 										</td>
