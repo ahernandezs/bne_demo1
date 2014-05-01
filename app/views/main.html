@@ -41,7 +41,7 @@
             <td>
               <form class="form-inline">
                 $ <input class="form-control" type="text" value="" ></td>
-            </form>
+              </form>
             <td>
               <form class="form-inline">
                 Fecha <input class="form-control" type="text" value="" >
@@ -354,7 +354,74 @@
       </h4>
     </div>
     <div class="panel-collapse collapse" id="collapseThree">
-      Cuentas interbancarias
+
+      <div class="payment-section">
+        <h3>Pagos Múltiples</h3>
+        <p>Seleccione una cuenta de retiro, capture la información de su(s) pago(s) y dé click en "Continuar". Si requiere adicionar más pagos de click en el botón "Agregar más pagos".</p>
+
+        <table class="table">
+          <tbody>
+          <tr ng-repeat="payingAccount in payingAccounts">
+            <td>
+              <angucomplete id="origin-account"
+                placeholder="Selecciona la cuenta origen"
+                pause="20"
+                selectedobject="payingAccount.source"
+                url="http://localhost:4567/api/accounts?query="
+                datafield="docs"
+                titlefield="name"
+                minlength="1"
+                enabledefault="true"
+                amount="amount_d"
+                inputclass="form-control form-control-small"/>
+
+            </td>
+
+            <td>
+              <angucomplete id="origin-account"
+                placeholder="Selecciona la cuenta destino"
+                pause="20"
+                selectedobject="payingAccount.target"
+                url="http://localhost:4567/api/interbank?query="
+                datafield="docs"
+                titlefield="name,bank_t"
+                minlength="1"
+                enabledefault="true"
+                inputclass="form-control form-control-small"/>
+
+            </td>
+
+            <td><input type="text" currency="" placeholder="$" class="form-control" ng-model="payingAccount.amount"></td>
+
+            <td>
+              <div class="col-md-6">
+                <input ng-model="payingAccount.date" type="text" class="form-control pull-left "
+                name=""
+                id="{{payingAccount.id + '-date'}}"
+                value=""
+                placeholder="dd/mm/aaaa"/>
+              </div>
+              <div class="col-md-6">
+                <select class="form-control" ng-model="payingAccount.hourSelection" ng-options="c.name for c in hoursCombo">
+                </select>
+              </div>
+              <div class="checkbox clear-fix" ng-show="payingAccount.amount > maxAmount">
+                <label class="pull-right">
+                  <input ng-model="payingAccount.remoteAuth" type="checkbox"> <strong>AUTORIZACI&Oacute;N REMOTA</strong>
+                </label>
+              </div>
+            </td>
+
+            <td>
+              <button class="btn btn-close" ng-click="removePayingAccount(payingAccount.id)">x</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <button type="button" class="btn btn-primary" ng-click="addPayment()">Agregar más pagos</button>
+      </div>
+
     </div>
   </div>
 

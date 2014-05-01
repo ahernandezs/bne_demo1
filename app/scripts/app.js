@@ -2,7 +2,8 @@
 
 angular
   .module('bnePaymentsOldFashionedApp', [
-    'ngRoute'
+    'ngRoute',
+    'angucomplete'
   ])
   .config(function ($routeProvider) {
     $routeProvider
