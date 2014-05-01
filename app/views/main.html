@@ -949,50 +949,53 @@
 
 							<table class="table">
 								<tbody>
-									<tr>
+									<tr ng-repeat="payingAccount in payingAccounts">
 										<td>
-											<div class="head textC">
-												<input type="checkbox" value="" >
-											</div>
-										</td>
-										<td>
-											<div class="head textC">1</div>
-										</td>
-										<td>
-											<div class="head">Cuentas</div>
 											<div class="content">
-												Cuenta retiro
+
+                        <angucomplete id="origin-account"
+                          placeholder="Selecciona la cuenta origen"
+                          pause="20"
+                          selectedobject="payingAccount.source"
+                          url="http://localhost:4567/api/accounts?query="
+                          datafield="docs"
+                          titlefield="name"
+                          minlength="1"
+                          enabledefault="true"
+                          amount="amount_d"
+                          inputclass="form-control form-control-small"/>
+
 												<br>
-												<select>
-													<option>Seleccione una opci&oacute;n</option>
-												</select>
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-												<br>
-												Cuenta dep&oacute;sito
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
+
+                        <angucomplete id="origin-account"
+                          placeholder="Selecciona la cuenta destino"
+                          pause="20"
+                          selectedobject="payingAccount.target"
+                          url="http://localhost:4567/api/interbank?query="
+                          datafield="docs"
+                          titlefield="name,bank_t"
+                          minlength="1"
+                          enabledefault="true"
+                          inputclass="form-control form-control-small"/>
+
 											</div>
 										</td>
 										<td>
-											<div class="head">Importe MXN</div>
 											<div class="content">
 												<form class="form-inline">
-													$ <input class="form-control" type="text" value="" >
+                          <input type="text" currency="" placeholder="$" class="form-control" ng-model="payingAccount.amount">
 												</form>
 											</div>
 										</td>
 										<td>
-											<div class="head">
-												Fecha de operaci&oacute;n
-											</div>
 											<div class="content">
 												<form class="form-inline">
-													Fecha <input class="form-control calendar" type="text" value="" >
+                          <input ng-model="payingAccount.date" type="text" class="form-control calendar"
+                            name=""
+                            id="{{payingAccount.id + '-date'}}"
+                            value=""
+                            placeholder="dd/mm/aaaa"/>
+
 													<span class="ico-calendar"></span>
 												</form>
 												<strong>Fecha de aplicaci&oacute;n</strong>
@@ -1001,377 +1004,22 @@
 														<option>Seleccione</option>
 													</select>
 												</form>
-												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+                        <label ng-show="payingAccount.amount > maxAmount"><input ng-model="payingAccount.remoteAuth" type="checkbox" value="" > Autorizar en forma remota</label>
 											</div>
 										</td>
-										<td>
-											<div class="head">
-												Referencias
-											</div>
+
+                    <td>
 											<div class="content">
-												<strong>N&uacute;mero de referencia</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-												<strong>Concepto de pago</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													<strong>RFC</strong> <input class="form-control" type="text" value="" >
-												</form>
-												<form class="form-inline">
-													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
+                        <button class="btn btn-close" ng-click="removePayingAccount(payingAccount.id)">x</button>
+                      </div>
+                    </td>
+
 									</tr>
-									<tr>
-										<td>
-											<div class="head textC">
-												<input type="checkbox" value="" >
-											</div>
-										</td>
-										<td>
-											<div class="head textC">2</div>
-										</td>
-										<td>
-											<div class="head">Cuentas</div>
-											<div class="content">
-												Cuenta retiro
-												<br>
-												<select>
-													<option>Seleccione una opci&oacute;n</option>
-												</select>
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-												<br>
-												Cuenta dep&oacute;sito
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-											</div>
-										</td>
-										<td>
-											<div class="head">Importe MXN</div>
-											<div class="content">
-												<form class="form-inline">
-													$ <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Fecha de operaci&oacute;n
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													Fecha <input class="form-control calendar" type="text" value="" >
-													<span class="ico-calendar"></span>
-												</form>
-												<strong>Fecha de aplicaci&oacute;n</strong>
-												<form class="form-inline">
-													<select>
-														<option>Seleccione</option>
-													</select>
-												</form>
-												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Referencias
-											</div>
-											<div class="content">
-												<strong>N&uacute;mero de referencia</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-												<strong>Concepto de pago</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													<strong>RFC</strong> <input class="form-control" type="text" value="" >
-												</form>
-												<form class="form-inline">
-													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="head textC">
-												<input type="checkbox" value="" >
-											</div>
-										</td>
-										<td>
-											<div class="head textC">3</div>
-										</td>
-										<td>
-											<div class="head">Cuentas</div>
-											<div class="content">
-												Cuenta retiro
-												<br>
-												<select>
-													<option>Seleccione una opci&oacute;n</option>
-												</select>
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-												<br>
-												Cuenta dep&oacute;sito
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-											</div>
-										</td>
-										<td>
-											<div class="head">Importe MXN</div>
-											<div class="content">
-												<form class="form-inline">
-													$ <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Fecha de operaci&oacute;n
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													Fecha <input class="form-control calendar" type="text" value="" >
-													<span class="ico-calendar"></span>
-												</form>
-												<strong>Fecha de aplicaci&oacute;n</strong>
-												<form class="form-inline">
-													<select>
-														<option>Seleccione</option>
-													</select>
-												</form>
-												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Referencias
-											</div>
-											<div class="content">
-												<strong>N&uacute;mero de referencia</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-												<strong>Concepto de pago</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													<strong>RFC</strong> <input class="form-control" type="text" value="" >
-												</form>
-												<form class="form-inline">
-													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="head textC">
-												<input type="checkbox" value="" >
-											</div>
-										</td>
-										<td>
-											<div class="head textC">4</div>
-										</td>
-										<td>
-											<div class="head">Cuentas</div>
-											<div class="content">
-												Cuenta retiro
-												<br>
-												<select>
-													<option>Seleccione una opci&oacute;n</option>
-												</select>
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-												<br>
-												Cuenta dep&oacute;sito
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-											</div>
-										</td>
-										<td>
-											<div class="head">Importe MXN</div>
-											<div class="content">
-												<form class="form-inline">
-													$ <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Fecha de operaci&oacute;n
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													Fecha <input class="form-control calendar" type="text" value="" >
-													<span class="ico-calendar"></span>
-												</form>
-												<strong>Fecha de aplicaci&oacute;n</strong>
-												<form class="form-inline">
-													<select>
-														<option>Seleccione</option>
-													</select>
-												</form>
-												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Referencias
-											</div>
-											<div class="content">
-												<strong>N&uacute;mero de referencia</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-												<strong>Concepto de pago</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													<strong>RFC</strong> <input class="form-control" type="text" value="" >
-												</form>
-												<form class="form-inline">
-													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="head textC">
-												<input type="checkbox" value="" >
-											</div>
-										</td>
-										<td>
-											<div class="head textC">5</div>
-										</td>
-										<td>
-											<div class="head">Cuentas</div>
-											<div class="content">
-												Cuenta retiro
-												<br>
-												<select>
-													<option>Seleccione una opci&oacute;n</option>
-												</select>
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-												<br>
-												Cuenta dep&oacute;sito
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-											</div>
-										</td>
-										<td>
-											<div class="head">Importe MXN</div>
-											<div class="content">
-												<form class="form-inline">
-													$ <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Fecha de operaci&oacute;n
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													Fecha <input class="form-control calendar" type="text" value="" >
-													<span class="ico-calendar"></span>
-												</form>
-												<strong>Fecha de aplicaci&oacute;n</strong>
-												<form class="form-inline">
-													<select>
-														<option>Seleccione</option>
-													</select>
-												</form>
-												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												Referencias
-											</div>
-											<div class="content">
-												<strong>N&uacute;mero de referencia</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-												<strong>Concepto de pago</strong>
-												<form class="form-inline">
-													<input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
-											</div>
-											<div class="content">
-												<form class="form-inline">
-													<strong>RFC</strong> <input class="form-control" type="text" value="" >
-												</form>
-												<form class="form-inline">
-													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
-												</form>
-											</div>
-										</td>
-									</tr>
+
 								</tbody>
 							</table>
-							<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
+
+              <button type="button" class="btn btn-primary" ng-click="addPayment()">Agregar más pagos</button>
 						</div>
 					</div>
 				</div>
