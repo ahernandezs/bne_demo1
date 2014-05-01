@@ -120,14 +120,14 @@ input.calendar{
 
 /* ICONOS */
 .ico-ayuda{
-	background: url(../images/ico-ayuda.png) no-repeat;
+	background: url(/images/ico-ayuda.png) no-repeat;
 	background-size: 20px;
 	width: 20px;
 	height: 20px;
 	display: inline-block;
 }
 .ico-calendar{
-	background: url(../images/ico-calendar.png) no-repeat;
+	background: url(/images/ico-calendar.png) no-repeat;
 	background-size: 20px;
 	width: 20px;
 	height: 23px;
@@ -138,7 +138,7 @@ input.calendar{
 
 header{
 	.logo-bnmx{
-		background: url(../images/logo.png) no-repeat;
+		background: url(/images/logo.png) no-repeat;
 		background-size: 184px;
 		width: 184px;
 		height: 41px;
@@ -160,7 +160,7 @@ header{
 		}
 	}
 	.logo-bancanet{
-		background: url(../images/bancanet.png) no-repeat;
+		background: url(/images/bancanet.png) no-repeat;
 		background-size: 89px;
 		width: 89px;
 		height: 30px;
@@ -221,7 +221,7 @@ header{
 			padding: 5px 15px 3px 15px;
 			@include border_radius(5px);
 			span{
-				background: url(../images/ico-arrow-red-right.png) no-repeat;
+				background: url(/images/ico-arrow-red-right.png) no-repeat;
 				background-size: 18px;
 				width: 19px;
 				height: 18px;
@@ -272,7 +272,7 @@ header{
 			display: inline-block;
 			margin-left: 15px;
 			.sobre{
-				background: url(../images/ico-sobre.png) no-repeat;
+				background: url(/images/ico-sobre.png) no-repeat;
 				background-size: 16px;
 				width: 30px;
 				height: 13px;
@@ -302,7 +302,7 @@ header{
 	clear: both;
 	overflow: hidden;
 	h1{
-		background: url(../images/ico-titulo.png) 0 4px no-repeat;
+		background: url(/images/ico-titulo.png) 0 4px no-repeat;
 		font-size: 20px;
 		color: #09347a;
 		margin: 0 0 25px 0;
@@ -311,7 +311,7 @@ header{
 		@include anim_transicion_linear(0.3s);
 	}
 	h1:hover{
-		background: url(../images/ico-titulo.png) 3px 4px no-repeat;
+		background: url(/images/ico-titulo.png) 3px 4px no-repeat;
 	}
 }
 .btn-ayuda{
@@ -464,7 +464,7 @@ header{
 	font-size: 12px;
 	@include border_radius(5px);
 	.titulo{
-		background: #1e87dd url(../images/bg-que-hacer.png) top right no-repeat;
+		background: #1e87dd url(/images/bg-que-hacer.png) top right no-repeat;
 		color: #FFFFFF;
 		padding: 1px 30px 1px 10px;
 		float: left;
