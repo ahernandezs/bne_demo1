@@ -387,7 +387,8 @@ header{
 				.content-tabs{
 					border: 1px solid #09347a;
 					border-top: none;
-					overflow: hidden;
+					overflow-y: scroll;
+          height: 950px;
 					padding: 10px 5px;
 					position: relative;
 					top: -1px;
