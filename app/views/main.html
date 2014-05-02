@@ -974,7 +974,7 @@
 
 								<table class="table">
 									<tr ng-repeat="payingAccount in payingAccounts">
-										<td class="bgf0f4f9">
+                    <td ng-class="{bgf0f4f9: $index % 2 == 0}">
 											<table class="tabla-fila">
 												<tr>
 													<td class="width40p">
