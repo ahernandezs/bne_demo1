@@ -61,9 +61,7 @@
 }
 
 .angucomplete-image {
-    height: 34px;
-    width: 34px;
-    border-radius: 50%;
+    height: 24px;
     border-color: #ececec;
     border-style: solid;
     border-width: 1px;

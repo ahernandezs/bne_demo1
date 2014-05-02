@@ -92,7 +92,9 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.payingAccounts.push(firstPayment);
     };
 
-    $scope.addPayment();
+    for(var i = 0; i < 5; i++) {
+      $scope.addPayment();
+    }
 
     $scope.getPayingAccountIndex = function(accountId) {
       for(var i = 0; i < $scope.payingAccounts.length; i++) {
