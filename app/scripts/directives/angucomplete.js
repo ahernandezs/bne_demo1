@@ -39,7 +39,7 @@ angular.module('angucomplete', [] )
             $scope.pause = 500;
             $scope.minLength = 3;
             $scope.searchStr = null;
-            $scope.defaultData = null;
+            $scope.localDefaultData = null;
 
             if ($scope.minLengthUser && $scope.minLengthUser != "") {
                 $scope.minLength = $scope.minLengthUser;
@@ -54,18 +54,18 @@ angular.module('angucomplete', [] )
 
               if($scope.enableDefault) {
                 // if it is needed to have cache of default data
-                //if(!$scope.defaultData) {
+                if(!$scope.localDefaultData) {
                   $http.get($scope.url, {}).
                     success(function(responseData, status, headers, config) {
                     $scope.processResults(responseData[$scope.dataField], "");
-                    $scope.defaultData = $scope.results
+                    $scope.localDefaultData = $scope.results
                   }).
                     error(function(data, status, headers, config) {
                     console.log("error");
                   });
-                //} else {
-                //  $scope.results = $scope.defaultData;
-                //}
+                } else {
+                  $scope.results = $scope.localDefaultData;
+                }
 
                 $scope.searching = false;
                 $scope.currentIndex = -1;
@@ -167,6 +167,10 @@ angular.module('angucomplete', [] )
                                 console.log("error");
                             });
                     }
+                } else {
+                  if($scope.enableDefault) {
+                    $scope.setDefault();
+                  }
                 }
 
             }

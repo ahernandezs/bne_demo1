@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bnePaymentsOldFashionedApp')
-	.controller('MainCtrl', function ($scope) {
+	.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 
 		$scope.hoursCombo = [
 			{name: 'Ahora'},
@@ -59,6 +59,14 @@ angular.module('bnePaymentsOldFashionedApp')
 		$scope.payingAccounts = [];
 
 		$scope.maxAmount = 10000.0;
+
+    $http.get("http://projects.anzen.com.mx:4567/api/accounts?query=", {}).
+      success(function(responseData, status, headers, config) {
+      $scope.ownDefaultData = $scope.results
+    }).
+      error(function(data, status, headers, config) {
+      console.log("error");
+    });
 
 		$scope.getCurrentDate = function () {
 			var today = new Date();
@@ -152,4 +160,4 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $("#sortable").sortable();
 
-	});
+	}]);
