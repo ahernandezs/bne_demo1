@@ -944,7 +944,9 @@
 					<div class="content-tabs">
 						<div class="tab-pagos-multiples">
 							<p>
-								Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) pago(s) y d&eacute; clic en "Continuar". Si requiere adicionar m&aacute;s pagos de clic en el bot&oacute;n "Agregar m&aacute;s pagos".
+								Seleccione una cuenta origen, capture la información de sus pagos y dé clic en continuar. Si quiere adicionar más pagos
+                con la misma cuenta origen dé clic en el botón "+" (Agregar otra cuenta destino). Si desea hacer más pagos con una cuenta
+                origen distinta, dé clic en el botón "Agregar otra plantilla de pagos".
 							</p>
 
               <div class="content">
@@ -997,7 +999,7 @@
 										<td>
 											<div class="content">
 												<form class="form-inline">
-                          <input type="text" currency="" placeholder="$" class="form-control" ng-model="payingAccount.amount">
+                          <input type="text" currency="" placeholder="Monto" class="form-control" ng-model="payingAccount.amount">
 												</form>
                         <input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="RFC"/>
 											</div>
@@ -1038,6 +1040,7 @@
 								</tbody>
 							</table>
 
+              <button type="button" class="btn btn-primary pull-right" >Agregar otra plantilla de pagos</button>
 						</div>
 					</div>
 				</div>
