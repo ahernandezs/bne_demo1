@@ -209,4 +209,8 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $("#sortable").sortable();
 
+		$( "input.calendar" ).datepicker({
+			buttonImage: "/images/ico-calendar.png",
+      		buttonImageOnly: true
+		});
 	}]);
