@@ -106,7 +106,10 @@ input.inline{
 	padding: 0 5px!important;
 }
 .container{
+	width: auto;
 	min-width: 920px;
+	padding: 0 30px;
+
 }
 .clear-fix{
 	clear: both;
