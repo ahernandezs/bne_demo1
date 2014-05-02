@@ -1107,16 +1107,16 @@
 													</td>
 													<td class="width10p">
 														<div class="content">
-															<div class="tool-tip tooltip-eliminar" ng-show="$index + 1 !== payingAccounts.length">
+                              <div class="tool-tip tooltip-eliminar{{$index}}" ng-show="$index + 1 !== payingAccounts.length">
 																<p>Eliminar pago</p>
 																<div class="arrow"></div>
 															</div>
-															<div class="tool-tip tooltip-agregar" ng-show="$index + 1 === payingAccounts.length">
+                              <div class="tool-tip tooltip-agregar{{$index}}" ng-show="$index + 1 === payingAccounts.length">
 																<p>Agregar otra<br>cuenta destino</p>
 																<div class="arrow"></div>
 															</div>
-															<button ng-show="$index + 1 !== payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount(payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar')" ng-mouseleave="hide_tltp('.tooltip-eliminar')"><span class="ico-basurero"></span></button>
-															<button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar')" ng-mouseleave="hide_tltp('.tooltip-agregar')">+</button>
+                              <button ng-show="$index + 1 !== payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount(payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar' + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $index)"><span class="ico-basurero"></span></button>
+                              <button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar' + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $index)">+</button>
 														</div>
 													</td>
 												</tr>
