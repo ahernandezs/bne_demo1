@@ -94,6 +94,10 @@ input.calendar{
 .container{
 	min-width: 920px;
 }
+.clear-fix{
+	clear: both;
+	overflow: hidden;
+}
 .textC{
 	text-align: center;
 }
@@ -104,6 +108,15 @@ input.calendar{
 	border-top: none!important;
 }
 
+.bgf0f4f9{
+	background: #f0f4f9;
+}
+.bgf4f4f4{
+	background: #f4f4f4;
+}
+.bgfeeded{
+	background: #feeded;
+}
 /* BOTONES */
 .btn{
 	font-size: 12px;
@@ -117,17 +130,74 @@ input.calendar{
 .btn-primary:hover{
 	background: #09347a;
 }
+.btn-danger{
+	background: #cc0000;
+}
+.btn-danger:hover{
+	background: #820202;
+}
 
 /* ICONOS */
 .ico-ayuda{
-	background: url(/images/ico-ayuda.png) no-repeat;
-	background-size: 20px;
+	background: url(../images/ico-ayuda.png) left no-repeat;
+	background-size: 42px;
 	width: 20px;
 	height: 20px;
 	display: inline-block;
+	.ico-ayuda-h{
+		background: url(../images/ico-ayuda.png) right no-repeat;
+		background-size: 42px;
+		width: 20px;
+		height: 20px;
+		display: block;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		filter: alpha(opacity=0);
+		-moz-opacity: 0;
+		-khtml-opacity: 0;
+		opacity: 0;
+		@include anim_transicion_ease(0.5s);
+	}
+}
+.ico-ayuda:hover{
+	.ico-ayuda-h{
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
+	}
+}
+.ico-print{
+	background: url(../images/ico-print.png) left no-repeat;
+	background-size: 48px;
+	width: 23px;
+	height: 21px;
+	display: inline-block;
+	.ico-print-h{
+		background: url(../images/ico-print.png) right no-repeat;
+		background-size: 48px;
+		width: 23px;
+		height: 21px;
+		display: block;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		filter: alpha(opacity=0);
+		-moz-opacity: 0;
+		-khtml-opacity: 0;
+		opacity: 0;
+		@include anim_transicion_ease(0.5s);
+	}
+}
+.ico-print:hover{
+	.ico-print-h{
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+		filter: alpha(opacity=100);
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		opacity: 1;
+	}
 }
 .ico-calendar{
-	background: url(/images/ico-calendar.png) no-repeat;
+	background: url(../images/ico-calendar.png) no-repeat;
 	background-size: 20px;
 	width: 20px;
 	height: 23px;
@@ -135,10 +205,19 @@ input.calendar{
 	position: relative;
 	top: 5px;
 }
+.ico-exclama{
+	background: url(../images/ico-exclama.png) no-repeat;
+	background-size: 12px;
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	position: relative;
+	top: 1px;
+}
 
 header{
 	.logo-bnmx{
-		background: url(/images/logo.png) no-repeat;
+		background: url(../images/logo.png) no-repeat;
 		background-size: 184px;
 		width: 184px;
 		height: 41px;
@@ -160,7 +239,7 @@ header{
 		}
 	}
 	.logo-bancanet{
-		background: url(/images/bancanet.png) no-repeat;
+		background: url(../images/bancanet.png) no-repeat;
 		background-size: 89px;
 		width: 89px;
 		height: 30px;
@@ -193,13 +272,13 @@ header{
 			@include border_top_radius(5px);
 		}
 		a:hover{
-			background: #FFFFFF;
-			color: #333333;
-			top: -6px;
+			// background: #FFFFFF;
+			// color: #333333;
+			// top: -6px;
+			// border: 1px solid #a0a0a0;
+			// border-bottom: none;
+			// padding: 9px 5px 6px 5px;
 			text-decoration: none;
-			border: 1px solid #a0a0a0;
-			border-bottom: none;
-			padding: 9px 5px 6px 5px;
 		}
 		a.active{
 			background: #FFFFFF;
@@ -220,19 +299,41 @@ header{
 			position: static;
 			padding: 5px 15px 3px 15px;
 			@include border_radius(5px);
-			span{
-				background: url(/images/ico-arrow-red-right.png) no-repeat;
-				background-size: 18px;
+			span.arrow{
+				background: url(../images/ico-salir.png) left no-repeat;
+				background-size: 38px;
 				width: 19px;
 				height: 18px;
 				display: block;
 				position: absolute;
 				margin: -1px 0 0 -24px;
+				span.arrow-h{
+					background: url(../images/ico-salir.png) right no-repeat;
+					background-size: 38px;
+					width: 19px;
+					height: 18px;
+					display: block;
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+					filter: alpha(opacity=0);
+					-moz-opacity: 0;
+					-khtml-opacity: 0;
+					opacity: 0;
+				}
 			}
+			
 		}
 		a.salir:hover{
 			background: #cc0000;
 			color: #FFFFFF;
+			span.arrow{
+				span.arrow-h{
+					-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+					filter: alpha(opacity=100);
+					-moz-opacity: 1;
+					-khtml-opacity: 1;
+					opacity: 1;
+				}
+			}
 		}
 	}
 	nav.nav-2nivel{
@@ -272,7 +373,7 @@ header{
 			display: inline-block;
 			margin-left: 15px;
 			.sobre{
-				background: url(/images/ico-sobre.png) no-repeat;
+				background: url(../images/ico-sobre.png) no-repeat;
 				background-size: 16px;
 				width: 30px;
 				height: 13px;
@@ -282,7 +383,7 @@ header{
 					background: #1e87dd;
 					color: #FFFFFF;
 					width: 14px;
-					height: 11px;
+					height: 12px;
 					display: block;
 					text-align: center;
 					font-size: 9px;
@@ -302,7 +403,7 @@ header{
 	clear: both;
 	overflow: hidden;
 	h1{
-		background: url(/images/ico-titulo.png) 0 4px no-repeat;
+		background: url(../images/ico-titulo.png) 0 4px no-repeat;
 		font-size: 20px;
 		color: #09347a;
 		margin: 0 0 25px 0;
@@ -311,11 +412,28 @@ header{
 		@include anim_transicion_linear(0.3s);
 	}
 	h1:hover{
-		background: url(/images/ico-titulo.png) 3px 4px no-repeat;
+		background: url(../images/ico-titulo.png) 3px 4px no-repeat;
+	}
+	a,
+	a:hover{
+		display: inline-block;
+		margin-left: 10px;
+		text-decoration: none;
 	}
 }
-.btn-ayuda{
-	
+.titulo-secundario{
+	clear: both;
+	overflow: hidden;
+	h2{
+		font-weight: bold;
+		color: #333333;
+		font-size: 14px;	
+		margin: 0 0 10px 0;
+	}
+}
+p.instrucciones{
+	font-size: 12px;
+	color: #666666;
 }
 .panels-container{
 	border: 1px solid #09347a;
@@ -388,7 +506,7 @@ header{
 					border: 1px solid #09347a;
 					border-top: none;
 					overflow-y: scroll;
-          height: 950px;
+        			max-height: 950px;
 					padding: 10px 5px;
 					position: relative;
 					top: -1px;
@@ -450,6 +568,87 @@ header{
 	}
 }
 
+.alert-succes{
+	background: #edf5e8;
+	border: 1px solid #64ad40;
+	padding: 15px;
+	@include border_radius(5px);
+	margin-bottom: 20px;
+	p{
+		margin: 0;
+		font-size: 12px;
+		color: #666666;
+		span{
+			color: #000000;
+		}
+	}
+}
+
+.content-box{
+	border: 1px solid #7487ae;
+	padding: 10px;
+	clear: both;
+	overflow: hidden;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	@include border_radius(5px);
+	.title{
+		font-weight: bold;
+		padding: 10px;
+	}
+	.contenido{
+		width: 80%;
+		border-left: 1px dotted #d0d0d0!important;
+		padding: 10px;
+		overflow: hidden;
+		color: #666666;
+	}
+	.contenido-total{
+		margin: 10px;
+		color: #666666;
+		.title{
+			font-weight: bold;
+			padding: 0px;
+			color: #333333;
+			border-bottom: 1px solid #d0d0d0;
+			margin-bottom: 20px;
+		}
+	}
+	table{
+		width: 100%;
+		border-collapse: separate;
+		td{
+			border-right: 1px solid #cdcecf;
+			padding: 5px;
+			font-size: 11px;
+		}
+		td:last-child{
+			border-right: none;
+		}
+		td.row-error{
+			color: #ee2e24!important;
+		}
+		thead{
+			td{
+				font-weight: bold;
+				color: #333333;
+			}
+		}
+		tbody{
+			td{
+				border-bottom: 1px solid #FFFFFF;
+				table{
+					td{
+						border:none;
+						border-bottom: 1px dotted #cdcecf;
+					}
+
+				}
+			}
+		}
+	}
+}
+
 .area-botones{
 	clear: both;
 	overflow: hidden;
@@ -464,11 +663,12 @@ header{
 	font-size: 12px;
 	@include border_radius(5px);
 	.titulo{
-		background: #1e87dd url(/images/bg-que-hacer.png) top right no-repeat;
+		background: #1e87dd url(../images/bg-que-hacer.png) top right no-repeat;
 		color: #FFFFFF;
 		padding: 1px 30px 1px 10px;
 		float: left;
 		clear: both;
+		cursor: default;
 	}
 	.row{
 		clear: both;
