@@ -56,6 +56,7 @@ angular.module('bnePaymentsOldFashionedApp')
 			{name: '24:00'}
 		];
 
+    $scope.interbankPayments = [];
 		$scope.payingAccounts = [];
 		$scope.thirdpayingAccounts = [];
 
@@ -102,8 +103,8 @@ angular.module('bnePaymentsOldFashionedApp')
 			return today;
 		};
 
-		$scope.addPayment = function () {
-			if($scope.payingAccounts.length >= 15) return;
+		$scope.addPayment = function (payments) {
+			if(payments.payingAccounts.length >= 15) return;
 
 			var firstPayment = {
 				source: undefined,
@@ -112,8 +113,22 @@ angular.module('bnePaymentsOldFashionedApp')
 				hourSelection: $scope.hoursCombo[0]
 			}
 
-			$scope.payingAccounts.push(firstPayment);
+			payments.payingAccounts.push(firstPayment);
 		};
+
+    $scope.addTemplate = function () {
+			if($scope.interbankPayments.length >= 5) return;
+
+      var template = {
+        payingAccounts: []
+      }
+
+      $scope.interbankPayments.push(template);
+
+      for(var i = 0; i < 5; i++) {
+        $scope.addPayment(template);
+      }
+    };
 
     $scope.addPayments = function () {
       for(var i = 0; i < $scope.depositAccountNumber; i++) {
@@ -132,8 +147,10 @@ angular.module('bnePaymentsOldFashionedApp')
 		};
 
     // setup
+
+    $scope.addTemplate();
+
 		for(var i = 0; i < 5; i++) {
-			$scope.addPayment();
 			$scope.addThirdPayment();
 		}
 

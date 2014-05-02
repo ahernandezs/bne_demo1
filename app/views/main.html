@@ -1012,10 +1012,10 @@
 							<li><a href="">Alta de Beneficiarios</a></li>
 						</ul>
 						<div class="content-tabs">
-							<div class="tab-pagos-multiples">
-								<p>
-									Seleccione una cuenta origen, capture la informaci&oacute;n de sus pagos y d&eacute; clic en continuar. Si quiere adicionar m&aacute;s pagos con la misma cuenta, indique el n&uacute;mero de pagos que quiere agregar y d&eacute; clic en el bot&oacute;n “Agregar”. Si desea hacer m&aacute;s pagos con una cuenta origen distinta, d&eacute; clic en el bot&oacute;n “Agregar otra plantilla de pagos”. 
-								</p>
+              <p>
+              Seleccione una cuenta origen, capture la informaci&oacute;n de sus pagos y d&eacute; clic en continuar. Si quiere adicionar m&aacute;s pagos con la misma cuenta, indique el n&uacute;mero de pagos que quiere agregar y d&eacute; clic en el bot&oacute;n “Agregar”. Si desea hacer m&aacute;s pagos con una cuenta origen distinta, d&eacute; clic en el bot&oacute;n “Agregar otra plantilla de pagos”. 
+              </p>
+							<div class="tab-pagos-multiples" ng-repeat="interbank in interbankPayments">
 								<div>
 									<div class="pull-left width40p">
 										<strong class="pull-left cuenta-label">Cuenta retiro </strong>
@@ -1041,7 +1041,7 @@
 								
 
 								<table class="table">
-									<tr ng-repeat="payingAccount in payingAccounts">
+									<tr ng-repeat="payingAccount in interbank.payingAccounts">
 										<td ng-class="{bgf0f4f9: $index % 2 == 0}">
 											<table class="tabla-fila">
 												<tr>
@@ -1102,16 +1102,16 @@
 													</td>
 													<td class="width10p">
 														<div class="content">
-															<div class="tool-tip tooltip-eliminar{{$index}}" ng-show="$index + 1 !== payingAccounts.length">
+                              <div class="tool-tip tooltip-eliminar{{$parent.$index}}{{$index}}" ng-show="$index + 1 !== interbank.payingAccounts.length">
 																<p>Eliminar pago</p>
 																<div class="arrow"></div>
 															</div>
-															<div class="tool-tip tooltip-agregar{{$index}}" ng-show="$index + 1 === payingAccounts.length">
+                              <div class="tool-tip tooltip-agregar{{$parent.$index}}{{$index}}" ng-show="$index + 1 === interbank.payingAccounts.length">
 																<p>Agregar otra<br>cuenta destino</p>
 																<div class="arrow"></div>
 															</div>
-															<button ng-show="$index + 1 !== payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount(payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar' + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $index)"><span class="ico-basurero"></span></button>
-															<button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar' + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $index)">+</button>
+                              <button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount($parent.$index, payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
+                              <button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
 														</div>
 													</td>
 												</tr>
@@ -1151,8 +1151,8 @@
 										</td>
 									</tr>
 								</table>
-								<button type="button" class="btn btn-primary pull-right" >Agregar otra cuenta retiro</button>
 							</div>
+							<button ng-click="addTemplate()" type="button" class="btn btn-primary pull-right" >Agregar otra cuenta retiro</button>
 						</div>
 					</div>
 				</div>
