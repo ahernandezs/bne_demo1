@@ -57,16 +57,31 @@ angular.module('bnePaymentsOldFashionedApp')
 		];
 
 		$scope.payingAccounts = [];
+		$scope.thirdpayingAccounts = [];
 
 		$scope.maxAmount = 10000.0;
 
-    $http.get("http://projects.anzen.com.mx:4567/api/accounts?query=", {}).
+    $scope.ownDefaultData = [];
+    $scope.thirdDefaultData = [];
+
+    $http.get("http://projects.anzen.com.mx:4567/api/accounts?group=true&query=", {}).
       success(function(responseData, status, headers, config) {
-      $scope.ownDefaultData = $scope.results
+      $scope.ownDefaultData = responseData;
     }).
       error(function(data, status, headers, config) {
       console.log("error");
     });
+
+    $http.get("http://projects.anzen.com.mx:4567/api/thirdaccounts?query=", {}).
+      success(function(responseData, status, headers, config) {
+      $scope.thirdDefaultData = responseData;
+      console.log($scope.thirdDefaultData);
+    }).
+      error(function(data, status, headers, config) {
+      console.log("error");
+    });
+
+    $scope.showAccounts = true;
 
 		$scope.getCurrentDate = function () {
 			var today = new Date();
@@ -100,11 +115,21 @@ angular.module('bnePaymentsOldFashionedApp')
 			$scope.payingAccounts.push(firstPayment);
 		};
 
+		$scope.addThirdPayment = function () {
+			if($scope.thirdpayingAccounts.length >= 15) return;
+
+			var firstPayment = {
+			}
+
+			$scope.thirdpayingAccounts.push(firstPayment);
+		};
+
+    // setup
 		for(var i = 0; i < 5; i++) {
 			$scope.addPayment();
+			$scope.addThirdPayment();
 		}
 
-    $scope.showAccounts = true;
 
 		$scope.getPayingAccountIndex = function(accountId) {
 			for(var i = 0; i < $scope.payingAccounts.length; i++) {

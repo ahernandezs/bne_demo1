@@ -511,35 +511,32 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="bgf0f4f9">
+										<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-repeat="payingAccount in thirdpayingAccounts">
 											<td>
 												<div class="head textC">
 													<input type="checkbox" value="" >
 												</div>
 											</td>
 											<td>
-												<div class="head textC">1</div>
+                        <div class="head textC">{{$index + 1}}</div>
 											</td>
 											<td>
 												<div class="head">Cuentas</div>
 												<div class="content">
 													Cuenta retiro
 													<br>
-													<select>
-														<option>Seleccione una opci&oacute;n</option>
+													<select ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType">
+														<option value="">Seleccione una opci&oacute;n</option>
 													</select>
 													<br>
-													<select>
-														<option>Seleccione una cuenta</option>
-														<option>Cheques</option>
-														<option>Tarjetas</option>
-														<option>Cuenta Maestra</option>
+													<select ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source">
+														<option value="">Seleccione una cuenta</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
 													<br>
-													<select>
-														<option>Seleccione una cuenta</option>
+													<select ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target">
+														<option value="">Seleccione una cuenta</option>
 													</select>
 												</div>
 											</td>
