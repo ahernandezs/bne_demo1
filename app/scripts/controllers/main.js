@@ -96,6 +96,8 @@ angular.module('bnePaymentsOldFashionedApp')
 			$scope.addPayment();
 		}
 
+    $scope.showAccounts = true;
+
 		$scope.getPayingAccountIndex = function(accountId) {
 			for(var i = 0; i < $scope.payingAccounts.length; i++) {
 				if($scope.payingAccounts[i].id === accountId) {
