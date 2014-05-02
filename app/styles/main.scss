@@ -71,7 +71,9 @@ a{
 		@include anim_transicion_linear(0.3s);
 	}
 }
-
+input{
+	margin: 0 5px!important;
+}
 select,
 input[type="text"],
 input[type="password"],
@@ -87,7 +89,6 @@ input[type="tel"]{
 }
 input.calendar{
 	width: 90px!important;
-	margin-right: 4px;
 }
 input.monto{
 	text-align: right;
