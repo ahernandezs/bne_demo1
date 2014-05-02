@@ -638,7 +638,7 @@ p.instrucciones{
 										}
 										.tool-tip{
 											position: absolute;
-											margin: -50px 0 0 -15px;
+											margin: -50px 0 0 20px;
 											display:none;
 											background: #FFFFFF;
 											border: 1px solid #dadde2;
@@ -660,7 +660,7 @@ p.instrucciones{
 											}
 										}
 										.tooltip-eliminar{
-											margin: -35px 0 0 -15px;
+											margin: -35px 0 0 20px;
 										}
 										.btn{
 											font-size: 16px;
@@ -680,7 +680,7 @@ p.instrucciones{
 										background: #f3f3f3;
 										
 										td{
-											border:none;
+											border-right:none!important;
 											border-bottom: 1px solid #b7b7b7;
 											padding: 10px 5px;
 										}
