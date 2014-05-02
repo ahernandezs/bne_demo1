@@ -141,6 +141,10 @@ input.inline{
 .width60p{
 	width: 60%!important;
 }
+/* PADDINGS */
+.paddingL10{
+	padding-left:10px;
+}
 /* BGS */
 .bgf0f4f9{
 	background: #f0f4f9;
@@ -574,16 +578,18 @@ p.instrucciones{
 					table{
 						clear: both;
 						border:none;
+						border-collapse: separate;
 						tbody{
 							border: none;
 						}
 						tr{
 							
 							td{
+								
 								font-size: 11px;
 								color: #666666;
 								border-top: none;
-								border-right: 1px solid #d0d0d0;
+								border-right: 1px solid #d0d0d0!important;
 								padding: 0;
 								.head{
 									color: #333333;
@@ -650,6 +656,9 @@ p.instrucciones{
 												margin: 0;
 											}
 										}
+										.tooltip-eliminar{
+											margin: -35px 0 0 -15px;
+										}
 										.btn{
 											font-size: 16px;
 											font-weight: normal;
@@ -677,6 +686,11 @@ p.instrucciones{
 							}
 							td:last-child{
 								border-right: none;
+							}
+						}
+						thead{
+							td{
+								border:none!important;
 							}
 						}
 						strong{

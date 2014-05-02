@@ -130,10 +130,10 @@ angular.module('bnePaymentsOldFashionedApp')
 			}
 		};
 
-		$scope.show_element = function( elemento ) {
+		$scope.show_tltp = function( elemento ) {
 			$( elemento ).show();
 		};
-		$scope.hide_element = function( elemento ) {
+		$scope.hide_tltp = function( elemento ) {
 			$( elemento ).hide();
 		};
 

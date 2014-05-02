@@ -1,5 +1,17 @@
 <div class="container">
 	<div class="pag-captura" ng-show="showAccounts">
+		<div class="container">
+			<div class="titulo-principal">
+				<h1 class="pull-left">Plantilla de Pagos</h1>
+				<p class="pull-right">
+					<a href="javascript:void(0);">
+						<span class="ico-ayuda">
+							<span class="ico-ayuda-h"></span>
+						</span>
+					</a>
+				</p>
+			</div>
+		</div>
 		<div class="panels-container">
 			<div class="panel panel-default">
 				<div class="panel-heading borderT0">
@@ -21,6 +33,20 @@
 								</p>
 
 								<table class="table">
+									<thead>
+										<tr>
+											<td>
+												<div class="head textC">
+													<input type="checkbox" value="" >
+												</div>
+											</td>
+											<td colspan="5">
+												<div class="head">
+													Seleccionar todas
+												</div>
+											</td>
+										</tr>
+									</thead>
 									<tbody>
 										<tr class="bgf0f4f9">
 											<td class="">
@@ -42,6 +68,10 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
+														<option>Cr&eacute;dito Revolvente PYMES</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -122,6 +152,10 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
+														<option>Cr&eacute;dito Revolvente PYMES</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -202,6 +236,10 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
+														<option>Cr&eacute;dito Revolvente PYMES</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -282,6 +320,10 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
+														<option>Cr&eacute;dito Revolvente PYMES</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -362,6 +404,10 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
+														<option>Cr&eacute;dito Revolvente PYMES</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -452,6 +498,20 @@
 								</p>
 
 								<table class="table">
+									<thead>
+										<tr>
+											<td>
+												<div class="head textC">
+													<input type="checkbox" value="" >
+												</div>
+											</td>
+											<td colspan="5">
+												<div class="head">
+													Seleccionar todas
+												</div>
+											</td>
+										</tr>
+									</thead>
 									<tbody>
 										<tr class="bgf0f4f9">
 											<td>
@@ -473,6 +533,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -566,6 +629,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -659,6 +725,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -752,6 +821,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -845,6 +917,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -948,7 +1023,7 @@
 								</p>
 								<div>
 									<div class="pull-left width40p">
-										<strong class="pull-left cuenta-label">Cuenta origen </strong>
+										<strong class="pull-left cuenta-label">Cuenta retiro </strong>
 										<angucomplete id="origin-account"
 											placeholder="Clabe / Cuenta / Alias / Celular"
 											pause="20"
@@ -964,7 +1039,7 @@
 									</div>
 									<div class="pull-right">
 										<p>
-											Agregar <input class="width50" type="text" /> cuentas destino <button class="btn btn-cuadrado btn-primary">Agregar</button>
+											Agregar <input class="width50" type="text" /> cuentas dep&oacute;sito <button class="btn btn-primary">Agregar</button>
 										</p>
 									</div>
 								</div>
@@ -977,7 +1052,7 @@
 												<tr>
 													<td class="width40p">
 														<div class="content">
-															<strong>Cuenta destino</strong>
+															<strong>Cuenta dep&oacute;sito</strong>
 
 															<div>
 																<angucomplete id="target-account"
@@ -1017,8 +1092,8 @@
 																<span class="ico-calendar"></span>
 
 																<select>
-																	<option>Mismo día</option>
-																	<option>Día siguiente</option>
+																	<option>Mismo d&iacute;a</option>
+																	<option>24 horas</option>
 																</select>
 															</form>
 															<!-- <strong>Fecha de aplicaci&oacute;n</strong>
@@ -1032,12 +1107,16 @@
 													</td>
 													<td class="width10p">
 														<div class="content">
-															<div class="tool-tip" ng-show="$index + 1 === payingAccounts.length">
+															<div class="tool-tip tooltip-eliminar" ng-show="$index + 1 !== payingAccounts.length">
+																<p>Eliminar pago</p>
+																<div class="arrow"></div>
+															</div>
+															<div class="tool-tip tooltip-agregar" ng-show="$index + 1 === payingAccounts.length">
 																<p>Agregar otra<br>cuenta destino</p>
 																<div class="arrow"></div>
 															</div>
-															<button ng-show="$index + 1 !== payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount(payingAccount.id)"><span class="ico-basurero"></span></button>
-															<button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_element('.tool-tip')" ng-mouseleave="hide_element('.tool-tip')">+</button>
+															<button ng-show="$index + 1 !== payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount(payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar')" ng-mouseleave="hide_tltp('.tooltip-eliminar')"><span class="ico-basurero"></span></button>
+															<button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar')" ng-mouseleave="hide_tltp('.tooltip-agregar')">+</button>
 														</div>
 													</td>
 												</tr>
@@ -1072,12 +1151,12 @@
 									<tr>
 										<td>
 											<div class="width60p pull-right"><br>
-                        <strong> TOTAL A PAGAR: {{getTotalPayment() | currency}}</strong>
+												<strong class="paddingL10"> TOTAL A PAGAR: {{getTotalPayment() | currency}}</strong>
 											</div>
 										</td>
 									</tr>
 								</table>
-								<button type="button" class="btn btn-primary pull-right" >Agregar otra plantilla de pagos</button>
+								<button type="button" class="btn btn-primary pull-right" >Agregar otra cuenta retiro</button>
 							</div>
 						</div>
 					</div>
@@ -1105,6 +1184,20 @@
 								</p>
 
 								<table class="table">
+									<thead>
+										<tr>
+											<td>
+												<div class="head textC">
+													<input type="checkbox" value="" >
+												</div>
+											</td>
+											<td colspan="5">
+												<div class="head">
+													Seleccionar todas
+												</div>
+											</td>
+										</tr>
+									</thead>
 									<tbody>
 										<tr class="bgf0f4f9">
 											<td>
@@ -1126,6 +1219,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -1215,6 +1311,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -1304,6 +1403,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -1393,6 +1495,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -1482,6 +1587,9 @@
 													<br>
 													<select>
 														<option>Seleccione una cuenta</option>
+														<option>Cheques</option>
+														<option>Tarjetas</option>
+														<option>Cuenta Maestra</option>
 													</select>
 													<br>
 													Cuenta dep&oacute;sito
@@ -1567,6 +1675,18 @@
 	</div>
 
 	<div class="pag-confirm" ng-show="confirmation">
+		<div class="container">
+			<div class="titulo-principal">
+				<h1 class="pull-left">Plantilla de Pagos</h1>
+				<p class="pull-right">
+					<a href="javascript:void(0);">
+						<span class="ico-ayuda">
+							<span class="ico-ayuda-h"></span>
+						</span>
+					</a>
+				</p>
+			</div>
+		</div>
 		<div class="titulo-secundario">
 			<h2>Plantilla de Pagos</h2>
 		</div>
@@ -1946,6 +2066,23 @@
 	</div>
 	
 	<div class="pag-aplicacion" ng-show="applied">
+		<div class="container">
+			<div class="titulo-principal">
+				<h1 class="pull-left">Plantilla de Pagos</h1>
+				<p class="pull-right">
+					<a href="javascript:void(0);">
+						<span class="ico-print">
+							<span class="ico-print-h"></span>
+						</span>
+					</a>
+					<a href="javascript:void(0);">
+						<span class="ico-ayuda">
+							<span class="ico-ayuda-h"></span>
+						</span>
+					</a>
+				</p>
+			</div>
+		</div>
 		<div class="titulo-secundario">
 			<h2>Plantilla de Pagos</h2>
 		</div>
@@ -2040,9 +2177,9 @@
 							<td class="row-error">Rechazada</td>
 							<td class="row-error"></td>
 						</tr>
-						<tr class="bgfeeded">
+						<!-- <tr class="bgfeeded">
 							<td colspan="7"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
-						</tr>
+						</tr> -->
 					</tbody>
 					<thead>
 						<tr>
@@ -2126,9 +2263,9 @@
 							<td class="row-error">Rechazada</td>
 							<td class="row-error"></td>
 						</tr>
-						<tr class="bgfeeded">
+						<!-- <tr class="bgfeeded">
 							<td colspan="7"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
-						</tr>
+						</tr> -->
 					</tbody>
 					<thead>
 						<tr>
@@ -2212,9 +2349,9 @@
 							<td class="row-error">Rechazada</td>
 							<td class="row-error"></td>
 						</tr>
-						<tr class="bgfeeded">
+						<!-- <tr class="bgfeeded">
 							<td colspan="7"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
-						</tr>
+						</tr> -->
 					</tbody>
 					<thead>
 						<tr>
@@ -2256,7 +2393,7 @@
 							<td>001005</td>
 						</tr>
 						<tr class="bgf0f4f9">
-							<td>1</td>
+							<td>2</td>
 							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
 							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
 							<td>$ 100,000.00 MXN</td>
@@ -2267,7 +2404,7 @@
 							<td>001005</td>
 						</tr>
 						<tr class="bgf0f4f9">
-							<td>1</td>
+							<td>3</td>
 							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
 							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
 							<td>$ 100,000.00 MXN</td>
@@ -2278,7 +2415,7 @@
 							<td>001005</td>
 						</tr>
 						<tr class="bgf0f4f9">
-							<td>1</td>
+							<td>4</td>
 							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
 							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
 							<td>$ 100,000.00 MXN</td>
@@ -2289,7 +2426,7 @@
 							<td>001005</td>
 						</tr>
 						<tr class="bgf0f4f9">
-							<td>1</td>
+							<td>5</td>
 							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
 							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
 							<td>$ 100,000.00 MXN</td>
@@ -2300,7 +2437,7 @@
 							<td>001005</td>
 						</tr>
 						<tr class="bgf0f4f9">
-							<td class="row-error">1</td>
+							<td class="row-error">6</td>
 							<td class="row-error">MONICA ORTIZ JUAREZ - 123/934567</td>
 							<td class="row-error">Nombre: BORRADOR DATOS ADICIONALES</td>
 							<td class="row-error">$ 100,000.00 MXN</td>
@@ -2310,9 +2447,9 @@
 							<td class="row-error">Aplicada</td>
 							<td class="row-error"></td>
 						</tr>
-						<tr class="bgfeeded">
+						<!-- <tr class="bgfeeded">
 							<td colspan="9"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
-						</tr>
+						</tr> -->
 					</tbody>
 					<thead>
 						<tr>
