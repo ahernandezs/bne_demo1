@@ -84,11 +84,10 @@ input[type="tel"]{
 	box-shadow: none;
 	height: 25px;
 	padding: 0 5px;
-	margin-left: 5px;
-	margin-right: 5px;
 }
 input.calendar{
 	width: 90px!important;
+	margin-right: 4px;
 }
 input.monto{
 	text-align: right;
@@ -511,7 +510,7 @@ p.instrucciones{
 					text-decoration: none;
 					span{
 						width: 18px;
-						height: 15px;
+						height: 18px;
 						padding-top: 1px;
 						border: 1px solid #2d8319;
 						display: inline-block;
@@ -616,6 +615,15 @@ p.instrucciones{
 									width: 100%;
 									border:none;
 									td{
+										a.mas-menos-opciones{
+											display: inline-block;
+											width: 100px;
+										}
+										span.ultimo-pago{
+											color: #989ba0;
+											font-size: 11px;
+											padding-left: 10px;
+										}
 										.tool-tip{
 											position: absolute;
 											margin: -50px 0 0 -15px;

@@ -992,10 +992,10 @@
 																inputclass="form-control form-control-small search"/>
 															</div>
 
-															<a href="" ng-click="payingAccount.more = true" ng-show="!payingAccount.more">M&aacute;s opciones <span class="caret"></span></a>
-															<a href="" ng-click="payingAccount.more = false" ng-show="payingAccount.more" class="dropup">Menos opciones <span class="caret"></span></a>
+															<a href="" ng-click="payingAccount.more = true" ng-show="!payingAccount.more" class="mas-menos-opciones">M&aacute;s opciones <span class="caret"></span></a>
+															<a href="" ng-click="payingAccount.more = false" ng-show="payingAccount.more" class="mas-menos-opciones dropup">Menos opciones <span class="caret"></span></a>
 
-															<span ng-show="payingAccount.target.originalObject.last_payment_d > 0">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span> 
+															<span class="ultimo-pago" ng-show="payingAccount.target.originalObject.last_payment_d > 0">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span> 
 														</div>
 													</td>
 													<td class="width20p">
