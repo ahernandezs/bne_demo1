@@ -20,6 +20,11 @@ angular.module('bnePaymentsOldFashionedApp')
 					var formattedModel = format(ctrl.$modelValue);
 					if( formattedModel !== ctrl.$viewValue ) {
 						element.val(formattedModel);
+            if(formattedModel !== '') {
+              element.addClass('monto');
+            } else {
+              element.removeClass('monto');
+            }
 					}
 				});
 
@@ -33,6 +38,11 @@ angular.module('bnePaymentsOldFashionedApp')
 				element.bind("blur", function() {
 					var formattedModel = format(ctrl.$modelValue);
 					element.val(formattedModel);
+          if(formattedModel !== '') {
+            element.addClass('monto');
+          } else {
+            element.removeClass('monto');
+          }
 				});
 
 				function format(modelValue) {
