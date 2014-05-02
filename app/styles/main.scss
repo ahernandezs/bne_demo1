@@ -502,11 +502,13 @@ p.instrucciones{
 		margin: 0;
 		border: none;
 		@include border_radius(0px);
+
 		.panel-heading{
 			background: #09347a;
 			padding: 0;
 			border: none;
-			border-top: 1px solid #FFFFFF;
+			//border-top: 1px solid #FFFFFF;
+      margin-bottom: 1px;
 			@include border_radius(0px);
 			h4{
 				color: #FFFFFF;

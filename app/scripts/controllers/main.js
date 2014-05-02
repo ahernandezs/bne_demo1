@@ -149,4 +149,7 @@ angular.module('bnePaymentsOldFashionedApp')
       return sum;
     };
 
+
+    $("#sortable").sortable();
+
 	});
