@@ -493,6 +493,7 @@ p.instrucciones{
 }
 .panels-container{
 	border: 1px solid #09347a;
+	border-top: none;
 	overflow: hidden;
 	clear: both;
 	@include border_bottom_radius(5px);
@@ -508,7 +509,7 @@ p.instrucciones{
 			padding: 0;
 			border: none;
 			//border-top: 1px solid #FFFFFF;
-      margin-bottom: 1px;
+      		margin-top: 1px;
 			@include border_radius(0px);
 			h4{
 				color: #FFFFFF;
@@ -640,7 +641,7 @@ p.instrucciones{
 										}
 										.tool-tip{
 											position: absolute;
-											margin: -50px 0 0 20px;
+											margin: -50px 0 0 15px;
 											display:none;
 											background: #FFFFFF;
 											border: 1px solid #dadde2;
@@ -662,7 +663,7 @@ p.instrucciones{
 											}
 										}
 										.tooltip-eliminar{
-											margin: -35px 0 0 20px;
+											margin: -35px 0 0 15px;
 										}
 										.btn{
 											font-size: 16px;
@@ -756,6 +757,7 @@ p.instrucciones{
 	table{
 		width: 100%;
 		border-collapse: separate;
+		margin-bottom: 10px;
 		td{
 			border-right: 1px solid #cdcecf;
 			padding: 5px;
@@ -783,6 +785,13 @@ p.instrucciones{
 					}
 
 				}
+			}
+		}
+		tfoot{
+			td{
+				border-right: none!important;
+				border-top: 1px solid #cdcecf;
+				color: #333333;
 			}
 		}
 	}
