@@ -1,15 +1,15 @@
 <div class="container">
-	<div class="pag-captura">
+	<div class="pag-captura" ng-show="showAccounts">
 		<div class="panels-container">
 			<div class="panel panel-default">
 				<div class="panel-heading borderT0">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" data-target="#collapseOne">
-							<span>+</span> Cuentas Propias
+						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" ng-click="collapseOne = !collapseOne">
+							<span ng-show="!collapseOne">+</span><span ng-show="collapseOne">-</span> Cuentas Propias
 						</a>
 					</h4>
 				</div>
-				<div class="panel-collapse collapse" id="collapseOne">
+				<div class="panel-collapse" ng-show="collapseOne">
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
@@ -434,12 +434,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" data-target="#collapseTwo">
-							<span>+</span> Cuentas Terceros Banamex
+						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" ng-click="collapseTwo = !collapseTwo">
+							<span ng-show="!collapseTwo">+</span><span ng-show="collapseTwo">-</span> Cuentas Terceros Banamex
 						</a>
 					</h4>
 				</div>
-				<div class="panel-collapse collapse" id="collapseTwo">
+				<div class="panel-collapse" ng-show="collapseTwo">
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
@@ -930,12 +930,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" data-target="#collapseThree">
-							<span>+</span> Cuentas Interbancarias
+						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" ng-click="collapseThree = !collapseThree">
+							<span ng-show="!collapseThree">+</span><span ng-show="collapseThree">-</span> Cuentas Interbancarias
 						</a>
 					</h4>
 				</div>
-				<div class="panel-collapse collapse" id="collapseThree">
+				<div class="panel-collapse" ng-show="collapseThree">
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
@@ -1050,12 +1050,12 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" data-target="#collapseFour">
-							<span>+</span> Ordenes de Pago
+						<a data-toggle="collapse" data-parent="" href="javascript:void(0);" ng-click="collapseFour = !collapseFour">
+							<span ng-show="!collapseFour">+</span><span ng-show="collapseFour">-</span> Ordenes de Pago
 						</a>
 					</h4>
 				</div>
-				<div class="panel-collapse collapse" id="collapseFour">
+				<div class="panel-collapse" ng-show="collapseFour">
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
@@ -1525,11 +1525,11 @@
 		</div>
 
 		<div class="area-botones">
-			<button type="button" class="btn btn-primary pull-right">Continuar</button>
+			<button ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right">Continuar</button>
 		</div>
 	</div>
 
-	<div class="pag-confirm">
+	<div class="pag-confirm" ng-show="confirmation">
 		<div class="titulo-secundario">
 			<h2>Plantilla de Pagos</h2>
 		</div>
@@ -1903,12 +1903,12 @@
 			</div>
 		</div>
 		<div class="area-botones">
-			<button type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button type="button" class="btn btn-primary pull-right">Aceptar</button>
+			<button ng-click="showAccounts = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		</div>
 	</div>
 	
-	<div class="pag-aplicacion">
+	<div class="pag-aplicacion" ng-show="applied">
 		<div class="titulo-secundario">
 			<h2>Plantilla de Pagos</h2>
 		</div>
