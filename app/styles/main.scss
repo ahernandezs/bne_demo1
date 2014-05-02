@@ -606,6 +606,29 @@ p.instrucciones{
 									width: 100%;
 									border:none;
 									td{
+										.tool-tip{
+											position: absolute;
+											margin: -50px 0 0 -15px;
+											display:none;
+											background: #FFFFFF;
+											border: 1px solid #dadde2;
+											@include border_radius( 5px );
+											padding: 5px 5px 0 5px;
+											.arrow{
+												background: url(../images/white_arrow_down.png) no-repeat;
+												background-size: 10px;
+												width: 10px;
+												height: 7px;
+												margin: 0 auto;
+												position: relative;
+												top: 7px;
+											}
+											p{
+												font-size: 11px!important;
+												text-align: center;
+												margin: 0;
+											}
+										}
 										.btn{
 											font-size: 16px;
 											font-weight: normal;
@@ -644,7 +667,6 @@ p.instrucciones{
 		}
 	}
 }
-
 .alert-succes{
 	background: #edf5e8;
 	border: 1px solid #64ad40;

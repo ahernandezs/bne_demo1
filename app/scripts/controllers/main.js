@@ -130,4 +130,10 @@ angular.module('bnePaymentsOldFashionedApp')
 			}
 		};
 
+		$scope.show_element = function( elemento ) {
+			$( elemento ).show();
+		};
+		$scope.hide_element = function( elemento ) {
+			$( elemento ).hide();
+		};
 	});

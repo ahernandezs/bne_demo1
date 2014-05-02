@@ -948,7 +948,7 @@
 									con la misma cuenta origen dé clic en el botón "+" (Agregar otra cuenta destino). Si desea hacer más pagos con una cuenta
 									origen distinta, dé clic en el botón "Agregar otra plantilla de pagos".
 								</p>
-								<div class="clear-fix">
+								<div>
 									<div class="pull-left width40p">
 										<strong class="pull-left cuenta-label">Cuenta origen </strong>
 										<angucomplete id="origin-account"
@@ -1034,8 +1034,12 @@
 													</td>
 													<td class="width10p">
 														<div class="content">
+															<div class="tool-tip" ng-show="$index + 1 === payingAccounts.length">
+																<p>Agregar otra<br>cuenta destino</p>
+																<div class="arrow"></div>
+															</div>
 															<button ng-show="$index + 1 !== payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount(payingAccount.id)"><span class="ico-basurero"></span></button>
-															<button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()">+</button>
+															<button ng-show="$index + 1 === payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_element('.tool-tip')" ng-mouseleave="hide_element('.tool-tip')">+</button>
 														</div>
 													</td>
 												</tr>
