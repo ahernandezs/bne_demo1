@@ -121,12 +121,25 @@ input.inline{
 .textR{
 	text-align: right;
 }
+.textL{
+	text-align: left!important;
+}
+.displayB{
+	display: block;
+}
 .borderT0{
 	border-top: none!important;
 }
 /* ANCHOS PIX */
 .width50{
 	width:50px;
+}
+.width200{
+	width:200px;
+}
+
+.width250{
+	width:250px;
 }
 /* ANCHOS PORCENTAJES */
 .width10p{
@@ -181,6 +194,24 @@ input.inline{
 
 .btn-cuadrado{
 	@include border_radius(3px);
+}
+.span175{
+	width: 175px;
+	display: block;
+	margin: 0 auto;
+	text-align: left;
+}
+.span200{
+	width: 200px;
+	display: block;
+	margin: 0 auto;
+	text-align: left;
+}
+.span250{
+	width: 250px;
+	display: block;
+	margin: 0 auto;
+	text-align: left;
 }
 
 /* ICONOS */
@@ -604,6 +635,9 @@ p.instrucciones{
 									padding: 5px;
 									font-weight: bold;
 									font-size: 11px;
+									label{
+										font-size: 11px!important;
+									}
 								}
 								.content{
 									padding: 5px;
@@ -626,6 +660,7 @@ p.instrucciones{
 										color: #09347a;
 									}
 								}
+
 								table.tabla-fila{
 									width: 100%;
 									border:none;
