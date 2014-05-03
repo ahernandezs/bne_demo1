@@ -194,10 +194,10 @@ angular.module('bnePaymentsOldFashionedApp')
 			$( elemento ).hide();
 		};
 
-    $scope.getTotalPayment = function () {
+    $scope.getTotalPayment = function (payments) {
       var sum = 0;
-      for(var i = 0; i < $scope.payingAccounts.length; i++) {
-        var elem = $scope.payingAccounts[i].amount;
+      for(var i = 0; i < payments.payingAccounts.length; i++) {
+        var elem = payments.payingAccounts[i].amount;
         if(elem && parseFloat(elem)) {
           sum += parseFloat(elem);
         }
