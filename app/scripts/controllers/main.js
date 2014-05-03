@@ -130,11 +130,11 @@ angular.module('bnePaymentsOldFashionedApp')
       }
     };
 
-    $scope.addPayments = function () {
-      for(var i = 0; i < $scope.depositAccountNumber; i++) {
-        $scope.addPayment();
+    $scope.addPayments = function (payments) {
+      for(var i = 0; i < payments.depositAccountNumber; i++) {
+        $scope.addPayment(payments);
       }
-      $scope.depositAccountNumber = "";
+      payments.depositAccountNumber = "";
     };
 
 		$scope.addThirdPayment = function () {
