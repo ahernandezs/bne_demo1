@@ -1034,7 +1034,7 @@
 									</div>
 									<div class="pull-right">
 										<p>
-											Agregar <input class="width50" type="text" placeholder="número" ng-model="depositAccountNumber"/> cuentas dep&oacute;sito <button class="btn btn-primary" ng-click="addPayments()">Agregar</button>
+											Agregar <input class="width50" type="text" placeholder="número" ng-model="interbank.depositAccountNumber"/> cuentas dep&oacute;sito <button class="btn btn-primary" ng-click="addPayments(interbank)">Agregar</button>
 										</p>
 									</div>
 								</div>
@@ -1110,8 +1110,8 @@
 																<p>Agregar otra<br>cuenta destino</p>
 																<div class="arrow"></div>
 															</div>
-                              <button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount($parent.$index, payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
-                              <button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
+                              <button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount($parent.$index, $index)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
+                              <button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment(interbank)" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
 														</div>
 													</td>
 												</tr>
@@ -1146,7 +1146,7 @@
 									<tr>
 										<td>
 											<div class="width60p pull-right"><br>
-												<strong class="paddingL10"> TOTAL A PAGAR: {{getTotalPayment() | currency}}</strong>
+												<strong class="paddingL10"> TOTAL A PAGAR: {{getTotalPayment(interbank) | currency}}</strong>
 											</div>
 										</td>
 									</tr>
