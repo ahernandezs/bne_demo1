@@ -1,17 +1,21 @@
 'use strict';
 
 angular.module('bnePaymentsOldFashionedApp')
-	.directive('jqdatepicker', function($timeout) {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function (scope, element, attrs, ngModelCtrl) {
-          console.log(scope);
-          $timeout(function () {
-            element.datepicker({
-                dateFormat: 'dd/mm/yy'
+.directive('jqdatepicker', function() {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function (scope, element, attrs, ngModelCtrl) {
+      $(function(){
+        element.datepicker({
+          dateFormat:'dd/mm/yy',
+          onSelect:function (date) {
+            scope.$apply(function () {
+              ngModelCtrl.$setViewValue(date);
             });
-          });
-        }
-    };
-  });
+          }
+        });
+      });
+    }
+  };
+});
