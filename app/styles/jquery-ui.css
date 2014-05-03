@@ -225,13 +225,26 @@ button.ui-button::-moz-focus-inner {
 	padding: 0;
 }
 .ui-datepicker {
-	width: 17em;
-	padding: .2em .2em 0;
+	width: 200px;
+	padding: 0;
 	display: none;
+
+	overflow: hidden!important;
+	border-radius: 10px !important;
+	-webkit-border-radius: 10px !important;
+	-moz-border-radius: 10px !important;
+	background: #FFFFFF!important;
+	border: 2px solid #0c3576!important;
 }
 .ui-datepicker .ui-datepicker-header {
 	position: relative;
-	padding: .2em 0;
+	padding: .4em 0;
+
+	border: none!important;
+	background: #0c3576!important;
+	border-radius: 0px !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
 }
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
@@ -239,23 +252,27 @@ button.ui-button::-moz-focus-inner {
 	top: 2px;
 	width: 1.8em;
 	height: 1.8em;
+
+	cursor: pointer!important;
+	background: none!important;
+	border:none!important;
 }
-.ui-datepicker .ui-datepicker-prev-hover,
+/*.ui-datepicker .ui-datepicker-prev-hover,
 .ui-datepicker .ui-datepicker-next-hover {
 	top: 1px;
-}
+}*/
 .ui-datepicker .ui-datepicker-prev {
 	left: 2px;
 }
 .ui-datepicker .ui-datepicker-next {
 	right: 2px;
 }
-.ui-datepicker .ui-datepicker-prev-hover {
+/*.ui-datepicker .ui-datepicker-prev-hover {
 	left: 1px;
 }
 .ui-datepicker .ui-datepicker-next-hover {
 	right: 1px;
-}
+}*/
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
 	display: block;
@@ -292,14 +309,29 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-datepicker td {
 	border: 0;
-	padding: 1px;
+	padding: 0;
 }
 .ui-datepicker td span,
 .ui-datepicker td a {
 	display: block;
-	padding: .2em;
-	text-align: right;
+	padding: 0;
+	text-align: center;
 	text-decoration: none;
+
+	border:none!important;
+	font-weight: normal!important;
+}
+.ui-datepicker td a.ui-state-default{
+	background: #ffffff!important;
+	color: #2288d9!important;
+}
+.ui-datepicker td a.ui-state-default:hover{
+	color: #0c3576!important;	
+}
+.ui-datepicker td a.ui-state-highlight,
+.ui-datepicker td a.ui-state-highlight:hover{
+	background: #ee823b!important;
+	color: #FFFFFF!important;
 }
 .ui-datepicker .ui-datepicker-buttonpane {
 	background-image: none;
@@ -941,7 +973,7 @@ body .ui-tooltip {
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
-	background-image: url("images/ui-icons_ef8c08_256x240.png");
+	background-image: url("images/ui-icons_ffffff_256x240.png");
 }
 .ui-state-active .ui-icon {
 	background-image: url("images/ui-icons_ef8c08_256x240.png");

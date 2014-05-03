@@ -19,7 +19,7 @@
 						</a>
 					</h4>
 				</div>
-				<div class="panel-collapse" ng-show="collapseOne">
+				<div class="panel-collapse" ><!-- ng-show="collapseOne" -->
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="">Pagos M&uacute;ltiples</a></li>
@@ -2544,5 +2544,13 @@
 	</div>
 </div>
 
-
-
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('input.calendar').datepicker({
+			showOn: 'focus', buttonImageOnly: true,
+			monthNamesShort:['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'],
+			dayNamesMin:['D','L','M','M','J','V','S'],
+			dateFormat: 'dd/mm/yy',
+		});
+	});
+</script>
