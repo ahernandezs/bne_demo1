@@ -155,9 +155,9 @@ angular.module('bnePaymentsOldFashionedApp')
 		}
 
 
-		$scope.getPayingAccountIndex = function(accountId) {
-			for(var i = 0; i < $scope.payingAccounts.length; i++) {
-				if($scope.payingAccounts[i].id === accountId) {
+		$scope.getPayingAccountIndex = function(payingAccounts, accountId) {
+			for(var i = 0; i < payingAccounts.length; i++) {
+				if(payingAccounts[i].id === accountId) {
 					return i;
 				}
 			}
@@ -165,17 +165,17 @@ angular.module('bnePaymentsOldFashionedApp')
 			return -1;
 		};
 
-		$scope.removePayingAccount = function(accountId) {
-			var index = $scope.getPayingAccountIndex(accountId);
+		$scope.removePayingAccount = function(intIndex, index) {
+      var payingAccounts = $scope.interbankPayments[intIndex].payingAccounts;
 
 			if(index != -1) {
-				$scope.payingAccounts.splice(index, 1);
+				payingAccounts.splice(index, 1);
 			}
 
-			if($scope.payingAccounts.length < 1) {
-				$scope.paymentConfirmation = false;
-				$scope.dashboard = true;
-			}
+			//if($scope.payingAccounts.length < 1) {
+			//	$scope.paymentConfirmation = false;
+			//	$scope.dashboard = true;
+			//}
 		};
 
 		$scope.btn_openclose = function( btn ) {

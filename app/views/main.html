@@ -1110,7 +1110,7 @@
 																<p>Agregar otra<br>cuenta destino</p>
 																<div class="arrow"></div>
 															</div>
-                              <button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount($parent.$index, payingAccount.id)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
+                              <button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado" ng-click="removePayingAccount($parent.$index, $index)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
                               <button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary" ng-click="addPayment()" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
 														</div>
 													</td>
