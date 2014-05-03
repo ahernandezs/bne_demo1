@@ -57,7 +57,6 @@ angular.module('bnePaymentsOldFashionedApp')
 		];
 
     $scope.interbankPayments = [];
-		$scope.payingAccounts = [];
 		$scope.thirdpayingAccounts = [];
 
 		$scope.maxAmount = 10000.0;
@@ -76,7 +75,6 @@ angular.module('bnePaymentsOldFashionedApp')
     $http.get("http://projects.anzen.com.mx:4567/api/thirdaccounts?query=", {}).
       success(function(responseData, status, headers, config) {
       $scope.thirdDefaultData = responseData;
-      console.log($scope.thirdDefaultData);
     }).
       error(function(data, status, headers, config) {
       console.log("error");
@@ -172,10 +170,6 @@ angular.module('bnePaymentsOldFashionedApp')
 				payingAccounts.splice(index, 1);
 			}
 
-			//if($scope.payingAccounts.length < 1) {
-			//	$scope.paymentConfirmation = false;
-			//	$scope.dashboard = true;
-			//}
 		};
 
 		$scope.btn_openclose = function( btn ) {
@@ -218,4 +212,20 @@ angular.module('bnePaymentsOldFashionedApp')
 			buttonImage: "/images/ico-calendar.png",
       		buttonImageOnly: true
 		});
+
+
+    var emptyThird = angular.toJson($scope.thirdpayingAccounts);
+    var emptyInterbank = angular.toJson($scope.interbankPayments);
+
+    $scope.$watch('interbankPayments', function (value) {
+      if(emptyInterbank !== angular.toJson($scope.interbankPayments)) {
+        $scope.allowNext = true;
+      }
+    }, true);
+
+    $scope.$watch('thirdpayingAccounts', function (value) {
+      if(emptyThird !== angular.toJson($scope.thirdpayingAccounts)) {
+        $scope.allowNext = true;
+      }
+    }, true);
 	}]);
