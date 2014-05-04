@@ -509,7 +509,7 @@
 										<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-repeat="payingAccount in thirdpayingAccounts">
 											<td>
 												<div class="head textC">
-													<input type="checkbox" value="" >
+													<input type="checkbox" value="" ng-model="payingAccount.enabled">
 												</div>
 											</td>
 											<td>
@@ -539,13 +539,13 @@
 												<div class="head"><span class="span150">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" >
+														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount">
 													</form>
 												</div>
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" > Programar a fecha futura</label>
+													<label class="span175"><input ng-click="verifyThirdMode(payingAccount, 'programming')" type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -554,11 +554,11 @@
 													</form>
 													<form class="form-inline">
 														<strong>Hora&nbsp;&nbsp;</strong> 
-														<select>
-															<option>hh</option>
+														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours">
+															<option value="">hh</option>
 														</select>
-														<select>
-															<option>mm</option>
+														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutes">
+															<option value="">mm</option>
 														</select>
 														hrs
 													</form>
@@ -566,7 +566,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" > Autorizar en forma remota</label>
+													<label class="span175"><input ng-click="verifyThirdMode(payingAccount, 'remote')" type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -575,11 +575,11 @@
 													</form>
 													<form class="form-inline">
 														<strong>Hora&nbsp;&nbsp;</strong>
-														<select>
-															<option>hh</option>
+														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hoursRemote">
+															<option value="">hh</option>
 														</select>
-														<select>
-															<option>mm</option>
+														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutesRemote">
+															<option value="">mm</option>
 														</select>
 														hrs
 													</form>
@@ -587,14 +587,14 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" > Comprobante Fiscal</label>
+													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.fiscal"> Comprobante Fiscal</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														<strong>RFC</strong> <input class="form-control" type="text" value="" >
+														<strong>RFC</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.rfc">
 													</form>
 													<form class="form-inline">
-														<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
+														<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.iva">
 													</form>
 												</div>
 											</td>
@@ -1263,7 +1263,7 @@
 		</div>
 
 		<div class="area-botones">
-			<button ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right">Continuar</button>
+      <button ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
 
