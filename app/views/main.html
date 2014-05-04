@@ -1296,7 +1296,7 @@
               <td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
+							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="4">
@@ -1349,7 +1349,7 @@
             <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
               <td>{{$index + 1}}</td>
               <td>{{interbank.source.originalObject.name}}</td>
-              <td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}}</td>
+              <td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
               <td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
               <td>{{payingAccount.date}} ({{payingAccount.application}})</td>
 						</tr>
@@ -1466,148 +1466,17 @@
 
 		<div class="content-box">
 			<div class="contenido-total">
-				<p class="title">Cuentas Propias</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td></td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td></td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Instrucci&oacute;n recibida</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>5</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Rechazada</td>
-							<td></td>
-						</tr>
-						<!-- <tr class="bgfeeded">
-							<td colspan="7"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
-						</tr> -->
-					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Cuenta dep&oacute;sito</td>
-							<td>Importe</td>
-							<td>Fecha / Hora de Aplicaci&oacute;n</td>
-							<td>Estatus</td>
-							<td>Autorizaci&oacute;n</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
-
-		<div class="clear-fix">
-			<a href="" class="pull-right">
-				<span class="ico-print">
-					<span class="ico-print-h"></span>
-				</span>
-			</a>
-		</div>
-
-		<div class="content-box">
-			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 - Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
+					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
+            <tr ng-class="{bgf0f4f9: $index % 2 == 0}}">
+              <td>{{$index + 1}}</td>
+              <td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td></td>
 							<td>Aplicada</td>
 							<td>001005</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-USD- 1234567890 - Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td></td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 - Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Instrucci&oacute;n recibida</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-USD- 1234567890 - Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>5</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 - Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 - Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Rechazada</td>
-							<td></td>
 						</tr>
 						<!-- <tr class="bgfeeded">
 							<td colspan="7"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
@@ -1639,103 +1508,21 @@
 		<div class="content-box">
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td></td>
+				<table ng-repeat="interbank in interbankPayments">
+					<tbody ng-repeat="payingAccount in interbank.payingAccounts | filter:validateInterbankPayment">
+            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+              <td>{{$index + 1}}</td>
+              <td>{{interbank.source.originalObject.name}}</td>
+              <td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
+              <td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
+              <td>{{payingAccount.date}} ({{payingAccount.application}})</td>
 							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td></td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Instrucci&oacute;n recibida</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>5</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>6</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Rechazada</td>
-							<td></td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<td colspan="3"></td>
-						<td colspan="4"><strong>TOTAL A PAGAR $0.00</strong></td>
-					</tfoot>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Cuenta dep&oacute;sito</td>
-							<td>Importe</td>
-							<td>Fecha / Hora de Aplicaci&oacute;n</td>
-							<td>Estatus</td>
-							<td>Autorizaci&oacute;n</td>
-						</tr>
-					</thead>
-				</table>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>7</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr>
-							<td>8</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>072580001442364356 BANORTE SOLARIS</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
 							<td>001005</td>
 						</tr>
 					</tbody>
 					<tfoot>
 						<td colspan="3"></td>
-						<td colspan="4"><strong>TOTAL A PAGAR $0.00</strong></td>
+						<td colspan="4"><strong>TOTAL A PAGAR {{getTotalPayment(interbank) | currency}}</strong></td>
 					</tfoot>
 					<thead>
 						<tr>
@@ -1752,106 +1539,8 @@
 			</div>
 		</div>
 
-		<div class="clear-fix">
-			<a href="" class="pull-right">
-				<span class="ico-print">
-					<span class="ico-print-h"></span>
-				</span>
-			</a>
-		</div>
-
-		<div class="content-box">
-			<div class="contenido-total">
-				<p class="title">&Oacute;rdenes de Pago</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-							<td>010000010340302244</td>
-							<td></td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-							<td>010000010340302244</td>
-							<td></td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-							<td>010000010340302244</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Instrucci&oacute;n recibida</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>4</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-							<td>010000010340302244</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>5</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-							<td>010000010340302244</td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Falta segunda firma</td>
-							<td>001005</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>6</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Nombre: BORRADOR DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-							<td></td>
-							<td>15/01/2014 14:15 hrs.</td>
-							<td>Aplicada</td>
-							<td></td>
-						</tr>
-						<!-- <tr class="bgfeeded">
-							<td colspan="9"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
-						</tr> -->
-					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Beneficiario</td>
-							<td>Importe</td>
-							<td>Sucursal</td>
-							<td>Num. de Documento</td>
-							<td>Fecha / Hora de Aplicaci&oacute;n</td>
-							<td>Estatus</td>
-							<td>Autorizaci&oacute;n</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
 		<div class="area-botones">
+			<button ng-click="confirmation = true; applied = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="applied = false; showAccounts = true" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		</div>
 	</div>
