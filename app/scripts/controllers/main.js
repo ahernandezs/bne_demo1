@@ -4,7 +4,6 @@ angular.module('bnePaymentsOldFashionedApp')
 	.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 
 		$scope.hoursCombo = [
-			{name: '0'},
 			{name: '1'},
 			{name: '2'},
 			{name: '3'},
@@ -31,6 +30,7 @@ angular.module('bnePaymentsOldFashionedApp')
 		];
 
     $scope.minutesCombo = [
+      {name: '00'},
       {name: '01'},
       {name: '02'},
       {name: '03'},
@@ -89,8 +89,7 @@ angular.module('bnePaymentsOldFashionedApp')
       {name: '56'},
       {name: '57'},
       {name: '58'},
-      {name: '59'},
-      {name: '60'}
+      {name: '59'}
     ];
     $scope.interbankPayments = [];
 		$scope.thirdpayingAccounts = [];
@@ -141,10 +140,9 @@ angular.module('bnePaymentsOldFashionedApp')
 			if(payments.payingAccounts.length >= 15) return;
 
 			var firstPayment = {
-				source: undefined,
 				target: undefined,
-				date: $scope.getCurrentDate(),
-				hourSelection: $scope.hoursCombo[0]
+        application: 'Mismo día',
+				date: $scope.getCurrentDate()
 			}
 
 			payments.payingAccounts.push(firstPayment);
@@ -175,18 +173,21 @@ angular.module('bnePaymentsOldFashionedApp')
 			if($scope.thirdpayingAccounts.length >= 15) return;
 
 			var firstPayment = {
+        enabled: false
 			}
 
 			$scope.thirdpayingAccounts.push(firstPayment);
 		};
 
+    $scope.addMoreThirdPayments = function () {
+      for(var i = 0; i < 5; i++) {
+        $scope.addThirdPayment();
+      }
+    };
     // setup
 
     $scope.addTemplate();
-
-		for(var i = 0; i < 5; i++) {
-			$scope.addThirdPayment();
-		}
+    $scope.addMoreThirdPayments();
 
 
 		$scope.getPayingAccountIndex = function(payingAccounts, accountId) {
@@ -273,5 +274,24 @@ angular.module('bnePaymentsOldFashionedApp')
         payment.programming = false;
       }
       console.log(payment);
+    };
+
+    $scope.selectAll = false;
+
+    $scope.selectAllThird = function () {
+      $scope.selectAll = !$scope.selectAll;
+      for(var i = 0; i < $scope.thirdpayingAccounts.length; i++) {
+        $scope.thirdpayingAccounts[i].enabled = $scope.selectAll;
+      }
+    };
+
+    $scope.validateInterbankPayment = function (payment) {
+      if(payment.target && payment.amount)
+        return true;
+      return false;
+    };
+
+    $scope.validateThirdPayment = function (payment) {
+      return payment.enabled;
     };
 	}]);
