@@ -133,9 +133,6 @@ input.inline{
 .displayB{
 	display: block;
 }
-.borderT0{
-	border-top: none!important;
-}
 /* ANCHOS PIX */
 .width50{
 	width:50px;
@@ -753,7 +750,7 @@ p.instrucciones{
 								}
 							}
 							td:last-child{
-								border-right: none;
+								border-right: none!important;
 							}
 						}
 						thead{
