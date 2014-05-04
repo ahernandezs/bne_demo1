@@ -187,8 +187,14 @@ angular.module('bnePaymentsOldFashionedApp')
 			}
 		};
 
-		$scope.show_tltp = function( elemento ) {
-			$( elemento ).show();
+		$scope.show_tltp = function( elemento , boton ) {
+			var izq = ($(boton).offset().left)-($(elemento).width()/2)+9;
+			var arriba = $(boton).offset().top;
+			console.log(izq);
+			$( elemento ).css({
+				'left': izq,
+				'top': arriba
+			}).show();
 		};
 		$scope.hide_tltp = function( elemento ) {
 			$( elemento ).hide();
@@ -208,7 +214,6 @@ angular.module('bnePaymentsOldFashionedApp')
 
 
     $("#sortable").sortable();
-
 		$( "input.calendar" ).datepicker({
 			buttonImage: "/images/ico-calendar.png",
       		buttonImageOnly: true

@@ -134,6 +134,9 @@ input.inline{
 .width50{
 	width:50px;
 }
+.width60{
+	width:60px;
+}
 .width200{
 	width:200px;
 }
@@ -160,6 +163,9 @@ input.inline{
 /* PADDINGS */
 .paddingL10{
 	padding-left:10px;
+}
+.paddingL70{
+	padding-left:70px;
 }
 /* BGS */
 .bgf0f4f9{
@@ -194,6 +200,18 @@ input.inline{
 
 .btn-cuadrado{
 	@include border_radius(3px);
+}
+.span140{
+	width: 140px;
+	display: block;
+	margin: 0 auto;
+	text-align: left;
+}
+.span150{
+	width: 150px;
+	display: block;
+	margin: 0 auto;
+	text-align: left;
 }
 .span175{
 	width: 175px;
@@ -547,11 +565,13 @@ p.instrucciones{
 				font-size: 13px;
 				a,
 				a:hover{
+					cursor: move;
 					display: block;
 					padding: 6px 10px;
 					color: #FFFFFF;
 					text-decoration: none;
 					span{
+						cursor: pointer;
 						width: 18px;
 						height: 18px;
 						padding-top: 1px;
@@ -598,15 +618,15 @@ p.instrucciones{
 					overflow-y: scroll;
         			max-height: 950px;
 					padding: 10px 5px 20px 5px;
-					position: relative;
-					top: -1px;
+					margin-top: -1px;
 					@include border_bottom_radius(5px);
 					.cuenta-label{
-						padding-top:3px;
+						padding-top:5px;
 						padding-left: 5px;
 					}
 					.cuenta{
 						width: 75%;
+						margin-left: 15px;
 					}
 					p{
 						font-size: 12px;
@@ -650,6 +670,7 @@ p.instrucciones{
 									strong,
 									label{
 										color: #333333;
+										font-size: 11px;
 									}
 									a{
 										font-size: 11px;
@@ -676,7 +697,7 @@ p.instrucciones{
 										}
 										.tool-tip{
 											position: absolute;
-											margin: -50px 0 0 15px;
+											margin: -50px 0 0 0;
 											display:none;
 											background: #FFFFFF;
 											border: 1px solid #dadde2;
@@ -698,7 +719,7 @@ p.instrucciones{
 											}
 										}
 										.tooltip-eliminar{
-											margin: -35px 0 0 15px;
+											margin: -35px 0 0 0;
 										}
 										.btn{
 											font-size: 16px;
@@ -707,7 +728,6 @@ p.instrucciones{
 											width: 30px;
 											height: 30px;
 											padding: 0;
-											margin-left: 10px;
 										}
 										a,a:hover{
 											text-decoration: none;
