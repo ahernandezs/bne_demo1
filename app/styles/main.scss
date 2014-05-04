@@ -300,9 +300,9 @@ input.inline{
 	width: 20px;
 	height: 23px;
 	display: inline-block;
-	position: relative;
-	top: 5px;
 	margin-right:10px;
+	position: absolute;
+	margin-top: 3px;
 }
 .ico-exclama{
 	background: url(../images/ico-exclama.png) no-repeat;
