@@ -88,7 +88,7 @@ input[type="tel"]{
 input[type="checkbox"]{
 	margin: 0 3px!important;
 }
-input.calendar{
+input.calendario{
 	width: 90px!important;
 }
 input.monto{
@@ -99,6 +99,10 @@ input.search{
 	padding-left: 20px!important;
 	margin:0!important;
 	width: 100%;
+}
+input.num{
+	width: 60px;
+	text-align:center;
 }
 input.inline{
 	display:inline-block!important;
