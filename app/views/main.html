@@ -1290,95 +1290,39 @@
 			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
+        <table>
+					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
+            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+              <td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="4">
 								<table>
-									<tr>
-										<td>N&uacute;mero de referencia:</td>
-										<td>222</td>
-										<td>Fecha y hora de aplicaci&oacute;n:</td>
-										<td>15/01/2014 14:15 hrs.</td>
-									</tr>
-									<tr>
-										<td>Referencia alfanum&eacute;rica:</td>
-										<td>SEAR-120738-IG6</td>
-										<td>RFC: </td>
-										<td>JHAM567890S7Y</td>
-									</tr>
-									<tr>
-										<td>Concepto de pago:</td>
-										<td>SEAR-120738-IG6</td>
-										<td>IVA: </td>
-										<td>16,000</td>
-									</tr>
-									<tr>
-										<td>Cuenta concentradora</td>
+									<tr ng-show="payingAccount.programming">
+										<td>Programada:</td>
 										<td>SI</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="4">
-								<table>
-									<tr>
-										<td>N&uacute;mero de referencia:</td>
-										<td>222</td>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
-										<td>15/01/2014 14:15 hrs.</td>
+                    <td>{{payingAccount.date}} {{payingAccount.hours.name}}:{{payingAccount.minutes.name}} hrs.</td>
 									</tr>
-									<tr>
-										<td>Referencia alfanum&eacute;rica:</td>
-										<td>SEAR-120738-IG6</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>-MXN- 1234567890 Nombre: MONICA ORTIZ JUAREZ</td>
-							<td>$ 100,000.00 MXN</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="4">
-								<table>
-									<tr>
-										<td>N&uacute;mero de referencia:</td>
-										<td>222</td>
-										<td>Fecha y hora de aplicaci&oacute;n:</td>
-										<td>15/01/2014 14:15 hrs.</td>
-									</tr>
-									<tr>
-										<td>Referencia alfanum&eacute;rica:</td>
-										<td>SEAR-120738-IG6</td>
-										<td>RFC: </td>
-										<td>JHAM567890S7Y</td>
-									</tr>
-									<tr>
-										<td>Concepto de pago:</td>
-										<td>SEAR-120738-IG6</td>
-										<td>IVA: </td>
-										<td>16,000</td>
-									</tr>
-									<tr>
-										<td>Cuenta concentradora</td>
+									<tr ng-show="payingAccount.remote">
+										<td>Autorización remota:</td>
 										<td>SI</td>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+                    <td>{{payingAccount.remoteDate}} {{payingAccount.hoursRemote.name}}:{{payingAccount.minutesRemote.name}} hrs.</td>
 									</tr>
+									<tr>
+										<td>RFC: </td>
+                    <td>{{payingAccount.rfc}}</td>
+										<td>IVA: </td>
+                    <td>{{payingAccount.iva | currency}}</td>
+									</tr>
+                  <tr ng-show="payingAccount.fiscal">
+                    <td>Comprobante fiscal</td>
+                    <td>SI</td>
+                  </tr>
 								</table>
 							</td>
 						</tr>

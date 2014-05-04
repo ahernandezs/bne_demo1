@@ -4,7 +4,6 @@ angular.module('bnePaymentsOldFashionedApp')
 	.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 
 		$scope.hoursCombo = [
-			{name: '0'},
 			{name: '1'},
 			{name: '2'},
 			{name: '3'},
@@ -31,6 +30,7 @@ angular.module('bnePaymentsOldFashionedApp')
 		];
 
     $scope.minutesCombo = [
+      {name: '00'},
       {name: '01'},
       {name: '02'},
       {name: '03'},
@@ -89,8 +89,7 @@ angular.module('bnePaymentsOldFashionedApp')
       {name: '56'},
       {name: '57'},
       {name: '58'},
-      {name: '59'},
-      {name: '60'}
+      {name: '59'}
     ];
     $scope.interbankPayments = [];
 		$scope.thirdpayingAccounts = [];
@@ -290,5 +289,9 @@ angular.module('bnePaymentsOldFashionedApp')
       if(payment.target && payment.amount)
         return true;
       return false;
+    };
+
+    $scope.validateThirdPayment = function (payment) {
+      return payment.enabled;
     };
 	}]);
