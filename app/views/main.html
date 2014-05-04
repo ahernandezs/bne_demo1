@@ -12,7 +12,7 @@
 		</div>
 		<div class="panels-container" id="sortable">
 			<div class="panel panel-default">
-				<div class="panel-heading borderT0">
+				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="" href="" ng-click="collapseOne = !collapseOne">
 							<span ng-show="!collapseOne">+</span><span ng-show="collapseOne">-</span> Cuentas Propias
@@ -549,7 +549,7 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control " type="text" value="" jqdatepicker ng-model="payingAccount.date">
+														Fecha <input class="form-control calendar" type="text" value="" jqdatepicker ng-model="payingAccount.date">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
@@ -570,7 +570,7 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control " type="text" value="" jqdatepicker ng-model="payingAccount.remoteDate">
+														Fecha <input class="form-control calendar" type="text" value="" jqdatepicker ng-model="payingAccount.remoteDate">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
@@ -689,7 +689,7 @@
 													<td class="width30p">
 														<div class="content">
 															<form class="form-inline">
-																<input ng-model="payingAccount.date" type="text" class="form-control "
+																<input ng-model="payingAccount.date" type="text" class="form-control calendar"
 																placeholder="dd/mm/aaaa" jqdatepicker/>
 
 																<span class="ico-calendar"></span>
@@ -754,7 +754,7 @@
 									<tr>
 										<td>
 											<div class="width60p pull-right textL"><br>
-												<strong class="paddingL70"> TOTAL A PAGAR: {{getTotalPayment(interbank) | currency}}</strong>
+												<strong> TOTAL A PAGAR: {{getTotalPayment(interbank) | currency}}</strong>
 											</div>
 										</td>
 									</tr>

@@ -97,6 +97,8 @@ input.monto{
 input.search{
 	background: #ffffff url(../images/ico-lupa-celeste.png) 5px 7px no-repeat;
 	padding-left: 20px!important;
+	margin:0!important;
+	width: 100%;
 }
 input.inline{
 	display:inline-block!important;
@@ -542,7 +544,6 @@ p.instrucciones{
 }
 .panels-container{
 	border: 1px solid #09347a;
-	border-top: none;
 	overflow: hidden;
 	clear: both;
 	@include border_bottom_radius(5px);
@@ -551,14 +552,14 @@ p.instrucciones{
 		overflow: hidden;
 		margin: 0;
 		border: none;
+		margin-top: -1px; 
 		@include border_radius(0px);
 
 		.panel-heading{
 			background: #09347a;
 			padding: 0;
 			border: none;
-			//border-top: 1px solid #FFFFFF;
-      		margin-top: 1px;
+			border-top: 1px solid #FFFFFF;
 			@include border_radius(0px);
 			h4{
 				color: #FFFFFF;
@@ -688,12 +689,14 @@ p.instrucciones{
 									td{
 										a.mas-menos-opciones{
 											display: inline-block;
-											width: 100px;
+											padding-top: 3px;
 										}
 										span.ultimo-pago{
 											color: #989ba0;
 											font-size: 11px;
 											padding-left: 10px;
+											padding-top: 3px;
+											float: right;
 										}
 										.tool-tip{
 											position: absolute;
