@@ -181,13 +181,15 @@ angular.module('bnePaymentsOldFashionedApp')
 			$scope.thirdpayingAccounts.push(firstPayment);
 		};
 
+    $scope.addMoreThirdPayments = function () {
+      for(var i = 0; i < 5; i++) {
+        $scope.addThirdPayment();
+      }
+    };
     // setup
 
     $scope.addTemplate();
-
-		for(var i = 0; i < 5; i++) {
-			$scope.addThirdPayment();
-		}
+    $scope.addMoreThirdPayments();
 
 
 		$scope.getPayingAccountIndex = function(payingAccounts, accountId) {
