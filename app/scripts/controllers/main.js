@@ -141,10 +141,9 @@ angular.module('bnePaymentsOldFashionedApp')
 			if(payments.payingAccounts.length >= 15) return;
 
 			var firstPayment = {
-				source: undefined,
 				target: undefined,
-				date: $scope.getCurrentDate(),
-				hourSelection: $scope.hoursCombo[0]
+        application: 'Mismo día',
+				date: $scope.getCurrentDate()
 			}
 
 			payments.payingAccounts.push(firstPayment);
@@ -285,5 +284,11 @@ angular.module('bnePaymentsOldFashionedApp')
       for(var i = 0; i < $scope.thirdpayingAccounts.length; i++) {
         $scope.thirdpayingAccounts[i].enabled = $scope.selectAll;
       }
+    };
+
+    $scope.validateInterbankPayment = function (payment) {
+      if(payment.target && payment.amount)
+        return true;
+      return false;
     };
 	}]);

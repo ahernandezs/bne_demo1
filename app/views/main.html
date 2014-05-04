@@ -633,7 +633,7 @@
 										<angucomplete id="origin-account"
 											placeholder="Cuenta / Alias"
 											pause="20"
-											selectedobject="payingAccount.source"
+											selectedobject="interbank.source"
 											url="http://projects.anzen.com.mx:4567/api/accounts?query="
 											datafield="docs"
 											titlefield="name,currency_t,format_amount_t"
@@ -694,8 +694,8 @@
 
 																<span class="ico-calendar"></span>
 
-																<select>
-																	<option>Mismo d&iacute;a</option>
+																<select ng-model="payingAccount.application">
+																	<option>Mismo día</option>
 																	<option>24 horas</option>
 																</select>
 															</form>
@@ -728,20 +728,20 @@
 														<table class="tabla-interna">
 															<tr>
 																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="N&uacute;mero de referencia"/>
+																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="N&uacute;mero de referencia" ng-model="payingAccount.reference"/>
 																</td>
 																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="Concepto de pago"/>
+																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="Concepto de pago" ng-model="payingAccount.concept"/>
 																</td>
 																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="RFC"/>
+																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="RFC" ng-model="payingAccount.rfc"/>
 																</td>
 																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="IVA"/>
+                                  <input ng-show="payingAccount.more" class="form-control monto" type="text" name="" id="" value="{{payingAccount.amount * 0.16 | currency}}" placeholder="IVA"/>
 																</td>
 																<td>
 																	<label ng-show="payingAccount.more" >
-																		<input ng-model="payingAccount.fiscal" type="checkbox" value="" > Comprobante fiscal
+																		<input ng-model="payingAccount.fiscal" type="checkbox" value="" ng-model="payingAccount.fiscal"> Comprobante fiscal
 																	</label>
 																</td>
 															</tr>
@@ -1288,72 +1288,6 @@
 		<div class="content-box">
 			
 			<div class="contenido-total">
-				<p class="title">Cuentas Propias</p>
-				<p class="intrucciones">Para las siguientes operaciones no es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", dichas operaciones se aplicar&aacute;n.</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567  Saldo MXN: $ 100,000.00</td>
-							<td>M&oacute;nica Ortiz Ju&aacute;rez - 1234567890  Saldo MXN: $ 100,000.00</td>
-							<td>$ 100,000.00 MXN</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="4">
-								<table>
-									<tr>
-										<td>Autorozaci&oacute;n remota</td>
-										<td>SI</td>
-									</tr>
-									<tr>
-										<td>Fecha y hora de aplicaci&oacute;n</td>
-										<td>10/10/2013 14:50 hrs.</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>Banamex - MXN 5288430000793373 Nombre: JESUS,CRUZ/HERNANDEZ</td>
-							<td>M&oacute;nica Ortiz Ju&aacute;rez - 1234567890  Saldo MXN: $ 100,000.00</td>
-							<td>$ 100,000.00 MXN</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="4">
-								<table>
-									<tr>
-										<td>Autorozaci&oacute;n remota</td>
-										<td>SI</td>
-									</tr>
-									<tr>
-										<td>Fecha y hora de aplicaci&oacute;n</td>
-										<td>10/10/2013 14:50 hrs.</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567  Saldo MXN: $ 100,000.00</td>
-							<td>M&oacute;nica Ortiz Ju&aacute;rez - 1234567890  Saldo MXN: $ 100,000.00</td>
-							<td>$ 100,000.00 MXN</td>
-						</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Cuenta dep&oacute;sito</td>
-							<td>Importe</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
-
-		<div class="content-box">
-			
-			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
 				<table>
@@ -1466,98 +1400,45 @@
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
+				<table ng-repeat="interbank in interbankPayments">
+					<tbody ng-repeat="payingAccount in interbank.payingAccounts | filter:validateInterbankPayment">
+            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+              <td>{{$index + 1}}</td>
+              <td>{{interbank.source.originalObject.name}}</td>
+              <td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}}</td>
+              <td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
+              <td>{{payingAccount.date}} ({{payingAccount.application}})</td>
 						</tr>
-						<tr class="bgf4f4f4">
+						<tr class="bgf4f4f4" ng-show="payingAccount.remoteAuth || payingAccount.more">
 							<td colspan="6">
 								<table>
-									<tr>
+									<tr ng-show="payingAccount.remoteAuth">
 										<td>Autorizaci&oacute;n remota:</td>
-										<td>SI</td>
+										<td>SI
+                    </td>
 									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="6">
-								<table>
-									<tr>
+
+									<tr ng-show="payingAccount.more && payingAccount.reference">
 										<td>N&uacute;mero de referencia:</td>
-										<td>123456</td>
+                    <td>{{payingAccount.reference}}</td>
 									</tr>
-									<tr>
+									<tr ng-show="payingAccount.more && payingAccount.concept">
 										<td>Concepto de pago:</td>
-										<td>SEAR-120738-IG6</td>
+                    <td>{{payingAccount.concept}}</td>
 									</tr>
-									<tr>
+									<tr ng-show="payingAccount.more && payingAccount.rfc">
 										<td>RFC:</td>
-										<td>FGIN10823</td>
+                    <td>{{payingAccount.rfc}}</td>
 									</tr>
-									<tr>
+									<tr ng-show="payingAccount.more">
 										<td>IVA:</td>
-										<td>$ 1.00</td>
+                    <td>{{payingAccount.amount * 0.16 | currency}}</td>
 									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>5</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="6">
-								<table>
-									<tr>
-										<td>Autorizaci&oacute;n remota:</td>
-										<td>SI</td>
+									<tr ng-show="payingAccount.more && payingAccount.fiscal">
+										<td>Comprobante fiscal:</td>
+                    <td>SI</td>
 									</tr>
-									<tr>
-										<td>N&uacute;mero de referencia:</td>
-										<td>123456</td>
-									</tr>
-									<tr>
-										<td>Concepto de pago:</td>
-										<td>SEAR-120738-IG6</td>
-									</tr>
-									<tr>
-										<td>RFC:</td>
-										<td>FGIN10823</td>
-									</tr>
-									<tr>
-										<td>IVA:</td>
-										<td>$ 1.00</td>
-									</tr>
+
 								</table>
 							</td>
 						</tr>
@@ -1574,150 +1455,14 @@
 					<tfoot>
 						<tr>
 							<td colspan="3"></td>
-							<td colspan="3"><strong>TOTAL: $0.00</strong></td>
+							<td colspan="3"><strong>TOTAL: {{getTotalPayment(interbank) | currency}}</strong></td>
 						</tr>
 					</tfoot>
 				</table>
 
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>6</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="6">
-								<table>
-									<tr>
-										<td>Autorizaci&oacute;n remota:</td>
-										<td>SI</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<td>7</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>4152311040681438 NANCY</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>21/01/2014 (Mismo d&iacute;a)</td>
-						</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Cuenta dep&oacute;sito</td>
-							<td>Importe</td>
-							<td>Fecha / Hora de Aplicaci&oacute;n</td>
-						</tr>
-					</thead>
-					<tfoot>
-						<tr>
-							<td colspan="3"></td>
-							<td colspan="3"><strong>TOTAL: $0.00</strong></td>
-						</tr>
-					</tfoot>
-				</table>
 			</div>
 		</div>
 
-		<div class="content-box">
-			
-			<div class="contenido-total">
-				<p class="title">&Oacute;rdenes de Pago</p>
-				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
-				<table>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td>1</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Orden de pago  Nombre: BORRADO DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="5">
-								<table>
-									<tr>
-										<td>Autorizaci&oacute;n remota:</td>
-										<td>SI</td>
-									</tr>
-									<tr>
-										<td>Fecha y hora de aplicaci&oacute;n:</td>
-										<td>15/01/2014 14:15 hrs.</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Orden de pago  Nombre: BORRADO DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="5">
-								<table>
-									<tr>
-										<td>Fecha y hora de aplicaci&oacute;n:</td>
-										<td>15/01/2014 14:15 hrs.</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>3</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Orden de pago  Nombre: BORRADO DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Orden de pago  Nombre: BORRADO DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>5</td>
-							<td>MONICA ORTIZ JUAREZ - 123/934567</td>
-							<td>Orden de pago  Nombre: BORRADO DATOS ADICIONALES</td>
-							<td>$ 100,000.00 MXN</td>
-							<td>100</td>
-						</tr>
-						<tr class="bgf4f4f4">
-							<td colspan="5">
-								<table>
-									<tr>
-										<td>Autorizaci&oacute;n remota:</td>
-										<td>SI</td>
-									</tr>
-									<tr>
-										<td>Fecha y hora de aplicaci&oacute;n:</td>
-										<td>15/01/2014 14:15 hrs.</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Beneficiario</td>
-							<td>Importe</td>
-							<td>Sucursal</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
 		<div class="area-botones">
 			<button ng-click="showAccounts = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
