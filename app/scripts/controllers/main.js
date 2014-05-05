@@ -186,9 +186,18 @@ angular.module('bnePaymentsOldFashionedApp')
     };
     // setup
 
-    $scope.addTemplate();
-    $scope.addMoreThirdPayments();
+    $scope.setup = function () {
+      $scope.interbankPayments = [];
+      $scope.thirdpayingAccounts = [];
+      $scope.addTemplate();
+      $scope.addMoreThirdPayments();
+      $scope.collapseOne = false;
+      $scope.collapseTwo = false;
+      $scope.collapseThree = false;
+      $scope.collapseFour = false;
+    };
 
+    $scope.setup();
 
 		$scope.getPayingAccountIndex = function(payingAccounts, accountId) {
 			for(var i = 0; i < payingAccounts.length; i++) {
@@ -293,5 +302,11 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.validateThirdPayment = function (payment) {
       return payment.enabled;
+    };
+
+    $scope.acceptApplied = function () {
+      $scope.applied = false;
+      $scope.showAccounts = true;
+      $scope.setup();
     };
 	}]);
