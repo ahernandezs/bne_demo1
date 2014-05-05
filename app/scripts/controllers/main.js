@@ -173,7 +173,8 @@ angular.module('bnePaymentsOldFashionedApp')
 			if($scope.thirdpayingAccounts.length >= 15) return;
 
 			var firstPayment = {
-        enabled: false
+        enabled: false,
+        fiscal: false
 			}
 
 			$scope.thirdpayingAccounts.push(firstPayment);
@@ -288,7 +289,6 @@ angular.module('bnePaymentsOldFashionedApp')
         payment.hours = 'hh';
         payment.minutes = 'mm';
       }
-      console.log(payment);
     };
 
     $scope.selectAll = false;
@@ -314,5 +314,14 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.applied = false;
       $scope.showAccounts = true;
       $scope.setup();
+    };
+
+    $scope.fiscalVerify = function (payment) {
+      if(payment.fiscal) {
+        payment.iva = payment.amount * 0.16;
+      } else {
+        payment.rfc = undefined;
+        payment.iva = undefined;
+      }
     };
 	}]);

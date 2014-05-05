@@ -539,7 +539,7 @@
 												<div class="head"><span class="span150">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount">
+														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)">
 													</form>
 												</div>
 											</td>
@@ -587,7 +587,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.fiscal"> Comprobante Fiscal</label>
+													<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -1470,7 +1470,7 @@
 				<p class="title">Cuentas Terceros Banamex</p>
 				<table>
 					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
-            <tr ng-class="{bgf0f4f9: $index % 2 == 0}}">
+            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
               <td>{{$index + 1}}</td>
               <td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
