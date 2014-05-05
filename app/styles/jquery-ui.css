@@ -328,8 +328,18 @@ button.ui-button::-moz-focus-inner {
 .ui-datepicker td a.ui-state-default:hover{
 	color: #0c3576!important;	
 }
-.ui-datepicker td a.ui-state-highlight,
-.ui-datepicker td a.ui-state-highlight:hover{
+.ui-datepicker td a.ui-state-highlight.ui-state-hover,
+.ui-datepicker td a.ui-state-highlight.ui-state-hover:hover{
+	background: #ee823b!important;
+	color: #FFFFFF!important;
+}
+.ui-datepicker td a.ui-state-active,
+.ui-datepicker td a.ui-state-active:hover{
+	background: #ee823b!important;
+	color: #FFFFFF!important;
+}
+.ui-datepicker td a.ui-state-hover,
+.ui-datepicker td a.ui-state-hover:hover{
 	background: #ee823b!important;
 	color: #FFFFFF!important;
 }
