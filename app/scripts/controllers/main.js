@@ -173,7 +173,8 @@ angular.module('bnePaymentsOldFashionedApp')
 			if($scope.thirdpayingAccounts.length >= 15) return;
 
 			var firstPayment = {
-        enabled: false
+        enabled: false,
+        fiscal: false
 			}
 
 			$scope.thirdpayingAccounts.push(firstPayment);
@@ -186,9 +187,18 @@ angular.module('bnePaymentsOldFashionedApp')
     };
     // setup
 
-    $scope.addTemplate();
-    $scope.addMoreThirdPayments();
+    $scope.setup = function () {
+      $scope.interbankPayments = [];
+      $scope.thirdpayingAccounts = [];
+      $scope.addTemplate();
+      $scope.addMoreThirdPayments();
+      $scope.collapseOne = false;
+      $scope.collapseTwo = false;
+      $scope.collapseThree = false;
+      $scope.collapseFour = false;
+    };
 
+    $scope.setup();
 
 		$scope.getPayingAccountIndex = function(payingAccounts, accountId) {
 			for(var i = 0; i < payingAccounts.length; i++) {
@@ -269,11 +279,16 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.verifyThirdMode = function (payment, selection) {
       if(selection === 'programming' && payment.remote) {
         payment.remote = false;
+        payment.remoteDate = '';
+        payment.hoursRemote = 'hh';
+        payment.minutesRemote = 'mm';
       }
       if(selection === 'remote' && payment.programming) {
         payment.programming = false;
+        payment.date = '';
+        payment.hours = 'hh';
+        payment.minutes = 'mm';
       }
-      console.log(payment);
     };
 
     $scope.selectAll = false;
@@ -293,5 +308,20 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.validateThirdPayment = function (payment) {
       return payment.enabled;
+    };
+
+    $scope.acceptApplied = function () {
+      $scope.applied = false;
+      $scope.showAccounts = true;
+      $scope.setup();
+    };
+
+    $scope.fiscalVerify = function (payment) {
+      if(payment.fiscal) {
+        payment.iva = payment.amount * 0.16;
+      } else {
+        payment.rfc = undefined;
+        payment.iva = undefined;
+      }
     };
 	}]);
