@@ -216,30 +216,35 @@ input.inline{
 	display: block;
 	margin: 0 auto;
 	text-align: left;
+	clear: both;
 }
 .span150{
 	width: 150px;
 	display: block;
 	margin: 0 auto;
 	text-align: left;
+	clear: both;
 }
 .span175{
 	width: 175px;
 	display: block;
 	margin: 0 auto;
 	text-align: left;
+	clear: both;
 }
 .span200{
 	width: 200px;
 	display: block;
 	margin: 0 auto;
 	text-align: left;
+	clear: both;
 }
 .span250{
 	width: 250px;
 	display: block;
 	margin: 0 auto;
 	text-align: left;
+	clear: both;
 }
 
 /* ICONOS */
@@ -692,6 +697,11 @@ p.instrucciones{
 									a:hover{
 										color: #09347a;
 									}
+									span.ultimo-pago{
+										color: #989ba0;
+										font-size: 11px;
+										padding-top: 3px;
+									}
 								}
 
 								table.tabla-fila{
@@ -703,10 +713,7 @@ p.instrucciones{
 											padding-top: 3px;
 										}
 										span.ultimo-pago{
-											color: #989ba0;
-											font-size: 11px;
 											padding-left: 10px;
-											padding-top: 3px;
 											float: right;
 										}
 										.tool-tip{

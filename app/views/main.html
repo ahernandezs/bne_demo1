@@ -533,6 +533,7 @@
 													<select class="width250" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target">
 														<option value="">Seleccione una cuenta</option>
 													</select>
+													<span class="ultimo-pago span250 v-hidden">Último pago: $0.00 00/00/0000</span> 
 												</div>
 											</td>
 											<td>
@@ -545,7 +546,7 @@
 											</td>
 											<td>
 												<div class="head">
-                          <label class="span175"><input ng-click="verifyThirdMode(payingAccount, 'programming')" type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input ng-click="verifyThirdMode(payingAccount, 'programming')" type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -703,23 +704,23 @@
 															<form class="form-inline">
 																
 															</form> -->
-                              <label ng-class="{'v-hidden': !payingAccount.amount || payingAccount.amount < maxAmount}">
+															<label ng-class="{'v-hidden': !payingAccount.amount || payingAccount.amount < maxAmount}">
 																<input ng-model="payingAccount.remoteAuth" type="checkbox" value="" > Autorizar en forma remota
 															</label>
 														</div>
 													</td>
 													<td class="width10p">
 														<div class="content">
-							  <div class="tool-tip tooltip-eliminar tooltip-eliminar{{$parent.$index}}{{$index}}" ng-show="$index + 1 !== interbank.payingAccounts.length">
+															<div class="tool-tip tooltip-eliminar tooltip-eliminar{{$parent.$index}}{{$index}}" ng-show="$index + 1 !== interbank.payingAccounts.length">
 																<p>Eliminar pago</p>
 																<div class="arrow"></div>
 															</div>
-							  <div class="tool-tip tooltip-agregar{{$parent.$index}}{{$index}}" ng-show="$index + 1 === interbank.payingAccounts.length">
+																<div class="tool-tip tooltip-agregar{{$parent.$index}}{{$index}}" ng-show="$index + 1 === interbank.payingAccounts.length">
 																<p>Agregar otra<br>cuenta dep&oacute;sito</p>
 																<div class="arrow"></div>
 															</div>
-							  <button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado btn-tooltip{{$parent.$index}}{{$index}}" ng-click="removePayingAccount($parent.$index, $index)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index, '.btn-tooltip' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
-							  <button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary btn-tooltip-mas{{$parent.$index}}{{$index}}" ng-click="addPayment(interbank)" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index, '.btn-tooltip-mas' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
+															<button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado btn-tooltip{{$parent.$index}}{{$index}}" ng-click="removePayingAccount($parent.$index, $index)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index, '.btn-tooltip' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
+															<button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary btn-tooltip-mas{{$parent.$index}}{{$index}}" ng-click="addPayment(interbank)" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index, '.btn-tooltip-mas' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
 														</div>
 													</td>
 												</tr>
@@ -737,7 +738,7 @@
 																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="RFC" ng-model="payingAccount.rfc"/>
 																</td>
 																<td>
-                                  <input ng-show="payingAccount.more" class="form-control monto" type="text" name="" id="" value="{{payingAccount.amount * 0.16 | currency}}" placeholder="IVA"/>
+																	<input ng-show="payingAccount.more" class="form-control monto" type="text" name="" id="" value="{{payingAccount.amount * 0.16 | currency}}" placeholder="IVA"/>
 																</td>
 																<td>
 																	<label ng-show="payingAccount.more" >
@@ -1263,7 +1264,7 @@
 		</div>
 
 		<div class="area-botones">
-      <button ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
+	  <button ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
 
@@ -1290,10 +1291,10 @@
 			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
-        <table>
+				<table>
 					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
-            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-              <td>{{$index + 1}}</td>
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
@@ -1305,24 +1306,24 @@
 										<td>Programada:</td>
 										<td>SI</td>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
-                    <td>{{payingAccount.date}} {{payingAccount.hours.name}}:{{payingAccount.minutes.name}} hrs.</td>
+										<td>{{payingAccount.date}} {{payingAccount.hours.name}}:{{payingAccount.minutes.name}} hrs.</td>
 									</tr>
 									<tr ng-show="payingAccount.remote">
 										<td>Autorización remota:</td>
 										<td>SI</td>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
-                    <td>{{payingAccount.remoteDate}} {{payingAccount.hoursRemote.name}}:{{payingAccount.minutesRemote.name}} hrs.</td>
+										<td>{{payingAccount.remoteDate}} {{payingAccount.hoursRemote.name}}:{{payingAccount.minutesRemote.name}} hrs.</td>
 									</tr>
 									<tr>
 										<td>RFC: </td>
-                    <td>{{payingAccount.rfc}}</td>
+										<td>{{payingAccount.rfc}}</td>
 										<td>IVA: </td>
-                    <td>{{payingAccount.iva | currency}}</td>
+										<td>{{payingAccount.iva | currency}}</td>
 									</tr>
-                  <tr ng-show="payingAccount.fiscal">
-                    <td>Comprobante fiscal</td>
-                    <td>SI</td>
-                  </tr>
+									<tr ng-show="payingAccount.fiscal">
+										<td>Comprobante fiscal</td>
+										<td>SI</td>
+									</tr>
 								</table>
 							</td>
 						</tr>
@@ -1346,12 +1347,12 @@
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
 				<table ng-repeat="interbank in interbankPayments">
 					<tbody ng-repeat="payingAccount in interbank.payingAccounts | filter:validateInterbankPayment">
-            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-              <td>{{$index + 1}}</td>
-              <td>{{interbank.source.originalObject.name}}</td>
-              <td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
-              <td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
-              <td>{{payingAccount.date}} ({{payingAccount.application}})</td>
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{interbank.source.originalObject.name}}</td>
+							<td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
+							<td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
+							<td>{{payingAccount.date}} ({{payingAccount.application}})</td>
 						</tr>
 						<tr class="bgf4f4f4" ng-show="payingAccount.remoteAuth || payingAccount.more">
 							<td colspan="6">
@@ -1359,30 +1360,29 @@
 									<tr ng-show="payingAccount.remoteAuth">
 										<td>Autorizaci&oacute;n remota:</td>
 										<td>SI
-                    </td>
+									</td>
 									</tr>
 
 									<tr ng-show="payingAccount.more && payingAccount.reference">
 										<td>N&uacute;mero de referencia:</td>
-                    <td>{{payingAccount.reference}}</td>
+										<td>{{payingAccount.reference}}</td>
 									</tr>
 									<tr ng-show="payingAccount.more && payingAccount.concept">
 										<td>Concepto de pago:</td>
-                    <td>{{payingAccount.concept}}</td>
+										<td>{{payingAccount.concept}}</td>
 									</tr>
 									<tr ng-show="payingAccount.more && payingAccount.rfc">
 										<td>RFC:</td>
-                    <td>{{payingAccount.rfc}}</td>
+										<td>{{payingAccount.rfc}}</td>
 									</tr>
 									<tr ng-show="payingAccount.more">
 										<td>IVA:</td>
-                    <td>{{payingAccount.amount * 0.16 | currency}}</td>
+										<td>{{payingAccount.amount * 0.16 | currency}}</td>
 									</tr>
 									<tr ng-show="payingAccount.more && payingAccount.fiscal">
 										<td>Comprobante fiscal:</td>
-                    <td>SI</td>
+										<td>SI</td>
 									</tr>
-
 								</table>
 							</td>
 						</tr>
@@ -1469,9 +1469,9 @@
 				<p class="title">Cuentas Terceros Banamex</p>
 				<table>
 					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
-            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-              <td>{{$index + 1}}</td>
-              <td>{{payingAccount.source.name}}</td>
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td></td>
@@ -1510,12 +1510,12 @@
 				<p class="title">Cuentas Interbancarias</p>
 				<table ng-repeat="interbank in interbankPayments">
 					<tbody ng-repeat="payingAccount in interbank.payingAccounts | filter:validateInterbankPayment">
-            <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-              <td>{{$index + 1}}</td>
-              <td>{{interbank.source.originalObject.name}}</td>
-              <td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
-              <td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
-              <td>{{payingAccount.date}} ({{payingAccount.application}})</td>
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{interbank.source.originalObject.name}}</td>
+							<td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
+							<td>{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
+							<td>{{payingAccount.date}} ({{payingAccount.application}})</td>
 							<td>Aplicada</td>
 							<td>001005</td>
 						</tr>
