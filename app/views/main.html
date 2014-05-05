@@ -533,7 +533,7 @@
 													<select class="width250" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target">
 														<option value="">Seleccione una cuenta</option>
 													</select>
-													<span class="ultimo-pago span250 v-hidden">Último pago: $0.00 00/00/0000</span> 
+                          <span class="ultimo-pago span250" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span> 
 												</div>
 											</td>
 											<td>
@@ -669,6 +669,7 @@
 																url="http://projects.anzen.com.mx:4567/api/interbank?query="
 																datafield="docs"
 																titlefield="name,bank_t"
+											          imagefield="image_t"
 																minlength="1"
 																enabledefault="true"
 																inputclass="form-control form-control-small search"/>
