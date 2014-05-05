@@ -704,7 +704,7 @@
 																
 															</form> -->
 															<!-- <label ng-show="payingAccount.amount > maxAmount"> -->
-															<label class="v-hidden">
+                              <label ng-class="{'v-hidden': !payingAccount.amount || payingAccount.amount < maxAmount}">
 																<input ng-model="payingAccount.remoteAuth" type="checkbox" value="" > Autorizar en forma remota
 															</label>
 														</div>
