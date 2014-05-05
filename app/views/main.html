@@ -549,15 +549,15 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control " type="text" value="" jqdatepicker ng-model="payingAccount.date">
+														Fecha <input class="form-control " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
 														<strong>Hora&nbsp;&nbsp;</strong> 
-														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours">
+														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
 															<option value="">hh</option>
 														</select>
-														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutes">
+														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutes" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
 															<option value="">mm</option>
 														</select>
 														hrs
@@ -570,15 +570,15 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control " type="text" value="" jqdatepicker ng-model="payingAccount.remoteDate">
+														Fecha <input class="form-control " type="text" value="" jqdatepicker ng-model="payingAccount.remoteDate" ng-change="payingAccount.remote = true; verifyThirdMode(payingAccount, 'remote')">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
 														<strong>Hora&nbsp;&nbsp;</strong>
-														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hoursRemote">
+														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hoursRemote" ng-change="payingAccount.remote = true; verifyThirdMode(payingAccount, 'remote')">
 															<option value="">hh</option>
 														</select>
-														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutesRemote">
+														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutesRemote" ng-change="payingAccount.remote = true; verifyThirdMode(payingAccount, 'remote')">
 															<option value="">mm</option>
 														</select>
 														hrs
