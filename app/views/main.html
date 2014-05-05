@@ -679,7 +679,7 @@
 															<span class="ultimo-pago" ng-show="payingAccount.target.originalObject.last_payment_d > 0">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span> 
 														</div>
 													</td>
-													<td class="width20p">
+													<td class="width20p textR">
 														<div class="content">
 															<form class="form-inline">
 																<input type="text" currency="" placeholder="Importe" class="form-control" ng-model="payingAccount.amount">
@@ -703,7 +703,8 @@
 															<form class="form-inline">
 																
 															</form> -->
-															<label ng-show="payingAccount.amount > maxAmount">
+															<!-- <label ng-show="payingAccount.amount > maxAmount"> -->
+															<label class="v-hidden">
 																<input ng-model="payingAccount.remoteAuth" type="checkbox" value="" > Autorizar en forma remota
 															</label>
 														</div>
@@ -753,8 +754,8 @@
 									</tr>
 									<tr>
 										<td>
-											<div class="width60p pull-right textL"><br>
-												<strong> TOTAL A PAGAR: {{getTotalPayment(interbank) | currency}}</strong>
+											<div class="pull-right textR paddingR40p"><br>
+												<strong class="paddingR15"> TOTAL A PAGAR: {{getTotalPayment(interbank) | currency}}</strong>
 											</div>
 										</td>
 									</tr>

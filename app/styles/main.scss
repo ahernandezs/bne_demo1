@@ -125,13 +125,16 @@ input.inline{
 	text-align: center;
 }
 .textR{
-	text-align: right;
+	text-align: right!important;
 }
 .textL{
 	text-align: left!important;
 }
 .displayB{
 	display: block;
+}
+.v-hidden{
+	visibility: hidden;
 }
 /* ANCHOS PIX */
 .width50{
@@ -163,12 +166,16 @@ input.inline{
 .width60p{
 	width: 60%!important;
 }
-/* PADDINGS */
+/* PADDINGS PIX */
+.paddingR15{
+	padding-right:15px;
+}
 .paddingL10{
 	padding-left:10px;
 }
-.paddingL70{
-	padding-left:70px;
+/* PADDINGS PORCENTAJES */
+.paddingR40p{
+	padding-right:40%;
 }
 /* BGS */
 .bgf0f4f9{
@@ -301,8 +308,8 @@ input.inline{
 	height: 23px;
 	display: inline-block;
 	margin-right:10px;
-	position: absolute;
-	margin-top: 3px;
+	position: relative;
+	margin-bottom: -8px;
 }
 .ico-exclama{
 	background: url(../images/ico-exclama.png) no-repeat;
@@ -663,6 +670,9 @@ p.instrucciones{
 								}
 								.content{
 									padding: 5px;
+									form{
+										font-size: 11px!important;
+									}
 									input[type="text"]{
 										margin-bottom: 5px;
 									}
