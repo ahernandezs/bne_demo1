@@ -96,7 +96,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -179,7 +179,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -262,7 +262,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -345,7 +345,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -428,7 +428,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -518,7 +518,7 @@
 											<td>
 												<div class="head"><span class="span310">Cuentas</span></div>
 												<div class="content">
-													
+
 													<span class="span310">Cuenta retiro</span>
 													<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType">
 														<option value="">Seleccione una opci&oacute;n</option>
@@ -528,12 +528,12 @@
 														<option value="">Seleccione una cuenta</option>
 													</select>
 													<br>
-													
+
 													<span class="span310">Cuenta dep&oacute;sito</span>
 													<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target">
 														<option value="">Seleccione una cuenta</option>
 													</select>
-													<span class="ultimo-pago span310" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span> 
+													<span class="ultimo-pago span310" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
 												</div>
 											</td>
 											<td>
@@ -554,7 +554,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
 															<option value="">hh</option>
 														</select>
@@ -625,142 +625,435 @@
 						</ul>
 						<div class="content-tabs">
 							<p>
-								Seleccione una cuenta retiro, capture la informaci&oacute;n de sus pagos y d&eacute; clic en continuar. Si quiere adicionar m&aacute;s pagos con la misma cuenta, indique el n&uacute;mero de pagos que quiere agregar y d&eacute; clic en el bot&oacute;n “Agregar”. Si desea hacer m&aacute;s pagos con una cuenta retiro distinta, d&eacute; clic en el bot&oacute;n “Agregar otra plantilla de pagos”. 
+								Seleccione una cuenta retiro, capture la informaci&oacute;n de sus pagos y d&eacute; clic en continuar. Si quiere adicionar m&aacute;s pagos con la misma cuenta, indique el n&uacute;mero de pagos que quiere agregar y d&eacute; clic en el bot&oacute;n “Agregar”. Si desea hacer m&aacute;s pagos con una cuenta retiro distinta, d&eacute; clic en el bot&oacute;n “Agregar otra plantilla de pagos”.
 							</p>
-							<div class="tab-pagos-multiples" ng-repeat="interbank in interbankPayments">
-								<div>
-									<div class="pull-left width40p">
-										<strong class="pull-left cuenta-label">Cuenta retiro </strong>
-										<angucomplete id="origin-account"
-											placeholder="Cuenta / Alias"
-											pause="20"
-											selectedobject="interbank.source"
-											url="http://projects.anzen.com.mx:4567/api/accounts?query="
-											datafield="docs"
-											titlefield="name,currency_t,format_amount_t"
-											imagefield="image_t"
-											minlength="1"
-											enabledefault="true"
-											class="pull-left cuenta"
-											inputclass="form-control form-control-small search"/>
-									</div>
-									<div class="pull-right">
-										<p>
-											Agregar <input class="width60" type="text" placeholder="número" ng-model="interbank.depositAccountNumber"/> cuentas dep&oacute;sito <button class="btn btn-primary" ng-click="addPayments(interbank)">Agregar</button>
-										</p>
-									</div>
-								</div>
-								<table class="table">
-									<tr ng-repeat="payingAccount in interbank.payingAccounts">
-										<td ng-class="{bgf0f4f9: $index % 2 == 0}">
-											<table class="tabla-fila">
-												<tr>
-													<td class="width40p textL">
-														<div class="content">
-															<strong>Cuenta dep&oacute;sito</strong>
-
-															<div>
-																<angucomplete id="target-account"
-																placeholder="Clabe / Cuenta / Alias / Celular"
-																pause="20"
-																selectedobject="payingAccount.target"
-																url="http://projects.anzen.com.mx:4567/api/interbank?query="
-																datafield="docs"
-																titlefield="name,bank_t"
-													  imagefield="image_t"
-																minlength="1"
-																enabledefault="true"
-																inputclass="form-control form-control-small search"/>
-															</div>
-
-															<a href="" ng-click="payingAccount.more = true" ng-show="!payingAccount.more" class="mas-menos-opciones">M&aacute;s opciones <span class="caret"></span></a>
-															<a href="" ng-click="payingAccount.more = false" ng-show="payingAccount.more" class="mas-menos-opciones dropup">Menos opciones <span class="caret"></span></a>
-
-															<span class="ultimo-pago" ng-show="payingAccount.target.originalObject.last_payment_d > 0">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span> 
-														</div>
-													</td>
-													<td class="width20p textR">
-														<div class="content">
-															<form class="form-inline">
-																<input type="text" currency="" placeholder="Importe" class="form-control" ng-model="payingAccount.amount">
-															</form>
-														</div>
-													</td>
-													<td class="width30p">
-														<div class="content marginT15">
-															<form class="form-inline">
-																<input ng-model="payingAccount.date" type="text" class="form-control  calendario"
-																placeholder="dd/mm/aaaa" jqdatepicker/>
-
-																<span class="ico-calendar"></span>
-
-																<select ng-model="payingAccount.application">
-																	<option>Mismo día</option>
-																	<option>24 horas</option>
-																</select>
-															</form>
-															<!-- <strong>Fecha de aplicaci&oacute;n</strong>
-															<form class="form-inline">
-																
-															</form> -->
-															<label ng-class="{'v-hidden': !payingAccount.amount || payingAccount.amount < maxAmount}">
-																<input ng-model="payingAccount.remoteAuth" type="checkbox" value="" > Autorizar en forma remota
-															</label>
-														</div>
-													</td>
-													<td class="width10p">
-														<div class="content">
-															<div class="tool-tip tooltip-eliminar tooltip-eliminar{{$parent.$index}}{{$index}}" ng-show="$index + 1 !== interbank.payingAccounts.length">
-																<p>Eliminar pago</p>
-																<div class="arrow"></div>
-															</div>
-																<div class="tool-tip tooltip-agregar{{$parent.$index}}{{$index}}" ng-show="$index + 1 === interbank.payingAccounts.length">
-																<p>Agregar otra<br>cuenta dep&oacute;sito</p>
-																<div class="arrow"></div>
-															</div>
-															<button ng-show="$index + 1 !== interbank.payingAccounts.length" class="btn btn-cuadrado btn-tooltip{{$parent.$index}}{{$index}}" ng-click="removePayingAccount($parent.$index, $index)" ng-mouseover="show_tltp('.tooltip-eliminar' + $parent.$index + $index, '.btn-tooltip' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-eliminar' + $parent.$index +  $index)"><span class="ico-basurero"></span></button>
-															<button ng-show="$index + 1 === interbank.payingAccounts.length" type="button" class="btn btn-cuadrado btn-primary btn-tooltip-mas{{$parent.$index}}{{$index}}" ng-click="addPayment(interbank)" ng-mouseover="show_tltp('.tooltip-agregar' + $parent.$index + $index, '.btn-tooltip-mas' + $parent.$index + $index)" ng-mouseleave="hide_tltp('.tooltip-agregar' + $parent.$index + $index)">+</button>
-														</div>
-													</td>
-												</tr>
-												<tr ng-show="payingAccount.more">
-													<td colspan="4">
-														<table class="tabla-interna">
-															<tr>
-																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="N&uacute;mero de referencia" ng-model="payingAccount.reference"/>
-																</td>
-																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="Concepto de pago" ng-model="payingAccount.concept"/>
-																</td>
-																<td>
-																	<input ng-show="payingAccount.more" class="form-control" type="text" name="" id="" value="" placeholder="RFC" ng-model="payingAccount.rfc"/>
-																</td>
-																<td>
-																	<input ng-show="payingAccount.more" class="form-control monto" type="text" name="" id="" value="{{payingAccount.amount * 0.16 | currency}}" placeholder="IVA"/>
-																</td>
-																<td>
-																	<label ng-show="payingAccount.more" >
-																		<input ng-model="payingAccount.fiscal" type="checkbox" value="" ng-model="payingAccount.fiscal"> Comprobante fiscal
-																	</label>
-																</td>
-															</tr>
-														</table>
-													</td>
-												</tr>
-											</table>
+              <div class="tab-pagos-multiples">
+                <table class="table">
+								<tbody>
+									<tr>
+										<td>
+											<div class="head textC">
+												<input type="checkbox" value="" >
+											</div>
+										</td>
+										<td>
+											<div class="head textC">1</div>
+										</td>
+										<td>
+											<div class="head">Cuentas</div>
+											<div class="content">
+												Cuenta retiro
+												<br>
+												<select>
+													<option>Seleccione una opci&oacute;n</option>
+												</select>
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+												<br>
+												Cuenta dep&oacute;sito
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+											</div>
+										</td>
+										<td>
+											<div class="head">Importe MXN</div>
+											<div class="content">
+												<form class="form-inline">
+													$ <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Fecha de operaci&oacute;n
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													Fecha <input class="form-control calendar" type="text" value="" >
+													<span class="ico-calendar"></span>
+												</form>
+												<strong>Fecha de aplicaci&oacute;n</strong>
+												<form class="form-inline">
+													<select>
+														<option>Seleccione</option>
+													</select>
+												</form>
+												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Referencias
+											</div>
+											<div class="content">
+												<strong>N&uacute;mero de referencia</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+												<strong>Concepto de pago</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													<strong>RFC</strong> <input class="form-control" type="text" value="" >
+												</form>
+												<form class="form-inline">
+													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
+												</form>
+											</div>
 										</td>
 									</tr>
 									<tr>
 										<td>
-											<div class="pull-right textR paddingR40p"><br>
-												<strong class="paddingR15"> TOTAL A PAGAR: {{getTotalPayment(interbank) | currency}}</strong>
+											<div class="head textC">
+												<input type="checkbox" value="" >
+											</div>
+										</td>
+										<td>
+											<div class="head textC">2</div>
+										</td>
+										<td>
+											<div class="head">Cuentas</div>
+											<div class="content">
+												Cuenta retiro
+												<br>
+												<select>
+													<option>Seleccione una opci&oacute;n</option>
+												</select>
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+												<br>
+												Cuenta dep&oacute;sito
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+											</div>
+										</td>
+										<td>
+											<div class="head">Importe MXN</div>
+											<div class="content">
+												<form class="form-inline">
+													$ <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Fecha de operaci&oacute;n
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													Fecha <input class="form-control calendar" type="text" value="" >
+													<span class="ico-calendar"></span>
+												</form>
+												<strong>Fecha de aplicaci&oacute;n</strong>
+												<form class="form-inline">
+													<select>
+														<option>Seleccione</option>
+													</select>
+												</form>
+												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Referencias
+											</div>
+											<div class="content">
+												<strong>N&uacute;mero de referencia</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+												<strong>Concepto de pago</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													<strong>RFC</strong> <input class="form-control" type="text" value="" >
+												</form>
+												<form class="form-inline">
+													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
+												</form>
 											</div>
 										</td>
 									</tr>
-								</table>
+									<tr>
+										<td>
+											<div class="head textC">
+												<input type="checkbox" value="" >
+											</div>
+										</td>
+										<td>
+											<div class="head textC">3</div>
+										</td>
+										<td>
+											<div class="head">Cuentas</div>
+											<div class="content">
+												Cuenta retiro
+												<br>
+												<select>
+													<option>Seleccione una opci&oacute;n</option>
+												</select>
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+												<br>
+												Cuenta dep&oacute;sito
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+											</div>
+										</td>
+										<td>
+											<div class="head">Importe MXN</div>
+											<div class="content">
+												<form class="form-inline">
+													$ <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Fecha de operaci&oacute;n
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													Fecha <input class="form-control calendar" type="text" value="" >
+													<span class="ico-calendar"></span>
+												</form>
+												<strong>Fecha de aplicaci&oacute;n</strong>
+												<form class="form-inline">
+													<select>
+														<option>Seleccione</option>
+													</select>
+												</form>
+												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Referencias
+											</div>
+											<div class="content">
+												<strong>N&uacute;mero de referencia</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+												<strong>Concepto de pago</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													<strong>RFC</strong> <input class="form-control" type="text" value="" >
+												</form>
+												<form class="form-inline">
+													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="head textC">
+												<input type="checkbox" value="" >
+											</div>
+										</td>
+										<td>
+											<div class="head textC">4</div>
+										</td>
+										<td>
+											<div class="head">Cuentas</div>
+											<div class="content">
+												Cuenta retiro
+												<br>
+												<select>
+													<option>Seleccione una opci&oacute;n</option>
+												</select>
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+												<br>
+												Cuenta dep&oacute;sito
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+											</div>
+										</td>
+										<td>
+											<div class="head">Importe MXN</div>
+											<div class="content">
+												<form class="form-inline">
+													$ <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Fecha de operaci&oacute;n
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													Fecha <input class="form-control calendar" type="text" value="" >
+													<span class="ico-calendar"></span>
+												</form>
+												<strong>Fecha de aplicaci&oacute;n</strong>
+												<form class="form-inline">
+													<select>
+														<option>Seleccione</option>
+													</select>
+												</form>
+												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Referencias
+											</div>
+											<div class="content">
+												<strong>N&uacute;mero de referencia</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+												<strong>Concepto de pago</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													<strong>RFC</strong> <input class="form-control" type="text" value="" >
+												</form>
+												<form class="form-inline">
+													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="head textC">
+												<input type="checkbox" value="" >
+											</div>
+										</td>
+										<td>
+											<div class="head textC">5</div>
+										</td>
+										<td>
+											<div class="head">Cuentas</div>
+											<div class="content">
+												Cuenta retiro
+												<br>
+												<select>
+													<option>Seleccione una opci&oacute;n</option>
+												</select>
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+												<br>
+												Cuenta dep&oacute;sito
+												<br>
+												<select>
+													<option>Seleccione una cuenta</option>
+												</select>
+											</div>
+										</td>
+										<td>
+											<div class="head">Importe MXN</div>
+											<div class="content">
+												<form class="form-inline">
+													$ <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Fecha de operaci&oacute;n
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													Fecha <input class="form-control calendar" type="text" value="" >
+													<span class="ico-calendar"></span>
+												</form>
+												<strong>Fecha de aplicaci&oacute;n</strong>
+												<form class="form-inline">
+													<select>
+														<option>Seleccione</option>
+													</select>
+												</form>
+												<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												Referencias
+											</div>
+											<div class="content">
+												<strong>N&uacute;mero de referencia</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+												<strong>Concepto de pago</strong>
+												<form class="form-inline">
+													<input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+										<td>
+											<div class="head">
+												<label><input type="checkbox" value="" > Comprobante Fiscal</label>
+											</div>
+											<div class="content">
+												<form class="form-inline">
+													<strong>RFC</strong> <input class="form-control" type="text" value="" >
+												</form>
+												<form class="form-inline">
+													<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" type="text" value="" >
+												</form>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
 							</div>
-							<button ng-click="addTemplate()" type="button" class="btn btn-primary pull-right" >Agregar otra cuenta retiro</button>
 						</div>
 					</div>
 				</div>
@@ -859,7 +1152,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -949,7 +1242,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -1039,7 +1332,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -1129,7 +1422,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -1219,7 +1512,7 @@
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
-														<strong>Hora&nbsp;&nbsp;</strong> 
+														<strong>Hora&nbsp;&nbsp;</strong>
 														<select>
 															<option>hh</option>
 														</select>
@@ -1286,7 +1579,7 @@
 		</p>
 
 		<div class="content-box">
-			
+
 			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
@@ -1340,7 +1633,7 @@
 		</div>
 
 		<div class="content-box">
-			
+
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
 				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
@@ -1411,7 +1704,7 @@
 			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		</div>
 	</div>
-	
+
 	<div class="pag-aplicacion" ng-show="applied">
 		<div class="titulo-principal">
 			<h1 class="pull-left">Plantilla de Pagos</h1>
@@ -1439,7 +1732,7 @@
 		<div class="content-box">
 			<p class="title pull-left">Autorizadores</p>
 			<div class="contenido pull-right">
-				
+
 				<table>
 					<tbody>
 						<tr class="bgf0f4f9">
