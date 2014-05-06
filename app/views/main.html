@@ -614,27 +614,31 @@
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td></td>
 						</tr>
 						<tr class="bgf4f4f4">
-							<td colspan="4">
+							<td colspan="5">
 								<table>
 									<tr ng-show="payingAccount.programming">
 										<td>Programada:</td>
 										<td>SI</td>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td>{{payingAccount.date}} {{payingAccount.hours.name}}:{{payingAccount.minutes.name}} hrs.</td>
+                    <td></td>
 									</tr>
 									<tr ng-show="payingAccount.remote">
 										<td>Autorización remota:</td>
 										<td>SI</td>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td>{{payingAccount.remoteDate}} {{payingAccount.hoursRemote.name}}:{{payingAccount.minutesRemote.name}} hrs.</td>
+                    <td></td>
 									</tr>
 									<tr>
-										<td>RFC: </td>
+										<td ng-show="payingAccount.rfc">RFC: </td>
 										<td>{{payingAccount.rfc}}</td>
 										<td>IVA: </td>
 										<td>{{payingAccount.iva | currency}}</td>
+                    <td></td>
 									</tr>
 									<tr ng-show="payingAccount.fiscal">
 										<td>Comprobante fiscal</td>
@@ -650,6 +654,7 @@
 							<td>Cuenta retiro</td>
 							<td>Cuenta dep&oacute;sito</td>
 							<td class="textR">Importe</td>
+							<td class="textR">Número de referencia</td>
 						</tr>
 					</thead>
 				</table>

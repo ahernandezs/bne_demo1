@@ -136,6 +136,15 @@ angular.module('bnePaymentsOldFashionedApp')
 			return today;
 		};
 
+    $scope.getCurrentTime = function () {
+			var today = new Date();
+
+      var hours = today.getHours();
+      var minutes = today.getMinutes();
+
+      return hours + ":" + minutes;
+    };
+
 		$scope.addPayment = function (payments) {
 			if(payments.payingAccounts.length >= 15) return;
 
@@ -324,5 +333,58 @@ angular.module('bnePaymentsOldFashionedApp')
         payment.rfc = undefined;
         payment.iva = undefined;
       }
+    };
+
+    $scope.thirdResume = function (payment) {
+      var column1 = [];
+      var column2 = [];
+
+      var date = $scope.getCurrentDate() + " " + $scope.getCurrentTime() + " hrs";
+      if(payment.date) {
+        date = payment.date + " " + payment.hours + ":" + payment.minutes + " hrs";
+      }
+      if(payment.remoteDate) {
+        date = payment.remoteDate + " " + payment.hours + ":" + payment.minutes + " hrs";
+      }
+
+      var c2r1 = {
+        name: 'Fecha / Hora de aplicación',
+        date: date
+      }
+
+      column2.push(c2r1);
+
+      if(payment.rfc) {
+        var c2r2 = {
+          name: 'RFC',
+          date: payment.rfc
+        }
+
+        column2.push(c2r2);
+      } else {
+        var c2r2 = {
+          name: undefined,
+          date: undefined
+        }
+
+        column2.push(c2r2);
+      }
+
+      if(payment.iva) {
+        var c2r3 = {
+          name: 'IVA',
+          date: payment.iva
+        }
+
+        column2.push(c2r2);
+      } else {
+        var c2r3 = {
+          name: undefined,
+          date: undefined
+        }
+
+        column2.push(c2r2);
+      }
+
     };
 	}]);
