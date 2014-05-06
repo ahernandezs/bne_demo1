@@ -84,6 +84,7 @@ input[type="tel"]{
 	height: 25px;
 	padding: 0 5px;
 	margin: 3px!important;
+	font-weight:normal!important;
 }
 input[type="checkbox"]{
 	margin: 0 3px!important;
@@ -143,6 +144,9 @@ input.inline{
 .width60{
 	width:60px;
 }
+.width250{
+	width:250px!important;
+}
 .width310{
 	width:310px;
 }
@@ -171,7 +175,7 @@ input.inline{
 	padding-right:15px;
 }
 .paddingL10{
-	padding-left:10px;
+	padding-left:10px!important;
 }
 /* PADDINGS PORCENTAJES */
 .paddingR40p{
@@ -218,8 +222,8 @@ input.inline{
 	text-align: left;
 	clear: both;
 }
-.span150{
-	width: 150px;
+.span160{
+	width: 160px;
 	display: block;
 	margin: 0 auto;
 	text-align: left;
@@ -655,6 +659,21 @@ p.instrucciones{
 								border-top: none;
 								border-right: 1px solid #d0d0d0!important;
 								padding: 0;
+								.btn-expasor,
+								.btn-expasor:hover{
+									cursor: pointer;
+									width: 18px;
+									height: 18px;
+									padding-top: 1px;
+									border: 1px solid #2d8319;
+									display: inline-block;
+									color: #09347a!important;
+									text-align: center;
+									margin: 0 auto;
+									text-decoration: none!important;
+									@include gradient_top_bottom( #ffffff, #eaeaea);
+									@include border_radius(3px);
+								}
 								.head{
 									color: #333333;
 									border-bottom: 1px solid #FFFFFF;
