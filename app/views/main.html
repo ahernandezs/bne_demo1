@@ -297,8 +297,22 @@
 							</p>
               <div class="tab-pagos-multiples">
                 <table class="table">
+								<thead>
+										<tr>
+											<td>
+												<div class="head textC">
+													<input type="checkbox" value="" >
+												</div>
+											</td>
+											<td colspan="5">
+												<div class="head textL">
+													Seleccionar todas
+												</div>
+											</td>
+										</tr>
+									</thead>
 								<tbody>
-									<tr>
+									<tr class="bgf0f4f9">
 										<td>
 											<div class="head textC">
 												<input type="checkbox" value="" >
@@ -307,28 +321,29 @@
 										<td>
 											<div class="head textC">1</div>
 										</td>
-										<td>
-											<div class="head">Cuentas</div>
-											<div class="content">
-												Cuenta retiro
-												<br>
-												<select>
-													<option>Seleccione una opci&oacute;n</option>
-												</select>
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-												<br>
-												Cuenta dep&oacute;sito
-												<br>
-												<select>
-													<option>Seleccione una cuenta</option>
-												</select>
-											</div>
+                    <td>
+                      <div class="head"><span class="span310">Cuentas</span></div>
+                      <div class="content">
+                        <span class="span310">Cuenta retiro</span>
+                        <select class="width310">
+                          <option>Seleccione una opci&oacute;n</option>
+                        </select>
+                        <br>
+                        <select class="width310">
+                          <option>Seleccione una cuenta</option>
+                          <option>Cheques</option>
+                          <option>Tarjetas</option>
+                          <option>Cuenta Maestra</option>
+                        </select>
+                        <br>
+                        <span class="span310">Cuenta dep&oacute;sito</span>
+                        <select class="width310">
+                          <option>Seleccione una cuenta</option>
+                        </select>
+                      </div>
 										</td>
 										<td>
-											<div class="head">Importe MXN</div>
+											<div class="head"><span class="span150">Importe MXN</span></div>
 											<div class="content">
 												<form class="form-inline">
 													$ <input class="form-control" type="text" value="" >
@@ -341,7 +356,7 @@
 											</div>
 											<div class="content">
 												<form class="form-inline">
-													Fecha <input class="form-control calendar" type="text" value="" >
+													Fecha <input class="form-control calendario calendar" type="text" value="" >
 													<span class="ico-calendar"></span>
 												</form>
 												<strong>Fecha de aplicaci&oacute;n</strong>
