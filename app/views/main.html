@@ -191,17 +191,17 @@
 												<div class="content">
 
 													<span class="span310">Cuenta retiro</span>
-													<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType">
+													<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione una opci&oacute;n</option>
 													</select>
 													<br>
-													<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source">
+													<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione una cuenta</option>
 													</select>
 													<br>
 
 													<span class="span310">Cuenta dep&oacute;sito</span>
-													<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target">
+													<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione una cuenta</option>
 													</select>
 													<span class="ultimo-pago span310" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -213,6 +213,7 @@
 													<form class="form-inline">
 														<span class="span160">
 															$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)">
+                              $ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16">
 														</span>
 													</form>
 												</div>
@@ -223,7 +224,7 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
+														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
@@ -244,7 +245,7 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.remoteDate" ng-change="payingAccount.remote = true; verifyThirdMode(payingAccount, 'remote')">
+														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.remoteDate" ng-change="payingAccount.remote = true; verifyThirdMode(payingAccount, 'remote')" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
@@ -265,7 +266,7 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														<strong>RFC</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.rfc">
+														<strong>RFC</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.rfc" maxlength="13">
 													</form>
 													<form class="form-inline">
 														<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.iva">
