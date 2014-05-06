@@ -136,6 +136,15 @@ angular.module('bnePaymentsOldFashionedApp')
 			return today;
 		};
 
+    $scope.getCurrentTime = function () {
+			var today = new Date();
+
+      var hours = today.getHours();
+      var minutes = today.getMinutes();
+
+      return hours + ":" + minutes;
+    };
+
 		$scope.addPayment = function (payments) {
 			if(payments.payingAccounts.length >= 15) return;
 
@@ -321,8 +330,123 @@ angular.module('bnePaymentsOldFashionedApp')
       if(payment.fiscal) {
         payment.iva = payment.amount * 0.16;
       } else {
-        payment.rfc = undefined;
-        payment.iva = undefined;
+        payment.rfc = '';
+        payment.iva = '';
       }
+    };
+
+    $scope.getAppliedDate = function (payment) {
+      var date = $scope.getCurrentDate() + " " + $scope.getCurrentTime() + " hrs";
+      if(payment.date && payment.hours && payment.minutes) {
+        date = payment.date + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
+      }
+      if(payment.remoteDate && payment.hours && payment.minutes) {
+        date = payment.remoteDate + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
+      }
+
+      return date;
+    };
+
+    $scope.thirdResume = function (payment) {
+      var column1 = [];
+      var column2 = [];
+
+      var date = $scope.getCurrentDate() + " " + $scope.getCurrentTime() + " hrs";
+      if(payment.date) {
+        date = payment.date + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
+      }
+      if(payment.remoteDate) {
+        date = payment.remoteDate + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
+      }
+
+      var c2r1 = {
+        name: 'Fecha / Hora de aplicación:',
+        data: date
+      }
+
+      column2.push(c2r1);
+
+      if(payment.rfc) {
+        var c2r2 = {
+          name: 'RFC:',
+          data: payment.rfc
+        }
+
+        column2.push(c2r2);
+      }
+
+      if(payment.iva) {
+        var c2r3 = {
+          name: 'IVA:',
+          data: payment.iva
+        }
+
+        column2.push(c2r2);
+      }
+
+      if(payment.options) {
+        if(payment.concentradora) {
+          var c1r = {
+            name: 'Cuenta concentradora:',
+            data: 'Si'
+          }
+
+          column1.push(c1r);
+        }
+
+        if(payment.references && payment.numeric) {
+          var c1r = {
+            name: 'Referencia numérica:',
+            data: payment.numeric
+          }
+
+          column1.push(c1r);
+        }
+
+        if(payment.references && payment.alpha) {
+          var c1r = {
+            name: 'Referencia alfanumérica:',
+            data: payment.alpha
+          }
+
+          column1.push(c1r);
+        }
+
+        if(payment.references && payment.concept) {
+          var c1r = {
+            name: 'Concepto del pago:',
+            data: payment.concept
+          }
+
+          column1.push(c1r);
+        }
+      }
+
+      if(column1.length > column2.length) {
+        var size = column1.length - column2.length;
+        for(var i = 0; i < size; i++) {
+          column2.push({name: '', data: ''});
+        }
+      }
+
+      if(column2.length > column1.length) {
+        var size = column2.length - column1.length;
+        for(var i = 0; i < size; i++) {
+          column1.push({name: '', data: ''});
+        }
+      }
+
+      var rows = [];
+
+      for(var i = 0; i < column1.length; i++) {
+        rows.push([{name:column1[i].name}, {name:column1[i].data}, {name:column2[i].name}, {name:column2[i].data}]);
+      }
+
+      console.log(rows);
+      return rows;
+    };
+
+    $scope.test = function () {
+      console.log("test");
     };
 	}]);
