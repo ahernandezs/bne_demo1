@@ -196,6 +196,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.collapseTwo = false;
       $scope.collapseThree = false;
       $scope.collapseFour = false;
+      $scope.allowNext = false;
     };
 
     $scope.setup();
