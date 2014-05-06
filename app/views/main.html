@@ -619,73 +619,6 @@
 			</div>
 		</div>
 
-		<div class="content-box">
-
-			<div class="contenido-total">
-				<p class="title">Cuentas Interbancarias</p>
-				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
-				<table ng-repeat="interbank in interbankPayments">
-					<tbody ng-repeat="payingAccount in interbank.payingAccounts | filter:validateInterbankPayment">
-						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-							<td>{{$index + 1}}</td>
-							<td>{{interbank.source.originalObject.name}}</td>
-							<td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
-							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
-							<td>{{payingAccount.date}} ({{payingAccount.application}})</td>
-						</tr>
-						<tr class="bgf4f4f4" ng-show="payingAccount.remoteAuth || payingAccount.more">
-							<td colspan="6">
-								<table>
-									<tr ng-show="payingAccount.remoteAuth">
-										<td>Autorizaci&oacute;n remota:</td>
-										<td>SI
-									</td>
-									</tr>
-
-									<tr ng-show="payingAccount.more && payingAccount.reference">
-										<td>N&uacute;mero de referencia:</td>
-										<td>{{payingAccount.reference}}</td>
-									</tr>
-									<tr ng-show="payingAccount.more && payingAccount.concept">
-										<td>Concepto de pago:</td>
-										<td>{{payingAccount.concept}}</td>
-									</tr>
-									<tr ng-show="payingAccount.more && payingAccount.rfc">
-										<td>RFC:</td>
-										<td>{{payingAccount.rfc}}</td>
-									</tr>
-									<tr ng-show="payingAccount.more">
-										<td>IVA:</td>
-										<td>{{payingAccount.amount * 0.16 | currency}}</td>
-									</tr>
-									<tr ng-show="payingAccount.more && payingAccount.fiscal">
-										<td>Comprobante fiscal:</td>
-										<td>SI</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Cuenta dep&oacute;sito</td>
-							<td class="textR">Importe</td>
-							<td>Fecha / Hora de Aplicaci&oacute;n</td>
-						</tr>
-					</thead>
-					<tfoot>
-						<tr>
-							<td colspan="3"></td>
-							<td colspan="3"><strong>TOTAL: {{getTotalPayment(interbank) | currency}}</strong></td>
-						</tr>
-					</tfoot>
-				</table>
-
-			</div>
-		</div>
-
 		<div class="area-botones">
 			<button ng-click="showAccounts = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
@@ -761,48 +694,6 @@
 							<td colspan="7"> <span class="ico-exclama"></span> Error: 3 000 0007 0241: LA SITUACION DE LA CUENTA NO PERMITE LA TRAN</td>
 						</tr> -->
 					</tbody>
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Cuenta retiro</td>
-							<td>Cuenta dep&oacute;sito</td>
-							<td class="textR">Importe</td>
-							<td>Fecha / Hora de Aplicaci&oacute;n</td>
-							<td>Estatus</td>
-							<td>Autorizaci&oacute;n</td>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
-
-		<div class="clear-fix">
-			<a href="" class="pull-right">
-				<span class="ico-print">
-					<span class="ico-print-h"></span>
-				</span>
-			</a>
-		</div>
-
-		<div class="content-box">
-			<div class="contenido-total">
-				<p class="title">Cuentas Interbancarias</p>
-				<table ng-repeat="interbank in interbankPayments">
-					<tbody ng-repeat="payingAccount in interbank.payingAccounts | filter:validateInterbankPayment">
-						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-							<td>{{$index + 1}}</td>
-							<td>{{interbank.source.originalObject.name}}</td>
-							<td>{{payingAccount.target.originalObject.account_t}} {{payingAccount.target.originalObject.name}} {{payingAccount.target.bank_t}}</td>
-							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.originalObject.currency_t}}</td>
-							<td>{{payingAccount.date}} ({{payingAccount.application}})</td>
-							<td>Aplicada</td>
-							<td>001005</td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<td colspan="3"></td>
-						<td colspan="4"><strong>TOTAL A PAGAR {{getTotalPayment(interbank) | currency}}</strong></td>
-					</tfoot>
 					<thead>
 						<tr>
 							<td>Num.</td>
