@@ -181,16 +181,16 @@ angular.module('bnePaymentsOldFashionedApp')
 		};
 
     $scope.addMoreThirdPayments = function () {
-      for(var i = 0; i < 5; i++) {
-        $scope.addThirdPayment();
-      }
+      //for(var i = 0; i < 5; i++) {
+      $scope.addThirdPayment();
+      //}
     };
     // setup
 
     $scope.setup = function () {
       $scope.interbankPayments = [];
       $scope.thirdpayingAccounts = [];
-      $scope.addTemplate();
+      //$scope.addTemplate();
       $scope.addMoreThirdPayments();
       $scope.collapseOne = false;
       $scope.collapseTwo = false;
