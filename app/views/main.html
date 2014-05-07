@@ -47,7 +47,7 @@
 									</thead>
 									<tbody>
 										<tr class="bgf0f4f9">
-											<td class="">
+											<td>
 												<div class="head textC">
 													<input type="checkbox" value="" >
 												</div>
@@ -183,7 +183,7 @@
 											<td>
 												<div class="head textC">{{$index + 1}}</div>
 												<div class="content">
-                          <a href="" class="btn-expasor" ng-click="payingAccount.options = !payingAccount.options"><span ng-show="!payingAccount.options">+</span><span ng-show="payingAccount.options">-</span></a>
+													<a href="" class="btn-expasor" ng-click="payingAccount.options = !payingAccount.options"><span ng-show="!payingAccount.options">+</span><span ng-show="payingAccount.options">-</span></a>
 												</div>
 											</td>
 											<td>
@@ -211,9 +211,7 @@
 												<div class="head"><span class="span160">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														<span class="span160">
-                              $ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16">
-														</span>
+														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16">
 													</form>
 												</div>
 											</td>
@@ -395,12 +393,14 @@
 														Fecha <input class="form-control calendario calendar" type="text" value="" >
 														<span class="ico-calendar"></span>
 													</form>
-													<strong>Fecha de aplicaci&oacute;n</strong>
-													<form class="form-inline">
-														<select>
-															<option>Seleccione</option>
-														</select>
-													</form>
+													<span class="span160">
+														<strong>Fecha de aplicaci&oacute;n</strong>
+														<form class="form-inline">
+															<select>
+																<option>Mismo d&iacute;a</option>
+															</select>
+														</form>
+													</span>
 													<label><input type="checkbox" value="" > Autorizar en forma remota</label>
 												</div>
 											</td>
@@ -613,31 +613,36 @@
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
-              <td>{{payingAccount.numeric}}</td>
+							<td>{{payingAccount.numeric}}</td>
 						</tr>
-            <tr class="bgf4f4f4">
+						<tr class="bgf4f4f4">
 							<td colspan="5">
-								<table>
-                  <tr>
+								<table class="width49-5p pull-left">
+									<tr>
 										<td>Cuenta concentradora:</td>
-                    <td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
-										<td>Fecha y hora de aplicaci&oacute;n:</td>
-                    <td>{{getAppliedDate(payingAccount)}}</td>
-                    <td></td>
+										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
 									</tr>
-                  <tr ng-show="payingAccount.alpha && payingAccount.rfc">
+									<tr ng-show="payingAccount.alpha && payingAccount.rfc">
 										<td>Referencia alfanumérica: </td>
 										<td>{{payingAccount.alpha}}</td>
-										<td>RFC:</td>
-                    <td>{{payingAccount.rfc}}</td>
-                    <td></td>
 									</tr>
 									<tr ng-show="payingAccount.concept && payingAccount.iva">
 										<td>Concepto del pago:</td>
-                    <td>{{payingAccount.concept}}</td>
+										<td>{{payingAccount.concept}}</td>
+									</tr>
+								</table>
+								<table class="width49-5p pull-right">
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+									<tr ng-show="payingAccount.alpha && payingAccount.rfc">
+										<td>RFC:</td>
+										<td>{{payingAccount.rfc}}</td>
+									</tr>
+									<tr ng-show="payingAccount.concept && payingAccount.iva">
 										<td>IVA: </td>
 										<td>{{payingAccount.iva | currency}}</td>
-                    <td></td>
 									</tr>
 								</table>
 							</td>
