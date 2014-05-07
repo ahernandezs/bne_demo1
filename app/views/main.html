@@ -613,7 +613,7 @@
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
-							<td>{{payingAccount.numeric}}</td>
+              <td>{{payingAccount.references? payingAccount.numeric : ''}}</td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
@@ -622,11 +622,11 @@
 										<td>Cuenta concentradora:</td>
 										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
 									</tr>
-									<tr ng-show="payingAccount.alpha && payingAccount.rfc">
+									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanumérica: </td>
 										<td>{{payingAccount.alpha}}</td>
 									</tr>
-									<tr ng-show="payingAccount.concept && payingAccount.iva">
+									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
 										<td>{{payingAccount.concept}}</td>
 									</tr>
@@ -636,11 +636,11 @@
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td>{{getAppliedDate(payingAccount)}}</td>
 									</tr>
-									<tr ng-show="payingAccount.alpha && payingAccount.rfc">
+									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
 										<td>RFC:</td>
 										<td>{{payingAccount.rfc}}</td>
 									</tr>
-									<tr ng-show="payingAccount.concept && payingAccount.iva">
+									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
 										<td>IVA: </td>
 										<td>{{payingAccount.iva | currency}}</td>
 									</tr>
