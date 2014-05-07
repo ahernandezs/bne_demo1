@@ -344,6 +344,8 @@ angular.module('bnePaymentsOldFashionedApp')
         date = payment.remoteDate + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
       }
 
+      payment.appliedDate = date;
+
       return date;
     };
 
