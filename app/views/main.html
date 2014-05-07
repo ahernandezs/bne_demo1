@@ -613,7 +613,7 @@
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
-              <td></td>
+              <td>{{payingAccount.numeric}}</td>
 						</tr>
             <tr class="bgf4f4f4">
 							<td colspan="5">
@@ -625,25 +625,19 @@
                     <td>{{getAppliedDate(payingAccount)}}</td>
                     <td></td>
 									</tr>
-                  <tr ng-show="payingAccount.numeric && payingAccount.rfc">
-										<td>Referencia Numérica:</td>
-                    <td>{{payingAccount.numeric}}</td>
+                  <tr ng-show="payingAccount.alpha && payingAccount.rfc">
+										<td>Referencia alfanumérica: </td>
+										<td>{{payingAccount.alpha}}</td>
 										<td>RFC:</td>
                     <td>{{payingAccount.rfc}}</td>
                     <td></td>
 									</tr>
-									<tr ng-show="payingAccount.alpha && payingAccount.iva">
-										<td>Referencia alfanumérica: </td>
-										<td>{{payingAccount.alpha}}</td>
+									<tr ng-show="payingAccount.concept && payingAccount.iva">
+										<td>Concepto del pago:</td>
+                    <td>{{payingAccount.concept}}</td>
 										<td>IVA: </td>
 										<td>{{payingAccount.iva | currency}}</td>
                     <td></td>
-									</tr>
-									<tr ng-show="payingAccount.concept && payingAccount.remote">
-										<td>Concepto del pago:</td>
-                    <td>{{payingAccount.concept}}</td>
-										<td>Autorización remota:</td>
-                    <td>{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
 							</td>
@@ -654,8 +648,8 @@
 							<td>Num.</td>
 							<td>Cuenta retiro</td>
 							<td>Cuenta dep&oacute;sito</td>
-							<td class="textR">Importe</td>
-							<td class="textR">Número de referencia</td>
+							<td>Importe</td>
+							<td>Número de referencia</td>
 						</tr>
 					</thead>
 				</table>
