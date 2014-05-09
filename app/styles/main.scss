@@ -122,6 +122,9 @@ input.inline{
 	clear: both;
 	overflow: hidden;
 }
+.fontNormal{
+	font-weight:normal!important;
+}
 .textC{
 	text-align: center;
 }
@@ -134,8 +137,18 @@ input.inline{
 .displayB{
 	display: block;
 }
+.displayIB{
+	display: inline-block;
+}
 .v-hidden{
 	visibility: hidden;
+}
+.v-alignT{
+	vertical-align:top;
+}
+/* COLORS */
+.color666666{
+	color: #666666;
 }
 /* ANCHOS PIX */
 .width50{
@@ -152,6 +165,9 @@ input.inline{
 }
 .width310{
 	width:310px;
+}
+.width900{
+	width:900px!important;
 }
 /* ANCHOS PORCENTAJES */
 .width10p{
@@ -177,6 +193,9 @@ input.inline{
 	margin-top: 15px;
 }
 /* PADDINGS PIX */
+.paddingT10{
+	padding-top:10px;
+}
 .paddingR15{
 	padding-right:15px;
 }
@@ -185,6 +204,13 @@ input.inline{
 }
 .paddingL10{
 	padding-left:10px!important;
+}
+.paddingL125{
+	padding-left:125px!important;
+}
+.paddingTB13{
+	padding-top: 13px!important;
+	padding-bottom: 13px!important;
 }
 /* PADDINGS PORCENTAJES */
 .paddingR40p{
