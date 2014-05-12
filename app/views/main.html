@@ -27,7 +27,7 @@
 						<div class="content-tabs">
 							<div class="tab-pagos-multiples">
 								<p>
-									Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en "Continuar". Si requiere adicionar m&aacute;s pagos de clic en el bot&oacute;n "Agregar m&aacute;s pagos".
+									Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en "Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 								</p>
 
 								<table class="table">
@@ -88,19 +88,19 @@
 													</form>
 													<form class="form-inline">
 														<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
-															<input class="v-alignT" type="radio" name="radio1"> 
+															<input class="v-alignT" type="radio" name="radio1">
 															<span class="displayIB paddingL3">
 																Pago m&iacute;nimo MXN<br><span class="color666666">$250.00</span>
 															</span>
 														</label>
 														<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
-															<input class="v-alignT" type="radio" name="radio1"> 
+															<input class="v-alignT" type="radio" name="radio1">
 															<span class="displayIB paddingL3">
 																Pago para no generar<br>intereses MXN<br><span class="color666666">$100.00</span>
 															</span>
 														</label>
 														<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
-															<input class="v-alignT" type="radio" name="radio1"> 
+															<input class="v-alignT" type="radio" name="radio1">
 															<span class="displayIB paddingL3">
 																Otro importe
 																<br><input class="form-control" type="text" value="" >
@@ -161,7 +161,7 @@
 						<div class="content-tabs">
 							<div class="tab-pagos-multiples">
 								<p>
-									Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en "Continuar". Si requiere adicionar m&aacute;s pagos de clic en el bot&oacute;n "Agregar m&aacute;s pagos".
+									Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en "Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 								</p>
 
 								<table class="table">
@@ -214,7 +214,7 @@
 													<div class="clear-fix textL paddingL10">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
 													</div>
-													
+
 												</div>
 											</td>
 											<td>
@@ -227,25 +227,25 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input ng-click="verifyThirdMode(payingAccount, 'programming')" type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')" maxlength="10">
+														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
 														<strong>Hora&nbsp;&nbsp;</strong>
-														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
+														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
 															<option value="">hh</option>
 														</select>
 														:
-														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutes" ng-change="payingAccount.programming = true; verifyThirdMode(payingAccount, 'programming')">
+														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutes" ng-change="payingAccount.programming = true">
 															<option value="">mm</option>
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input ng-click="verifyThirdMode(payingAccount, 'remote')" type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -313,7 +313,7 @@
 						</ul>
 						<div class="content-tabs">
 							<p>
-								Seleccione una cuenta retiro, capture la informaci&oacute;n de sus pagos y d&eacute; clic en continuar. Si quiere adicionar m&aacute;s pagos con la misma cuenta, indique el n&uacute;mero de pagos que quiere agregar y d&eacute; clic en el bot&oacute;n “Agregar”. Si desea hacer m&aacute;s pagos con una cuenta retiro distinta, d&eacute; clic en el bot&oacute;n “Agregar otra plantilla de pagos”.
+								Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en continuar. Si requiere adicionar m&aacute;s pagos de click en el bot&oacute;n “Agregar más pagos”.
 							</p>
 							<div class="tab-pagos-multiples">
 								<table class="table">
@@ -356,7 +356,7 @@
 														<br>
 														<select class="width310">
 															<option>Seleccione una cuenta</option>
-															
+
 														</select>
 													</div>
 													<div class="pull-left paddingL10">
@@ -452,7 +452,7 @@
 						<div class="content-tabs">
 							<div class="tab-pagos-multiples">
 								<p>
-									Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en "Continuar". Si requiere adicionar m&aacute;s pagos de clic en el bot&oacute;n "Agregar m&aacute;s pagos".
+									Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en "Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 								</p>
 
 								<table class="table">
@@ -595,23 +595,23 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR"><input type="text" class="textR" value="{{payingAccount.amount | currency}}">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}"></td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
+							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
 								<table class="width49-5p pull-left">
 									<tr>
 										<td class="paddingTB13">Cuenta concentradora:</td>
-										<td class="paddingTB13"><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</td>
+                    <td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanum&eacute;rica: </td>
-										<td><input type="text" value="{{payingAccount.alpha}}"></td>
+										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha"></td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
-										<td><input type="text" value="{{payingAccount.concept}}"></td>
+										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -621,11 +621,11 @@
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
 										<td>RFC:</td>
-										<td><input type="text" value="{{payingAccount.rfc}}"></td>
+										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc"></td>
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
 										<td>IVA: </td>
-										<td><input type="text" class="textR" value="{{payingAccount.iva | currency}}"></td>
+										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva"></td>
 									</tr>
 								</table>
 							</td>
