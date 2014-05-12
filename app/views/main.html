@@ -554,11 +554,11 @@
 		</div>
 
 		<div class="area-botones">
-	  <button ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
+	  <button ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
 
-	<div class="pag-confirm" ng-show="confirmation">
+	<div class="pag-confirm" ng-show="preConfirmation">
 		<div class="titulo-principal">
 			<h1 class="pull-left">Plantilla de Pagos</h1>
 			<p class="pull-right">
@@ -603,7 +603,7 @@
 								<table class="width49-5p pull-left">
 									<tr>
 										<td class="paddingTB13">Cuenta concentradora:</td>
-										<td class="paddingTB13"><input type="checkbox"> {{payingAccount.concentradora ? 'Si' : 'No'}}</td>
+										<td class="paddingTB13"><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanum&eacute;rica: </td>
@@ -645,8 +645,8 @@
 		</div>
 
 		<div class="area-botones">
-			<button ng-click="showAccounts = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
+			<button ng-click="showAccounts = true; preConfirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-click="confirmation = true; preConfirmation = false" type="button" class="btn btn-primary pull-right">Continuar</button>
 		</div>
 	</div>
 
@@ -729,7 +729,7 @@
 		</div>
 
 		<div class="area-botones">
-			<button ng-click="showAccounts = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-click="preConfirmation = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		</div>
 	</div>
