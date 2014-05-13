@@ -91,15 +91,20 @@ angular.module('bnePaymentsOldFashionedApp')
       {name: '58'},
       {name: '59'}
     ];
-    $scope.interbankPayments = [];
+
+    $scope.base_url = "http://localhost:4567/api";
+		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
+    $scope.interbankPayments = [];
+		$scope.orderpayingAccounts = [];
 
 		$scope.maxAmount = 10000.0;
 
     $scope.ownDefaultData = [];
     $scope.thirdDefaultData = [];
+    $scope.ownTargetData = [];
 
-    $http.get("http://projects.anzen.com.mx:4567/api/accounts?group=true&query=", {}).
+    $http.get($scope.base_url + "/accounts?group=true&query=", {}).
       success(function(responseData, status, headers, config) {
       $scope.ownDefaultData = responseData;
     }).
@@ -107,9 +112,17 @@ angular.module('bnePaymentsOldFashionedApp')
       console.log("error");
     });
 
-    $http.get("http://projects.anzen.com.mx:4567/api/thirdaccounts?query=", {}).
+    $http.get($scope.base_url + "/thirdaccounts?query=", {}).
       success(function(responseData, status, headers, config) {
       $scope.thirdDefaultData = responseData;
+    }).
+      error(function(data, status, headers, config) {
+      console.log("error");
+    });
+
+    $http.get($scope.base_url + "/accounts?query=", {}).
+      success(function(responseData, status, headers, config) {
+      $scope.ownTargetData = responseData;
     }).
       error(function(data, status, headers, config) {
       console.log("error");
@@ -190,17 +203,33 @@ angular.module('bnePaymentsOldFashionedApp')
 		};
 
     $scope.addMoreThirdPayments = function () {
-      //for(var i = 0; i < 5; i++) {
       $scope.addThirdPayment();
-      //}
     };
+
+    $scope.addOwnPayment = function () {
+      if($scope.ownpayingAccounts.length >= 15) return;
+
+      var firstPayment = {
+        enabled: false,
+      }
+
+      $scope.ownpayingAccounts.push(firstPayment);
+    };
+
+    $scope.addMoreOwnPayments = function () {
+      $scope.addOwnPayment();
+    };
+
     // setup
 
     $scope.setup = function () {
+		  $scope.ownpayingAccounts = [];
       $scope.interbankPayments = [];
       $scope.thirdpayingAccounts = [];
-      //$scope.addTemplate();
+		  $scope.orderpayingAccounts = [];
+
       $scope.addMoreThirdPayments();
+      $scope.addMoreOwnPayments();
       $scope.collapseOne = false;
       $scope.collapseTwo = false;
       $scope.collapseThree = false;
@@ -271,8 +300,15 @@ angular.module('bnePaymentsOldFashionedApp')
 		});
 
 
+    var emptyOwn = angular.toJson($scope.ownpayingAccounts);
     var emptyThird = angular.toJson($scope.thirdpayingAccounts);
     var emptyInterbank = angular.toJson($scope.interbankPayments);
+
+    $scope.$watch('ownpayingAccounts', function (value) {
+      if(emptyOwn !== angular.toJson($scope.ownpayingAccounts)) {
+        $scope.allowNext = true;
+      }
+    }, true);
 
     $scope.$watch('interbankPayments', function (value) {
       if(emptyInterbank !== angular.toJson($scope.interbankPayments)) {
