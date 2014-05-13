@@ -193,7 +193,7 @@
 												<div class="content">
 													<div class="pull-left">
 														<span class="span310">Cuenta retiro</span>
-														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+														<select class="width311" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
 															<option value="">Seleccione una opci&oacute;n</option>
 														</select>
 														<br>
@@ -327,11 +327,11 @@
 											</td>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody ng-repeat="payingAccount in interbankPayments">
 										<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 											<td>
 												<div class="head textC">
-													<input type="checkbox" value="" >
+													<input type="checkbox" value="" ng-model="payingAccount.enabled">
 												</div>
 											</td>
 											<td>
@@ -342,24 +342,22 @@
 												<div class="content">
 													<div class="pull-left">
 														<span class="span310">Cuenta retiro</span>
-														<select class="width310">
-															<option>Seleccione una opci&oacute;n</option>
-															<option>Cheques</option>
-															<option>Tarjetas</option>
-															<option>Cuenta Maestra</option>
-															<option>Cr&eacute;dito Revolvente PYME</option>
+														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+															<option value="">Seleccione una opci&oacute;n</option>
 														</select>
 														<br>
-														<select class="width310">
-															<option>Seleccione una cuenta</option>
-
+														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
+															<option value="">Seleccione una cuenta</option>
 														</select>
 													</div>
 													<div class="pull-left paddingL10">
 														<span class="span310">Cuenta dep&oacute;sito</span>
-														<select class="width310">
-															<option>Seleccione una cuenta</option>
+														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
+															<option value="">Seleccione una cuenta</option>
 														</select>
+													</div>
+													<div class="clear-fix textL paddingL10">
+														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
 													</div>
 												</div>
 											</td>
@@ -367,7 +365,7 @@
 												<div class="head"><span class="span160">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" >
+														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
 													</form>
 												</div>
 											</td>
@@ -377,7 +375,7 @@
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control calendario calendar" type="text" value="" >
+														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
 													<span class="span160">
@@ -388,7 +386,7 @@
 															</select>
 														</form>
 													</span>
-													<label><input type="checkbox" value="" > Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -422,7 +420,7 @@
 										</tr>
 									</tbody>
 								</table>
-								<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
+								<button type="button" class="btn btn-primary" ng-click="addMoreInterbankPayments()">Agregar m&aacute;s pagos</button>
 							</div>
 						</div>
 					</div>
