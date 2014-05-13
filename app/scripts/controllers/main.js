@@ -210,6 +210,20 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addInterbankPayment();
     };
 
+    $scope.addOrderPayment = function () {
+      if($scope.orderpayingAccounts.length >= 15) return;
+
+      var firstPayment = {
+        enabled: false,
+      }
+
+      $scope.orderpayingAccounts.push(firstPayment);
+    };
+
+    $scope.addMoreOrderPayments = function () {
+      $scope.addOrderPayment();
+    };
+
     // setup
 
     $scope.setup = function () {
@@ -221,6 +235,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addMoreThirdPayments();
       $scope.addMoreOwnPayments();
       $scope.addMoreInterbankPayments();
+      $scope.addMoreOrderPayments();
       $scope.collapseOne = false;
       $scope.collapseTwo = false;
       $scope.collapseThree = false;

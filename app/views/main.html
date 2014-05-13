@@ -335,7 +335,7 @@
 												</div>
 											</td>
 											<td>
-												<div class="head textC">1</div>
+												<div class="head textC">{{$index + 1}}</div>
 											</td>
 											<td>
 												<div class="head textL paddingL10">Cuentas</div>
@@ -464,36 +464,33 @@
 											</td>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody ng-repeat="payingAccount in orderpayingAccounts">
 										<tr class="bgf0f4f9">
 											<td>
 												<div class="head textC">
-													<input type="checkbox" value="" >
+													<input type="checkbox" value="" ng-model="payingAccount.enabled">
 												</div>
 											</td>
 											<td>
-												<div class="head textC">1</div>
+												<div class="head textC">{{$index + 1}}</div>
 											</td>
 											<td>
 												<div class="head textL paddingL10">Cuentas</div>
 												<div class="content">
 													<div class="pull-left">
 														<span class="span310">Cuenta retiro</span>
-														<select class="width310">
-															<option>Seleccione una opci&oacute;n</option>
+														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+															<option value="">Seleccione una opci&oacute;n</option>
 														</select>
 														<br>
-														<select class="width310">
-															<option>Seleccione una cuenta</option>
-															<option>Cheques</option>
-															<option>Tarjetas</option>
-															<option>Cuenta Maestra</option>
+														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
+															<option value="">Seleccione una cuenta</option>
 														</select>
 													</div>
 													<div class="pull-left paddingL10">
 														<span class="span310">Cuenta dep&oacute;sito</span>
-														<select class="width310">
-															<option>Seleccione una cuenta</option>
+														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
+															<option value="">Seleccione una cuenta</option>
 														</select>
 													</div>
 												</div>
@@ -502,44 +499,44 @@
 												<div class="head"><span class="span160">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" >
+														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
 													</form>
 												</div>
 												<span class="span160"><strong>Sucursal</strong></span>
 												<div class="content">
 													<form class="form-inline">
-														<input class="form-control" type="text" value="" >
+														<input class="form-control" type="text" value="" ng-model="payingAccount.branch">
 													</form>
 													<a href="">Ver el directorio de sucursales</a>
 												</div>
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" > Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
-														Fecha <input class="form-control calendario calendar" type="text" value="" >
+														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
 													<form class="form-inline">
 														<strong>Hora&nbsp;&nbsp;</strong>
-														<select>
-															<option>hh</option>
+														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
+															<option value="">hh</option>
 														</select>
 														:
-														<select>
-															<option>mm</option>
+														<select ng-options="minute.name for minute in minutesCombo" ng-model="payingAccount.minutes" ng-change="payingAccount.programming = true">
+															<option value="">mm</option>
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" > Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
 									</tbody>
 								</table>
-								<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
+								<button type="button" class="btn btn-primary" ng-click="addMoreOrderPayments()">Agregar m&aacute;s pagos</button>
 							</div>
 						</div>
 					</div>
