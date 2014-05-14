@@ -110,7 +110,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -128,7 +128,7 @@
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -226,7 +226,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -244,7 +244,7 @@
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -1031,7 +1031,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -1049,7 +1049,7 @@
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -1799,11 +1799,41 @@
 			</a>
 		</div>
 
-		<div class="content-box">
+		<div class="content-box" ng-show="validatePayments(ownpayingAccounts)">
+			<div class="contenido-total">
+				<p class="title">Cuentas Propias</p>
+				<table>
+					<tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.appliedDate}}</td>
+							<td>Aplicada</td>
+							<td>001005</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td class="textR">Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(thirdpayingAccounts)">
 			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<table>
-					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
+					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validatePayment">
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
@@ -1908,6 +1938,70 @@
 							<td>Cuenta retiro</td>
 							<td>Cuenta dep&oacute;sito</td>
 							<td>Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(interbankPayments)">
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<table>
+					<tbody ng-repeat="payingAccount in interbankPayments | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.appliedDate}}</td>
+							<td>Aplicada</td>
+							<td>001005</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td class="textR">Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
+			<div class="contenido-total">
+				<p class="title">Órdenes de Pago</p>
+				<table>
+					<tbody ng-repeat="payingAccount in orderpayingAccounts| filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.branch}}</td>
+              <td>{{payingAccount.target.account_t}}</td>
+              <td>{{payingAccount.appliedDate}}</td>
+							<td>Aplicada</td>
+							<td>001005</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Beneficiario</td>
+							<td class="textR">Importe</td>
+							<td>Sucursal</td>
+							<td>Num. de Documento</td>
 							<td>Fecha / Hora de Aplicaci&oacute;n</td>
 							<td>Estatus</td>
 							<td>Autorizaci&oacute;n</td>
