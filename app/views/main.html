@@ -1445,6 +1445,46 @@
 			Confirme los datos de su(s) pago(s) para aplicar.
 		</p>
 
+		<div class="content-box" ng-show="validatePayments(ownpayingAccounts)">
+
+			<div class="contenido-total">
+				<p class="title">Cuentas Propias</p>
+				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
+				<table>
+					<tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+						</tr>
+						<tr class="bgf4f4f4">
+							<td colspan="4">
+								<table>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+									</tr>
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
 		<div class="content-box" ng-show="validatePayments(thirdpayingAccounts)">
 
 			<div class="contenido-total">
@@ -1473,6 +1513,10 @@
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
 										<td>{{payingAccount.concept}}</td>
+									</tr>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -1574,6 +1618,126 @@
 							</td>
 						</tr>
 					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(interbankPayments)">
+
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
+				<table>
+					<tbody ng-repeat="payingAccount in interbankPayments | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td>{{payingAccount.references? payingAccount.numeric : ''}}</td>
+						</tr>
+						<tr class="bgf4f4f4">
+							<td colspan="5">
+								<table class="width49-5p pull-left">
+									<tr>
+										<td>Cuenta concentradora:</td>
+										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
+									</tr>
+									<tr ng-show="payingAccount.references && payingAccount.concept">
+										<td>Concepto del pago:</td>
+										<td>{{payingAccount.concept}}</td>
+									</tr>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+									</tr>
+								</table>
+								<table class="width49-5p pull-right">
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
+										<td>RFC:</td>
+										<td>{{payingAccount.rfc}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
+										<td>IVA: </td>
+										<td>{{payingAccount.iva | currency}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
+							<td>Número de referencia</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
+
+			<div class="contenido-total">
+				<p class="title">Órdenes de Pago</p>
+				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
+				<table>
+					<tbody ng-repeat="payingAccount in orderpayingAccounts | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.branch}}</td>
+						</tr>
+						<tr class="bgf4f4f4">
+							<td colspan="5">
+								<table class="width49-5p pull-left">
+									<tr>
+										<td>Cuenta concentradora:</td>
+										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
+									</tr>
+									<tr ng-show="payingAccount.references && payingAccount.concept">
+										<td>Concepto del pago:</td>
+										<td>{{payingAccount.concept}}</td>
+									</tr>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+									</tr>
+								</table>
+								<table class="width49-5p pull-right">
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
+										<td>RFC:</td>
+										<td>{{payingAccount.rfc}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
+										<td>IVA: </td>
+										<td>{{payingAccount.iva | currency}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
+							<td>Sucursal</td>
+						</tr>
+					</thead>
 				</table>
 			</div>
 		</div>
