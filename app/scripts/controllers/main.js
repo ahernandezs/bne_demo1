@@ -92,7 +92,7 @@ angular.module('bnePaymentsOldFashionedApp')
       {name: '59'}
     ];
 
-    $scope.base_url = "http://localhost:4567/api";
+    $scope.base_url = "http://projects.anzen.com.mx:4567/api";
 		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
     $scope.interbankPayments = [];
@@ -104,6 +104,7 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.thirdDefaultData = [];
     $scope.ownTargetData = [];
     $scope.interbankTargetData = [];
+    $scope.orderTargetData = [];
 
     $http.get($scope.base_url + "/accounts?group=true&query=", {}).
       success(function(responseData, status, headers, config) {
@@ -132,6 +133,14 @@ angular.module('bnePaymentsOldFashionedApp')
     $http.get($scope.base_url + "/interbank?query=", {}).
       success(function(responseData, status, headers, config) {
       $scope.interbankTargetData = responseData;
+    }).
+      error(function(data, status, headers, config) {
+      console.log("error");
+    });
+
+    $http.get($scope.base_url + "/orders?query=", {}).
+      success(function(responseData, status, headers, config) {
+      $scope.orderTargetData = responseData;
     }).
       error(function(data, status, headers, config) {
       console.log("error");
@@ -309,6 +318,7 @@ angular.module('bnePaymentsOldFashionedApp')
     var emptyOwn = angular.toJson($scope.ownpayingAccounts);
     var emptyThird = angular.toJson($scope.thirdpayingAccounts);
     var emptyInterbank = angular.toJson($scope.interbankPayments);
+    var emptyOrder = angular.toJson($scope.orderpayingAccounts);
 
     $scope.$watch('ownpayingAccounts', function (value) {
       if(emptyOwn !== angular.toJson($scope.ownpayingAccounts)) {
@@ -327,6 +337,13 @@ angular.module('bnePaymentsOldFashionedApp')
         $scope.allowNext = true;
       }
     }, true);
+
+    $scope.$watch('orderpayingAccounts', function (value) {
+      if(emptyOrder !== angular.toJson($scope.orderpayingAccounts)) {
+        $scope.allowNext = true;
+      }
+    }, true);
+
 
     $scope.verifyThirdMode = function (payment, selection) {
       if(selection === 'programming' && payment.remote) {
@@ -358,10 +375,20 @@ angular.module('bnePaymentsOldFashionedApp')
       return false;
     };
 
-    $scope.validateThirdPayment = function (payment) {
+    $scope.validatePayment = function (payment) {
       return payment.enabled;
     };
 
+    $scope.validatePayments = function (payments) {
+      var success = false;
+      for(var i = 0; i < payments.length; i++) {
+        if(payments[i].enabled) {
+          return true;
+        }
+      }
+
+      return success;
+    };
     $scope.acceptApplied = function () {
       $scope.applied = false;
       $scope.showAccounts = true;
@@ -388,106 +415,4 @@ angular.module('bnePaymentsOldFashionedApp')
       return date;
     };
 
-    $scope.thirdResume = function (payment) {
-      var column1 = [];
-      var column2 = [];
-
-      var date = $scope.getCurrentDate() + " " + $scope.getCurrentTime() + " hrs";
-      if(payment.date) {
-        date = payment.date + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
-      }
-      if(payment.remoteDate) {
-        date = payment.remoteDate + " " + payment.hours.name + ":" + payment.minutes.name + " hrs";
-      }
-
-      var c2r1 = {
-        name: 'Fecha / Hora de aplicación:',
-        data: date
-      }
-
-      column2.push(c2r1);
-
-      if(payment.rfc) {
-        var c2r2 = {
-          name: 'RFC:',
-          data: payment.rfc
-        }
-
-        column2.push(c2r2);
-      }
-
-      if(payment.iva) {
-        var c2r3 = {
-          name: 'IVA:',
-          data: payment.iva
-        }
-
-        column2.push(c2r2);
-      }
-
-      if(payment.options) {
-        if(payment.concentradora) {
-          var c1r = {
-            name: 'Cuenta concentradora:',
-            data: 'Si'
-          }
-
-          column1.push(c1r);
-        }
-
-        if(payment.references && payment.numeric) {
-          var c1r = {
-            name: 'Referencia numérica:',
-            data: payment.numeric
-          }
-
-          column1.push(c1r);
-        }
-
-        if(payment.references && payment.alpha) {
-          var c1r = {
-            name: 'Referencia alfanumérica:',
-            data: payment.alpha
-          }
-
-          column1.push(c1r);
-        }
-
-        if(payment.references && payment.concept) {
-          var c1r = {
-            name: 'Concepto del pago:',
-            data: payment.concept
-          }
-
-          column1.push(c1r);
-        }
-      }
-
-      if(column1.length > column2.length) {
-        var size = column1.length - column2.length;
-        for(var i = 0; i < size; i++) {
-          column2.push({name: '', data: ''});
-        }
-      }
-
-      if(column2.length > column1.length) {
-        var size = column2.length - column1.length;
-        for(var i = 0; i < size; i++) {
-          column1.push({name: '', data: ''});
-        }
-      }
-
-      var rows = [];
-
-      for(var i = 0; i < column1.length; i++) {
-        rows.push([{name:column1[i].name}, {name:column1[i].data}, {name:column2[i].name}, {name:column2[i].data}]);
-      }
-
-      console.log(rows);
-      return rows;
-    };
-
-    $scope.test = function () {
-      console.log("test");
-    };
-	}]);
+}]);
