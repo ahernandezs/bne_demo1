@@ -53,7 +53,7 @@
 												</div>
 											</td>
 											<td>
-                        <div class="head textC">{{$index + 1}}</div>
+												<div class="head textC">{{$index + 1}}</div>
 											</td>
 											<td>
 												<div class="head textL paddingL10">Cuentas</div>
@@ -314,7 +314,7 @@
 							<p>
 								Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en continuar. Si requiere adicionar m&aacute;s pagos de click en el bot&oacute;n “Agregar más pagos”.
 							</p>
-							<div class="tab-pagos-multiples">
+							<div>
 								<table class="table">
 									<thead>
 										<tr>
@@ -426,6 +426,520 @@
 								<button type="button" class="btn btn-primary" ng-click="addMoreInterbankPayments()">Agregar m&aacute;s pagos</button>
 							</div>
 						</div>
+
+						<!-- Pagar Grupo de beneficiarios -->
+						<div class="content-tabs">
+							<div class="paso-1">
+								<p>
+									Para pagar a un grupo de beneficiarios seleccione el grupo y d&eacute; clic en &quot;Continuar&quot;
+								</p>
+								<div class="tab-pagos-multiples">
+									<table class="table">
+										<thead>
+											<tr>
+												<td class="border"></td>
+												<td class="border"></td>
+												<td class="border textL"><strong>Nombre del grupo</strong></td>
+												<td class="border textL"><strong>&Uacute;ltimo pago</strong></td>
+												<td class="border textL"><strong>&Uacute;ltimo importe pagado</strong></td>
+												<td class="border textL"><strong>N&uacute;mero de integrantes</strong></td>
+												<td class="textL"><strong>Fecha de creaci&oacute;n</strong></td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="bgf0f4f9">
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>1</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>2</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr class="bgf0f4f9">
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>3</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>4</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr class="bgf0f4f9">
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>5</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>6</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr class="bgf0f4f9">
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>7</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>8</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr class="bgf0f4f9">
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>9</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+											<tr class="bgf0f4f9">
+												<td>
+													<div class="content">
+														<input type="radio" name="grupo-ben-interbancarias">
+													</div>
+												</td>
+												<td>
+													<div class="content">
+														<strong>10</strong>
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														Programadores V1.2 (norte)
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														$1,000,000,000.00 MXN
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15
+													</div>
+												</td>
+												<td class="textL">
+													<div class="content">
+														15/01/2014 12:15 hrs.
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="paso-2">
+								<p>
+									Para realizar los pagos, capture la informaci&oacute;n y d&eacute; clic en &quot;Continuar&quot;<br>
+									<strong>Nombre del grupo:</strong> Programadores V1.2 (norte)<br>
+									<strong>&Uacute;ltimo importe pagado:</strong> $1,000,000,000.00<br>
+									<strong>N&uacute;mero de integrantes: </strong> 15
+								</p>
+								<div>
+									<table class="table">
+										<thead>
+											<tr>
+												<td>
+													<div class="head textC">
+														<input type="checkbox" value="" >
+													</div>
+												</td>
+												<td colspan="5">
+													<div class="head textL">
+														Seleccionar todas
+													</div>
+												</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+												<td>
+													<div class="head textC">
+														<input type="checkbox" value="">
+													</div>
+												</td>
+												<td>
+													<div class="head textC">1</div>
+												</td>
+												<td>
+													<div class="head textL paddingL10">Cuentas</div>
+													<div class="content">
+														<div class="pull-left">
+															<span class="span310">Cuenta retiro</span>
+															<select class="width310">
+																<option value="">Seleccione una opci&oacute;n</option>
+															</select>
+															<br>
+															<select class="width310">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</div>
+														<div class="pull-left paddingL10">
+															<span class="span310">Cuenta dep&oacute;sito</span>
+															<input type="text" class="width310">
+															<div class="clear-fix textL paddingL10">
+																<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
+															</div>
+														</div>
+														
+													</div>
+												</td>
+												<td>
+													<div class="head"><span class="span160">Importe MXN</span></div>
+													<div class="content">
+														<form class="form-inline">
+															$ <input class="form-control" type="text" value="" maxlength="16" numbers-only="numbers-only">
+														</form>
+													</div>
+												</td>
+												<td>
+													<div class="head">
+														<span class="span160">Fecha de operaci&oacute;n</span>
+													</div>
+													<div class="content">
+														<form class="form-inline">
+															Fecha <input class="form-control calendario " type="text" value="" jqdatepicker maxlength="10">
+															<span class="ico-calendar"></span>
+														</form>
+														<span class="span160">
+															<strong>Fecha de aplicaci&oacute;n</strong>
+															<form class="form-inline">
+																<select>
+																	<option>Mismo d&iacute;a</option>
+																</select>
+															</form>
+														</span>
+														<label class="span175"><input type="checkbox" value=""> Autorizar en forma remota</label>
+													</div>
+												</td>
+											</tr>
+											<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+												<td></td>
+												<td></td>
+												<td colspan="3">
+													<div class="content pull-left">
+														<label class="span175"><input type="checkbox"> Comprobante Fiscal</label>
+														<form class="form-inline">
+															<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
+														</form>
+														<form class="form-inline">
+															<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" numbers-only="numbers-only">
+														</form>
+													</div>
+													<div class="content pull-left textL paddingL125">
+														<label class="paddingL10"><input type="checkbox"/> Referencias</label>
+														<form class="form-inline">
+															<label class="paddingL10">
+																<span class="paddingL3">N&uacute;mero de referencia</span><br>
+																<input type="text" class="form-control" maxlength="10" numbers-only="numbers-only">
+															</label>
+															<label class="paddingL10">
+																<span class="paddingL3">Concepto del pago</span><br>
+																<input type="text" class="form-control width250" maxlength="30">
+															</label>
+														</form>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -451,7 +965,6 @@
 								<p>
 									Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en "Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 								</p>
-
 								<table class="table">
 									<thead>
 										<tr>
@@ -570,7 +1083,7 @@
 			<h2>Plantilla de Pagos</h2>
 		</div>
 		<p class="instrucciones">
-			Pre-Confirme los datos de su(s) pago(s) para aplicar.
+			A continuaci&oacute;n le presentamos un resumen de sus pagos, por si lo desea, puede coregir los datos capturados.
 		</p>
 
 
@@ -598,9 +1111,9 @@
 						<tr class="bgf4f4f4">
 							<td colspan="4">
 								<table>
-                  <tr>
+				  <tr>
 										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
@@ -649,7 +1162,7 @@
 								<table class="width49-5p pull-left">
 									<tr>
 										<td class="paddingTB13">Cuenta concentradora:</td>
-                    <td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
+					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanum&eacute;rica: </td>
@@ -659,9 +1172,9 @@
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
 									</tr>
-                  <tr>
+				  <tr>
 										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -723,9 +1236,9 @@
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
 									</tr>
-                  <tr>
+									<tr>
 										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+										<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"></label></td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -759,6 +1272,106 @@
 			</div>
 		</div>
 
+		<div class="content-box">
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<p class="intrucciones"><strong>Nombre del grupo: </strong>Programadores V1.2 (norte)</p>
+				<table>
+					<tbody>
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<td>
+								<div class="head textC">
+									<input type="checkbox" value="">
+								</div>
+							</td>
+							<td>
+								<div class="head textC">1</div>
+							</td>
+							<td>
+								<div class="head textL paddingL10">Cuentas</div>
+								<div class="content">
+									<div class="pull-left">
+										<span class="span310">Cuenta retiro</span>
+										<select class="width310">
+											<option value="">Seleccione una opci&oacute;n</option>
+										</select>
+										<br>
+										<select class="width310">
+											<option value="">Seleccione una cuenta</option>
+										</select>
+									</div>
+									<div class="pull-left paddingL10">
+										<span class="span310">Cuenta dep&oacute;sito</span>
+										<input type="text" class="width310">
+										<div class="clear-fix textL paddingL10">
+											<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
+										</div>
+									</div>
+									
+								</div>
+							</td>
+							<td>
+								<div class="head"><span class="span160">Importe MXN</span></div>
+								<div class="content">
+									<form class="form-inline span160">
+										$ <input class="form-control" type="text" value="" maxlength="16" numbers-only="numbers-only">
+									</form>
+								</div>
+							</td>
+							<td>
+								<div class="head">
+									<span class="span175">Fecha de operaci&oacute;n</span>
+								</div>
+								<div class="content">
+									<form class="form-inline span175">
+										Fecha <input class="form-control calendario " type="text" value="" jqdatepicker maxlength="10">
+										<span class="ico-calendar"></span>
+									</form>
+									<span class="span175">
+										<strong>Fecha de aplicaci&oacute;n</strong>
+										<form class="form-inline">
+											<select>
+												<option>Mismo d&iacute;a</option>
+											</select>
+										</form>
+									</span>
+									<label class="span175"><input type="checkbox" value=""> Autorizar en forma remota</label>
+								</div>
+							</td>
+						</tr>
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<td></td>
+							<td></td>
+							<td colspan="3">
+								<div class="content pull-left">
+									<label class="span175"><input type="checkbox"> Comprobante Fiscal</label>
+									<form class="form-inline">
+										<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
+									</form>
+									<form class="form-inline">
+										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" numbers-only="numbers-only">
+									</form>
+								</div>
+								<div class="content pull-left textL paddingL125">
+									<label class="paddingL10"><input type="checkbox"/> Referencias</label>
+									<form class="form-inline">
+										<label class="paddingL10">
+											<span class="paddingL3">N&uacute;mero de referencia</span><br>
+											<input type="text" class="form-control" maxlength="10" numbers-only="numbers-only">
+										</label>
+										<label class="paddingL10">
+											<span class="paddingL3">Concepto del pago</span><br>
+											<input type="text" class="form-control width250" maxlength="30">
+										</label>
+									</form>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
 		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
 		  <div class="contenido-total">
 				<p class="title">Órdenes de Pago</p>
@@ -783,9 +1396,9 @@
 						<tr class="bgf4f4f4">
 							<td colspan="5">
 								<table>
-                  <tr>
+				  <tr>
 										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
@@ -892,6 +1505,79 @@
 			</div>
 		</div>
 
+
+		<p class="instrucciones">
+			Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar" se le solicitar&aacute; dicha clave.
+		</p>
+		<div class="content-box" >
+
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<p class="intrucciones"><strong>Nombre del grupo:</strong> Programadores V1.2 (norte)</p>
+				<table>
+					<tbody>
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td rowspan="2">
+								<div class="head">Num.</div>
+								<div class="content">
+									<strong>1</strong>
+								</div>
+							</td>
+							<td>
+								<div class="head">Cuenta retiro</div>
+								<div class="content">Cheques 1492/3857842 MXN $85,489.56</div>
+							</td>
+							<td>
+								<div class="head">Cuenta dep&oacute;sito</div>
+								<div class="content">Javier Martinez BBV 456789</div>
+							</td>
+							<td>
+								<div class="head">Importe</div>
+								<div class="content">1,000,000,000,000.00</div>
+							</td>
+							<td>
+								<div class="head">Fecha / Hora de aplicaci&oacute;n</div>
+								<div class="content">07/05/2014 (Mismo d&iacute;a)</div>
+							</td>
+							<td>
+								<div class="head">N&uacute;mero de referencia</div>
+								<div class="content">12345678909876</div>
+							</td>
+							<td>
+								<div class="head">Autorizaci&oacute;n remota</div>
+								<div class="content">No</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="6">
+								<table class="width50p">
+									<tr>
+										<td>
+											<div class="content">
+												RFC: GOYT230456MX2
+											</div>
+										</td>
+										<td>
+											<div class="content">
+												Concepto de pago: Horas extras
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="content">
+												IVA: $16,000,000.00
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
 		<div class="area-botones">
 			<button ng-click="preConfirmation = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
@@ -959,7 +1645,7 @@
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
-              <td>{{payingAccount.appliedDate}}</td>
+							<td>{{payingAccount.appliedDate}}</td>
 							<td>Aplicada</td>
 							<td>001005</td>
 						</tr>
@@ -973,6 +1659,91 @@
 							<td>Cuenta retiro</td>
 							<td>Cuenta dep&oacute;sito</td>
 							<td class="textR">Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box">
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<p class="intrucciones"><strong>Nombre del grupo:</strong> Programadores V1.2 (norte)</p>
+				<table>
+					<tbody>
+						<tr>
+							<td><strong>1</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>2</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+						<tr>
+							<td><strong>3</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>4</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+						<tr>
+							<td><strong>5</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>6</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+						<tr>
+							<td><strong>7</strong></td>
+							<td>Cheques1492/3857842 MXN $85,489.56</td>
+							<td>Javier Martinez BBV 456789</td>
+							<td>1,000,000,000,000.00</td>
+							<td>07/05/2014</td>
+							<td>Aplicada</td>
+							<td>986467</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
 							<td>Fecha / Hora de Aplicaci&oacute;n</td>
 							<td>Estatus</td>
 							<td>Autorizaci&oacute;n</td>
