@@ -279,7 +279,7 @@
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Concepto del pago</span><br>
-															<input type="text" class="form-control width250" maxlength="30" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
 														</label>
 													</form>
 												</div>
@@ -415,7 +415,7 @@
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Concepto del pago</span><br>
-															<input type="text" class="form-control width250" maxlength="30" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
 														</label>
 													</form>
 												</div>
@@ -874,14 +874,14 @@
 																<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
 															</div>
 														</div>
-														
+
 													</div>
 												</td>
 												<td>
 													<div class="head"><span class="span160">Importe MXN</span></div>
 													<div class="content">
 														<form class="form-inline">
-															$ <input class="form-control" type="text" value="" maxlength="16" numbers-only="numbers-only">
+                              $ <input class="form-control" type="text" value="" maxlength="16">
 														</form>
 													</div>
 												</td>
@@ -891,7 +891,7 @@
 													</div>
 													<div class="content">
 														<form class="form-inline">
-															Fecha <input class="form-control calendario " type="text" value="" jqdatepicker maxlength="10">
+															Fecha <input class="form-control calendario " type="text" value="" maxlength="10">
 															<span class="ico-calendar"></span>
 														</form>
 														<span class="span160">
@@ -916,7 +916,7 @@
 															<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
 														</form>
 														<form class="form-inline">
-															<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" numbers-only="numbers-only">
+                              <strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="">
 														</form>
 													</div>
 													<div class="content pull-left textL paddingL125">
@@ -924,11 +924,11 @@
 														<form class="form-inline">
 															<label class="paddingL10">
 																<span class="paddingL3">N&uacute;mero de referencia</span><br>
-																<input type="text" class="form-control" maxlength="10" numbers-only="numbers-only">
+                                <input type="text" class="form-control" maxlength="10">
 															</label>
 															<label class="paddingL10">
 																<span class="paddingL3">Concepto del pago</span><br>
-																<input type="text" class="form-control width250" maxlength="30">
+																<input type="text" class="form-control width250" maxlength="20">
 															</label>
 														</form>
 													</div>
@@ -1024,7 +1024,7 @@
 												<span class="span160"><strong>Sucursal</strong></span>
 												<div class="content">
 													<form class="form-inline">
-														<input class="form-control" type="text" value="" ng-model="payingAccount.branch">
+														<input class="form-control" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
 													</form>
 													<a href="">Ver el directorio de sucursales</a>
 												</div>
@@ -1106,7 +1106,7 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="4">
@@ -1154,8 +1154,8 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric"></td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric" maxlength="10" numbers-only="numbers-only"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
@@ -1166,11 +1166,11 @@
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanum&eacute;rica: </td>
-										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha"></td>
+										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha" maxlength="20"></td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
-										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
+										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
 				  <tr>
 										<td class="paddingTB13">Autorización remota:</td>
@@ -1184,11 +1184,11 @@
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
 										<td>RFC:</td>
-										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc"></td>
+										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
 										<td>IVA: </td>
-										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva"></td>
+										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
 								</table>
 							</td>
@@ -1226,15 +1226,15 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric"></td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric" maxlength="10" numbers-only="numbers-only"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
 								<table class="width49-5p pull-left">
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
-										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
+										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
 									<tr>
 										<td class="paddingTB13">Autorización remota:</td>
@@ -1248,11 +1248,11 @@
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
 										<td>RFC:</td>
-										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc"></td>
+										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
 										<td>IVA: </td>
-										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva"></td>
+										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
 								</table>
 
@@ -1307,14 +1307,14 @@
 											<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
 										</div>
 									</div>
-									
+
 								</div>
 							</td>
 							<td>
 								<div class="head"><span class="span160">Importe MXN</span></div>
 								<div class="content">
 									<form class="form-inline span160">
-										$ <input class="form-control" type="text" value="" maxlength="16" numbers-only="numbers-only">
+										$ <input class="form-control" type="text" value="" maxlength="16" >
 									</form>
 								</div>
 							</td>
@@ -1324,7 +1324,7 @@
 								</div>
 								<div class="content">
 									<form class="form-inline span175">
-										Fecha <input class="form-control calendario " type="text" value="" jqdatepicker maxlength="10">
+										Fecha <input class="form-control calendario " type="text" value="" maxlength="10">
 										<span class="ico-calendar"></span>
 									</form>
 									<span class="span175">
@@ -1349,7 +1349,7 @@
 										<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
 									</form>
 									<form class="form-inline">
-										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" numbers-only="numbers-only">
+										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" >
 									</form>
 								</div>
 								<div class="content pull-left textL paddingL125">
@@ -1357,11 +1357,11 @@
 									<form class="form-inline">
 										<label class="paddingL10">
 											<span class="paddingL3">N&uacute;mero de referencia</span><br>
-											<input type="text" class="form-control" maxlength="10" numbers-only="numbers-only">
+											<input type="text" class="form-control" maxlength="10" >
 										</label>
 										<label class="paddingL10">
 											<span class="paddingL3">Concepto del pago</span><br>
-											<input type="text" class="form-control width250" maxlength="30">
+											<input type="text" class="form-control width250" maxlength="20">
 										</label>
 									</form>
 								</div>
@@ -1391,7 +1391,7 @@
 								</select>
 							</td>
 							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" ng-model="payingAccount.branch"></td>
+							<td><input type="text" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
