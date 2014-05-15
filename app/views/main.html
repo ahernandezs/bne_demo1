@@ -305,12 +305,12 @@
 				<div class="panel-collapse" ng-show="collapseThree">
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
-							<li><a href="javascript:void(0);">Pagar a un Grupo de Beneficiarios</a></li>
+              <li ng-class="{'active': multipleInterbank}" ng-click="multipleInterbank=true; groupsInterbank=false"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
+              <li ng-class="{'active': groupsInterbank}" ng-click="multipleInterbank=false; groupsInterbank=true"><a href="javascript:void(0);">Pagar a un Grupo de Beneficiarios</a></li>
 							<li><a href="javascript:void(0);">Alta de Beneficiarios o Grupo</a></li>
 							<li><a href="javascript:void(0);">Editar Beneficiarios o Grupo</a></li>
 						</ul>
-						<div class="content-tabs">
+						<div class="content-tabs" ng-show="multipleInterbank">
 							<p>
 								Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en continuar. Si requiere adicionar m&aacute;s pagos de click en el bot&oacute;n “Agregar más pagos”.
 							</p>
@@ -428,7 +428,7 @@
 						</div>
 
 						<!-- Pagar Grupo de beneficiarios -->
-						<div class="content-tabs">
+						<div class="content-tabs" ng-show="groupsInterbank">
 							<div class="paso-1">
 								<p>
 									Para pagar a un grupo de beneficiarios seleccione el grupo y d&eacute; clic en &quot;Continuar&quot;
@@ -1272,7 +1272,7 @@
 			</div>
 		</div>
 
-		<div class="content-box">
+		<div class="content-box" ng-show="groupsInterbank">
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
 				<p class="intrucciones"><strong>Nombre del grupo: </strong>Programadores V1.2 (norte)</p>
