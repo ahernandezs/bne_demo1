@@ -110,7 +110,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -128,7 +128,7 @@
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -226,7 +226,7 @@
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -244,7 +244,7 @@
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -279,7 +279,7 @@
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Concepto del pago</span><br>
-															<input type="text" class="form-control width250" maxlength="30" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
 														</label>
 													</form>
 												</div>
@@ -305,12 +305,12 @@
 				<div class="panel-collapse" ng-show="collapseThree">
 					<div class="content-panel">
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
-							<li><a href="javascript:void(0);">Pagar a un Grupo de Beneficiarios</a></li>
+              <li ng-class="{'active': multipleInterbank}" ng-click="multipleInterbank=true; groupsInterbank=false"><a href="javascript:void(0);">Pagos M&uacute;ltiples</a></li>
+              <li ng-class="{'active': groupsInterbank}" ng-click="multipleInterbank=false; groupsInterbank=true"><a href="javascript:void(0);">Pagar a un Grupo de Beneficiarios</a></li>
 							<li><a href="javascript:void(0);">Alta de Beneficiarios o Grupo</a></li>
 							<li><a href="javascript:void(0);">Editar Beneficiarios o Grupo</a></li>
 						</ul>
-						<div class="content-tabs">
+						<div class="content-tabs" ng-show="multipleInterbank">
 							<p>
 								Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) Pago(s) y d&eacute; clic en continuar. Si requiere adicionar m&aacute;s pagos de click en el bot&oacute;n “Agregar más pagos”.
 							</p>
@@ -415,7 +415,7 @@
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Concepto del pago</span><br>
-															<input type="text" class="form-control width250" maxlength="30" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
 														</label>
 													</form>
 												</div>
@@ -428,7 +428,7 @@
 						</div>
 
 						<!-- Pagar Grupo de beneficiarios -->
-						<div class="content-tabs">
+						<div class="content-tabs" ng-show="groupsInterbank">
 							<div class="paso-1">
 								<p>
 									Para pagar a un grupo de beneficiarios seleccione el grupo y d&eacute; clic en &quot;Continuar&quot;
@@ -874,14 +874,14 @@
 																<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
 															</div>
 														</div>
-														
+
 													</div>
 												</td>
 												<td>
 													<div class="head"><span class="span160">Importe MXN</span></div>
 													<div class="content">
 														<form class="form-inline">
-															$ <input class="form-control" type="text" value="" maxlength="16" numbers-only="numbers-only">
+                              $ <input class="form-control" type="text" value="" maxlength="16">
 														</form>
 													</div>
 												</td>
@@ -891,7 +891,7 @@
 													</div>
 													<div class="content">
 														<form class="form-inline">
-															Fecha <input class="form-control calendario " type="text" value="" jqdatepicker maxlength="10">
+															Fecha <input class="form-control calendario " type="text" value="" maxlength="10">
 															<span class="ico-calendar"></span>
 														</form>
 														<span class="span160">
@@ -916,7 +916,7 @@
 															<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
 														</form>
 														<form class="form-inline">
-															<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" numbers-only="numbers-only">
+                              <strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="">
 														</form>
 													</div>
 													<div class="content pull-left textL paddingL125">
@@ -924,11 +924,11 @@
 														<form class="form-inline">
 															<label class="paddingL10">
 																<span class="paddingL3">N&uacute;mero de referencia</span><br>
-																<input type="text" class="form-control" maxlength="10" numbers-only="numbers-only">
+                                <input type="text" class="form-control" maxlength="10">
 															</label>
 															<label class="paddingL10">
 																<span class="paddingL3">Concepto del pago</span><br>
-																<input type="text" class="form-control width250" maxlength="30">
+																<input type="text" class="form-control width250" maxlength="20">
 															</label>
 														</form>
 													</div>
@@ -1024,14 +1024,14 @@
 												<span class="span160"><strong>Sucursal</strong></span>
 												<div class="content">
 													<form class="form-inline">
-														<input class="form-control" type="text" value="" ng-model="payingAccount.branch">
+														<input class="form-control" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
 													</form>
 													<a href="">Ver el directorio de sucursales</a>
 												</div>
 											</td>
 											<td>
 												<div class="head">
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
 													<form class="form-inline">
@@ -1049,7 +1049,7 @@
 														</select>
 														hrs
 													</form>
-													<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
 												</div>
 											</td>
 										</tr>
@@ -1106,7 +1106,7 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="4">
@@ -1154,8 +1154,8 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric"></td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric" maxlength="10" numbers-only="numbers-only"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
@@ -1166,11 +1166,11 @@
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanum&eacute;rica: </td>
-										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha"></td>
+										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha" maxlength="20"></td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
-										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
+										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
 				  <tr>
 										<td class="paddingTB13">Autorización remota:</td>
@@ -1184,11 +1184,11 @@
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
 										<td>RFC:</td>
-										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc"></td>
+										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
 										<td>IVA: </td>
-										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva"></td>
+										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
 								</table>
 							</td>
@@ -1226,15 +1226,15 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric"></td>
+							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric" maxlength="10" numbers-only="numbers-only"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
 								<table class="width49-5p pull-left">
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
-										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept"></td>
+										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
 									<tr>
 										<td class="paddingTB13">Autorización remota:</td>
@@ -1248,11 +1248,11 @@
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
 										<td>RFC:</td>
-										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc"></td>
+										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
 									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
 										<td>IVA: </td>
-										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva"></td>
+										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
 								</table>
 
@@ -1272,7 +1272,7 @@
 			</div>
 		</div>
 
-		<div class="content-box">
+		<div class="content-box" ng-show="groupsInterbank">
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
 				<p class="intrucciones"><strong>Nombre del grupo: </strong>Programadores V1.2 (norte)</p>
@@ -1307,14 +1307,14 @@
 											<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
 										</div>
 									</div>
-									
+
 								</div>
 							</td>
 							<td>
 								<div class="head"><span class="span160">Importe MXN</span></div>
 								<div class="content">
 									<form class="form-inline span160">
-										$ <input class="form-control" type="text" value="" maxlength="16" numbers-only="numbers-only">
+										$ <input class="form-control" type="text" value="" maxlength="16" >
 									</form>
 								</div>
 							</td>
@@ -1324,7 +1324,7 @@
 								</div>
 								<div class="content">
 									<form class="form-inline span175">
-										Fecha <input class="form-control calendario " type="text" value="" jqdatepicker maxlength="10">
+										Fecha <input class="form-control calendario " type="text" value="" maxlength="10">
 										<span class="ico-calendar"></span>
 									</form>
 									<span class="span175">
@@ -1349,7 +1349,7 @@
 										<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
 									</form>
 									<form class="form-inline">
-										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" numbers-only="numbers-only">
+										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" >
 									</form>
 								</div>
 								<div class="content pull-left textL paddingL125">
@@ -1357,11 +1357,11 @@
 									<form class="form-inline">
 										<label class="paddingL10">
 											<span class="paddingL3">N&uacute;mero de referencia</span><br>
-											<input type="text" class="form-control" maxlength="10" numbers-only="numbers-only">
+											<input type="text" class="form-control" maxlength="10" >
 										</label>
 										<label class="paddingL10">
 											<span class="paddingL3">Concepto del pago</span><br>
-											<input type="text" class="form-control width250" maxlength="30">
+											<input type="text" class="form-control width250" maxlength="20">
 										</label>
 									</form>
 								</div>
@@ -1391,7 +1391,7 @@
 								</select>
 							</td>
 							<td class="textR">$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
-							<td><input type="text" ng-model="payingAccount.branch"></td>
+							<td><input type="text" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only"></td>
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="5">
@@ -1445,6 +1445,46 @@
 			Confirme los datos de su(s) pago(s) para aplicar.
 		</p>
 
+		<div class="content-box" ng-show="validatePayments(ownpayingAccounts)">
+
+			<div class="contenido-total">
+				<p class="title">Cuentas Propias</p>
+				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
+				<table>
+					<tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+						</tr>
+						<tr class="bgf4f4f4">
+							<td colspan="4">
+								<table>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+									</tr>
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
 		<div class="content-box" ng-show="validatePayments(thirdpayingAccounts)">
 
 			<div class="contenido-total">
@@ -1473,6 +1513,10 @@
 									<tr ng-show="payingAccount.references && payingAccount.concept">
 										<td>Concepto del pago:</td>
 										<td>{{payingAccount.concept}}</td>
+									</tr>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -1578,6 +1622,126 @@
 			</div>
 		</div>
 
+		<div class="content-box" ng-show="validatePayments(interbankPayments)">
+
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
+				<table>
+					<tbody ng-repeat="payingAccount in interbankPayments | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td>{{payingAccount.references? payingAccount.numeric : ''}}</td>
+						</tr>
+						<tr class="bgf4f4f4">
+							<td colspan="5">
+								<table class="width49-5p pull-left">
+									<tr>
+										<td>Cuenta concentradora:</td>
+										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
+									</tr>
+									<tr ng-show="payingAccount.references && payingAccount.concept">
+										<td>Concepto del pago:</td>
+										<td>{{payingAccount.concept}}</td>
+									</tr>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+									</tr>
+								</table>
+								<table class="width49-5p pull-right">
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
+										<td>RFC:</td>
+										<td>{{payingAccount.rfc}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
+										<td>IVA: </td>
+										<td>{{payingAccount.iva | currency}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
+							<td>Número de referencia</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
+
+			<div class="contenido-total">
+				<p class="title">Órdenes de Pago</p>
+				<p class="intrucciones">Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar", se le solicitar&aacute; ingresar dicha clave.</p>
+				<table>
+					<tbody ng-repeat="payingAccount in orderpayingAccounts | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.branch}}</td>
+						</tr>
+						<tr class="bgf4f4f4">
+							<td colspan="5">
+								<table class="width49-5p pull-left">
+									<tr>
+										<td>Cuenta concentradora:</td>
+										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
+									</tr>
+									<tr ng-show="payingAccount.references && payingAccount.concept">
+										<td>Concepto del pago:</td>
+										<td>{{payingAccount.concept}}</td>
+									</tr>
+                  <tr>
+										<td class="paddingTB13">Autorización remota:</td>
+                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+									</tr>
+								</table>
+								<table class="width49-5p pull-right">
+									<tr>
+										<td>Fecha y hora de aplicaci&oacute;n:</td>
+										<td>{{getAppliedDate(payingAccount)}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
+										<td>RFC:</td>
+										<td>{{payingAccount.rfc}}</td>
+									</tr>
+									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
+										<td>IVA: </td>
+										<td>{{payingAccount.iva | currency}}</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td>Importe</td>
+							<td>Sucursal</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
 		<div class="area-botones">
 			<button ng-click="preConfirmation = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="applied = true; confirmation = false" type="button" class="btn btn-primary pull-right">Aceptar</button>
@@ -1635,11 +1799,41 @@
 			</a>
 		</div>
 
-		<div class="content-box">
+		<div class="content-box" ng-show="validatePayments(ownpayingAccounts)">
+			<div class="contenido-total">
+				<p class="title">Cuentas Propias</p>
+				<table>
+					<tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.appliedDate}}</td>
+							<td>Aplicada</td>
+							<td>001005</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td class="textR">Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(thirdpayingAccounts)">
 			<div class="contenido-total">
 				<p class="title">Cuentas Terceros Banamex</p>
 				<table>
-					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validateThirdPayment">
+					<tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validatePayment">
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
@@ -1744,6 +1938,70 @@
 							<td>Cuenta retiro</td>
 							<td>Cuenta dep&oacute;sito</td>
 							<td>Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(interbankPayments)">
+			<div class="contenido-total">
+				<p class="title">Cuentas Interbancarias</p>
+				<table>
+					<tbody ng-repeat="payingAccount in interbankPayments | filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.appliedDate}}</td>
+							<td>Aplicada</td>
+							<td>001005</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Cuenta dep&oacute;sito</td>
+							<td class="textR">Importe</td>
+							<td>Fecha / Hora de Aplicaci&oacute;n</td>
+							<td>Estatus</td>
+							<td>Autorizaci&oacute;n</td>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+
+		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
+			<div class="contenido-total">
+				<p class="title">Órdenes de Pago</p>
+				<table>
+					<tbody ng-repeat="payingAccount in orderpayingAccounts| filter:validatePayment">
+						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+							<td>{{$index + 1}}</td>
+							<td>{{payingAccount.source.name}}</td>
+							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+              <td>{{payingAccount.branch}}</td>
+              <td>{{payingAccount.target.account_t}}</td>
+              <td>{{payingAccount.appliedDate}}</td>
+							<td>Aplicada</td>
+							<td>001005</td>
+						</tr>
+					</tbody>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Cuenta retiro</td>
+							<td>Beneficiario</td>
+							<td class="textR">Importe</td>
+							<td>Sucursal</td>
+							<td>Num. de Documento</td>
 							<td>Fecha / Hora de Aplicaci&oacute;n</td>
 							<td>Estatus</td>
 							<td>Autorizaci&oacute;n</td>

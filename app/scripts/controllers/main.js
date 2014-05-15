@@ -250,6 +250,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.collapseThree = false;
       $scope.collapseFour = false;
       $scope.allowNext = false;
+      $scope.multipleInterbank = true;
     };
 
     $scope.setup();
@@ -348,15 +349,9 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.verifyThirdMode = function (payment, selection) {
       if(selection === 'programming' && payment.remote) {
         payment.remote = false;
-        payment.remoteDate = '';
-        payment.hoursRemote = 'hh';
-        payment.minutesRemote = 'mm';
       }
       if(selection === 'remote' && payment.programming) {
         payment.programming = false;
-        payment.date = '';
-        payment.hours = 'hh';
-        payment.minutes = 'mm';
       }
     };
 
