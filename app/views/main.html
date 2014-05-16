@@ -59,20 +59,25 @@
 												<div class="head textL paddingL10">Cuentas</div>
 												<div class="content">
 													<div class="pull-left">
-														<span class="span310">Cuenta retiro</span>
-														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una opci&oacute;n</option>
-														</select>
-														<br>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span325">
+															<span class="clear-fix paddingL3">Cuenta retiro</span><br>
+															<select class="width180" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una opci&oacute;n</option>
+															</select>
+															<br>
+															<select class="width325" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="pull-left paddingL10">
-														<span class="span310">Cuenta dep&oacute;sito</span>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in ownTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span310">
+															<span class="clear-fix paddingL3">Cuenta dep&oacute;sito</span><br>
+															<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in ownTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
 													</div>
 													<div class="clear-fix textL paddingL10">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -83,7 +88,7 @@
 												<div class="head"><span class="span175">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline span175" ng-show="payingAccount.target.account_type_i !== 3">
-														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">
+														$ <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">
 													</form>
 													<form class="form-inline" ng-show="payingAccount.target.account_type_i === 3">
 														<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
@@ -195,20 +200,26 @@
 												<div class="head textL paddingL10">Cuentas</div>
 												<div class="content">
 													<div class="pull-left">
-														<span class="span310">Cuenta retiro</span>
-														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una opci&oacute;n</option>
-														</select>
-														<br>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span325">
+															Cuenta retiro<br>
+															<select class="width180" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una opci&oacute;n</option>
+															</select>
+															<br>
+															<select class="width325" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="pull-left paddingL10">
-														<span class="span310">Cuenta dep&oacute;sito</span>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span310">
+															Cuenta dep&oacute;sito<br>
+															<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="clear-fix textL paddingL10">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -217,10 +228,10 @@
 												</div>
 											</td>
 											<td>
-												<div class="head"><span class="span160">Importe MXN</span></div>
+												<div class="head"><span class="span140">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+														$ <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
 													</form>
 												</div>
 											</td>
@@ -253,13 +264,16 @@
 											<td></td>
 											<td colspan="3">
 												<div class="content pull-left">
-													<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal</label>
-													<form class="form-inline">
-														<strong>RFC</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true">
-													</form>
-													<form class="form-inline">
-														<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true" numbers-only="numbers-only">
-													</form>
+													<label class="span175">
+														<input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal<br>
+														<form class="form-inline">
+															<strong>RFC</strong> <input class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true">
+														</form>
+														<form class="form-inline">
+															<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true" numbers-only="numbers-only">
+														</form>
+													</label>
+													
 												</div>
 												<div class="content pull-left textL paddingL125">
 													<label class="paddingL10">
@@ -271,15 +285,15 @@
 													<form class="form-inline">
 														<label class="paddingL10">
 															<span class="paddingL3">Referencia num&eacute;rica</span><br>
-															<input type="text" class="form-control" maxlength="10" ng-model="payingAccount.numeric" ng-change="payingAccount.references = true" numbers-only="numbers-only">
+															<input type="text" class="form-control width80" maxlength="10" ng-model="payingAccount.numeric" ng-change="payingAccount.references = true" numbers-only="numbers-only">
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Referencia alfanum&eacute;rica</span><br>
-															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.alpha" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width145" maxlength="20" ng-model="payingAccount.alpha" ng-change="payingAccount.references = true">
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Concepto del pago</span><br>
-															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width145" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
 														</label>
 													</form>
 												</div>
@@ -344,20 +358,26 @@
 												<div class="head textL paddingL10">Cuentas</div>
 												<div class="content">
 													<div class="pull-left">
-														<span class="span310">Cuenta retiro</span>
-														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una opci&oacute;n</option>
-														</select>
-														<br>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span325">
+															Cuenta retiro<br>
+															<select class="width180" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una opci&oacute;n</option>
+															</select>
+															<br>
+															<select class="width325" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="pull-left paddingL10">
-														<span class="span310">Cuenta dep&oacute;sito</span>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span310">
+															Cuenta dep&oacute;sito<br>
+															<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="clear-fix textL paddingL10">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -365,10 +385,10 @@
 												</div>
 											</td>
 											<td>
-												<div class="head"><span class="span160">Importe MXN</span></div>
+												<div class="head"><span class="span140">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+														$ <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
 													</form>
 												</div>
 											</td>
@@ -398,24 +418,27 @@
 											<td></td>
 											<td colspan="3">
 												<div class="content pull-left">
-													<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal</label>
-													<form class="form-inline">
-														<strong>RFC</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true">
-													</form>
-													<form class="form-inline">
-														<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true" numbers-only="numbers-only">
-													</form>
+													<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> 
+														Comprobante Fiscal<br>
+														<form class="form-inline">
+															<strong>RFC</strong> <input class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true">
+														</form>
+														<form class="form-inline">
+															<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true" numbers-only="numbers-only">
+														</form>
+													</label>
+													
 												</div>
 												<div class="content pull-left textL paddingL125">
 													<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references"/> Referencias</label>
 													<form class="form-inline">
 														<label class="paddingL10">
 															<span class="paddingL3">N&uacute;mero de referencia</span><br>
-															<input type="text" class="form-control" maxlength="10" ng-model="payingAccount.numeric" ng-change="payingAccount.references = true" numbers-only="numbers-only">
+															<input type="text" class="form-control width80" maxlength="10" ng-model="payingAccount.numeric" ng-change="payingAccount.references = true" numbers-only="numbers-only">
 														</label>
 														<label class="paddingL10">
 															<span class="paddingL3">Concepto del pago</span><br>
-															<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
+															<input type="text" class="form-control width145" maxlength="20" ng-model="payingAccount.concept" ng-change="payingAccount.references = true">
 														</label>
 													</form>
 												</div>
@@ -858,18 +881,24 @@
 													<div class="head textL paddingL10">Cuentas</div>
 													<div class="content">
 														<div class="pull-left">
-															<span class="span310">Cuenta retiro</span>
-															<select class="width310">
-																<option value="">Seleccione una opci&oacute;n</option>
-															</select>
-															<br>
-															<select class="width310">
-																<option value="">Seleccione una cuenta</option>
-															</select>
+															<span class="span325">
+																Cuenta retiro<br>
+																<select class="width180">
+																	<option value="">Seleccione una opci&oacute;n</option>
+																</select>
+																<br>
+																<select class="width325">
+																	<option value="">Seleccione una cuenta</option>
+																</select>
+															</span>
+															
 														</div>
 														<div class="pull-left paddingL10">
-															<span class="span310">Cuenta dep&oacute;sito</span>
-															<input type="text" class="width310">
+															<span class="span310">
+																Cuenta dep&oacute;sito<br>
+																<input type="text" class="width230">
+															</span>
+															
 															<div class="clear-fix textL paddingL10">
 																<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
 															</div>
@@ -878,10 +907,10 @@
 													</div>
 												</td>
 												<td>
-													<div class="head"><span class="span160">Importe MXN</span></div>
+													<div class="head"><span class="span140">Importe MXN</span></div>
 													<div class="content">
-														<form class="form-inline">
-                              $ <input class="form-control" type="text" value="" maxlength="16">
+														<form class="form-inline span140">
+                              								$ <input class="form-control width120" type="text" value="" maxlength="16">
 														</form>
 													</div>
 												</td>
@@ -911,24 +940,27 @@
 												<td></td>
 												<td colspan="3">
 													<div class="content pull-left">
-														<label class="span175"><input type="checkbox"> Comprobante Fiscal</label>
-														<form class="form-inline">
-															<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
-														</form>
-														<form class="form-inline">
-                              <strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="">
-														</form>
+														<label class="span175">
+															<input type="checkbox"> Comprobante Fiscal<br>
+															<form class="form-inline">
+																<strong>RFC</strong> <input class="form-control width100" type="text" value="" maxlength="13">
+															</form>
+															<form class="form-inline">
+	                              								<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control width80" maxlength="10" type="text" value="">
+															</form>
+														</label>
+														
 													</div>
 													<div class="content pull-left textL paddingL125">
 														<label class="paddingL10"><input type="checkbox"/> Referencias</label>
 														<form class="form-inline">
 															<label class="paddingL10">
 																<span class="paddingL3">N&uacute;mero de referencia</span><br>
-                                <input type="text" class="form-control" maxlength="10">
+                                								<input type="text" class="form-control width80" maxlength="10">
 															</label>
 															<label class="paddingL10">
 																<span class="paddingL3">Concepto del pago</span><br>
-																<input type="text" class="form-control width250" maxlength="20">
+																<input type="text" class="form-control width145" maxlength="20">
 															</label>
 														</form>
 													</div>
@@ -994,20 +1026,26 @@
 												<div class="head textL paddingL10">Cuentas</div>
 												<div class="content">
 													<div class="pull-left">
-														<span class="span310">Cuenta retiro</span>
-														<select class="width310" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una opci&oacute;n</option>
-														</select>
-														<br>
-														<select class="width310" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
+														<span class="span325">
+															Cuenta retiro<br>
+															<select class="width180" ng-options="type.name for type in ownDefaultData" ng-model="payingAccount.sourceType" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una opci&oacute;n</option>
+															</select>
+															<br>
+															<select class="width325" ng-options="account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in payingAccount.sourceType.accounts" ng-model="payingAccount.source" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione una cuenta</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="pull-left paddingL10">
-														<span class="span310">Beneficiario</span>
-														<select class="width310" ng-options="account.name for account in orderTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione un beneficiario</option>
-														</select>
+														<span class="span310">
+															Beneficiario<br>
+															<select class="width230" ng-options="account.name for account in orderTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
+																<option value="">Seleccione un beneficiario</option>
+															</select>
+														</span>
+														
 													</div>
 													<div class="clear-fix textL paddingL10">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -1015,16 +1053,16 @@
 												</div>
 											</td>
 											<td>
-												<div class="head"><span class="span160">Importe MXN</span></div>
+												<div class="head"><span class="span140">Importe MXN</span></div>
 												<div class="content">
-													<form class="form-inline">
-														$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+													<form class="form-inline span140">
+														$ <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
 													</form>
 												</div>
-												<span class="span160"><strong>Sucursal</strong></span>
+												<span class="span140"><strong>Sucursal</strong></span>
 												<div class="content">
-													<form class="form-inline">
-														<input class="form-control" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
+													<form class="form-inline  span140">
+														<input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
 													</form>
 													<a href="">Ver el directorio de sucursales</a>
 												</div>
@@ -1111,9 +1149,9 @@
 						<tr class="bgf4f4f4">
 							<td colspan="4">
 								<table>
-				  <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+				  					<tr>
+										<td class="paddingTB10">Autorización remota:</td>
+										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
@@ -1161,8 +1199,8 @@
 							<td colspan="5">
 								<table class="width49-5p pull-left">
 									<tr>
-										<td class="paddingTB13">Cuenta concentradora:</td>
-					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
+										<td class="paddingTB10">Cuenta concentradora:</td>
+										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr ng-show="payingAccount.references && payingAccount.alpha">
 										<td>Referencia alfanum&eacute;rica: </td>
@@ -1172,9 +1210,9 @@
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
-				  <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+				  					<tr>
+										<td class="paddingTB10">Autorización remota:</td>
+										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -1237,8 +1275,8 @@
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
 									<tr>
-										<td class="paddingTB13">Autorización remota:</td>
-										<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"></label></td>
+										<td class="paddingTB10">Autorización remota:</td>
+										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.remote"></label></td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -1276,7 +1314,7 @@
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
 				<p class="intrucciones"><strong>Nombre del grupo: </strong>Programadores V1.2 (norte)</p>
-				<table>
+				<table class="v-alignT">
 					<tbody>
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td>
@@ -1397,8 +1435,8 @@
 							<td colspan="5">
 								<table>
 				  <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-					<td class="paddingTB13"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
+										<td class="paddingTB10">Autorización remota:</td>
+					<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
 									</tr>
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
@@ -1462,8 +1500,8 @@
 							<td colspan="4">
 								<table>
                   <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+										<td class="paddingTB10">Autorización remota:</td>
+                    <td class="paddingTB10">{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
@@ -1515,8 +1553,8 @@
 										<td>{{payingAccount.concept}}</td>
 									</tr>
                   <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+										<td class="paddingTB10">Autorización remota:</td>
+                    <td class="paddingTB10">{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -1648,8 +1686,8 @@
 										<td>{{payingAccount.concept}}</td>
 									</tr>
                   <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+										<td class="paddingTB10">Autorización remota:</td>
+                    <td class="paddingTB10">{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">
@@ -1708,8 +1746,8 @@
 										<td>{{payingAccount.concept}}</td>
 									</tr>
                   <tr>
-										<td class="paddingTB13">Autorización remota:</td>
-                    <td class="paddingTB13">{{payingAccount.remote ? 'Si' : 'No'}}</td>
+										<td class="paddingTB10">Autorización remota:</td>
+                    <td class="paddingTB10">{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
 								<table class="width49-5p pull-right">

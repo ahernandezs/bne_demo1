@@ -97,7 +97,7 @@ input[type="checkbox"]{
 	margin: 0 3px!important;
 }
 input.calendario{
-	width: 90px!important;
+	width: 75px!important;
 }
 input.monto{
 	text-align: right;
@@ -152,26 +152,59 @@ input.inline{
 }
 .v-alignT{
 	vertical-align:top;
+	td{
+		vertical-align:top;
+	}
 }
 /* COLORS */
 .color666666{
 	color: #666666;
 }
 /* ANCHOS PIX */
+.width40{
+	width:40px!important;
+}
 .width50{
 	width:50px;
 }
 .width60{
 	width:60px;
 }
+.width80{
+	width:80px!important;
+}
+.width100{
+	width:100px!important;
+}
+.width120{
+	width:120px!important;
+}
+.width125{
+	width:125px!important;
+}
+.width145{
+	width:145px!important;
+}
+.width180{
+	width:180px!important;
+}
 .width200{
 	width:200px!important;
+}
+.width230{
+	width:230px!important;
 }
 .width250{
 	width:250px!important;
 }
+.width260{
+	width:260px!important;
+}
 .width310{
 	width:310px;
+}
+.width325{
+	width:325px;
 }
 .width900{
 	width:900px!important;
@@ -218,9 +251,9 @@ input.inline{
 .paddingL125{
 	padding-left:125px!important;
 }
-.paddingTB13{
-	padding-top: 13px!important;
-	padding-bottom: 13px!important;
+.paddingTB10{
+	padding-top: 10px!important;
+	padding-bottom: 10px!important;
 }
 /* PADDINGS PORCENTAJES */
 .paddingR40p{
@@ -264,28 +297,35 @@ input.inline{
 	width: 140px;
 	display: block;
 	margin: 0 auto;
-	text-align: left;
+	text-align: left!important;
 	clear: both;
 }
 .span160{
 	width: 160px;
 	display: block;
 	margin: 0 auto;
-	text-align: left;
+	text-align: left!important;
 	clear: both;
 }
 .span175{
 	width: 175px;
 	display: block;
 	margin: 0 auto;
-	text-align: left;
+	text-align: left!important;
 	clear: both;
 }
 .span310{
 	width: 310px;
 	display: block;
 	margin: 0 auto;
-	text-align: left;
+	text-align: left!important;
+	clear: both;
+}
+.span325{
+	width: 325px;
+	display: block;
+	margin: 0 auto;
+	text-align: left!important;
 	clear: both;
 }
 
@@ -922,7 +962,6 @@ p.instrucciones{
 		tbody{
 			td{
 				border-bottom: 1px solid #FFFFFF;
-				vertical-align: top;
 				table{
 					td{
 						border:none;
