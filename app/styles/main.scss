@@ -206,6 +206,12 @@ input.inline{
 .width325{
 	width:325px;
 }
+.width500{
+	width:500px;
+}
+.width700{
+	width:700px;
+}
 .width900{
 	width:900px!important;
 }
@@ -236,6 +242,9 @@ input.inline{
 	margin-top: 15px;
 }
 /* PADDINGS PIX */
+.padding10{
+	padding:10px;
+}
 .paddingT10{
 	padding-top:10px;
 }
@@ -268,6 +277,10 @@ input.inline{
 }
 .bgfeeded{
 	background: #feeded;
+}
+/* BORDES */
+.borderR1-CCCCCC{
+	border-right: 1px solid #cccccc;
 }
 /* BOTONES */
 .btn{
@@ -1064,6 +1077,67 @@ p.instrucciones{
 				color: #09347a;
 			}
 		}
+	}
+}
+
+/* MODALES */
+.overlay-blk{
+	display: none;
+	z-index: 999999;
+	background: #000000;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	filter: alpha(opacity=50);
+	-moz-opacity: 0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.5
+}
+.modal-bne{
+	display: none;
+	@include border_radius(10px);
+	background: #FFFFFF;
+	border: 1px solid #8086aa;
+	margin: 0 auto 0 auto;
+	color: #666666;
+	padding: 20px;
+	position: fixed;
+	z-index:9999999;
+	top:140px;
+	.title{
+		margin: 0 0 20px 0;
+		font-size: 15px;
+		font-weight: bold;
+		padding-bottom: 10px;
+		color: #000000;
+		border-bottom: 1px solid #cccccc;
+	}
+	.nobrdr{
+		border-bottom: none!important;
+	}
+	label{
+		font-weight: normal;
+		clear: both;
+		display: block;
+	}
+	.challng{
+		display: block;
+		margin: 20px 0;
+		font-size: 22px;
+		font-weight: bold;
+		color: #666666;
+		.num{
+			color: #1e87dd;
+			font-size: inherit;
+			font-weight: inherit;
+		}
+	}
+	.area-botones{
+		margin: 20px 0 0 0!important;
 	}
 }
 
