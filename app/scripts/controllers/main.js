@@ -146,6 +146,16 @@ angular.module('bnePaymentsOldFashionedApp')
       console.log("error");
     });
 
+		$scope.groups = [];
+
+		$http.get($scope.base_url + "/groups", {}).
+			success(function(responseData, status, headers, config) {
+			$scope.groups = responseData;
+		}).
+			error(function(data, status, headers, config) {
+			console.log("error");
+		});
+
     $scope.showAccounts = true;
 
 		$scope.getCurrentDate = function () {
@@ -409,5 +419,28 @@ angular.module('bnePaymentsOldFashionedApp')
 
       return date;
     };
+
+		$scope.changeGroup = function () {
+			console.log($scope.selectedGroup);
+
+			$http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
+				success(function(responseData, status, headers, config) {
+					$scope.groupItems = responseData;
+					console.log($scope.groupItems);
+				}).
+			error(function(data, status, headers, config) {
+				console.log("error");
+			});
+
+		};
+
+		$scope.getAccountsByType = function (id) {
+			for(var i = 0; i < $scope.ownDefaultData.length; i++) {
+				var elem = $scope.ownDefaultData[i];
+				if(elem.id === id) {
+					return elem.accounts;
+				}
+			}
+		};
 
 }]);
