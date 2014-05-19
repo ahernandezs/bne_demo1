@@ -261,6 +261,9 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.collapseFour = false;
       $scope.allowNext = false;
       $scope.multipleInterbank = true;
+
+      $scope.groupsInterbank = false;
+      $scope.selectedGroup = undefined;
     };
 
     $scope.setup();
@@ -457,10 +460,8 @@ angular.module('bnePaymentsOldFashionedApp')
 		};
 
 		$scope.getInterbankAccountById = function (id) {
-      console.log("me estoy invocando");
 			for(var i = 0; i < $scope.interbankTargetData.docs.length; i++) {
 				var elem = $scope.interbankTargetData.docs[i];
-        console.log(elem);
 				if(elem.id === id) {
 					return elem;
 				}

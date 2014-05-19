@@ -1840,72 +1840,18 @@
 			</div>
 		</div>
 
-		<div class="content-box">
+		<div class="content-box" ng-show="selectedGroup">
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
-				<p class="intrucciones"><strong>Nombre del grupo:</strong> Programadores V1.2 (norte)</p>
+        <p class="intrucciones"><strong>Nombre del grupo:</strong> {{selectedGroup.name}}</p>
 				<table>
-					<tbody>
-						<tr>
-							<td><strong>1</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
-							<td>Aplicada</td>
-							<td>986467</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>2</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
-							<td>Aplicada</td>
-							<td>986467</td>
-						</tr>
-						<tr>
-							<td><strong>3</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
-							<td>Aplicada</td>
-							<td>986467</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>4</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
-							<td>Aplicada</td>
-							<td>986467</td>
-						</tr>
-						<tr>
-							<td><strong>5</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
-							<td>Aplicada</td>
-							<td>986467</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>6</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
-							<td>Aplicada</td>
-							<td>986467</td>
-						</tr>
-						<tr>
-							<td><strong>7</strong></td>
-							<td>Cheques1492/3857842 MXN $85,489.56</td>
-							<td>Javier Martinez BBV 456789</td>
-							<td>1,000,000,000,000.00</td>
-							<td>07/05/2014</td>
+					<tbody ng-repeat="payingAccount in groupItems.docs">
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+              <td><strong>{{$index + 1}}</strong></td>
+              <td>{{account = getAccountById(payingAccount.origin_type_i, payingAccount.origin_s); account.name + ' ' + account.currency_t + ' ' + (account.amount_d|currency)}}</td>
+              <td>{{account = getInterbankAccountById(payingAccount.target_s); account.name + ' ' + account.bank_t + ' ' + account.account_t}}</td>
+							<td>{{payingAccount.amount_d | currency}}</td>
+              <td>{{payingAccount.application_date_dt_s}} ({{payingAccount.application_date_s}})</td>
 							<td>Aplicada</td>
 							<td>986467</td>
 						</tr>
