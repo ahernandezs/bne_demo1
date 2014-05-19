@@ -1061,11 +1061,11 @@
 										<td class="paddingTB10">Cuenta concentradora:</td>
 										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
 									</tr>
-									<tr ng-show="payingAccount.references && payingAccount.alpha">
+                  <tr>
 										<td>Referencia alfanum&eacute;rica: </td>
 										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha" maxlength="20"></td>
 									</tr>
-									<tr ng-show="payingAccount.references && payingAccount.concept">
+                  <tr>
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
@@ -1079,11 +1079,11 @@
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td><input type="text" value="{{getAppliedDate(payingAccount)}}"></td>
 									</tr>
-									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
+                  <tr>
 										<td>RFC:</td>
 										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
-									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
+									<tr>
 										<td>IVA: </td>
 										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
@@ -1129,7 +1129,7 @@
 						<tr class="bgf4f4f4">
 							<td colspan="5">
 								<table class="width49-5p pull-left">
-									<tr ng-show="payingAccount.references && payingAccount.concept">
+                  <tr>
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
@@ -1143,11 +1143,11 @@
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td><input type="text" value="{{getAppliedDate(payingAccount)}}"></td>
 									</tr>
-									<tr ng-show="payingAccount.fiscal && payingAccount.rfc">
+                  <tr>
 										<td>RFC:</td>
 										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
-									<tr ng-show="payingAccount.fiscal && payingAccount.iva">
+                  <tr>
 										<td>IVA: </td>
 										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
