@@ -92,7 +92,7 @@ angular.module('bnePaymentsOldFashionedApp')
       {name: '59'}
     ];
 
-    $scope.base_url = "http://projects.anzen.com.mx:4567/api";
+    $scope.base_url = "http://localhost:4567/api";
 		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
     $scope.interbankPayments = [];
@@ -355,6 +355,11 @@ angular.module('bnePaymentsOldFashionedApp')
       }
     }, true);
 
+		$scope.$watch('selectedGroup', function (value) {
+			if($scope.selectedGroup) {
+				$scope.allowNext = true;
+			}
+		});
 
     $scope.verifyThirdMode = function (payment, selection) {
       if(selection === 'programming' && payment.remote) {
@@ -421,12 +426,10 @@ angular.module('bnePaymentsOldFashionedApp')
     };
 
 		$scope.changeGroup = function () {
-			console.log($scope.selectedGroup);
 
 			$http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
 				success(function(responseData, status, headers, config) {
 					$scope.groupItems = responseData;
-					console.log($scope.groupItems);
 				}).
 			error(function(data, status, headers, config) {
 				console.log("error");
@@ -439,6 +442,27 @@ angular.module('bnePaymentsOldFashionedApp')
 				var elem = $scope.ownDefaultData[i];
 				if(elem.id === id) {
 					return elem.accounts;
+				}
+			}
+		};
+
+		$scope.getAccountById = function (typeId, id) {
+      var accounts = $scope.getAccountsByType(typeId);
+			for(var i = 0; i < accounts.length; i++) {
+				var elem = accounts[i];
+				if(elem.id === id) {
+					return elem;
+				}
+			}
+		};
+
+		$scope.getInterbankAccountById = function (id) {
+      console.log("me estoy invocando");
+			for(var i = 0; i < $scope.interbankTargetData.docs.length; i++) {
+				var elem = $scope.interbankTargetData.docs[i];
+        console.log(elem);
+				if(elem.id === id) {
+					return elem;
 				}
 			}
 		};

@@ -580,7 +580,7 @@
 													</div>
 													<div class="content">
 														<form class="form-inline">
-                            	Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt" ng-change="payingAccount.programming = true" maxlength="10">
+                            	Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt_s" ng-change="payingAccount.programming = true" maxlength="10">
 															<span class="ico-calendar"></span>
 														</form>
 														<span class="span160">
@@ -1248,70 +1248,72 @@
 			</div>
 		</div>
 
-		<div class="content-box" ng-show="groupsInterbank">
+		<div class="content-box" ng-show="selectedGroup">
 			<div class="contenido-total">
 				<p class="title">Cuentas Interbancarias</p>
-				<p class="intrucciones"><strong>Nombre del grupo: </strong>Programadores V1.2 (norte)</p>
+				<p class="intrucciones"><strong>Nombre del grupo: </strong>{{selectedGroup.name}}</p>
 				<table class="v-alignT">
-					<tbody>
+					<tbody ng-repeat="payingAccount in groupItems.docs">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td>
 								<div class="head textC">
-									<input type="checkbox" value="">
+									<input type="checkbox" value="" ng-model="payingAccount.enabled_b">
 								</div>
 							</td>
 							<td>
-								<div class="head textC">1</div>
+								<div class="head textC">{{$index + 1}}</div>
 							</td>
 							<td>
 								<div class="head textL paddingL10">Cuentas</div>
 								<div class="content">
 									<div class="pull-left">
 										<span class="span310">Cuenta retiro</span>
-										<select class="width310">
+										<select class="width310" ng-options="type.id as type.name for type in ownDefaultData" ng-model="payingAccount.origin_type_i" ng-change="payingAccount.enabled = true">
 											<option value="">Seleccione una opci&oacute;n</option>
 										</select>
 										<br>
-										<select class="width310">
+										<select class="width310" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in getAccountsByType(payingAccount.origin_type_i)" ng-model="payingAccount.origin_s" ng-change="payingAccount.enabled = true">
 											<option value="">Seleccione una cuenta</option>
 										</select>
 									</div>
 									<div class="pull-left paddingL10">
 										<span class="span310">Cuenta dep&oacute;sito</span>
-										<input type="text" class="width310">
-										<div class="clear-fix textL paddingL10">
-											<span class="ultimo-pago">Último pago: $2,500.00 13/04/2014</span>
-										</div>
+										<select class="width310" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target_s" ng-change="payingAccount.enabled = true">
+											<option value="">Seleccione una cuenta</option>
+										</select>
 									</div>
-
+									<div class="clear-fix textL paddingL10">
+										<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target_s}">Último pago: {{payingAccount.last_payment_d | currency}} {{payingAccount.last_date_t | date:'dd/MM/yyyy'}}</span>
+									</div>
 								</div>
 							</td>
 							<td>
 								<div class="head"><span class="span160">Importe MXN</span></div>
 								<div class="content">
-									<form class="form-inline span160">
-										$ <input class="form-control" type="text" value="" maxlength="16" >
+									<form class="form-inline">
+										$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
 									</form>
 								</div>
 							</td>
 							<td>
 								<div class="head">
-									<span class="span175">Fecha de operaci&oacute;n</span>
+									<span class="span160">Fecha de operaci&oacute;n</span>
 								</div>
 								<div class="content">
-									<form class="form-inline span175">
-										Fecha <input class="form-control calendario " type="text" value="" maxlength="10">
+									<form class="form-inline">
+										Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt_s" ng-change="payingAccount.programming = true" maxlength="10">
 										<span class="ico-calendar"></span>
 									</form>
-									<span class="span175">
+									<span class="span160">
 										<strong>Fecha de aplicaci&oacute;n</strong>
 										<form class="form-inline">
-											<select>
+											<select ng-model="payingAccount.application_date_s">
 												<option>Mismo d&iacute;a</option>
+												<option>24 horas</option>
 											</select>
 										</form>
 									</span>
-									<label class="span175"><input type="checkbox" value=""> Autorizar en forma remota</label>
+									<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote_b"> Autorizar en forma remota</label>
 								</div>
 							</td>
 						</tr>
@@ -1320,24 +1322,24 @@
 							<td></td>
 							<td colspan="3">
 								<div class="content pull-left">
-									<label class="span175"><input type="checkbox"> Comprobante Fiscal</label>
+									<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal_b"> Comprobante Fiscal</label>
 									<form class="form-inline">
-										<strong>RFC</strong> <input class="form-control" type="text" value="" maxlength="13">
+										<strong>RFC</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.rfc_s" maxlength="13" ng-change="payingAccount.fiscal_b = true">
 									</form>
 									<form class="form-inline">
-										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" >
+										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.iva_d" ng-change="payingAccount.fiscal_b = true" numbers-only="numbers-only">
 									</form>
 								</div>
 								<div class="content pull-left textL paddingL125">
-									<label class="paddingL10"><input type="checkbox"/> Referencias</label>
+									<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references_b"/> Referencias</label>
 									<form class="form-inline">
 										<label class="paddingL10">
 											<span class="paddingL3">N&uacute;mero de referencia</span><br>
-											<input type="text" class="form-control" maxlength="10" >
+											<input type="text" class="form-control" maxlength="10" ng-model="payingAccount.numeric_i" ng-change="payingAccount.references = true" numbers-only="numbers-only">
 										</label>
 										<label class="paddingL10">
 											<span class="paddingL3">Concepto del pago</span><br>
-											<input type="text" class="form-control width250" maxlength="20">
+											<input type="text" class="form-control width250" maxlength="20" ng-model="payingAccount.concept_s" ng-change="payingAccount.references = true">
 										</label>
 									</form>
 								</div>
@@ -1348,270 +1350,6 @@
 			</div>
 		</div>
 
-		<div class="content-box">
-			<div class="contenido-total">
-				<p class="title">Cuentas Interbancarias</p>
-				<p class="intrucciones">Alta de Beneficiarios</p>
-				<table class="v-alignT">
-					<tbody>
-						<tr>
-							<td class="width33p textL">
-								<div class="content">
-									<div class="clear-fix">
-										Tipo de cuenta<br>
-										<select class="form-control width145">
-											<option>Seleccione</option>
-											<option>Cuentas CLABE</option>
-											<option>Tarjeta de d&eacute;bito</option>
-											<option>Tarjeta de cr&eacute;dito</option>
-										</select>
-									</div>
-									<div class="clear-fix paddingT10">
-										Banco<br>
-										<select class="form-control width260">
-											<option>Seleccione un banco</option>
-										</select>
-									</div>
-									<div class="clear-fix paddingT10">
-										CLABE Interbancaria<br>
-										<input type="text" class="form-control width145">
-									</div>
-									<div class="clear-fix paddingT10">
-										N&uacute;mero de tarjeta<br>
-										<input type="text" class="form-control width145">
-									</div>
-									<div class="clear-fix paddingT10">
-										Alias de la cuenta<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										<div class="width50p pull-left">
-											Importe M&aacute;ximo<br>
-											<input type="text" class="form-control width125">
-										</div>
-										<div class="width50p pull-left">
-											Periodo de Importe M&aacute;ximo<br>
-											<select class="form-control width125">
-												<option>Mensual</option>
-											</select>
-										</div>
-									</div>
-									<div class="clear-fix paddingT10">
-										<strong>Tipo de persona</strong>
-										<div class="clear-fix">
-											<div class="width50p pull-left">
-												<label class="fontNormal"><input type="radio" name="tipoPer-1" > Persona F&iacute;sica</label>
-											</div>
-											<div class="width50p pull-left">
-												<label class="fontNormal"><input type="radio" name="tipoPer-1" > Persona Moral</label>
-											</div>
-										</div>
-										<div class="clear-fix paddingT10">
-											<div class="width33p pull-left">
-												Nombre
-												<input type="text" class="form-control width100">
-											</div>
-											<div class="width33p pull-left">
-												Apellido paterno
-												<input type="text" class="form-control width100">
-											</div>
-											<div class="width33p pull-left">
-												Apellido materno
-												<input type="text" class="form-control width100">
-											</div>
-										</div>
-										<div class="clear-fix paddingT10">
-											Razon Social
-											<input type="text" class="form-control width260">
-										</div>
-									</div>
-									<div class="clear-fix paddingT10">
-										RFC o CURP del beneficiario (opcional)<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										Correo electr&oacute;nico (opcional)<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										N&uacute;mero celular (opcional)<br>
-										(044/055) <input type="text" class="form-control inline width120"> *Telcel
-									</div>
-								</div>
-							</td>
-							<td class="width33p textL">
-								<div class="content">
-									<div class="clear-fix">
-										Tipo de cuenta<br>
-										<select class="form-control width145">
-											<option>Seleccione</option>
-											<option>Cuentas CLABE</option>
-											<option>Tarjeta de d&eacute;bito</option>
-											<option>Tarjeta de cr&eacute;dito</option>
-										</select>
-									</div>
-									<div class="clear-fix paddingT10">
-										Banco<br>
-										<select class="form-control width260">
-											<option>Seleccione un banco</option>
-										</select>
-									</div>
-									<div class="clear-fix paddingT10">
-										CLABE Interbancaria<br>
-										<input type="text" class="form-control width145">
-									</div>
-									<div class="clear-fix paddingT10">
-										N&uacute;mero de tarjeta<br>
-										<input type="text" class="form-control width145">
-									</div>
-									<div class="clear-fix paddingT10">
-										Alias de la cuenta<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										<div class="width50p pull-left">
-											Importe M&aacute;ximo<br>
-											<input type="text" class="form-control width125">
-										</div>
-										<div class="width50p pull-left">
-											Periodo de Importe M&aacute;ximo<br>
-											<select class="form-control width125">
-												<option>Mensual</option>
-											</select>
-										</div>
-									</div>
-									<div class="clear-fix paddingT10">
-										<strong>Tipo de persona</strong>
-										<div class="clear-fix">
-											<div class="width50p pull-left">
-												<label class="fontNormal"><input type="radio" name="tipoPer-2" > Persona F&iacute;sica</label>
-											</div>
-											<div class="width50p pull-left">
-												<label class="fontNormal"><input type="radio" name="tipoPer-2" > Persona Moral</label>
-											</div>
-										</div>
-										<div class="clear-fix paddingT10">
-											<div class="width33p pull-left">
-												Nombre
-												<input type="text" class="form-control width100">
-											</div>
-											<div class="width33p pull-left">
-												Apellido paterno
-												<input type="text" class="form-control width100">
-											</div>
-											<div class="width33p pull-left">
-												Apellido materno
-												<input type="text" class="form-control width100">
-											</div>
-										</div>
-										<div class="clear-fix paddingT10">
-											Razon Social
-											<input type="text" class="form-control width260">
-										</div>
-									</div>
-									<div class="clear-fix paddingT10">
-										RFC o CURP del beneficiario (opcional)<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										Correo electr&oacute;nico (opcional)<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										N&uacute;mero celular (opcional)<br>
-										(044/055) <input type="text" class="form-control inline width120"> *Telcel
-									</div>
-								</div>
-							</td>
-							<td class="width33p textL">
-								<div class="content">
-									<div class="clear-fix">
-										Tipo de cuenta<br>
-										<select class="form-control width145">
-											<option>Seleccione</option>
-											<option>Cuentas CLABE</option>
-											<option>Tarjeta de d&eacute;bito</option>
-											<option>Tarjeta de cr&eacute;dito</option>
-										</select>
-									</div>
-									<div class="clear-fix paddingT10">
-										Banco<br>
-										<select class="form-control width260">
-											<option>Seleccione un banco</option>
-										</select>
-									</div>
-									<div class="clear-fix paddingT10">
-										CLABE Interbancaria<br>
-										<input type="text" class="form-control width145">
-									</div>
-									<div class="clear-fix paddingT10">
-										N&uacute;mero de tarjeta<br>
-										<input type="text" class="form-control width145">
-									</div>
-									<div class="clear-fix paddingT10">
-										Alias de la cuenta<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										<div class="width50p pull-left">
-											Importe M&aacute;ximo<br>
-											<input type="text" class="form-control width125">
-										</div>
-										<div class="width50p pull-left">
-											Periodo de Importe M&aacute;ximo<br>
-											<select class="form-control width125">
-												<option>Mensual</option>
-											</select>
-										</div>
-									</div>
-									<div class="clear-fix paddingT10">
-										<strong>Tipo de persona</strong>
-										<div class="clear-fix">
-											<div class="width50p pull-left">
-												<label class="fontNormal"><input type="radio" name="tipoPer-3" > Persona F&iacute;sica</label>
-											</div>
-											<div class="width50p pull-left">
-												<label class="fontNormal"><input type="radio" name="tipoPer-3" > Persona Moral</label>
-											</div>
-										</div>
-										<div class="clear-fix paddingT10">
-											<div class="width33p pull-left">
-												Nombre
-												<input type="text" class="form-control width100">
-											</div>
-											<div class="width33p pull-left">
-												Apellido paterno
-												<input type="text" class="form-control width100">
-											</div>
-											<div class="width33p pull-left">
-												Apellido materno
-												<input type="text" class="form-control width100">
-											</div>
-										</div>
-										<div class="clear-fix paddingT10">
-											Razon Social
-											<input type="text" class="form-control width260">
-										</div>
-									</div>
-									<div class="clear-fix paddingT10">
-										RFC o CURP del beneficiario (opcional)<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										Correo electr&oacute;nico (opcional)<br>
-										<input type="text" class="form-control width260">
-									</div>
-									<div class="clear-fix paddingT10">
-										N&uacute;mero celular (opcional)<br>
-										(044/055) <input type="text" class="form-control inline width120"> *Telcel
-									</div>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
 
 		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
 		  <div class="contenido-total">
@@ -1790,77 +1528,6 @@
 			</div>
 		</div>
 
-		<div class="content-box">
-			<div class="contenido-total">
-				<p class="title">Cuentas Interbancarias</p>
-				<p class="instrucciones">
-					Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar" se le solicitar&aacute; dicha clave.
-				</p>
-				<p class="intrucciones"><strong>Nombre del grupo:</strong> Programadores V1.2 (norte)</p>
-				<table class="v-alignT">
-					<tbody>
-						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-							<td rowspan="2">
-								<div class="head">Num.</div>
-								<div class="content">
-									<strong>1</strong>
-								</div>
-							</td>
-							<td>
-								<div class="head">Cuenta retiro</div>
-								<div class="content">Cheques 1492/3857842 MXN $85,489.56</div>
-							</td>
-							<td>
-								<div class="head">Cuenta dep&oacute;sito</div>
-								<div class="content">Javier Martinez BBV 456789</div>
-							</td>
-							<td>
-								<div class="head">Importe</div>
-								<div class="content">1,000,000,000,000.00</div>
-							</td>
-							<td>
-								<div class="head">Fecha / Hora de aplicaci&oacute;n</div>
-								<div class="content">07/05/2014 (Mismo d&iacute;a)</div>
-							</td>
-							<td>
-								<div class="head">N&uacute;mero de referencia</div>
-								<div class="content">12345678909876</div>
-							</td>
-							<td>
-								<div class="head">Autorizaci&oacute;n remota</div>
-								<div class="content">No</div>
-							</td>
-						</tr>
-						<tr>
-							<td colspan="6">
-								<table class="width50p">
-									<tr>
-										<td>
-											<div class="content">
-												RFC: GOYT230456MX2
-											</div>
-										</td>
-										<td>
-											<div class="content">
-												Concepto de pago: Horas extras
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="content">
-												IVA: $16,000,000.00
-											</div>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-
 		<div class="content-box" ng-show="validatePayments(interbankPayments)">
 
 			<div class="contenido-total">
@@ -1921,51 +1588,77 @@
 			</div>
 		</div>
 
-		<div class="titulo-secundario">
-			<h2>Alta de cuentas</h2>
-		</div>
-		<p class="instrucciones">
-			Confirme los datos de alta para su aplicaci&oacute;n.
-		</p>
-		<div class="content-box">
+		<div class="content-box" ng-show="selectedGroup">
 			<div class="contenido-total">
-				<p class="title">Informaci&oacute;n de cuentas</p>
+				<p class="title">Cuentas Interbancarias</p>
+				<p class="instrucciones">
+					Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar" se le solicitar&aacute; dicha clave.
+				</p>
+        <p class="intrucciones"><strong>Nombre del grupo: </strong>{{selectedGroup.name}}</p>
 				<table class="v-alignT">
-					<thead>
-						<tr>
-							<td>Num.</td>
-							<td>Tipo</td>
-							<td>Cuenta</td>
-							<td>Banco</td>
-							<td>Importe m&aacute;ximo</td>
+					<tbody ng-repeat="payingAccount in groupItems.docs">
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<td rowspan="2">
+								<div class="head">Num.</div>
+								<div class="content">
+                  <strong>{{$index + 1}}</strong>
+								</div>
+							</td>
+							<td>
+								<div class="head">Cuenta retiro</div>
+                <div class="content">{{account = getAccountById(payingAccount.origin_type_i, payingAccount.origin_s); account.name + ' ' + account.currency_t + ' ' + (account.amount_d|currency)}}</div>
+							</td>
+							<td>
+								<div class="head">Cuenta dep&oacute;sito</div>
+                <div class="content">{{account = getInterbankAccountById(payingAccount.target_s); account.name + ' ' + account.bank_t + ' ' + account.account_t}}</div>
+							</td>
+							<td>
+								<div class="head">Importe</div>
+                <div class="content">{{payingAccount.amount_d | currency}}</div>
+							</td>
+							<td>
+								<div class="head">Fecha / Hora de aplicaci&oacute;n</div>
+                <div class="content">{{payingAccount.application_date_dt_s}} ({{payingAccount.application_date_s}})</div>
+							</td>
+							<td>
+								<div class="head">N&uacute;mero de referencia</div>
+                <div class="content">{{payingAccount.numeric_i}}</div>
+							</td>
+							<td>
+								<div class="head">Autorizaci&oacute;n remota</div>
+                <div class="content">{{payingAccount.remote_b ? 'Si' : 'No'}}</div>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
 						<tr>
-							<td>1</td>
-							<td>Tarjeta de cr&eacute;dito</td>
-							<td>1234567</td>
-							<td>HSBC</td>
-							<td>100,000.00</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td>2</td>
-							<td>Clabe interbancaria</td>
-							<td>1234567890</td>
-							<td>BBVA Bancomer</td>
-							<td>100,000.00</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>Tarjeta de cr&eacute;dito</td>
-							<td>1234567890123456</td>
-							<td>Banorte</td>
-							<td>100,000.00</td>
+							<td colspan="6">
+								<table class="width50p">
+									<tr>
+										<td>
+											<div class="content">
+                        RFC: {{payingAccount.rfc_s}}
+											</div>
+										</td>
+										<td>
+											<div class="content">
+                        Concepto de pago: {{payingAccount.concept_s}}
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div class="content">
+                        IVA: {{payingAccount.iva_d | currency}}
+											</div>
+										</td>
+									</tr>
+								</table>
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
+
 
 		<div class="content-box" ng-show="validatePayments(orderpayingAccounts)">
 
