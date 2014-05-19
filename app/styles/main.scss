@@ -93,6 +93,11 @@ input[type="email"]:disabled,
 input[type="tel"]:disabled{
 	background: #e5e5e5;
 }
+
+.gray-input {
+	background: #e5e5e5!important;
+}
+
 input[type="checkbox"]{
 	margin: 0 3px!important;
 }
@@ -484,7 +489,7 @@ header{
 			display: inline-block;
 			position: relative;
 			top: -5px;
-			
+
 			border-bottom: none;
 			padding: 9px 6px 6px 6px;
 			@include border_top_radius(5px);
@@ -538,7 +543,7 @@ header{
 					opacity: 0;
 				}
 			}
-			
+
 		}
 		a.salir:hover{
 			background: #cc0000;
@@ -625,7 +630,7 @@ header{
 		font-size: 20px;
 		color: #09347a;
 		margin: 0 0 25px 0;
-		padding: 0 0 0 20px;	
+		padding: 0 0 0 20px;
 		cursor: default;
 		@include anim_transicion_linear(0.3s);
 	}
@@ -645,7 +650,7 @@ header{
 	h2{
 		font-weight: bold;
 		color: #333333;
-		font-size: 14px;	
+		font-size: 14px;
 		margin: 0 0 10px 0;
 	}
 }
@@ -663,7 +668,7 @@ p.instrucciones{
 		overflow: hidden;
 		margin: 0;
 		border: none;
-		margin-top: -1px; 
+		margin-top: -1px;
 		@include border_radius(0px);
 
 		.panel-heading{
@@ -752,7 +757,7 @@ p.instrucciones{
 							border: none;
 						}
 						tr{
-							
+
 							td{
 								text-align: center;
 								font-size: 11px;
@@ -874,7 +879,7 @@ p.instrucciones{
 									table.tabla-interna{
 										width: 100%;
 										background: #f3f3f3;
-										
+
 										td{
 											border-right:none!important;
 											border-bottom: 1px solid #b7b7b7;
@@ -1045,7 +1050,7 @@ p.instrucciones{
 .area-botones{
 	clear: both;
 	overflow: hidden;
-	margin: 10px 0;	
+	margin: 10px 0;
 }
 
 .que-hacer{
