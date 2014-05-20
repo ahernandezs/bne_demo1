@@ -71,9 +71,10 @@ a{
 		@include anim_transicion_linear(0.3s);
 	}
 }
+input[type="checkbox"],
 input[type="radio"]{
-	margin-left: 1px;
-	margin-right: 5px;
+	margin-left: 1px!important;
+	margin-right: 5px!important;
 }
 select,
 input[type="text"],
