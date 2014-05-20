@@ -563,44 +563,38 @@
 								<table class="table">
 									<tbody>
 										<tr>
-											<td class="width33p textL">
+											<td class="width33p textL" ng-repeat="account in newAccounts">
 												<div class="content">
 													<div class="clear-fix">
 														Tipo de cuenta<br>
-														<select class="form-control width145">
-															<option>Seleccione</option>
-															<option>Cuentas CLABE</option>
-															<option>Tarjeta de d&eacute;bito</option>
-															<option>Tarjeta de cr&eacute;dito</option>
+														<select class="form-control width145" ng-options="type.name for type in accountTypes" ng-model="account.accountType">
+															<option value="">Seleccione</option>
 														</select>
 													</div>
 													<div class="clear-fix paddingT10">
 														Banco<br>
-														<select class="form-control width260">
-															<option>Seleccione un banco</option>
+														<select class="form-control width260" ng-options="bank.name for bank in banks" ng-model="account.bank">
+															<option value="">Seleccione un banco</option>
 														</select>
 													</div>
 													<div class="clear-fix paddingT10">
-														CLABE Interbancaria<br>
-														<input type="text" class="form-control width145">
-													</div>
-													<div class="clear-fix paddingT10">
-														N&uacute;mero de tarjeta<br>
-														<input type="text" class="form-control width145">
+                            <span>{{ (account.accountType.id === 1) ? 'CLABE Interbancaria' : 'Número de tarjeta'}}</span>
+                            <br>
+														<input type="text" class="form-control width145" maxlength="20" ng-model="account.accountNumber">
 													</div>
 													<div class="clear-fix paddingT10">
 														Alias de la cuenta<br>
-														<input type="text" class="form-control width260">
+														<input type="text" class="form-control width260" maxlength="20" ng-model="account.alias">
 													</div>
 													<div class="clear-fix paddingT10">
 														<div class="width50p pull-left">
 															Importe M&aacute;ximo<br>
-															<input type="text" class="form-control inline width125">
+															<input type="text" class="form-control inline width125" ng-model="account.maxAmount">
 															<img src="images/ico-preg.png">
 														</div>
 														<div class="width50p pull-left">
 															Periodo de Importe M&aacute;ximo<br>
-															<select class="form-control inline width125">
+															<select class="form-control inline width125" ng-model="account.recurrent">
 																<option>Mensual</option>
 															</select>
 															<img src="images/ico-preg.png">
@@ -610,42 +604,42 @@
 														<strong>Tipo de persona</strong>
 														<div class="clear-fix">
 															<div class="width50p pull-left">
-																<label class="fontNormal"><input type="radio" name="tipoPer-1" > Persona F&iacute;sica</label>
+                                <label class="fontNormal"><input type="radio" name="tipoPer-{{$index}}" value="1" ng-model="account.personType"> Persona F&iacute;sica</label>
 															</div>
 															<div class="width50p pull-left">
-																<label class="fontNormal"><input type="radio" name="tipoPer-1" > Persona Moral</label>
+                                <label class="fontNormal"><input type="radio" name="tipoPer-{{$index}}" value="2" ng-model="account.personType"> Persona Moral</label>
 															</div>
 														</div>
-														<div class="clear-fix paddingT10">
+														<div class="clear-fix paddingT10" ng-show="account.personType === '1'">
 															<div class="width33p pull-left">
 																Nombre
-																<input type="text" class="form-control width100">
+																<input type="text" class="form-control width100" ng-model="account.name">
 															</div>
 															<div class="width33p pull-left">
 																Apellido paterno
-																<input type="text" class="form-control width100">
+																<input type="text" class="form-control width100" ng-model="account.lastName">
 															</div>
 															<div class="width33p pull-left">
 																Apellido materno
-																<input type="text" class="form-control width100">
+																<input type="text" class="form-control width100" ng-model="account.secondLastName">
 															</div>
 														</div>
-														<div class="clear-fix paddingT10">
+														<div class="clear-fix paddingT10" ng-show="account.personType === '2'">
 															Razon Social
-															<input type="text" class="form-control width260">
+															<input type="text" class="form-control width260" ng-model="account.companyName">
 														</div>
 													</div>
 													<div class="clear-fix paddingT10">
 														RFC o CURP del beneficiario (opcional)<br>
-														<input type="text" class="form-control width260">
+														<input type="text" class="form-control width260" ng-model="account.rfc">
 													</div>
 													<div class="clear-fix paddingT10">
 														Correo electr&oacute;nico (opcional)<br>
-														<input type="text" class="form-control width260">
+														<input type="text" class="form-control width260" ng-model="account.email">
 													</div>
 													<div class="clear-fix paddingT10">
 														N&uacute;mero celular (opcional)<br>
-														(044/055) <input type="text" class="form-control inline width120"> *Telcel
+														(044/055) <input type="text" class="form-control inline width120" ng-model="account.cellphone"> *Telcel
 													</div>
 
 													<div class="clear-fix paddingT10">
@@ -844,7 +838,7 @@
 									</tbody>
 								</table>
 								<div class="clear-fix paddingT10">
-									<button type="button" class="btn btn-primary pull-right">Continuar</button>
+									<button type="button" class="btn btn-primary pull-right" ng-click="showAccounts = false; confirmation = true">Continuar</button>
 								</div>
 							</div>
 						</div>
@@ -978,7 +972,7 @@
 			</div>
 		</div>
 
-		<div class="area-botones">
+		<div class="area-botones" ng-show="!addInterbank">
 	  <button ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
@@ -1356,6 +1350,7 @@
 				</a>
 			</p>
 		</div>
+    <div ng-hide="addInterbank">
 		<div class="titulo-secundario">
 			<h2>Plantilla de Pagos</h2>
 		</div>
@@ -1658,9 +1653,45 @@
 				</table>
 			</div>
 		</div>
+  </div>
+
+    <div ng-show="addInterbank">
+      <div class="titulo-secundario">
+        <h2>Alta de cuentas</h2>
+      </div>
+      <p class="instrucciones">
+        Confirme los datos de alta para su aplicaci&oacute;n.
+      </p>
+      <div class="content-box">
+        <div class="contenido-total">
+          <p class="title">Informaci&oacute;n de cuentas</p>
+          <table class="v-alignT">
+            <thead>
+              <tr>
+                <td>Num.</td>
+                <td>Tipo</td>
+                <td>Cuenta</td>
+                <td>Banco</td>
+                <td>Importe m&aacute;ximo</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-repeat="account in newAccounts | filter:validateInterbankAccount">
+                <td>{{$index + 1}}</td>
+                <td>{{account.accountType.name}}</td>
+                <td>{{account.accountNumber}}</td>
+                <td>{{account.bank.name}}</td>
+                <td>{{account.maxAmount | currency}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
 
 		<div class="area-botones">
-			<button ng-click="preConfirmation = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-show="addInterbank" ng-click="showAccounts = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-show="!addInterbank" ng-click="preConfirmation = true; confirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="challenge = true" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		</div>
 	</div>
@@ -1685,6 +1716,7 @@
 			<h2>Plantilla de Pagos</h2>
 		</div>
 
+    <div ng-hide="addInterbank">
 		<div class="alert-succes">
 			<p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
 		</div>
@@ -1873,6 +1905,62 @@
 				</table>
 			</div>
 		</div>
+  </div>
+
+  <div ng-show="addInterbank">
+    <div class="alert-succes">
+        <p>Su alta ha sido <span>aplicada</span> con los números de autorización correspondientes.</p>
+      </div>
+
+      <div class="content-box">
+        <p class="title pull-left">Autorizadores</p>
+        <div class="contenido pull-right">
+
+          <table>
+            <tbody>
+              <tr class="bgf0f4f9">
+                <td><strong>Usuario 79</strong></td>
+                <td>BEST BANKING DOS</td>
+              </tr>
+              <tr>
+                <td><strong>Usuario 97</strong></td>
+                <td>BEST BANKING</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="content-box">
+        <div class="contenido-total">
+          <p class="title">Inofrmaci&oacute;n de cuentas</p>
+          <table>
+            <tbody>
+              <tr ng-class="{bgf0f4f9: $index % 2 == 0}" ng-repeat="payingAccount in newAccounts | filter:validateInterbankAccount">
+                <td>{{$index + 1}}</td>
+                <td>{{payingAccount.accountType.name}}</td>
+                <td>{{payingAccount.accountNumber}}</td>
+                <td>{{payingAccount.bank.name}}</td>
+                <td>{{payingAccount.maxAmount | currency}}</td>
+                <td>Aplicada</td>
+                <td>001005</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <td>Num.</td>
+                <td>Tipo</td>
+                <td>Cuenta</td>
+                <td>Banco</td>
+                <td>Importe máximo</td>
+                <td>Estatus</td>
+                <td>Autorizaci&oacute;n</td>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
 
 		<div class="area-botones">
 			<button ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right">Aceptar</button>

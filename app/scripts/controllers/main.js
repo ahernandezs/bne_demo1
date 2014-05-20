@@ -92,6 +92,20 @@ angular.module('bnePaymentsOldFashionedApp')
       {name: '59'}
     ];
 
+    $scope.accountTypes = [
+      {id: 1, name: 'Clabe interbancaria'},
+      {id: 2, name: 'Tarjeta de débito'},
+      {id: 3, name: 'Tarjeta de crédito'}
+    ];
+
+    $scope.banks = [
+      {id: 1, name: 'BBVA Bancomer'},
+      {id: 2, name: 'HSBC'},
+      {id: 3, name: 'Banorte'},
+      {id: 4, name: 'Scotia Bank'},
+      {id: 5, name: 'Santander'}
+    ];
+
     $scope.base_url = "http://projects.anzen.com.mx:4567/api";
 		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
@@ -243,6 +257,16 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addOrderPayment();
     };
 
+    $scope.addAccounts = function () {
+      for(var i = 0; i < 3; i++) {
+        var account = {
+          personType: "1"
+        }
+
+        $scope.newAccounts.push(account);
+      }
+    };
+
     // setup
 
     $scope.setup = function () {
@@ -264,6 +288,10 @@ angular.module('bnePaymentsOldFashionedApp')
 
       $scope.groupsInterbank = false;
       $scope.selectedGroup = undefined;
+
+      $scope.newAccounts = [];
+      $scope.addAccounts();
+      $scope.addInterbank = false;
     };
 
     $scope.setup();
@@ -402,6 +430,13 @@ angular.module('bnePaymentsOldFashionedApp')
 
       return success;
     };
+
+    $scope.validateInterbankAccount = function (account) {
+      if(account.accountType && account.accountNumber && account.bank)
+        return true;
+      return false;
+    };
+
     $scope.acceptApplied = function () {
       $scope.applied = false;
       $scope.showAccounts = true;
