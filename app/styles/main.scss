@@ -71,6 +71,10 @@ a{
 		@include anim_transicion_linear(0.3s);
 	}
 }
+input[type="radio"]{
+	margin-left: 1px;
+	margin-right: 5px;
+}
 select,
 input[type="text"],
 input[type="password"],
@@ -84,6 +88,7 @@ input[type="tel"]{
 	height: 25px;
 	padding: 0 5px;
 	margin: 3px!important;
+	margin-left:0!important;
 	font-weight:normal!important;
 }
 select:disabled,
@@ -261,6 +266,9 @@ input.num{
 }
 .paddingL3{
 	padding-left:3px!important;
+}
+.paddingL5{
+	padding-left:5px!important;
 }
 .paddingL10{
 	padding-left:10px!important;

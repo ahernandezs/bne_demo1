@@ -279,11 +279,11 @@
 													<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 												</div>
 												<div class="content">
-													<form class="form-inline">
+													<form class="form-inline span175">
 														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
-													<form class="form-inline">
+													<form class="form-inline span175">
 														<strong>Hora&nbsp;&nbsp;</strong>
 														<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
 															<option value="">hh</option>
@@ -305,10 +305,10 @@
 												<div class="content pull-left">
 													<label class="span175">
 														<input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal<br>
-														<form class="form-inline">
+														<form class="form-inline paddingL5">
 															<strong>RFC</strong> <input ng-class="{'gray-input' : !payingAccount.editRfc}" class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
 														</form>
-														<form class="form-inline">
+														<form class="form-inline paddingL5">
 															<strong>IVA&nbsp;&nbsp;</strong> <input ng-class="{'gray-input' : !payingAccount.editIva}" class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
 														</form>
 													</label>
@@ -433,14 +433,14 @@
 											</td>
 											<td>
 												<div class="head">
-													<span class="span160">Fecha de operaci&oacute;n</span>
+													<span class="span175">Fecha de operaci&oacute;n</span>
 												</div>
 												<div class="content">
-													<form class="form-inline">
+													<form class="form-inline span175">
 														Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
 														<span class="ico-calendar"></span>
 													</form>
-													<span class="span160">
+													<span class="span175">
 														<strong>Fecha de aplicaci&oacute;n</strong>
 														<form class="form-inline">
 															<select>
@@ -459,10 +459,10 @@
 												<div class="content pull-left">
 													<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal">
 														Comprobante Fiscal<br>
-														<form class="form-inline">
+														<form class="form-inline paddingL5">
 															<strong>RFC</strong> <input ng-class="{'gray-input' : !payingAccount.editRfc}" class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
 														</form>
-														<form class="form-inline">
+														<form class="form-inline paddingL5">
 															<strong>IVA&nbsp;&nbsp;</strong> <input ng-class="{'gray-input' : !payingAccount.editIva}" class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
 														</form>
 													</label>
@@ -509,8 +509,8 @@
                         <td class="textL"><strong>Fecha de creaci&oacute;n</strong></td>
                       </tr>
                     </thead>
-                    <tbody ng-repeat="group in groups.docs">
-                      <tr ng-class-odd="bgf0f4f9" ng-class-even="">
+                    <tbody>
+                      <tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-repeat="group in groups.docs">
                         <td>
                           <div class="content">
                             <input type="radio" name="grupo-ben-interbancarias" ng-click="$parent.selectedGroup = group; changeGroup()">
@@ -647,6 +647,13 @@
 														N&uacute;mero celular (opcional)<br>
 														(044/055) <input type="text" class="form-control inline width120"> *Telcel
 													</div>
+
+													<div class="clear-fix paddingT10">
+														<label><input type="checkbox" > Agregar beneficiario a un grupo</label><br>
+														<select class="form-control width260">
+															<option>Seleccione uno</option>
+														</select>
+													</div>
 												</div>
 											</td>
 											<td class="width33p textL">
@@ -733,6 +740,12 @@
 														N&uacute;mero celular (opcional)<br>
 														(044/055) <input type="text" class="form-control inline width120"> *Telcel
 													</div>
+													<div class="clear-fix paddingT10">
+														<label><input type="checkbox" > Agregar beneficiario a un grupo</label><br>
+														<select class="form-control width260">
+															<option>Seleccione uno</option>
+														</select>
+													</div>
 												</div>
 											</td>
 											<td class="width33p textL">
@@ -818,6 +831,12 @@
 													<div class="clear-fix paddingT10">
 														N&uacute;mero celular (opcional)<br>
 														(044/055) <input type="text" class="form-control inline width120"> *Telcel
+													</div>
+													<div class="clear-fix paddingT10">
+														<label><input type="checkbox" > Agregar beneficiario a un grupo</label><br>
+														<select class="form-control width260">
+															<option>Seleccione uno</option>
+														</select>
 													</div>
 												</div>
 											</td>
@@ -1006,7 +1025,7 @@
 						</tr>
 						<tr class="bgf4f4f4">
 							<td colspan="4">
-								<table>
+								<table class="width49-5p">
 									<tr>
 										<td class="paddingTB10">Autorización remota:</td>
 										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.remote"> {{payingAccount.remote ? 'Si' : 'No'}}</label></td>
@@ -1060,11 +1079,11 @@
 										<td class="paddingTB10">Cuenta concentradora:</td>
 										<td class="paddingTB10"><label><input type="checkbox" ng-model="payingAccount.concentradora"> {{payingAccount.concentradora ? 'Si' : 'No'}}</label></td>
 									</tr>
-                  <tr>
+                  					<tr>
 										<td>Referencia alfanum&eacute;rica: </td>
 										<td><input type="text" value="{{payingAccount.alpha}}" ng-model="payingAccount.alpha" maxlength="20"></td>
 									</tr>
-                  <tr>
+                  					<tr>
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
@@ -1078,7 +1097,7 @@
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td><input type="text" value="{{getAppliedDate(payingAccount)}}"></td>
 									</tr>
-                  <tr>
+                  					<tr>
 										<td>RFC:</td>
 										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
@@ -1128,7 +1147,7 @@
 						<tr class="bgf4f4f4">
 							<td colspan="5">
 								<table class="width49-5p pull-left">
-                  <tr>
+                  					<tr>
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
 									</tr>
@@ -1142,11 +1161,11 @@
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td><input type="text" value="{{getAppliedDate(payingAccount)}}"></td>
 									</tr>
-                  <tr>
+                  					<tr>
 										<td>RFC:</td>
 										<td><input type="text" value="{{payingAccount.rfc}}" ng-model="payingAccount.rfc" maxlength="13" ></td>
 									</tr>
-                  <tr>
+                  					<tr>
 										<td>IVA: </td>
 										<td>$ <input type="text" class="textR" value="{{payingAccount.iva | currency}}" ng-model="payingAccount.iva" maxlength="10" numbers-only="numbers-only"></td>
 									</tr>
@@ -1217,14 +1236,14 @@
 							</td>
 							<td>
 								<div class="head">
-									<span class="span160">Fecha de operaci&oacute;n</span>
+									<span class="span175">Fecha de operaci&oacute;n</span>
 								</div>
 								<div class="content">
-									<form class="form-inline">
+									<form class="form-inline span175">
 										Fecha <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt_s" ng-change="payingAccount.programming = true" maxlength="10">
 										<span class="ico-calendar"></span>
 									</form>
-									<span class="span160">
+									<span class="span175">
 										<strong>Fecha de aplicaci&oacute;n</strong>
 										<form class="form-inline">
 											<select ng-model="payingAccount.application_date_s">
@@ -1243,10 +1262,10 @@
 							<td colspan="3">
 								<div class="content pull-left">
 									<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal_b"> Comprobante Fiscal</label>
-									<form class="form-inline">
+									<form class="form-inline paddingL5">
 										<strong>RFC</strong> <input class="form-control" type="text" value="" ng-model="payingAccount.rfc_s" maxlength="13" ng-change="payingAccount.fiscal_b = true">
 									</form>
-									<form class="form-inline">
+									<form class="form-inline paddingL5">
 										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.iva_d" ng-change="payingAccount.fiscal_b = true" numbers-only="numbers-only">
 									</form>
 								</div>
@@ -1514,39 +1533,39 @@
 				<p class="instrucciones">
 					Para las siguientes operaciones es necesario ingresar clave din&aacute;mica, al hacer clic en el bot&oacute;n "Aceptar" se le solicitar&aacute; dicha clave.
 				</p>
-        <p class="intrucciones"><strong>Nombre del grupo: </strong>{{selectedGroup.name}}</p>
+        		<p class="intrucciones"><strong>Nombre del grupo: </strong>{{selectedGroup.name}}</p>
 				<table class="v-alignT">
 					<tbody ng-repeat="payingAccount in groupItems.docs">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td rowspan="2">
 								<div class="head">Num.</div>
 								<div class="content">
-                  <strong>{{$index + 1}}</strong>
+                  					<strong>{{$index + 1}}</strong>
 								</div>
 							</td>
 							<td>
 								<div class="head">Cuenta retiro</div>
-                <div class="content">{{account = getAccountById(payingAccount.origin_type_i, payingAccount.origin_s); account.name + ' ' + account.currency_t + ' ' + (account.amount_d|currency)}}</div>
+                				<div class="content">{{account = getAccountById(payingAccount.origin_type_i, payingAccount.origin_s); account.name + ' ' + account.currency_t + ' ' + (account.amount_d|currency)}}</div>
 							</td>
 							<td>
 								<div class="head">Cuenta dep&oacute;sito</div>
-                <div class="content">{{account = getInterbankAccountById(payingAccount.target_s); account.name + ' ' + account.bank_t + ' ' + account.account_t}}</div>
+                				<div class="content">{{account = getInterbankAccountById(payingAccount.target_s); account.name + ' ' + account.bank_t + ' ' + account.account_t}}</div>
 							</td>
 							<td>
 								<div class="head">Importe</div>
-                <div class="content">{{payingAccount.amount_d | currency}}</div>
+                				<div class="content">{{payingAccount.amount_d | currency}}</div>
 							</td>
 							<td>
 								<div class="head">Fecha / Hora de aplicaci&oacute;n</div>
-                <div class="content">{{payingAccount.application_date_dt_s}} ({{payingAccount.application_date_s}})</div>
+                				<div class="content">{{payingAccount.application_date_dt_s}} ({{payingAccount.application_date_s}})</div>
 							</td>
 							<td>
 								<div class="head">N&uacute;mero de referencia</div>
-                <div class="content">{{payingAccount.numeric_i}}</div>
+                				<div class="content">{{payingAccount.numeric_i}}</div>
 							</td>
 							<td>
 								<div class="head">Autorizaci&oacute;n remota</div>
-                <div class="content">{{payingAccount.remote_b ? 'Si' : 'No'}}</div>
+                				<div class="content">{{payingAccount.remote_b ? 'Si' : 'No'}}</div>
 							</td>
 						</tr>
 						<tr>
@@ -1555,12 +1574,12 @@
 									<tr>
 										<td>
 											<div class="content">
-                        RFC: {{payingAccount.rfc_s}}
+                        						RFC: {{payingAccount.rfc_s}}
 											</div>
 										</td>
 										<td>
 											<div class="content">
-                        Concepto de pago: {{payingAccount.concept_s}}
+                        						Concepto de pago: {{payingAccount.concept_s}}
 											</div>
 										</td>
 									</tr>
