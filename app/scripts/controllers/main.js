@@ -289,6 +289,8 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.groupsInterbank = false;
       $scope.selectedGroup = undefined;
 
+      $scope.dynamicPassword = "";
+
       $scope.newAccounts = [];
       $scope.addAccounts();
       $scope.addInterbank = false;

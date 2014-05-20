@@ -27,7 +27,7 @@
 				Presione ENT. Su NetKey generar&aacute; una clave din&aacute;mica que deber&aacute; digitar en el siguiente campo
 				<br><br>
 				Clave din&aacute;mica<br>
-				<input type="text" class="form-control" maxlength="8">
+        <input type="password" class="form-control" maxlength="8" ng-model="dynamicPassword">
 			</div>
 		</div>
 		<div class="area-botones">
@@ -969,7 +969,7 @@
 									</tbody>
 								</table>
 								<div class="clear-fix paddingT10">
-									<button type="button" class="btn btn-primary pull-right" ng-click="showAccounts = false; confirmation = true">Continuar</button>
+									<button type="button" class="btn btn-primary pull-right">Continuar</button>
 								</div>
 							</div>
 						</div>
@@ -1103,8 +1103,9 @@
 			</div>
 		</div>
 
-		<div class="area-botones" ng-show="!addInterbank">
-	  <button ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
+		<div class="area-botones" >
+	  <button ng-show="addInterbank" ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right">Continuar</button>
+	  <button ng-hide="addInterbank" ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
 
