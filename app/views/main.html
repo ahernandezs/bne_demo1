@@ -314,7 +314,7 @@
 													</label>
 
 												</div>
-												<div class="content pull-left textL paddingL125">
+												<div class="content pull-left textL paddingL143">
 													<label class="paddingL10">
 														<input type="checkbox" ng-model="payingAccount.concentradora"/> Cuenta concentradora
 													</label>
@@ -468,7 +468,7 @@
 													</label>
 
 												</div>
-												<div class="content pull-left textL paddingL125">
+												<div class="content pull-left textL paddingL143">
 													<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references"/> Referencias</label>
 													<form class="form-inline paddingL3">
 														<label class="paddingL10">
@@ -560,7 +560,6 @@
 						<strong>&Uacute;ltimo importe pagado:</strong> {{selectedGroup.total_d | currency}}<br>
 						<strong>N&uacute;mero de integrantes: </strong> {{selectedGroup.items_i}}
                 	</div>
-                  
                 </p>
                 <div>
                   <table class="table">
@@ -623,7 +622,7 @@
                           <div class="head"><span class="span140">Importe MXN</span></div>
                           <div class="content">
                             <form class="form-inline span140">
-                              $ <input ng-class="{'gray-input' : !payingAccount.editAmount}" class="form-control width120" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount); payingAccount.editAmount = true" maxlength="16" numbers-only="numbers-only" >
+                              <span class="paddingR3">$</span> <input ng-class="{'gray-input' : !payingAccount.editAmount}" class="form-control width120" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount); payingAccount.editAmount = true" maxlength="16" numbers-only="numbers-only" >
                             </form>
                           </div>
                         </td>
@@ -633,11 +632,11 @@
                           </div>
                           <div class="content">
                             <form class="form-inline">
-                              Fecha <input ng-class="{'gray-input' : !payingAccount.editDate}" class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt_s" ng-change="payingAccount.programming = true; payingAccount.editDate = true" maxlength="10">
+                              <span class="paddingR3">Fecha</span> <input ng-class="{'gray-input' : !payingAccount.editDate}" class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt_s" ng-change="payingAccount.programming = true; payingAccount.editDate = true" maxlength="10">
                               <span class="ico-calendar"></span>
                             </form>
                             <span class="span160">
-                              <strong>Fecha de aplicaci&oacute;n</strong>
+                              <strong >Fecha de aplicaci&oacute;n</strong>
                               <form class="form-inline">
                                 <select ng-model="payingAccount.application_date_s">
                                   <option>Mismo d&iacute;a</option>
@@ -665,7 +664,7 @@
                             </label>
 
                           </div>
-                          <div class="content pull-left textL paddingL125">
+                          <div class="content pull-left textL paddingL143">
                             <label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references_b"/> Referencias</label>
                             <form class="form-inline">
                               <label class="paddingL10">
@@ -696,9 +695,12 @@
 							<div>
 								<table class="table">
 									<tbody>
-										<tr>
-											<td class="width33p textL" ng-repeat="account in newAccounts">
-												<div class="content">
+										<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+											<td colspan="3"><div class="textL paddingL5"><strong>Beneficiario 1</strong></div></td>
+										</tr>
+										<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+											<td>
+												<div class="content textL">
 													<div class="clear-fix">
 														Tipo de cuenta<br>
 														<select class="form-control width145" ng-options="type.name for type in accountTypes" ng-model="account.accountType">
@@ -711,14 +713,49 @@
 															<option value="">Seleccione un banco</option>
 														</select>
 													</div>
-													<div class="clear-fix paddingT10">
-                            							<span>{{ (account.accountType.id === 1) ? 'CLABE Interbancaria' : 'Número de tarjeta'}}</span>
-                            							<br>
-														<input type="text" class="form-control width145" maxlength="20" ng-model="account.accountNumber">
+													<div class="clear-fix">
+														<div class="pull-left width50p paddingT10">
+	                            							<span>{{ (account.accountType.id === 1) ? 'CLABE Interbancaria' : 'Número de tarjeta'}}</span>
+	                            							<br>
+															<input type="text" class="form-control width145" maxlength="20" ng-model="account.accountNumber">
+														</div>
+														<div class="pull-left width50p paddingT10">
+															Alias de la cuenta<br>
+															<input type="text" class="form-control width145" maxlength="20" ng-model="account.alias">
+														</div>
+													</div>
+												</div>
+											</td>
+											<td>
+												<div class="content textL">
+													<div class="clear-fix paddingT10" ng-show="account.personType === '1'">
+														<div class="width33p pull-left">
+															Nombre
+															<input type="text" class="form-control width100" ng-model="account.name">
+														</div>
+														<div class="width33p pull-left">
+															Apellido paterno
+															<input type="text" class="form-control width100" ng-model="account.lastName">
+														</div>
+														<div class="width33p pull-left">
+															Apellido materno
+															<input type="text" class="form-control width100" ng-model="account.secondLastName">
+														</div>
+													</div>
+													<div class="clear-fix paddingT10" ng-show="account.personType === '2'">
+														Razon Social
+														<input type="text" class="form-control width260" ng-model="account.companyName">
 													</div>
 													<div class="clear-fix paddingT10">
-														Alias de la cuenta<br>
-														<input type="text" class="form-control width260" maxlength="20" ng-model="account.alias">
+														<strong>Tipo de persona</strong>
+														<div class="clear-fix">
+															<div class="width50p pull-left">
+                                								<label class="fontNormal"><input type="radio" name="tipoPer-{{$index}}" value="1" ng-model="account.personType"> Persona F&iacute;sica</label>
+															</div>
+															<div class="width50p pull-left">
+                                								<label class="fontNormal"><input type="radio" name="tipoPer-{{$index}}" value="2" ng-model="account.personType"> Persona Moral</label>
+															</div>
+														</div>
 													</div>
 													<div class="clear-fix paddingT10">
 														<div class="width50p pull-left">
@@ -734,35 +771,10 @@
 															<img src="images/ico-preg.png">
 														</div>
 													</div>
-													<div class="clear-fix paddingT10">
-														<strong>Tipo de persona</strong>
-														<div class="clear-fix">
-															<div class="width50p pull-left">
-                                								<label class="fontNormal"><input type="radio" name="tipoPer-{{$index}}" value="1" ng-model="account.personType"> Persona F&iacute;sica</label>
-															</div>
-															<div class="width50p pull-left">
-                                								<label class="fontNormal"><input type="radio" name="tipoPer-{{$index}}" value="2" ng-model="account.personType"> Persona Moral</label>
-															</div>
-														</div>
-														<div class="clear-fix paddingT10" ng-show="account.personType === '1'">
-															<div class="width33p pull-left">
-																Nombre
-																<input type="text" class="form-control width100" ng-model="account.name">
-															</div>
-															<div class="width33p pull-left">
-																Apellido paterno
-																<input type="text" class="form-control width100" ng-model="account.lastName">
-															</div>
-															<div class="width33p pull-left">
-																Apellido materno
-																<input type="text" class="form-control width100" ng-model="account.secondLastName">
-															</div>
-														</div>
-														<div class="clear-fix paddingT10" ng-show="account.personType === '2'">
-															Razon Social
-															<input type="text" class="form-control width260" ng-model="account.companyName">
-														</div>
-													</div>
+												</div>
+											</td>
+											<td>
+												<div class="content textL">
 													<div class="clear-fix paddingT10">
 														RFC o CURP del beneficiario (opcional)<br>
 														<input type="text" class="form-control width260" ng-model="account.rfc">
@@ -776,19 +788,19 @@
 														(044/055) <input type="text" class="form-control inline width120" ng-model="account.cellphone"> *Telcel
 													</div>
 
-													<div class="clear-fix paddingT10">
+													<!-- <div class="clear-fix paddingT10">
 														<label><input type="checkbox" > Agregar beneficiario a un grupo</label><br>
 														<select class="form-control width260">
 															<option>Seleccione uno</option>
 														</select>
-													</div>
+													</div> -->
 												</div>
 											</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class="clear-fix paddingT10">
-									<button type="button" class="btn btn-primary pull-right">Continuar</button>
+									<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
 								</div>
 							</div>
 						</div>
@@ -970,7 +982,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="4">
-								<table class="width40p">
+								<table class="width30p">
 									<tr>
 										<td class="paddingTB6">Autorización remota:</td>
 										<td class="paddingTB6"><label><input type="checkbox" ng-model="payingAccount.remote"><!--  {{payingAccount.remote ? 'Si' : 'No'}} --></label></td>
@@ -1019,7 +1031,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="5">
-								<table class="width40p pull-left">
+								<table class="width30p pull-left">
 									<tr>
 										<td class="paddingTB6">Cuenta concentradora:</td>
 										<td class="paddingTB6"><label><input type="checkbox" ng-model="payingAccount.concentradora"><!--  {{payingAccount.concentradora ? 'Si' : 'No'}} --></label></td>
@@ -1037,7 +1049,7 @@
 										<td class="paddingTB6"><label><input type="checkbox" ng-model="payingAccount.remote"><!--  {{payingAccount.remote ? 'Si' : 'No'}} --></label></td>
 									</tr>
 								</table>
-								<table class="width40p pull-right">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td><input type="text" value="{{getAppliedDate(payingAccount)}}"></td>
@@ -1091,7 +1103,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="5">
-								<table class="width40p pull-left">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Concepto del pago:</td>
 										<td><input type="text" value="{{payingAccount.concept}}" ng-model="payingAccount.concept" maxlength="20"></td>
@@ -1101,7 +1113,7 @@
 										<td class="paddingTB6"><label><input type="checkbox" ng-model="payingAccount.remote"></label></td>
 									</tr>
 								</table>
-								<table class="width40p pull-right">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td><input type="text" value="{{getAppliedDate(payingAccount)}}"></td>
@@ -1214,7 +1226,7 @@
 										<strong>IVA&nbsp;&nbsp;</strong> <input class="form-control" maxlength="10" type="text" value="" ng-model="payingAccount.iva_d" ng-change="payingAccount.fiscal_b = true" numbers-only="numbers-only">
 									</form>
 								</div>
-								<div class="content pull-left textL paddingL125">
+								<div class="content pull-left textL paddingL143">
 									<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references_b"/> Referencias</label>
 									<form class="form-inline">
 										<label class="paddingL10">
@@ -1258,7 +1270,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="5">
-								<table class="width40p">
+								<table class="width30p">
 									<tr>
 										<td class="paddingTB6">Autorización remota:</td>
 										<td class="paddingTB6"><label><input type="checkbox" ng-model="payingAccount.remote"> <!-- {{payingAccount.remote ? 'Si' : 'No'}} --></label></td>
@@ -1324,7 +1336,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="4">
-								<table class="width40p">
+								<table class="width30p">
 									<tr>
 										<td>Autorización remota:</td>
 										<td>{{payingAccount.remote ? 'Si' : 'No'}}</td>
@@ -1365,7 +1377,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="5">
-								<table class="width40p pull-left">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Cuenta concentradora:</td>
 										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
@@ -1383,7 +1395,7 @@
 										<td>{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
-								<table class="width40p pull-right">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td>{{getAppliedDate(payingAccount)}}</td>
@@ -1429,7 +1441,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="5">
-								<table class="width40p pull-left">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Cuenta concentradora:</td>
 										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
@@ -1443,7 +1455,7 @@
 										<td>{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
-								<table class="width40p pull-right">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td>{{getAppliedDate(payingAccount)}}</td>
@@ -1516,7 +1528,7 @@
 						</tr>
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td colspan="6">
-								<table class="width40p">
+								<table class="width30p">
 									<tr>
 										<td>
 											<div class="content">
@@ -1561,7 +1573,7 @@
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="5">
-								<table class="width40p pull-left">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Cuenta concentradora:</td>
 										<td>{{payingAccount.concentradora ? 'Si' : 'No'}}</td>
@@ -1575,7 +1587,7 @@
 										<td>{{payingAccount.remote ? 'Si' : 'No'}}</td>
 									</tr>
 								</table>
-								<table class="width40p pull-right">
+								<table class="width30p pull-left">
 									<tr>
 										<td>Fecha y hora de aplicaci&oacute;n:</td>
 										<td>{{getAppliedDate(payingAccount)}}</td>
@@ -1712,7 +1724,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.appliedDate}}</td>
 							<td>Aplicada</td>
 							<td>001005</td>
@@ -1742,7 +1754,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.appliedDate}}</td>
 							<td>Aplicada</td>
 							<td>001005</td>
@@ -1776,7 +1788,7 @@
 							<td><strong>{{$index + 1}}</strong></td>
 							<td>{{account = getAccountById(payingAccount.origin_type_i, payingAccount.origin_s); account.name + ' ' + account.currency_t + ' ' + (account.amount_d|currency)}}</td>
 							<td>{{account = getInterbankAccountById(payingAccount.target_s); account.name + ' ' + account.bank_t + ' ' + account.account_t}}</td>
-							<td>{{payingAccount.amount_d | currency}}</td>
+							<td class="textR">{{payingAccount.amount_d | currency}}</td>
 							<td>{{payingAccount.application_date_dt_s}} ({{payingAccount.application_date_s}})</td>
 							<td>Aplicada</td>
 							<td>986467</td>
@@ -1806,7 +1818,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.appliedDate}}</td>
 							<td>Aplicada</td>
 							<td>001005</td>
@@ -1836,7 +1848,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.branch}}</td>
 							<td>{{payingAccount.target.account_t}}</td>
 							<td>{{payingAccount.appliedDate}}</td>
@@ -1896,7 +1908,7 @@
                 <td>{{payingAccount.accountType.name}}</td>
                 <td>{{payingAccount.accountNumber}}</td>
                 <td>{{payingAccount.bank.name}}</td>
-                <td>{{payingAccount.maxAmount | currency}}</td>
+                <td class="textR">{{payingAccount.maxAmount | currency}}</td>
                 <td>Aplicada</td>
                 <td>001005</td>
               </tr>
