@@ -257,14 +257,14 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addOrderPayment();
     };
 
-    $scope.addAccounts = function () {
-      for(var i = 0; i < 3; i++) {
-        var account = {
-          personType: "1"
-        }
+    $scope.addNewBeneficiary = function () {
+      if($scope.newAccounts.length >= 15) return;
+
+      var account = {
+        personType: "1"
+      }
 
         $scope.newAccounts.push(account);
-      }
     };
 
     // setup
@@ -292,7 +292,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.dynamicPassword = "";
 
       $scope.newAccounts = [];
-      $scope.addAccounts();
+      $scope.addNewBeneficiary();
       $scope.addInterbank = false;
     };
 
