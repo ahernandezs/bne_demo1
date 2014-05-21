@@ -106,7 +106,7 @@ angular.module('bnePaymentsOldFashionedApp')
       {id: 5, name: 'Santander'}
     ];
 
-    $scope.base_url = "http://projects.anzen.com.mx:4567/api";
+    $scope.base_url = "http://localhost:4567/api";
 		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
     $scope.interbankPayments = [];
