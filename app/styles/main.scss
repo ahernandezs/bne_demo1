@@ -280,6 +280,9 @@ input.num{
 .paddingL10{
 	padding-left:10px!important;
 }
+.paddingL15{
+	padding-left:15px!important;
+}
 .paddingL125{
 	padding-left:125px!important;
 }
@@ -931,6 +934,21 @@ p.instrucciones{
 .alert-succes{
 	background: #edf5e8;
 	border: 1px solid #64ad40;
+	padding: 15px;
+	@include border_radius(5px);
+	margin-bottom: 20px;
+	p{
+		margin: 0;
+		font-size: 12px;
+		color: #666666;
+		span{
+			color: #000000;
+		}
+	}
+}
+.alert-info{
+	background: #f1f1f1;
+	border: 1px solid #bec6d6;
 	padding: 15px;
 	@include border_radius(5px);
 	margin-bottom: 20px;
