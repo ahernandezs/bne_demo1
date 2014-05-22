@@ -136,7 +136,7 @@
 												<div class="head"><span class="span175">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline span175" ng-show="payingAccount.target.account_type_i !== 3">
-														<span class="paddingR3">$</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">
+														<span class="paddingR3">$</span> <input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
 													</form>
 													<form class="form-inline" ng-show="payingAccount.target.account_type_i === 3">
 														<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
@@ -155,7 +155,7 @@
 															<input class="v-alignT" type="radio" name="radio1">
 															<span class="displayIB paddingL3">
 																Otro importe
-																<br><input class="form-control" type="text" value="" ng-model="payingAccount.amount">
+																<br><input class="form-control textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
 															</span>
 														</label>
 													</form>
@@ -279,7 +279,7 @@
 												<div class="head"><span class="span140">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														<span class="paddingR3">$</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+														<span class="paddingR3">$</span> <input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only" currency="">
 													</form>
 												</div>
 											</td>
@@ -436,7 +436,7 @@
 												<div class="head"><span class="span140">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline">
-														<span class="paddingR3">$</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+														<span class="paddingR3">$</span> <input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only" currency="">
 													</form>
 												</div>
 											</td>
@@ -631,7 +631,7 @@
                           <div class="head"><span class="span140">Importe MXN</span></div>
                           <div class="content">
                             <form class="form-inline span140">
-                              <span class="paddingR3">$</span> <input ng-class="{'gray-input' : !payingAccount.editAmount}" class="form-control width120" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount); payingAccount.editAmount = true" maxlength="16" numbers-only="numbers-only" >
+                              <span class="paddingR3">$</span> <input ng-class="{'gray-input' : !payingAccount.editAmount}" class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount); payingAccount.editAmount = true" maxlength="16" numbers-only="numbers-only" currency="">
                             </form>
                           </div>
                         </td>
@@ -769,7 +769,7 @@
 													<div class="clear-fix paddingT10">
 														<div class="width50p pull-left">
 															Importe M&aacute;ximo<br>
-															<input type="text" class="form-control inline width125" ng-model="account.maxAmount" maxlength="12">
+															<input type="text" class="form-control inline width125 textR" ng-model="account.maxAmount" maxlength="12" currency="">
 															<img src="images/ico-preg.png">
 														</div>
 														<div class="width50p pull-left">
@@ -898,7 +898,7 @@
 												<div class="head"><span class="span140">Importe MXN</span></div>
 												<div class="content">
 													<form class="form-inline span140">
-														<span class="paddingR3">$</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+														<span class="paddingR3">$</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only" currency="">
 													</form>
 												</div>
 												<span class="span140"><strong>Sucursal</strong></span>
@@ -987,7 +987,7 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">{{payingAccount.target.currency_t}}</td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="4">
@@ -1035,7 +1035,7 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">{{payingAccount.target.currency_t}}</td>
 							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric" maxlength="10" numbers-only="numbers-only"></td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
@@ -1107,7 +1107,7 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only">{{payingAccount.target.currency_t}}</td>
+							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">{{payingAccount.target.currency_t}}</td>
 							<td><input type="text" value="{{payingAccount.references? payingAccount.numeric : ''}}" ng-model="payingAccount.numeric" maxlength="10" numbers-only="numbers-only"></td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
@@ -1196,7 +1196,7 @@
 								<div class="head"><span class="span160">Importe MXN</span></div>
 								<div class="content">
 									<form class="form-inline">
-										$ <input class="form-control" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only">
+										$ <input class="form-control textR" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only" currency="">
 									</form>
 								</div>
 							</td>
@@ -1274,7 +1274,7 @@
 									<option>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</option>
 								</select>
 							</td>
-							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount">{{payingAccount.target.currency_t}}</td>
+							<td>$ <input type="text" class="textR" ng-model="payingAccount.amount" currency="">{{payingAccount.target.currency_t}}</td>
 							<td><input type="text" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only"></td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
@@ -1341,7 +1341,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
 							<td colspan="4">
@@ -1381,7 +1381,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.references? payingAccount.numeric : ''}}</td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
@@ -1445,7 +1445,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.references? payingAccount.numeric : ''}}</td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
@@ -1520,7 +1520,7 @@
 							</td>
 							<td>
 								<div class="head">Importe</div>
-								<div class="content">{{payingAccount.amount_d | currency}}</div>
+								<div class="content textR">{{payingAccount.amount_d | currency}}</div>
 							</td>
 							<td>
 								<div class="head">Fecha / Hora de aplicaci&oacute;n</div>
@@ -1577,7 +1577,7 @@
 							<td>{{$index + 1}}</td>
 							<td>{{payingAccount.source.name}}</td>
 							<td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
-							<td>{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+							<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
 							<td>{{payingAccount.branch}}</td>
 						</tr>
 						<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
