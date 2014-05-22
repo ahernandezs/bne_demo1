@@ -106,7 +106,7 @@ angular.module('bnePaymentsOldFashionedApp')
       {id: 5, name: 'Santander'}
     ];
 
-    $scope.base_url = "http://projects.anzen.com.mx:4567/api";
+    $scope.base_url = "http://localhost:4567/api";
 		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
     $scope.interbankPayments = [];
@@ -257,14 +257,14 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addOrderPayment();
     };
 
-    $scope.addAccounts = function () {
-      for(var i = 0; i < 3; i++) {
-        var account = {
-          personType: "1"
-        }
+    $scope.addNewBeneficiary = function () {
+      if($scope.newAccounts.length >= 15) return;
+
+      var account = {
+        personType: "1"
+      }
 
         $scope.newAccounts.push(account);
-      }
     };
 
     // setup
@@ -292,7 +292,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.dynamicPassword = "";
 
       $scope.newAccounts = [];
-      $scope.addAccounts();
+      $scope.addNewBeneficiary();
       $scope.addInterbank = false;
     };
 
