@@ -20,6 +20,22 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 	-webkit-border-top-right-radius: $radius !important;
 	-moz-border-top-right-radius: $radius !important;
 }
+@mixin border_left_radius($radius: 10px) {
+	border-top-left-radius: $radius !important;
+	-webkit-border-top-left-radius: $radius !important;
+	-moz-border-top-left-radius: $radius !important;
+	border-bottom-left-radius: $radius !important;
+	-webkit-border-bottom-left-radius: $radius !important;
+	-moz-border-bottom-left-radius: $radius !important;
+}
+@mixin border_right_radius($radius: 10px) {
+	border-top-right-radius: $radius !important;
+	-webkit-border-top-right-radius: $radius !important;
+	-moz-border-top-right-radius: $radius !important;
+	border-bottom-right-radius: $radius !important;
+	-webkit-border-bottom-right-radius: $radius !important;
+	-moz-border-bottom-right-radius: $radius !important;
+}
 @mixin border_bottom_radius($radius: 10px) {
 	border-bottom-left-radius: $radius !important;
 	-webkit-border-bottom-left-radius: $radius !important;
@@ -678,6 +694,49 @@ header{
 p.instrucciones{
 	font-size: 12px;
 	color: #666666;
+}
+.breadcrum{
+	width: 100%;
+	margin: 20px 0;
+	td{
+		.paso:hover{
+			text-decoration: none;
+		}
+		.paso{
+			display: block;
+			background: #f3f3f3;
+			margin: 1px;
+			width: auto;
+			border: 1px solid #dadada;
+			padding:3px 10px 5px 10px;
+			color: #9a9a9a;
+			font-size: 12px;
+			text-decoration: none;
+			span{
+				color: #cccccc;
+				font-weight: bold;
+				font-size: 18px;
+				display: inline-block;
+				margin-right: 15px;
+				position: relative;
+				top: 2px;
+			}
+		}
+		.paso.active{
+			background: #09347a;
+			border-color: #09347a;
+			color: #FFFFFF;
+			span{
+				color: #FFFFFF;
+			}
+		}
+		.paso.first{
+			@include border_left_radius(5px);
+		}
+		.paso.last{
+			@include border_right_radius(5px);
+		}
+	}
 }
 .panels-container{
 	border: 1px solid #09347a;
