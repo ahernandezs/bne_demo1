@@ -50,9 +50,9 @@ angular.module('bnePaymentsOldFashionedApp')
 
 					if(value){
 						if( value.indexOf(".") != -1 ){
-							return '$' + value;	
+							return value;	
 						}else{
-							return '$' + value + '.00';	
+							return value + '.00';	
 						}
 					}else{
 						return "";	
