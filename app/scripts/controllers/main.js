@@ -446,7 +446,7 @@ angular.module('bnePaymentsOldFashionedApp')
     };
 
     $scope.fiscalVerify = function (payment) {
-      if(payment.fiscal) {
+      if(payment.fiscal && payment.amount > 0) {
         payment.iva = (payment.amount * 0.16).toFixed(2);
       }
     };
