@@ -326,17 +326,17 @@ angular.module('bnePaymentsOldFashionedApp')
 			}
 		};
 
-		$scope.show_tltp = function( elemento , boton ) {
-			var izq = ($(boton).offset().left)-($(elemento).width()/2)+9;
+		$scope.show_tltp_eliminar = function( elemento , boton ) {
+			var izq = ($(boton).offset().left)-($(elemento).width()/2)+21;
 			var arriba = $(boton).offset().top;
 			console.log(izq);
 			$( elemento ).css({
 				'left': izq,
 				'top': arriba
-			}).show();
+			}).fadeIn('fast');
 		};
 		$scope.hide_tltp = function( elemento ) {
-			$( elemento ).hide();
+			$( elemento ).fadeOut('fast');
 		};
 
     $scope.getTotalPayment = function (payments) {
