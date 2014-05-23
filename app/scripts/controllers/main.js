@@ -327,7 +327,7 @@ angular.module('bnePaymentsOldFashionedApp')
 		};
 
 		$scope.show_tltp_eliminar = function( elemento , boton ) {
-			var izq = ($(boton).offset().left)-($(elemento).width()/2)+21;
+			var izq = ($(boton).offset().left)-($(elemento).width()/2)+11;
 			var arriba = $(boton).offset().top;
 			console.log(izq);
 			$( elemento ).css({
