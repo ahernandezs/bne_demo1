@@ -283,6 +283,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.collapseTwo = false;
       $scope.collapseThree = false;
       $scope.collapseFour = false;
+      $scope.collapseFive = false;
       $scope.allowNext = false;
       $scope.multipleInterbank = true;
 
