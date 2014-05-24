@@ -574,7 +574,7 @@
 				<div class="panel-collapse" ng-show="collapseFive">
 					<div class="content-panel">
 						<!-- Pagar Grupo de beneficiarios -->
-						<div class="paso-1" ng-hide="selectedGroup">
+						<div class="paso-1">
 							<p>
 								Para pagar a un grupo de beneficiarios seleccione el grupo y d&eacute; clic en &quot;Continuar&quot;
 							</p>
@@ -594,7 +594,7 @@
 									<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-repeat="group in groups.docs">
 										<td>
 											<div class="content">
-												<input type="radio" name="grupo-ben-interbancarias" ng-click="$parent.selectedGroup = group; changeGroup()">
+												<input type="radio" name="grupo-ben-interbancarias" ng-click="$parent.selectedGroup = group">
 											</div>
 										</td>
 										<td>
@@ -633,6 +633,7 @@
 							<button type="button" class="btn btn-primary">Agregar un grupo</button>
 						</div>
 
+            <!--
 						<div class="paso-2" ng-show="selectedGroup">
 							<p>
 								Para realizar los pagos, capture la informaci&oacute;n y d&eacute; clic en &quot;Continuar&quot;<br>
@@ -645,11 +646,6 @@
 							<table class="table">
 								<tbody ng-repeat="payingAccount in groupItems.docs">
 									<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
-										<!-- <td rowspan="2">
-											<div class="head textC">
-												<input type="checkbox" value="" ng-model="payingAccount.enabled_b">
-											</div>
-										</td> -->
 										<td rowspan="2">
 											<div class="head textC">{{$index + 1}}</div>
 										</td>
@@ -674,7 +670,6 @@
 														<select disabled="true" class="width325" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target_s" ng-change="payingAccount.enabled = true">
 															<option value="">Seleccione una cuenta</option>
 														</select>
-														<!-- <br><a href="javascript:void(0);">Agregar nuevo grupo</a> -->
 													</span>
 													<div class="clear-fix span325">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target_s}">Último pago: {{payingAccount.last_payment_d | currency}} {{payingAccount.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -755,13 +750,15 @@
 							</table>
 							<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
 						</div>
+            -->
+
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="area-botones" >
 			<button ng-show="addInterbank" ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right">Continuar</button>
-			<button ng-hide="addInterbank" ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
+			<button ng-hide="addInterbank" ng-click="showAccounts = false; preConfirmation = true; changeGroup()" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
 

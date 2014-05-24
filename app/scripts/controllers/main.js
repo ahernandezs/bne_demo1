@@ -289,6 +289,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
       $scope.groupsInterbank = false;
       $scope.selectedGroup = undefined;
+      $scope.groupItems = [];
 
       $scope.dynamicPassword = "";
 
@@ -470,14 +471,15 @@ angular.module('bnePaymentsOldFashionedApp')
     };
 
 		$scope.changeGroup = function () {
-
-			$http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
-				success(function(responseData, status, headers, config) {
-					$scope.groupItems = responseData;
-				}).
-			error(function(data, status, headers, config) {
-				console.log("error");
-			});
+      if($scope.selectedGroup) {
+        $http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
+          success(function(responseData, status, headers, config) {
+            $scope.groupItems = responseData;
+          }).
+        error(function(data, status, headers, config) {
+          console.log("error");
+        });
+      }
 
 		};
 
