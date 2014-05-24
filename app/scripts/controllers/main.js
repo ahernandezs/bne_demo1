@@ -322,6 +322,12 @@ angular.module('bnePaymentsOldFashionedApp')
 
 		};
 
+    $scope.removePayment = function(accounts, index) {
+      if(index != -1) {
+        accounts.splice(index, 1);
+      }
+    };
+
 		$scope.btn_openclose = function( btn ) {
 			console.log( $(btn) );
 			if( $(btn).find('span').html() == '+' ){

@@ -166,7 +166,8 @@
 										</div>
 										<button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
 											ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
-											ng-mouseleave="hide_tltp('.tooltip-propias'+$index)">
+											ng-mouseleave="hide_tltp('.tooltip-propias'+$index)"
+                      ng-click="removePayment(ownpayingAccounts, $index)" >
 											<span class="ico-basurero"></span>
 										</button>
 									</td>
@@ -270,7 +271,8 @@
 										</div>
 										<button class="btn btn-danger btn-cuadrado btn-tltp-terceros{{$index}}"
 											ng-mouseover="show_tltp_eliminar('.tooltip-terceros'+$index, '.btn-tltp-terceros'+$index)"
-											ng-mouseleave="hide_tltp('.tooltip-terceros'+$index)">
+											ng-mouseleave="hide_tltp('.tooltip-terceros'+$index)"
+                      ng-click="removePayment(thirdpayingAccounts, $index)" >
 											<span class="ico-basurero"></span>
 										</button>
 									</td>
@@ -409,7 +411,8 @@
 										</div>
 										<button class="btn btn-danger btn-cuadrado btn-tltp-interbanc{{$index}}"
 											ng-mouseover="show_tltp_eliminar('.tooltip-interbanc'+$index, '.btn-tltp-interbanc'+$index)"
-											ng-mouseleave="hide_tltp('.tooltip-interbanc'+$index)">
+											ng-mouseleave="hide_tltp('.tooltip-interbanc'+$index)"
+                      ng-click="removePayment(interbankPayments, $index)" >
 											<span class="ico-basurero"></span>
 										</button>
 									</td>
@@ -549,7 +552,8 @@
 										</div>
 										<button class="btn btn-danger btn-cuadrado btn-tltp-ordenes{{$index}}"
 											ng-mouseover="show_tltp_eliminar('.tooltip-ordenes'+$index, '.btn-tltp-ordenes'+$index)"
-											ng-mouseleave="hide_tltp('.tooltip-ordenes'+$index)">
+											ng-mouseleave="hide_tltp('.tooltip-ordenes'+$index)"
+                      ng-click="removePayment(orderpayingAccounts, $index)" >
 											<span class="ico-basurero"></span>
 										</button>
 									</td>
@@ -886,7 +890,8 @@
                     </div>
                     <button class="btn btn-danger btn-cuadrado pre-btn-tltp-propias{{$index}}"
                       ng-mouseover="show_tltp_eliminar('.pre-tooltip-propias'+$index, '.pre-btn-tltp-propias'+$index)"
-                      ng-mouseleave="hide_tltp('.pre-tooltip-propias'+$index)">
+                      ng-mouseleave="hide_tltp('.pre-tooltip-propias'+$index)"
+                      ng-click="removePayment(ownpayingAccounts, $index)" >
                       <span class="ico-basurero"></span>
                     </button>
                   </div>
@@ -976,7 +981,8 @@
                     </div>
                     <button class="btn btn-danger btn-cuadrado pre-btn-tltp-terceros{{$index}}"
                       ng-mouseover="show_tltp_eliminar('.pre-tooltip-terceros'+$index, '.pre-btn-tltp-terceros'+$index)"
-                      ng-mouseleave="hide_tltp('.pre-tooltip-terceros'+$index)">
+                      ng-mouseleave="hide_tltp('.pre-tooltip-terceros'+$index)"
+                      ng-click="removePayment(thirdpayingAccounts, $index)" >
                       <span class="ico-basurero"></span>
                     </button>
                   </div>
@@ -1101,7 +1107,8 @@
                     </div>
                     <button class="btn btn-danger btn-cuadrado pre-btn-tltp-interbanc{{$index}}"
                       ng-mouseover="show_tltp_eliminar('.pre-tooltip-interbanc'+$index, '.pre-btn-tltp-interbanc'+$index)"
-                      ng-mouseleave="hide_tltp('.pre-tooltip-interbanc'+$index)">
+                      ng-mouseleave="hide_tltp('.pre-tooltip-interbanc'+$index)"
+                      ng-click="removePayment(interbankPayments, $index)" >
                       <span class="ico-basurero"></span>
                     </button>
                   </div>
@@ -1227,7 +1234,8 @@
                     </div>
                     <button class="btn btn-danger btn-cuadrado pre-btn-tltp-ordenes{{$index}}"
                       ng-mouseover="show_tltp_eliminar('.pre-tooltip-ordenes'+$index, '.pre-btn-tltp-ordenes'+$index)"
-                      ng-mouseleave="hide_tltp('.pre-tooltip-ordenes'+$index)">
+                      ng-mouseleave="hide_tltp('.pre-tooltip-ordenes'+$index)"
+                      ng-click="removePayment(orderpayingAccounts, $index)" >
                       <span class="ico-basurero"></span>
                     </button>
                   </div>
@@ -1314,7 +1322,8 @@
 									</div>
 									<button class="btn btn-danger btn-cuadrado pre-btn-tltp-grupos{{$index}}"
 										ng-mouseover="show_tltp_eliminar('.pre-tooltip-grupos'+$index, '.pre-btn-tltp-grupos'+$index)"
-										ng-mouseleave="hide_tltp('.pre-tooltip-grupos'+$index)">
+										ng-mouseleave="hide_tltp('.pre-tooltip-grupos'+$index)"
+                    ng-click="removePayment(groupItems.docs, $index)" >
 										<span class="ico-basurero"></span>
 									</button>
 								</div>
