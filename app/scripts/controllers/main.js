@@ -283,17 +283,22 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.collapseTwo = false;
       $scope.collapseThree = false;
       $scope.collapseFour = false;
+      $scope.collapseFive = false;
       $scope.allowNext = false;
       $scope.multipleInterbank = true;
 
       $scope.groupsInterbank = false;
       $scope.selectedGroup = undefined;
+      $scope.groupItems = [];
 
       $scope.dynamicPassword = "";
 
       $scope.newAccounts = [];
       $scope.addNewBeneficiary();
       $scope.addInterbank = false;
+
+      $scope.addToNewGroup = undefined;
+      $scope.addToGroupSelect= undefined;
     };
 
     $scope.setup();
@@ -316,6 +321,12 @@ angular.module('bnePaymentsOldFashionedApp')
 			}
 
 		};
+
+    $scope.removePayment = function(accounts, index) {
+      if(index != -1) {
+        accounts.splice(index, 1);
+      }
+    };
 
 		$scope.btn_openclose = function( btn ) {
 			console.log( $(btn) );
@@ -466,14 +477,15 @@ angular.module('bnePaymentsOldFashionedApp')
     };
 
 		$scope.changeGroup = function () {
-
-			$http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
-				success(function(responseData, status, headers, config) {
-					$scope.groupItems = responseData;
-				}).
-			error(function(data, status, headers, config) {
-				console.log("error");
-			});
+      if($scope.selectedGroup) {
+        $http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
+          success(function(responseData, status, headers, config) {
+            $scope.groupItems = responseData;
+          }).
+        error(function(data, status, headers, config) {
+          console.log("error");
+        });
+      }
 
 		};
 
