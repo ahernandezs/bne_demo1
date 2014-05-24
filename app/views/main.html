@@ -95,7 +95,7 @@
 
 											</div>
 											<div class="pull-left paddingL10">
-												<span class="span310">
+												<span class="span325">
 													<span class="clear-fix">Cuenta dep&oacute;sito</span><br>
 													<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in ownTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione una cuenta</option>
@@ -219,7 +219,7 @@
 
 											</div>
 											<div class="pull-left paddingL10">
-												<span class="span310">
+												<span class="span325">
 													Cuenta dep&oacute;sito<br>
 													<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione una cuenta</option>
@@ -361,7 +361,7 @@
 
 											</div>
 											<div class="pull-left paddingL10">
-												<span class="span310">
+												<span class="span325">
 													Cuenta dep&oacute;sito<br>
 													<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione una cuenta</option>
@@ -491,7 +491,7 @@
 
 											</div>
 											<div class="pull-left paddingL10">
-												<span class="span310">
+												<span class="span325">
 													Beneficiario<br>
 													<select class="width230" ng-options="account.name for account in orderTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 														<option value="">Seleccione un beneficiario</option>
@@ -611,7 +611,7 @@
 												{{group.last_date_dt | date:'dd/MM/yyyy hh:mm'}} hrs.
 											</div>
 										</td>
-										<td class="textL">
+										<td class="textR">
 											<div class="content">
 												{{group.total_d | currency}}
 											</div>
@@ -668,14 +668,14 @@
 													</span>
 												</div>
 												<div class="pull-left paddingL10">
-													<span class="span310">
+													<span class="span325">
 														Cuenta dep&oacute;sito<br>
 														<select disabled="true" class="width325" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target_s" ng-change="payingAccount.enabled = true">
 															<option value="">Seleccione una cuenta</option>
 														</select>
 														<!-- <br><a href="javascript:void(0);">Agregar nuevo grupo</a> -->
 													</span>
-													<div class="clear-fix textL">
+													<div class="clear-fix">
 														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target_s}">Último pago: {{payingAccount.last_payment_d | currency}} {{payingAccount.last_date_t | date:'dd/MM/yyyy'}}</span>
 													</div>
 												</div>
@@ -815,7 +815,7 @@
 
 									</div>
 									<div class="pull-left paddingL10">
-										<span class="span310">
+										<span class="span325">
 											<span class="clear-fix">Cuenta dep&oacute;sito</span><br>
 											<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in ownTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 												<option value="">Seleccione una cuenta</option>
@@ -926,7 +926,7 @@
 
 									</div>
 									<div class="pull-left paddingL10">
-										<span class="span310">
+										<span class="span325">
 											Cuenta dep&oacute;sito<br>
 											<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 												<option value="">Seleccione una cuenta</option>
@@ -1054,7 +1054,7 @@
 
 									</div>
 									<div class="pull-left paddingL10">
-										<span class="span310">
+										<span class="span325">
 											Cuenta dep&oacute;sito<br>
 											<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 												<option value="">Seleccione una cuenta</option>
@@ -1170,7 +1170,7 @@
 
 									</div>
 									<div class="pull-left paddingL10">
-										<span class="span310">
+										<span class="span325">
 											Beneficiario<br>
 											<select class="width230" ng-options="account.name for account in orderTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 												<option value="">Seleccione un beneficiario</option>
@@ -1265,7 +1265,7 @@
 										</span>
 									</div>
 									<div class="pull-left paddingL10">
-										<span class="span310">
+										<span class="span325">
 											Cuenta dep&oacute;sito<br>
 											<select disabled="true" class="width325" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target_s" ng-change="payingAccount.enabled = true">
 												<option value="">Seleccione una cuenta</option>
@@ -1442,14 +1442,11 @@
 									<div class="head">Importe</div>
 									<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 								</td>
-								<td>
-									<div class="head">Número de referencia</div>
-									<div class="content">{{payingAccount.references? payingAccount.numeric : ''}}</div>
-								</td>
 							</tr>
 							<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-								<td colspan="4">
+								<td colspan="3">
 									<div class="fila-interna">Cuenta concentradora: {{payingAccount.concentradora ? 'Si' : 'No'}}</div>
+									<div class="fila-interna">Referencia num&eacute;rica:  {{payingAccount.references? payingAccount.numeric : ''}}</div>
 									<div class="fila-interna" ng-show="payingAccount.references && payingAccount.alpha">Referencia alfanum&eacute;rica:  {{payingAccount.alpha}}</div>
 									<div class="fila-interna" ng-show="payingAccount.references && payingAccount.concept">Concepto del pago: {{payingAccount.concept}}</div>
 									<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
@@ -1487,15 +1484,12 @@
 									<div class="head">Importe</div>
 									<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 								</td>
-								<td>
-									<div class="head">Número de referencia</div>
-									<div class="content">{{payingAccount.references? payingAccount.numeric : ''}}</div>
-								</td>
 							</tr>
 							<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-								<td colspan="4">
+								<td colspan="3">
 									<div class="fila-interna">Cuenta concentradora: {{payingAccount.concentradora ? 'Si' : 'No'}}</div>
 									<div class="fila-interna" ng-show="payingAccount.references && payingAccount.concept">Concepto del pago: {{payingAccount.concept}}</div>
+									<div class="fila-interna">Referencia num&eacute;rica:  {{payingAccount.references? payingAccount.numeric : ''}}</div>
 									<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
 									<div class="fila-interna">Fecha y hora de aplicaci&oacute;n: {{getAppliedDate(payingAccount)}}</div>
 									<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.rfc">RFC: {{payingAccount.rfc}}</div>

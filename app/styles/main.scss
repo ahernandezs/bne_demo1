@@ -236,6 +236,9 @@ input.num{
 .width260{
 	width:260px!important;
 }
+.width280{
+	width:280px!important;
+}
 .width290{
 	width:290px!important;
 }
@@ -407,7 +410,7 @@ input.num{
 	width: 310px;
 	display: block;
 	margin: 0 auto;
-	text-align: left!important;
+	text-align: left;
 	clear: both;
 }
 .span325{
@@ -1213,9 +1216,11 @@ p.instrucciones{
 			
 		}
 		.fila-interna{
+			font-size: 11px;
 			width: 30%;
 			float: left;
-			margin-right: 10px;
+			margin-right: 20px;
+			margin-bottom: 3px;
 			border-bottom: 1px dotted #b7b7b7!important;;
 		}
 		table{
