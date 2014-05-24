@@ -295,6 +295,9 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.newAccounts = [];
       $scope.addNewBeneficiary();
       $scope.addInterbank = false;
+
+      $scope.addToNewGroup = undefined;
+      $scope.addToGroupSelect= undefined;
     };
 
     $scope.setup();
