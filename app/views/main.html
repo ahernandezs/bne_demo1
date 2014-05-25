@@ -511,7 +511,7 @@
 										<div class="head"><span class="span140">Importe MXN</span></div>
 										<div class="content">
 											<form class="form-inline span140">
-												<span class="paddingR3">$</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only" currency="">
+												<span class="paddingR3">$</span> <input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount)" maxlength="16" numbers-only="numbers-only" currency="">
 											</form>
 										</div>
 										<span class="span140"><strong>Sucursal</strong></span>
@@ -616,7 +616,7 @@
 												{{group.last_date_dt | date:'dd/MM/yyyy hh:mm'}} hrs.
 											</div>
 										</td>
-										<td class="textR">
+										<td class="textL">
 											<div class="content">
 												{{group.total_d | currency}}
 											</div>
