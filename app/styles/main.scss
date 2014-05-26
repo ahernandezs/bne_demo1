@@ -825,6 +825,14 @@ p.instrucciones{
 					font-size: 12px;
 					color: #666666;
 				}
+				a{
+					font-size: 11px;
+					color: #1e87dd;
+					text-decoration: underline;
+				}
+				a:hover{
+					color: #09347a;
+				}
 				table{
 					clear: both;
 					border:none;
