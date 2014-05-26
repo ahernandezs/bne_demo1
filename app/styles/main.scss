@@ -314,6 +314,9 @@ input.num{
 .paddingT10{
 	padding-top:10px;
 }
+.paddingT17{
+	padding-top:17px;
+}
 .paddingR3{
 	padding-right:3px;
 }
@@ -415,6 +418,13 @@ input.num{
 }
 .span325{
 	width: 325px;
+	display: block;
+	margin: 0 auto;
+	text-align: left!important;
+	clear: both;
+}
+.span400{
+	width: 400px;
 	display: block;
 	margin: 0 auto;
 	text-align: left!important;
