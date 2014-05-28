@@ -51,7 +51,8 @@
 		</div>
 
 		<div class="clear-fix">
-			<p class="paginador">Paso <span>1</span> de <span>4</span></p>
+			<p class="paginador" ng-show="selectedGroup">Paso <span>1</span> de <span>5</span></p>
+			<p class="paginador" ng-hide="selectedGroup">Paso <span>1</span> de <span>4</span></p>
 		</div>
 		<div class="panels-container" id="sortable">
 			<div class="panel panel-default">
@@ -754,12 +755,12 @@
 			</div>
 		</div>
 		<div class="area-botones" >
-			<button ng-show="addInterbank" ng-click="showAccounts = false; confirmation = true" type="button" class="btn btn-primary pull-right">Continuar</button>
-			<button ng-hide="addInterbank" ng-click="showAccounts = false; preConfirmation = true; changeGroup()" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
+			<button ng-show="selectedGroup" ng-click="showAccounts = false; preConfirmationGroup = true; changeGroup()" type="button" class="btn btn-primary pull-right">Continuar</button>
+			<button ng-hide="selectedGroup" ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 	</div>
 
-	<div class="pag-confirm" ng-show="preConfirmation">
+	<div class="pag-confirm" ng-show="preConfirmationGroup">
 		<div class="titulo-principal">
 			<h1 class="pull-left">Multipagos</h1>
 			<p class="pull-right">
@@ -779,7 +780,7 @@
 					Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) pago(s) y de clic en continuar. Si desea adicionar m&aacute;s pagos de clic en el bot&oacute;n "Agregar m&aacute;s pagos".
 				</p>
 			</div>
-			<p class="paginador">Paso <span>2</span> de <span>4</span></p>
+			<p class="paginador">Paso <span>2</span> de <span>5</span></p>
 		</div>
 		<div class="content-box" ng-show="selectedGroup">
 			<div class="contenido-total">
@@ -897,11 +898,13 @@
 			</div>
 		</div>
 		<div class="area-botones">
-			<button type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button type="button" class="btn btn-primary pull-right">Continuar</button>
+			<button ng-click="showAccounts = true; preConfirmationGroup = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-click="preConfirmation = true; preConfirmationGroup = false" type="button" class="btn btn-primary pull-right">Continuar</button>
 		</div>
+  </div>
 
 
+	<div class="pag-confirm" ng-show="preConfirmation">
 		<div class="titulo-principal">
 			<h1 class="pull-left">Multipagos</h1>
 			<p class="pull-right">
@@ -921,7 +924,8 @@
 					A continuaci&oacute;n le presentamos un resumen de sus pagos, por si lo desea, puede corregir los datos capturados.
 				</p>
 			</div>
-			<p class="paginador">Paso <span>2</span> de <span>4</span></p>
+			<p class="paginador" ng-show="selectedGroup">Paso <span>3</span> de <span>5</span></p>
+			<p class="paginador" ng-hide="selectedGroup">Paso <span>2</span> de <span>4</span></p>
 		</div>
 
 	<div ng-hide="selectedGroup">
@@ -1499,7 +1503,8 @@
 		</div>
 
 		<div class="area-botones">
-			<button ng-click="showAccounts = true; preConfirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-show="selectedGroup" ng-click="preConfirmationGroup = true; preConfirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-hide="selectedGroup" ng-click="showAccounts = true; preConfirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-click="confirmation = true; preConfirmation = false" type="button" class="btn btn-primary pull-right">Continuar</button>
 		</div>
 	</div>
@@ -1525,7 +1530,8 @@
 						Confirme los datos de su(s) pago(s) para aplicar.
 					</p>
 				</div>
-				<p class="paginador">Paso <span>3</span> de <span>4</span></p>
+			  <p class="paginador" ng-show="selectedGroup">Paso <span>4</span> de <span>5</span></p>
+				<p class="paginador" ng-hide="selectedGroup">Paso <span>3</span> de <span>4</span></p>
 			</div>
 
 	  <div ng-hide="selectedGroup">
@@ -1813,7 +1819,8 @@
 					Confirme los datos de su(s) pago(s) para aplicar.
 				</p>
 			</div>
-			<p class="paginador">Paso <span>4</span> de <span>4</span></p>
+			<p class="paginador" ng-show="selectedGroup">Paso <span>5</span> de <span>5</span></p>
+			<p class="paginador" ng-hide="selectedGroup">Paso <span>4</span> de <span>4</span></p>
 		</div>
 		<div ng-hide="addInterbank">
 			<div class="alert-succes">
