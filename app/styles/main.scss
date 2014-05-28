@@ -148,7 +148,7 @@ input.num{
 }
 .container{
 	width: auto;
-	min-width: 920px;
+	min-width: 1190px;
 	padding: 0 30px;
 
 }
@@ -194,6 +194,9 @@ input.num{
 	color: #666666;
 }
 /* ANCHOS PIX */
+.width25{
+	width:25px!important;
+}
 .width30{
 	width:30px!important;
 }
@@ -253,6 +256,9 @@ input.num{
 }
 .width700{
 	width:700px;
+}
+.width750{
+	width:750px;
 }
 .width900{
 	width:900px!important;
