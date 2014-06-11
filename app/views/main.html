@@ -212,15 +212,15 @@
 											</div>
 											<div class="pull-left">
 												<span class="span310">
-													<div class="pull-left">
+													<span class="pull-left">
 														Cuenta dep&oacute;sito<br>
 														<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t for account in thirdDefaultData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 															<option value="">Seleccione una cuenta</option>
 														</select>
-													</div>
-													<div class="pull-left paddingT17 paddingL10">
+													</span>
+													<span class="pull-left paddingT17 paddingL10">
 														<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
-													</div>
+													</span>
 												</span>
 												<div class="clear-fix textL">
 													<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -353,15 +353,15 @@
 											</div>
 											<div class="pull-left">
 												<span class="span310">
-													<div class="pull-left">
+													<span class="pull-left">
 														Cuenta dep&oacute;sito<br>
 														<select class="width230" ng-options="account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 															<option value="">Seleccione una cuenta</option>
 														</select>
-													</div>
-													<div class="pull-left paddingT17 paddingL10">
+													</span>
+													<span class="pull-left paddingT17 paddingL10">
 														<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
-													</div>
+													</span>
 												</span>
 												<div class="clear-fix textL">
 													<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -483,15 +483,15 @@
 											</div>
 											<div class="pull-left">
 												<span class="span310">
-													<div class="pull-left">
+													<span class="pull-left">
 														Beneficiario<br>
 														<select class="width230" ng-options="account.name for account in orderTargetData.docs" ng-model="payingAccount.target" ng-change="payingAccount.enabled = true">
 															<option value="">Seleccione un beneficiario</option>
 														</select>
-													</div>
-													<div class="pull-left paddingT17 paddingL10">
+													</span>
+													<span class="pull-left paddingT17 paddingL10">
 														<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
-													</div>
+													</span>
 												</span>
 												<div class="clear-fix textL">
 													<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -747,125 +747,6 @@
               </table>
 
             </div>
-
-			<!--
-						<div class="paso-2" ng-show="selectedGroup">
-							<p>
-								Para realizar los pagos, capture la informaci&oacute;n y d&eacute; clic en &quot;Continuar&quot;<br>
-								<div class="paddingL15">
-									<strong>Nombre del grupo:</strong> {{selectedGroup.name}}<br>
-									<strong>&Uacute;ltimo importe pagado:</strong> {{selectedGroup.total_d | currency}}<br>
-									<strong>N&uacute;mero de integrantes: </strong> {{selectedGroup.items_i}}
-								</div>
-							</p>
-							<table class="table">
-								<tbody ng-repeat="payingAccount in groupItems.docs">
-									<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
-										<td rowspan="2">
-											<div class="head textC">{{$index + 1}}</div>
-										</td>
-										<td>
-											<div class="head textL paddingL10">Cuentas</div>
-											<div class="content">
-												<div class="pull-left">
-													<span class="span325">
-														Cuenta retiro<br>
-														<select class="width180" ng-options="type.id as type.name for type in ownDefaultData" ng-model="payingAccount.origin_type_i" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una opci&oacute;n</option>
-														</select>
-														<br>
-														<select class="width325" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.format_amount_t for account in getAccountsByType(payingAccount.origin_type_i)" ng-model="payingAccount.origin_s" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
-													</span>
-												</div>
-												<div class="pull-left paddingL10">
-													<span class="span325">
-														Cuenta dep&oacute;sito<br>
-														<select disabled="true" class="width325" ng-options="account.id as account.name + ' ' + account.currency_t + ' ' + account.account_t + ' (' + account.bank_t + ')' for account in interbankTargetData.docs" ng-model="payingAccount.target_s" ng-change="payingAccount.enabled = true">
-															<option value="">Seleccione una cuenta</option>
-														</select>
-													</span>
-													<div class="clear-fix span325">
-														<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target_s}">Último pago: {{payingAccount.last_payment_d | currency}} {{payingAccount.last_date_t | date:'dd/MM/yyyy'}}</span>
-													</div>
-												</div>
-											</div>
-										</td>
-										<td>
-											<div class="head"><span class="span140">Importe MXN</span></div>
-											<div class="content">
-												<form class="form-inline span140">
-													<span class="paddingR3">$</span> <input ng-class="{'gray-input' : !payingAccount.editAmount}" class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount_d" ng-change="fiscalVerify(payingAccount); payingAccount.editAmount = true" maxlength="16" numbers-only="numbers-only" currency="">
-												</form>
-											</div>
-										</td>
-										<td>
-											<div class="head">
-												<span class="span175">Fecha de operaci&oacute;n</span>
-											</div>
-											<div class="content">
-												<form class="form-inline span175">
-													<span class="paddingR3">Fecha</span> <input ng-class="{'gray-input' : !payingAccount.editDate}" class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.application_date_dt_s" ng-change="payingAccount.programming = true; payingAccount.editDate = true" maxlength="10">
-													<span class="ico-calendar"></span>
-												</form>
-												<span class="span175">
-													<strong >Fecha de aplicaci&oacute;n</strong>
-													<form class="form-inline">
-														<select ng-model="payingAccount.application_date_s">
-															<option>Mismo d&iacute;a</option>
-															<option>24 horas</option>
-														</select>
-													</form>
-												</span>
-												<label class="span175"><input type="checkbox" value="" ng-model="payingAccount.remote_b"> Autorizar en forma remota</label>
-											</div>
-										</td>
-										<td rowspan="2" class="v-alignM">
-											<div class="tooltip-eliminar tooltip-grupos{{$index}}">
-												<p>Eliminar</p>
-												<div class="arrow"></div>
-											</div>
-											<button class="btn btn-danger btn-cuadrado btn-tltp-grupos{{$index}}"
-												ng-mouseover="show_tltp_eliminar('.tooltip-grupos'+$index, '.btn-tltp-grupos'+$index)"
-												ng-mouseleave="hide_tltp('.tooltip-grupos'+$index)">
-												<span class="ico-basurero"></span>
-											</button>
-										</td>
-									</tr>
-									<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
-										<td colspan="3">
-											<div class="content pull-left">
-												<label class="span175">
-													<input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal_b"> Comprobante Fiscal<br>
-													<form class="form-inline">
-														<strong>RFC</strong> <input ng-class="{'gray-input' : !payingAccount.editRfc}" class="form-control width100" type="text" value="" ng-model="payingAccount.rfc_s" maxlength="13" ng-change="payingAccount.fiscal_b = true; payingAccount.editRfc = true">
-													</form>
-													<form class="form-inline">
-														<strong>IVA&nbsp;&nbsp;</strong> <input ng-class="{'gray-input' : !payingAccount.editIva}" class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva_d" ng-change="payingAccount.fiscal_b = true; payingAccount.editIva = true" numbers-only="numbers-only">
-													</form>
-												</label>
-											</div>
-											<div class="content pull-left textL paddingL143">
-												<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references_b"/> Referencias</label>
-												<form class="form-inline">
-													<label class="paddingL10">
-														<span class="paddingL3">N&uacute;mero de referencia</span><br>
-														<input type="text" ng-class="{'gray-input' : !payingAccount.editNumeric}" class="form-control width80" maxlength="10" ng-model="payingAccount.numeric_i" ng-change="payingAccount.references = true; payingAccount.editNumeric = true" numbers-only="numbers-only">
-													</label>
-													<label class="paddingL10">
-														<span class="paddingL3">Concepto del pago</span><br>
-														<input type="text" ng-class="{'gray-input' : !payingAccount.editConcept}" class="form-control width145" maxlength="20" ng-model="payingAccount.concept_s" ng-change="payingAccount.references = true; payingAccount.editConcept = true">
-													</label>
-												</form>
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<button type="button" class="btn btn-primary">Agregar m&aacute;s pagos</button>
-						</div>
-			-->
 
 					</div>
 				</div>
@@ -1520,27 +1401,30 @@
 			<table class="datos v-alignT">
 			  <tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validatePayment">
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td rowspan="2">
+				  <td class="width20p" rowspan="2">
 					<div class="head">Num.</div>
 					<div class="content">{{$index + 1}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Cuenta retiro</div>
 					<div class="content">{{payingAccount.source.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Cuenta dep&oacute;sito</div>
 					<div class="content">-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Importe</div>
 					<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 				  </td>
+				  <td class="width20p">
+					<div class="head">Fecha y hora de aplicaci&oacute;n</div>
+					<div class="content textR">{{getAppliedDate(payingAccount)}}</div>
+				  </td>
 				</tr>
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td colspan="3">
+				  <td colspan="4">
 					<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
-					<div class="fila-interna">Fecha y hora de aplicaci&oacute;n: {{getAppliedDate(payingAccount)}}</div>
 				  </td>
 				</tr>
 			  </tbody>
@@ -1556,31 +1440,34 @@
 			<table class="datos v-alignT">
 			  <tbody ng-repeat="payingAccount in thirdpayingAccounts | filter:validatePayment">
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td rowspan="2">
+				  <td class="width20p" rowspan="2">
 					<div class="head">Num.</div>
 					<div class="content">{{$index + 1}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Cuenta retiro</div>
 					<div class="content">{{payingAccount.source.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Cuenta dep&oacute;sito</div>
 					<div class="content">-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Importe</div>
 					<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 				  </td>
+				  <td class="width20p">
+					<div class="head">Fecha y hora de aplicaci&oacute;n</div>
+					<div class="content textR">{{getAppliedDate(payingAccount)}}</div>
+				  </td>
 				</tr>
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td colspan="3">
+				  <td colspan="4">
 					<div class="fila-interna">Cuenta concentradora: {{payingAccount.concentradora ? 'Si' : 'No'}}</div>
 					<div class="fila-interna">Referencia num&eacute;rica:  {{payingAccount.references? payingAccount.numeric : ''}}</div>
 					<div class="fila-interna" ng-show="payingAccount.references && payingAccount.alpha">Referencia alfanum&eacute;rica:  {{payingAccount.alpha}}</div>
 					<div class="fila-interna" ng-show="payingAccount.references && payingAccount.concept">Concepto del pago: {{payingAccount.concept}}</div>
 					<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
-					<div class="fila-interna">Fecha y hora de aplicaci&oacute;n: {{getAppliedDate(payingAccount)}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.rfc">RFC: {{payingAccount.rfc}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.iva">IVA:  {{payingAccount.iva | currency}}</div>
 				  </td>
@@ -1598,30 +1485,33 @@
 			<table class="datos v-alignT">
 			  <tbody ng-repeat="payingAccount in interbankPayments | filter:validatePayment">
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td rowspan="2">
+				  <td class="width20p" rowspan="2">
 					<div class="head">Num.</div>
 					<div class="content">{{$index + 1}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Cuenta retiro</div>
 					<div class="content">{{payingAccount.source.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Cuenta dep&oacute;sito</div>
 					<div class="content">-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width20p">
 					<div class="head">Importe</div>
 					<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 				  </td>
+				  <td class="width20p">
+					<div class="head">Fecha y hora de aplicaci&oacute;n</div>
+					<div class="content textR">{{getAppliedDate(payingAccount)}}</div>
+				  </td>
 				</tr>
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td colspan="3">
+				  <td colspan="4">
 					<div class="fila-interna">Cuenta concentradora: {{payingAccount.concentradora ? 'Si' : 'No'}}</div>
 					<div class="fila-interna" ng-show="payingAccount.references && payingAccount.concept">Concepto del pago: {{payingAccount.concept}}</div>
 					<div class="fila-interna">Referencia num&eacute;rica:  {{payingAccount.references? payingAccount.numeric : ''}}</div>
 					<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
-					<div class="fila-interna">Fecha y hora de aplicaci&oacute;n: {{getAppliedDate(payingAccount)}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.rfc">RFC: {{payingAccount.rfc}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.iva">IVA:  {{payingAccount.iva | currency}}</div>
 				  </td>
@@ -1639,33 +1529,36 @@
 			<table class="datos v-alignT">
 			  <tbody ng-repeat="payingAccount in orderpayingAccounts | filter:validatePayment">
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td rowspan="2">
+				  <td class="width16-5p" rowspan="2">
 					<div class="head">Num.</div>
 					<div class="content">{{$index + 1}}</div>
 				  </td>
-				  <td>
+				  <td class="width16-5p">
 					<div class="head">Cuenta retiro</div>
 					<div class="content">{{payingAccount.source.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width16-5p">
 					<div class="head">Cuenta dep&oacute;sito</div>
 					<div class="content">-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</div>
 				  </td>
-				  <td>
+				  <td class="width16-5p">
 					<div class="head">Importe</div>
 					<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 				  </td>
-				  <td>
+				  <td class="width16-5p">
 					<div class="head">Sucursal</div>
 					<div class="content">{{payingAccount.branch}}</div>
 				  </td>
+				  <td class="width16-5p">
+					<div class="head">Fecha y hora de aplicaci&oacute;n</div>
+					<div class="content">{{getAppliedDate(payingAccount)}}</div>
+				  </td>
 				</tr>
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
-				  <td colspan="4">
+				  <td colspan="5">
 					<div class="fila-interna">Cuenta concentradora: {{payingAccount.concentradora ? 'Si' : 'No'}}</div>
 					<div class="fila-interna" ng-show="payingAccount.references && payingAccount.concept">Concepto del pago: {{payingAccount.concept}}</div>
 					<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
-					<div class="fila-interna">Fecha y hora de aplicaci&oacute;n: {{getAppliedDate(payingAccount)}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.rfc">RFC: {{payingAccount.rfc}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.iva">IVA:  {{payingAccount.iva | currency}}</div>
 				  </td>
@@ -1848,13 +1741,13 @@
 			  </tbody>
 			  <thead>
 				<tr>
-				  <td>Num.</td>
-				  <td>Cuenta retiro</td>
-				  <td>Cuenta dep&oacute;sito</td>
-				  <td>Importe</td>
-				  <td>Fecha / Hora de Aplicaci&oacute;n</td>
-				  <td>Estatus</td>
-				  <td>Autorizaci&oacute;n</td>
+				  <td class="width14-2p">Num.</td>
+				  <td class="width14-2p">Cuenta retiro</td>
+				  <td class="width14-2p">Cuenta dep&oacute;sito</td>
+				  <td class="width14-2p">Importe</td>
+				  <td class="width14-2p">Fecha / Hora de Aplicaci&oacute;n</td>
+				  <td class="width14-2p">Estatus</td>
+				  <td class="width14-2p">Autorizaci&oacute;n</td>
 				</tr>
 			  </thead>
 			</table>
@@ -1878,13 +1771,13 @@
 			  </tbody>
 			  <thead>
 				<tr>
-				  <td>Num.</td>
-				  <td>Cuenta retiro</td>
-				  <td>Cuenta dep&oacute;sito</td>
-				  <td>Importe</td>
-				  <td>Fecha / Hora de Aplicaci&oacute;n</td>
-				  <td>Estatus</td>
-				  <td>Autorizaci&oacute;n</td>
+				  <td class="width14-2p">Num.</td>
+				  <td class="width14-2p">Cuenta retiro</td>
+				  <td class="width14-2p">Cuenta dep&oacute;sito</td>
+				  <td class="width14-2p">Importe</td>
+				  <td class="width14-2p">Fecha / Hora de Aplicaci&oacute;n</td>
+				  <td class="width14-2p">Estatus</td>
+				  <td class="width14-2p">Autorizaci&oacute;n</td>
 				</tr>
 			  </thead>
 			</table>
@@ -1908,13 +1801,13 @@
 			  </tbody>
 			  <thead>
 				<tr>
-				  <td>Num.</td>
-				  <td>Cuenta retiro</td>
-				  <td>Cuenta dep&oacute;sito</td>
-				  <td>Importe</td>
-				  <td>Fecha / Hora de Aplicaci&oacute;n</td>
-				  <td>Estatus</td>
-				  <td>Autorizaci&oacute;n</td>
+				  <td class="width14-2p">Num.</td>
+				  <td class="width14-2p">Cuenta retiro</td>
+				  <td class="width14-2p">Cuenta dep&oacute;sito</td>
+				  <td class="width14-2p">Importe</td>
+				  <td class="width14-2p">Fecha / Hora de Aplicaci&oacute;n</td>
+				  <td class="width14-2p">Estatus</td>
+				  <td class="width14-2p">Autorizaci&oacute;n</td>
 				</tr>
 			  </thead>
 			</table>
@@ -1940,15 +1833,15 @@
 			  </tbody>
 			  <thead>
 				<tr>
-				  <td>Num.</td>
-				  <td>Cuenta retiro</td>
-				  <td>Beneficiario</td>
-				  <td>Importe</td>
-				  <td>Sucursal</td>
-				  <td>Num. de Documento</td>
-				  <td>Fecha / Hora de Aplicaci&oacute;n</td>
-				  <td>Estatus</td>
-				  <td>Autorizaci&oacute;n</td>
+				  <td class="width11-1p">Num.</td>
+				  <td class="width11-1p">Cuenta retiro</td>
+				  <td class="width11-1p">Beneficiario</td>
+				  <td class="width11-1p">Importe</td>
+				  <td class="width11-1p">Sucursal</td>
+				  <td class="width11-1p">Num. de Documento</td>
+				  <td class="width11-1p">Fecha / Hora de Aplicaci&oacute;n</td>
+				  <td class="width11-1p">Estatus</td>
+				  <td class="width11-1p">Autorizaci&oacute;n</td>
 				</tr>
 			  </thead>
 			</table>

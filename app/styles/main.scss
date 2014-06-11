@@ -269,8 +269,20 @@ input.num{
 .width10p{
 	width: 10%!important;
 }
+.width11-1p{
+	width: 11.1%!important;	
+}
+.width14-2p{
+	width: 14.2%!important;	
+}
+.width16-5p{
+	width: 16.5%!important;	
+}
 .width20p{
 	width: 20%!important;
+}
+.width25p{
+	width: 25%!important;
 }
 .width30p{
 	width: 30%!important;
@@ -1246,7 +1258,7 @@ p.instrucciones{
 		}
 		.fila-interna{
 			font-size: 11px;
-			width: 30%;
+			width: 35%;
 			float: left;
 			margin-right: 20px;
 			margin-bottom: 3px;
