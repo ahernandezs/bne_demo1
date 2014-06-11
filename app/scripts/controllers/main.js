@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('bnePaymentsOldFashionedApp')
-	.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
-
+  .controller('MainCtrl', ['$scope', '$http', '$location', '$anchorScroll', function ($scope, $http, $location, $anchorScroll) {
 		$scope.hoursCombo = [
 			{name: '1'},
 			{name: '2'},
@@ -516,5 +515,13 @@ angular.module('bnePaymentsOldFashionedApp')
 				}
 			}
 		};
+
+    $scope.jumpToTop = function(event){
+      $location.hash('top');
+      $anchorScroll();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    $scope.jumpToTop(event);
 
 }]);
