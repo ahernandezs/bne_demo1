@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('bnePaymentsOldFashionedApp')
-	.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
-
+  .controller('MainCtrl', ['$scope', '$http', '$location', '$anchorScroll', function ($scope, $http, $location, $anchorScroll) {
 		$scope.hoursCombo = [
 			{name: '1'},
 			{name: '2'},
@@ -205,7 +204,8 @@ angular.module('bnePaymentsOldFashionedApp')
 
 			var firstPayment = {
         enabled: false,
-        fiscal: false
+        fiscal: false,
+        date: $scope.getCurrentDate()
 			}
 
 			$scope.thirdpayingAccounts.push(firstPayment);
@@ -220,6 +220,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
       var firstPayment = {
         enabled: false,
+        date: $scope.getCurrentDate()
       }
 
       $scope.ownpayingAccounts.push(firstPayment);
@@ -234,6 +235,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
       var firstPayment = {
         enabled: false,
+        date: $scope.getCurrentDate()
       }
 
       $scope.interbankPayments.push(firstPayment);
@@ -248,6 +250,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
       var firstPayment = {
         enabled: false,
+        date: $scope.getCurrentDate()
       }
 
       $scope.orderpayingAccounts.push(firstPayment);
@@ -516,5 +519,13 @@ angular.module('bnePaymentsOldFashionedApp')
 				}
 			}
 		};
+
+    $scope.jumpToTop = function(event){
+      $location.hash('top');
+      $anchorScroll();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    $scope.jumpToTop(event);
 
 }]);

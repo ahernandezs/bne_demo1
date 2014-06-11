@@ -8,8 +8,8 @@
 			<label><input type="radio" name="radio-alta-ben"> Alta de grupo de Beneficiarios</label>
 		</p>
 		<div class="area-botones">
-			<button class="btn btn-danger pull-left" ng-click="addBenef = false">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="addBenef = false; multipleInterbank=false; groupsInterbank=false; addInterbank=true">Continuar</button>
+			<button class="btn btn-danger pull-left" ng-click="addBenef = false; jumpToTop($event)">Cancelar</button>
+			<button class="btn btn-primary pull-right" ng-click="addBenef = false; multipleInterbank=false; groupsInterbank=false; addInterbank=true; jumpToTop($event)">Continuar</button>
 		</div>
 	</div>
 
@@ -32,7 +32,7 @@
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="challenge = false">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="challenge = false; confirmation = false; applied = true">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="challenge = false; confirmation = false; applied = true; jumpToTop($event)">Continuar</button>
 		</div>
 	</div>
 </div>
@@ -753,12 +753,12 @@
 			</div>
 		</div>
 		<div class="area-botones" ng-hide="preConfirmationGroup">
-			<button ng-show="selectedGroup" ng-click="preConfirmationGroup = true; changeGroup()" type="button" class="btn btn-primary pull-right">Continuar</button>
-			<button ng-hide="selectedGroup" ng-click="showAccounts = false; preConfirmation = true" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
+			<button ng-show="selectedGroup" ng-click="preConfirmationGroup = true; changeGroup(); jumpToTop($event)" type="button" class="btn btn-primary pull-right">Continuar</button>
+			<button ng-hide="selectedGroup" ng-click="showAccounts = false; preConfirmation = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right" ng-class="{disabled: !allowNext}">Continuar</button>
 		</div>
 		<div class="area-botones" ng-show="preConfirmationGroup">
-			<button ng-click="preConfirmationGroup = false" type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button ng-click="showAccounts = false; preConfirmation = true; preConfirmationGroup = false" type="button" class="btn btn-primary pull-right">Continuar</button>
+			<button ng-click="preConfirmationGroup = false; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-click="showAccounts = false; preConfirmation = true; preConfirmationGroup = false; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Continuar</button>
 		</div>
 	</div>
 
@@ -1361,9 +1361,9 @@
 		</div>
 
 		<div class="area-botones">
-			<button ng-show="selectedGroup" ng-click="preConfirmationGroup = true; preConfirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button ng-hide="selectedGroup" ng-click="showAccounts = true; preConfirmation = false" type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button ng-click="confirmation = true; preConfirmation = false" type="button" class="btn btn-primary pull-right">Continuar</button>
+			<button ng-show="selectedGroup" ng-click="preConfirmationGroup = true; preConfirmation = false; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-hide="selectedGroup" ng-click="showAccounts = true; preConfirmation = false; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-click="confirmation = true; preConfirmation = false; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Continuar</button>
 		</div>
 	</div>
 
