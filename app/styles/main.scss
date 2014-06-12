@@ -266,6 +266,9 @@ input.num{
 	width:900px!important;
 }
 /* ANCHOS PORCENTAJES */
+.width4p{
+	width: 4%!important;
+}
 .width10p{
 	width: 10%!important;
 }
@@ -275,11 +278,14 @@ input.num{
 .width14-2p{
 	width: 14.2%!important;	
 }
-.width16-5p{
-	width: 16.5%!important;	
+.width19-2p{
+	width: 19.2%!important;	
 }
 .width20p{
 	width: 20%!important;
+}
+.width24p{
+	width: 24%!important;
 }
 .width25p{
 	width: 25%!important;
@@ -1204,6 +1210,7 @@ p.instrucciones{
 			td.border{
 				border-right: 1px solid #d0d0d0!important;
 			}
+			
 		}
 		td{
 			border-right: 1px solid #cdcecf;
@@ -1215,6 +1222,9 @@ p.instrucciones{
 		}
 		td.row-error{
 			color: #ee2e24!important;
+		}
+		td.borderNone{
+			border-right: none !important;
 		}
 		
 		.head{
@@ -1258,8 +1268,7 @@ p.instrucciones{
 		}
 		.fila-interna{
 			font-size: 11px;
-			width: 35%;
-			float: left;
+			width: auto;
 			margin-right: 20px;
 			margin-bottom: 3px;
 			border-bottom: 1px dotted #b7b7b7!important;;
