@@ -528,4 +528,10 @@ angular.module('bnePaymentsOldFashionedApp')
     }
     $scope.jumpToTop(event);
 
+    $scope.disableDiv = function(){
+      $scope.groupSelected = true;
+    }
+
+    $scope.groupSelected = false;
+
 }]);

@@ -54,7 +54,7 @@
       <p class="paginador" ng-show="collapseFive">Paso <span ng-hide="preConfirmationGroup">1</span><span ng-show="preConfirmationGroup">2</span> de <span>5</span></p>
 			<p class="paginador" ng-hide="collapseFive">Paso <span>1</span> de <span>4</span></p>
 		</div>
-		<div class="panels-container" id="sortable">
+		<div class="panels-container" id="sortable" ng-class="{'disabledDiv' : groupSelected }">
 			<div class="panel panel-default">
 				<div class="panel-heading borderT0">
 					<h4 class="panel-title">
@@ -602,7 +602,7 @@
 									<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-repeat="group in groups.docs">
 										<td>
 											<div class="content">
-												<input type="radio" name="grupo-ben-interbancarias" ng-click="$parent.selectedGroup = group">
+												<input type="radio" name="grupo-ben-interbancarias" ng-click="disableDiv();$parent.selectedGroup = group;">
 											</div>
 										</td>
 										<td>
