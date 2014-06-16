@@ -834,7 +834,7 @@
 					</div>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head"><span class="span175">Importe MXN</span></div>
 				  <div class="content">
 					<form class="form-inline span175" ng-show="payingAccount.target.account_type_i !== 3">
@@ -863,7 +863,7 @@
 					</form>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head">
 					<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 				  </div>
@@ -946,7 +946,7 @@
 					</div>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head"><span class="span140">Importe MXN</span></div>
 				  <div class="content">
 					<form class="form-inline">
@@ -954,7 +954,7 @@
 					</form>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head">
 					<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 				  </div>
@@ -1078,7 +1078,7 @@
 					</div>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head"><span class="span140">Importe MXN</span></div>
 				  <div class="content">
 					<form class="form-inline">
@@ -1086,7 +1086,7 @@
 					</form>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head">
 					<span class="span175">Fecha de operaci&oacute;n</span>
 				  </div>
@@ -1207,7 +1207,7 @@
 					</div>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head"><span class="span140">Importe MXN</span></div>
 				  <div class="content">
 					<form class="form-inline span140">
@@ -1215,7 +1215,7 @@
 					</form>
 				  </div>
 				</td>
-				<td>
+				<td class="width20p">
 				  <div class="head">
 					<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'programming')" value="" ng-model="payingAccount.programming"> Programar a fecha futura</label>
 				  </div>
@@ -1556,23 +1556,23 @@
 					<div class="head">Num.</div>
 					<div class="content">{{$index + 1}}</div>
 				  </td>
-				  <td class="width19-2p">
+				  <td class="width24p">
 					<div class="head">Cuenta retiro</div>
 					<div class="content">{{payingAccount.source.name}}</div>
 				  </td>
-				  <td class="width19-2p">
+				  <td class="width24p">
 					<div class="head">Cuenta dep&oacute;sito</div>
 					<div class="content">-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</div>
 				  </td>
-				  <td class="width19-2p">
+				  <td class="width24p">
 					<div class="head">Importe</div>
 					<div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
 				  </td>
-				  <td class="width19-2p">
+				  <!-- <td class="width19-2p">
 					<div class="head">Sucursal</div>
 					<div class="content">{{payingAccount.branch}}</div>
-				  </td>
-				  <td class="width19-2p">
+				  </td> -->
+				  <td class="width24p">
 					<div class="head">Fecha y hora de aplicaci&oacute;n</div>
 					<div class="content">{{getAppliedDate(payingAccount)}}</div>
 				  </td>
@@ -1584,6 +1584,7 @@
 					<div class="fila-interna">Autorización remota: {{payingAccount.remote ? 'Si' : 'No'}}</div>
 				  </td>
 				  <td class="borderNone">
+				  	<div class="fila-interna">Sucursal: {{payingAccount.branch}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.rfc">RFC: {{payingAccount.rfc}}</div>
 					<div class="fila-interna" ng-show="payingAccount.fiscal && payingAccount.iva">IVA:  {{payingAccount.iva | currency}}</div>
 				  </td>
@@ -1850,8 +1851,8 @@
 				  <td>{{payingAccount.source.name}}</td>
 				  <td>-{{payingAccount.target.currency_t}}- {{payingAccount.target.account_t}} Nombre: {{payingAccount.target.name}}</td>
 				  <td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
-				  <td>{{payingAccount.branch}}</td>
-				  <td>{{payingAccount.target.account_t}}</td>
+				  <!-- <td>{{payingAccount.branch}}</td>
+				  <td>{{payingAccount.target.account_t}}</td> -->
 				  <td>{{payingAccount.appliedDate}}</td>
 				  <td>Aplicada</td>
 				  <td>001005</td>
@@ -1859,15 +1860,15 @@
 			  </tbody>
 			  <thead>
 				<tr>
-				  <td class="width11-1p">Num.</td>
-				  <td class="width11-1p">Cuenta retiro</td>
-				  <td class="width11-1p">Beneficiario</td>
-				  <td class="width11-1p">Importe</td>
-				  <td class="width11-1p">Sucursal</td>
-				  <td class="width11-1p">Num. de Documento</td>
-				  <td class="width11-1p">Fecha / Hora de Aplicaci&oacute;n</td>
-				  <td class="width11-1p">Estatus</td>
-				  <td class="width11-1p">Autorizaci&oacute;n</td>
+				  <td class="width14-2p">Num.</td>
+				  <td class="width14-2p">Cuenta retiro</td>
+				  <td class="width14-2p">Beneficiario</td>
+				  <td class="width14-2p">Importe</td>
+				  <!-- <td class="width11-1p">Sucursal</td>
+				  <td class="width11-1p">Num. de Documento</td> -->
+				  <td class="width14-2p">Fecha / Hora de Aplicaci&oacute;n</td>
+				  <td class="width14-2p">Estatus</td>
+				  <td class="width14-2p">Autorizaci&oacute;n</td>
 				</tr>
 			  </thead>
 			</table>
