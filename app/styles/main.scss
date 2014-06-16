@@ -352,6 +352,9 @@ input.num{
 .paddingR15{
 	padding-right:15px;
 }
+.paddingL0{
+	padding-left:0px!important;
+}
 .paddingL3{
 	padding-left:3px!important;
 }
@@ -905,6 +908,7 @@ p.instrucciones{
 								}
 							}
 							.content{
+								overflow: hidden;
 								font-size: 11px;
 								padding: 5px;
 								form{
