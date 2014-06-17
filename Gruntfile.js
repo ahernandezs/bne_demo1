@@ -306,19 +306,14 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
+            'images/{,*/}*.{png,jpg,jpeg,gif}',
             'fonts/*'
           ]
         }, {
-          //expand: true,
-          //cwd: '.tmp/images',
-          //dest: '<%= yeoman.dist %>/images',
-          //src: ['generated/*']
           expand: true,
-          flatten: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>/fonts',
-          src: ['bower_components/sass-bootstrap/fonts/*.*']
+          cwd: '.tmp/images',
+          dest: '<%= yeoman.dist %>/images',
+          src: ['generated/*']
         }]
       },
       styles: {
