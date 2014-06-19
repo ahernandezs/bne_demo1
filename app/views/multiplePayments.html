@@ -1,0 +1,153 @@
+
+<div class="panels-container" id="sortable" ng-class="{'disabledDiv' : groupSelected }">
+	<div class="panel panel-default">
+		<div class="panel-collapse">
+			<div class="content-panel">
+
+				<div class="clear-fix">
+					<p class="paginador" ng-hide="collapseFive">Paso <span>1</span> de <span>3</span></p>
+				</div>
+
+				<p>
+					Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en a"Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
+				</p>
+				<table class="table">
+					<tbody ng-repeat="payingAccount in ownpayingAccounts">
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<td class="width25">
+								<div class="head textC">{{$index + 1}}</div>
+							</td>
+							<td>
+								<div class="head textL paddingL10">Cuentas</div>
+								<div class="content paddingL10">
+									<div class="pull-left paddingR10">
+									<div class="pull-left width40p">
+										<span class="pull-left cuenta-label">Cuenta retiro </span>
+										<angucomplete id="origin-account"
+											placeholder="Cuenta / Alias"
+											pause="20"
+											selectedobject="interbank.source"
+											url="http://projects.anzen.com.mx:4567/api/accounts?query="
+											datafield="docs"
+											titlefield="name,currency_t,format_amount_t"
+											imagefield="image_t"
+											minlength="1"
+											enabledefault="true"
+											class="pull-left cuenta"
+											inputclass="form-control form-control-small search"/>
+									</div>
+									</div>
+									<div class="pull-left">
+										<span class="span310">
+											<span class="pull-left">
+												Cuenta dep&oacute;sito<br>
+												<angucomplete id="target-account"
+													placeholder="Clabe / Cuenta / Alias / Celular"
+													pause="20"
+													selectedobject="payingAccount.target"
+													url="http://projects.anzen.com.mx:4567/api/allaccounts?query="
+													datafield="docs"
+													titlefield="name,bank_t"
+													minlength="1"
+													enabledefault="true"
+													inputclass="form-control form-control-small search"/>
+											</span>
+											<span class="pull-left paddingT17 paddingL10">
+												<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
+											</span>
+										</span>
+										<div class="clear-fix textL">
+											<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.last_payment_d | currency}} {{payingAccount.target.last_date_t | date:'dd/MM/yyyy'}}</span>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td class="width200">
+								<div class="head"><span class="span175">Importe MXN</span></div>
+								<div class="content">
+									<form class="form-inline span175" ng-show="payingAccount.target.account_type_i !== 3">
+										<span class="paddingR3">$</span> <input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
+									</form>
+									<form class="form-inline" ng-show="payingAccount.target.account_type_i === 3">
+										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
+											<input class="v-alignT" type="radio" name="radio1">
+											<span class="displayIB paddingL3">
+												Pago m&iacute;nimo MXN<br><span class="color666666">$250.00</span>
+											</span>
+										</label>
+										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
+											<input class="v-alignT" type="radio" name="radio1">
+											<span class="displayIB paddingL3">
+												Pago para no generar<br>intereses MXN<br><span class="color666666">$100.00</span>
+											</span>
+										</label>
+										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
+											<input class="v-alignT" type="radio" name="radio1">
+											<span class="displayIB paddingL3">
+												Otro importe
+												<br><input class="form-control textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
+											</span>
+										</label>
+									</form>
+								</div>
+							</td>
+							<td class="width230">
+								<div class="head">
+									<label class="span175">Fecha de pago</label>
+								</div>
+								<div class="content">
+									<form class="form-inline span175">
+										<span class="paddingR3">Fecha</span> <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
+										<span class="ico-calendar"></span>
+									</form>
+									<form class="form-inline span175">
+										<strong>Hora&nbsp;&nbsp;</strong>
+										<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
+											<option value="">Ahora</option>
+										</select>
+										hrs
+									</form>
+									<label class="span175"><input type="checkbox" ng-click="verifyThirdMode(payingAccount, 'remote')" value="" ng-model="payingAccount.remote"> Autorizar en forma remota</label>
+								</div>
+							</td>
+							<td class="v-alignM width50">
+								<div class="tooltip-eliminar tooltip-propias{{$index}}">
+									<p>Eliminar</p>
+									<div class="arrow"></div>
+								</div>
+								<button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
+									ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
+									ng-mouseleave="hide_tltp('.tooltip-propias'+$index)"
+									ng-click="removePayment(ownpayingAccounts, $index)" >
+									<span class="ico-basurero"></span>
+								</button>
+							</td>
+						</tr>
+					</tbody>		
+					<tbody>
+						<tr><td colspan="5"><hr></td></tr>
+						<tr ng-class-odd="" ng-class-even="'ffffff'">
+							<td class="width25">
+								&nbsp;
+							</td>
+							<td>
+								<strong>TOTAL A PAGAR:</strong>
+							</td>
+							<td class="width200">
+								<strong>$0.00</strong>							
+							</td>
+							<td class="width230">
+								&nbsp;
+							</td>
+							<td class="v-alignM width50">
+								&nbsp;
+							</td>
+						</tr>
+						<tr><td colspan="5"><hr></td></tr>
+					</tbody>									
+				</table>
+				<button type="button" class="btn btn-primary" ng-click="addMoreOwnPayments()">Agregar m&aacute;s pagos</button>
+			</div>
+		</div>
+	</div>
+</div>

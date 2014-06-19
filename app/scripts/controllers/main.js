@@ -533,5 +533,9 @@ angular.module('bnePaymentsOldFashionedApp')
     }
 
     $scope.groupSelected = false;
+    $scope.multiplePayments = true;
+    $scope.collapseOne = true;
+
+    $scope.state = "multiplePayments";
 
 }]);
