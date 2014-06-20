@@ -355,8 +355,8 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.getTotalPayment = function (payments) {
       var sum = 0;
-      for(var i = 0; i < payments.payingAccounts.length; i++) {
-        var elem = payments.payingAccounts[i].amount;
+      for(var i = 0; i < payments.length; i++) {
+        var elem = payments[i].amount;
         if(elem && parseFloat(elem)) {
           sum += parseFloat(elem);
         }

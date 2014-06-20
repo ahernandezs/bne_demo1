@@ -122,28 +122,11 @@
 							</td>
 						</tr>
 					</tbody>
-					<tbody>
-						<tr><td colspan="5"><hr></td></tr>
-						<tr ng-class-odd="" ng-class-even="'ffffff'">
-							<td class="width25">
-								&nbsp;
-							</td>
-							<td>
-								<strong>TOTAL A PAGAR:</strong>
-							</td>
-							<td class="width200">
-								<strong>$0.00</strong>
-							</td>
-							<td class="width230">
-								&nbsp;
-							</td>
-							<td class="v-alignM width50">
-								&nbsp;
-							</td>
-						</tr>
-						<tr><td colspan="5"><hr></td></tr>
-					</tbody>
 				</table>
+        <div class="total-payment">
+          <br>
+          <strong class="padddingR15">TOTAL A PAGAR: {{ getTotalPayment(ownpayingAccounts) | currency}}</strong>
+        </div>
 				<button type="button" class="btn btn-primary" ng-click="addMoreOwnPayments()">Agregar m&aacute;s pagos</button>
 			</div>
 		</div>
