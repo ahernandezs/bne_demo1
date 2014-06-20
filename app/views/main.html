@@ -71,7 +71,8 @@
             </ul>
             <div class="" ng-switch on="state">
               <div ng-switch-when="multiplePayments">
-                <div ng-include="'views/multiplePayments.html'"></div>
+                <div ng-include="'views/multiplePayments.html'" ng-show="stepState === 'capture'"></div>
+                <div ng-include="'views/multiplePaymentsConfirmation.html'" ng-show="stepState === 'confirmation'"></div>
               </div>
               <div ng-switch-when="beneficiaryGroups">
                 <div ng-include="'views/multiplePayments2.html'"></div>
@@ -82,9 +83,13 @@
       </div>
     </div>
     <div class="area-botones">
-      <button class="btn btn-primary pull-right" ng-click="state='multiplePayments2'">Continuar</button>
+      <button ng-show="stepState === 'capture'" class="btn btn-primary pull-right" ng-click="stepState='confirmation'">Continuar</button>
+			<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'apply'; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
     </div>
 
+  </div>
+</div>
 
 
 

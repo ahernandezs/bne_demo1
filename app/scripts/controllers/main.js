@@ -302,6 +302,8 @@ angular.module('bnePaymentsOldFashionedApp')
 
       $scope.addToNewGroup = undefined;
       $scope.addToGroupSelect= undefined;
+
+      $scope.stepState="capture";
     };
 
     $scope.setup();
