@@ -528,7 +528,8 @@ angular.module('bnePaymentsOldFashionedApp')
       event.preventDefault();
       event.stopPropagation();
     }
-    $scope.jumpToTop(event);
+    $location.hash('top');
+    $anchorScroll();
 
     $scope.disableDiv = function(){
       $scope.groupSelected = true;
