@@ -1,9 +1,7 @@
 
-<div class="panels-container" id="sortable" ng-class="{'disabledDiv' : groupSelected }">
-	<div class="panel panel-default">
-		<div class="panel-collapse">
-			<div class="content-panel">
-			
+		<div class="content-tabs">
+			<div class="tab-pagos-multiples">
+
 				<div class="clear-fix">
 		      		<p class="paginador" ng-show="collapseFive">Paso <span ng-hide="preConfirmationGroup">1</span><span ng-show="preConfirmationGroup">2</span> de <span>5</span></p>
 					<p class="paginador" ng-hide="collapseFive">Paso <span>1</span> de <span>4</span></p>
@@ -369,7 +367,7 @@
 												<input type="text" ng-class="{'gray-input' : !payingAccount.editConcept}" class="form-control width280" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
 											</label>
 										</div>
-										
+
 									</form>
 								</div>
 							</td>
@@ -477,7 +475,7 @@
 								<strong>TOTAL A PAGAR:</strong>
 							</td>
 							<td class="width200">
-								<strong>$20,500.00</strong>							
+								<strong>$20,500.00</strong>
 							</td>
 							<td class="width230">
 								&nbsp;
@@ -488,7 +486,7 @@
 						</tr>
 						<tr><td colspan="5"><hr></td></tr>
 
-					</tbody>					
+					</tbody>
 				</table>
 				<button type="button" class="btn btn-primary" ng-click="addMoreOrderPayments()">Agregar m&aacute;s pagos</button>
 			</div>
