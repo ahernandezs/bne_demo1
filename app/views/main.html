@@ -32,7 +32,7 @@
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="challenge = false">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="challenge = false; confirmation = false; applied = true; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="challenge = false; confirmation = false; stepState = ''; applied = true; jumpToTop($event)">Continuar</button>
 		</div>
 	</div>
 </div>
@@ -73,6 +73,7 @@
               <div ng-switch-when="multiplePayments">
                 <div ng-include="'views/multiplePayments.html'" ng-show="stepState === 'capture'"></div>
                 <div ng-include="'views/multiplePaymentsConfirmation.html'" ng-show="stepState === 'confirmation'"></div>
+                <div ng-include="'views/multiplePaymentsApplied.html'" ng-show="applied"></div>
               </div>
               <div ng-switch-when="beneficiaryGroups">
                 <div ng-include="'views/multiplePayments2.html'"></div>
@@ -85,7 +86,8 @@
     <div class="area-botones">
       <button ng-show="stepState === 'capture'" class="btn btn-primary pull-right" ng-click="stepState='confirmation'">Continuar</button>
 			<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
-			<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'apply'; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
+			<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
+			<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Aceptar</button>
     </div>
 
   </div>
@@ -1015,7 +1017,7 @@
 		</div>
 	</div>
 
-	<div class="pag-aplicacion" ng-show="applied">
+	<div class="pag-aplicacion" ng-show="false">
 		<div class="titulo-principal">
 			<h1 class="pull-left">Multipagos</h1>
 			<p class="pull-right">

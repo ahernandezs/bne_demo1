@@ -282,7 +282,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addMoreOwnPayments();
       $scope.addMoreInterbankPayments();
       $scope.addMoreOrderPayments();
-      $scope.collapseOne = false;
+      $scope.collapseOne = true;
       $scope.collapseTwo = false;
       $scope.collapseThree = false;
       $scope.collapseFour = false;

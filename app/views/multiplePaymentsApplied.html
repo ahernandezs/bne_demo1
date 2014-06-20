@@ -1,0 +1,63 @@
+<div class="content-tabs">
+  <div class="tab-pagos-multiples">
+
+    <div class="clear-fix">
+      <p class="paginador">Paso <span>3</span> de <span>3</span></p>
+    </div>
+
+    <p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
+
+    <div class="content-box">
+      <p class="title pull-left">Autorizadores</p>
+      <div class="contenido pull-right">
+        <table class="datos">
+          <tbody>
+          <tr class="bgf0f4f9">
+            <td><strong>Usuario 79</strong></td>
+            <td>BEST BANKING DOS</td>
+          </tr>
+          <tr>
+            <td><strong>Usuario 97</strong></td>
+            <td>BEST BANKING</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="clear-fix">
+      <a href="" class="pull-right">
+        <span class="ico-print">
+          <span class="ico-print-h"></span>
+        </span>
+      </a>
+    </div>
+
+    <table class="datos v-alignT">
+      <tbody ng-repeat="payingAccount in ownpayingAccounts">
+      <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+        <td>{{$index + 1}}</td>
+        <td>{{payingAccount.source.originalObject.name}}</td>
+        <td>{{payingAccount.target.originalObject.name}} {{payingAccount.target.originalObject.bank_t}} {{payingAccount.target.originalObject.account_t}} - {{payingAccount.target.originalObject.currency_t}}</td>
+        <td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+        <td>{{payingAccount.appliedDate}}</td>
+        <td>Aplicada</td>
+        <td>001005</td>
+      </tr>
+      </tbody>
+      <thead>
+        <tr>
+          <td class="width14-2p">Num.</td>
+          <td class="width14-2p">Cuenta retiro</td>
+          <td class="width14-2p">Cuenta dep&oacute;sito</td>
+          <td class="width14-2p">Importe</td>
+          <td class="width14-2p">Fecha / Hora de Aplicaci&oacute;n</td>
+          <td class="width14-2p">Estatus</td>
+          <td class="width14-2p">Autorizaci&oacute;n</td>
+        </tr>
+      </thead>
+
+    </table>
+
+  </div>
+</div>
