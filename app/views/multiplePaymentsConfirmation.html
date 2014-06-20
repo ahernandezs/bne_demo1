@@ -1,0 +1,74 @@
+<div class="content-tabs">
+  <div class="tab-pagos-multiples">
+
+    <div class="clear-fix">
+      <p class="paginador">Paso <span>2</span> de <span>3</span></p>
+    </div>
+
+    <p>
+    Confirme los datos de su(s) pago(s) y haga clic en "Aceptar". Si desea modificar, eliminar o adicionar pagos haga clic en "Regresar".
+    </p>
+    <table class="datos v-alignT">
+      <tbody ng-repeat="payingAccount in ownpayingAccounts">
+      <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
+        <td class="width4p" rowspan="2">
+          <div class="head">Num.</div>
+          <div class="content">{{$index + 1}}</div>
+        </td>
+        <td class="width24p">
+          <div class="head">Cuenta retiro</div>
+          <div class="content">{{payingAccount.source.originalObject.name}}</div>
+        </td>
+        <td class="width24p">
+          <div class="head">Cuenta dep&oacute;sito</div>
+          <div class="content">{{payingAccount.target.originalObject.name}} {{payingAccount.target.originalObject.bank_t}} {{payingAccount.target.originalObject.account_t}} - {{payingAccount.target.originalObject.currency_t}}</div>
+        </td>
+        <td class="width24p">
+          <div class="head">Importe</div>
+          <div class="content textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</div>
+        </td>
+        <td class="width24p">
+          <div class="head">Fecha y hora de aplicaci&oacute;n</div>
+          <div class="content textR">{{getAppliedDate(payingAccount)}}</div>
+        </td>
+        <td class="width24p">
+          <div class="head">Autorizaci&oacute;n remota</div>
+          <div class="content">{{payingAccount.remote ? 'Si' : 'No'}}</div>
+        </td>
+      </tr>
+      <tr ng-class="{bgf0f4f9: $index % 2 == 0}" ng-show="payingAccount.target.originalObject.type_i === 2">
+        <td class="borderNone">
+          <div class="fila-interna">RFC: {{payingAccount.rfc}}</div>
+          <div class="fila-interna">IVA:  {{payingAccount.iva | currency}}</div>
+          <div class="fila-interna">Concepto del pago: {{payingAccount.concept}}</div>
+        </td>
+        <td class="borderNone">
+          <div class="fila-interna">Referencia Num&eacute;rica:  {{payingAccount.references? payingAccount.numeric : ''}}</div>
+          <div class="fila-interna">Referencia Alfanum&eacute;rica:  {{payingAccount.references? payingAccount.alpha : ''}}</div>
+        </td>
+        <td class="borderNone" colspan="3"></td>
+      </tr>
+      <tr ng-class="{bgf0f4f9: $index % 2 == 0}" ng-show="payingAccount.target.originalObject.type_i === 1">
+        <td class="borderNone">
+          <div class="fila-interna">RFC: {{payingAccount.rfc}}</div>
+          <div class="fila-interna">IVA:  {{payingAccount.iva | currency}}</div>
+        </td>
+        <td class="borderNone">
+          <div class="fila-interna">Concepto del pago: {{payingAccount.concept}}</div>
+          <div class="fila-interna">N&uacute;mero de referencia:  {{payingAccount.references? payingAccount.numeric : ''}}</div>
+        </td>
+        <td class="borderNone" colspan="3"></td>
+      </tr>
+      <tr ng-class="{bgf0f4f9: $index % 2 == 0}" ng-show="payingAccount.target.originalObject.type_i === 3">
+        <td class="borderNone">
+          <div class="fila-interna">Sucursal: {{payingAccount.branch}}</div>
+        </td>
+        <td class="borderNone">
+        </td>
+        <td class="borderNone" colspan="3"></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

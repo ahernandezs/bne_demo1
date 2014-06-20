@@ -282,7 +282,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addMoreOwnPayments();
       $scope.addMoreInterbankPayments();
       $scope.addMoreOrderPayments();
-      $scope.collapseOne = false;
+      $scope.collapseOne = true;
       $scope.collapseTwo = false;
       $scope.collapseThree = false;
       $scope.collapseFour = false;
@@ -302,6 +302,8 @@ angular.module('bnePaymentsOldFashionedApp')
 
       $scope.addToNewGroup = undefined;
       $scope.addToGroupSelect= undefined;
+
+      $scope.stepState="capture";
     };
 
     $scope.setup();
