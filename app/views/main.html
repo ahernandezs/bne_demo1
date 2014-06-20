@@ -54,51 +54,50 @@
 			</p>
 		</div>
 
-		<div class="panels-container" id="sortable" ng-class="disabledDiv">
-			<div class="panel panel-default">
-				<div class="panel-heading borderT0">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="" href="" ng-click="collapseOne = !collapseOne;">
-							<span ng-show="!collapseOne">+</span><span ng-show="collapseOne">-</span> Pago a multiples beneficiarios
-						</a>
-					</h4>
-				</div>
-				<div ng-show="collapseOne">
-					<ul class="nav nav-tabs">
-						<li ng-class="{active: multiplePayments}"><a href="" ng-click="multiplePayments = true; beneficiaryGroups = false">Pagos Múltiples</a></li>
-						<li ng-class="{active: beneficiaryGroups}"><a href="" ng-click="beneficiaryGroups = true; multiplePayments = false">Pagar a un grupo de beneficiarios</a></li>
-					</ul>
-					<div class="" ng-switch on="state">
-				        <div ng-switch-when="multiplePayments">
-							<div ng-include="'views/multiplePayments.html'"></div>
-						</div>
-				        <div ng-switch-when="multiplePayments2">
-							<div ng-include="'views/multiplePayments2.html'"></div>
-						</div>						
-					</div>
-					<div class="" ng-show="beneficiaryGroups">
-						pagos a grupos
-					</div>	
-				</div>				
-			</div>
-		</div>
-		<div class="area-botones">
-			<button class="btn btn-primary pull-right" ng-click="state='multiplePayments2'">Continuar</button>
-		</div>
+    <div class="panels-container" id="sortable" ng-class="disabledDiv">
+      <div class="panel panel-default">
+        <div class="panel-heading borderT0">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="" href="" ng-click="collapseOne = !collapseOne;">
+              <span ng-show="!collapseOne">+</span><span ng-show="collapseOne">-</span> Pago a multiples beneficiarios
+            </a>
+          </h4>
+        </div>
+        <div class="panel-collapse" ng-show="collapseOne">
+          <div class="content-panel">
+            <ul class="nav nav-tabs">
+              <li ng-class="{active: state === 'multiplePayments'}"><a href="" ng-click="state='multiplePayments'">Pagos Múltiples</a></li>
+              <li ng-class="{active: state === 'beneficiaryGroups'}"><a href="" ng-click="state='beneficiaryGroups'">Pagar a un grupo de beneficiarios</a></li>
+            </ul>
+            <div class="" ng-switch on="state">
+              <div ng-switch-when="multiplePayments">
+                <div ng-include="'views/multiplePayments.html'"></div>
+              </div>
+              <div ng-switch-when="beneficiaryGroups">
+                <div ng-include="'views/multiplePayments2.html'"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="area-botones">
+      <button class="btn btn-primary pull-right" ng-click="state='multiplePayments2'">Continuar</button>
+    </div>
 
 
 
 
-	<div class="pag-confirm" ng-show="preConfirmation">
-		<div class="titulo-principal">
-			<h1 class="pull-left">Multipagos</h1>
-			<p class="pull-right">
-				<a href="javascript:void(0);">
-					<span class="ico-ayuda">
-						<span class="ico-ayuda-h"></span>
-					</span>
-				</a>
-			</p>
+    <div class="pag-confirm" ng-show="preConfirmation">
+      <div class="titulo-principal">
+        <h1 class="pull-left">Multipagos</h1>
+        <p class="pull-right">
+        <a href="javascript:void(0);">
+          <span class="ico-ayuda">
+            <span class="ico-ayuda-h"></span>
+          </span>
+        </a>
+        </p>
 		</div>
 		<div class="clear-fix">
 			<div class="pull-left">
@@ -348,7 +347,7 @@
 							<input type="text" ng-class="{'gray-input' : !payingAccount.editConcept}" class="form-control width280" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
 						  </label>
 					  </div>
-					  
+
 					</form>
 				  </div>
 				</td>
@@ -468,7 +467,7 @@
 							<input type="text" ng-class="{'gray-input' : !payingAccount.editConcept}" class="form-control width280" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
 						  </label>
 					  </div>
-					  
+
 					</form>
 				  </div>
 				</td>
