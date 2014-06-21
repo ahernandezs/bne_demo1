@@ -161,7 +161,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
 		$scope.groups = [];
 
-		$http.get($scope.base_url + "/groups", {}).
+		$http.get($scope.base_url + "/allgroups", {}).
 			success(function(responseData, status, headers, config) {
 			$scope.groups = responseData;
 		}).
@@ -268,6 +268,21 @@ angular.module('bnePaymentsOldFashionedApp')
       }
 
         $scope.newAccounts.push(account);
+    };
+
+    $scope.addGroupPayment = function () {
+      if($scope.groupItems.docs.length >= 15) return;
+
+      var firstPayment = {
+        enabled: false,
+        date: $scope.getCurrentDate()
+      }
+
+      $scope.groupItems.docs.push(firstPayment);
+    };
+
+    $scope.addMoreGroupPayments = function () {
+      $scope.addGroupPayment();
     };
 
     // setup
@@ -481,11 +496,16 @@ angular.module('bnePaymentsOldFashionedApp')
       return date;
     };
 
+    $scope.selectGroup = function (group) {
+      $scope.selectedGroup = group;
+    };
+
 		$scope.changeGroup = function () {
       if($scope.selectedGroup) {
-        $http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
+        $http.get($scope.base_url + "/allgroups/" + $scope.selectedGroup.id + "/items", {}).
           success(function(responseData, status, headers, config) {
-            $scope.groupItems = responseData;
+            //$scope.groupItems = responseData;
+            $scope.ownpayingAccounts = responseData.docs;
           }).
         error(function(data, status, headers, config) {
           console.log("error");
