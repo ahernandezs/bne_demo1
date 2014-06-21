@@ -72,7 +72,7 @@
 								<div class="head"><span class="span175">Importe MXN</span></div>
 								<div class="content">
 									<form class="form-inline span175" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-										<span class="paddingR3">$</span> <input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
+                    <span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
@@ -126,16 +126,27 @@
 								</div>
 							</td>
 							<td class="v-alignM width50">
-								<div class="tooltip-eliminar tooltip-propias{{$index}}">
+								<div class="tooltip-eliminar tooltip-propias{{$index}}" ng-show="$index + 1 !== ownpayingAccounts.length">
 									<p>Eliminar</p>
 									<div class="arrow"></div>
 								</div>
-								<button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
+                <div class="tooltip-eliminar tooltip-agregar{{$index}}" ng-show="$index + 1 === ownpayingAccounts.length">
+									<p>Agregar</p>
+									<div class="arrow"></div>
+								</div>
+								<button ng-show="$index + 1 !== ownpayingAccounts.length" class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
 									ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
 									ng-mouseleave="hide_tltp('.tooltip-propias'+$index)"
 									ng-click="removePayment(ownpayingAccounts, $index)" >
 									<span class="ico-basurero"></span>
 								</button>
+								<button ng-show="$index + 1 === ownpayingAccounts.length" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
+									ng-mouseover="show_tltp('.tooltip-agregar' + $index, '.btn-tooltip-agregar' + $index)"
+									ng-mouseleave="hide_tltp('.tooltip-agregar'+$index)"
+									ng-click="addMoreOwnPayments()" >
+									+
+								</button>
+
 							</td>
 						</tr>
 
