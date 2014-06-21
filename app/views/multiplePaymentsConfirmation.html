@@ -9,7 +9,7 @@
     Confirme los datos de su(s) pago(s) y haga clic en "Aceptar". Si desea modificar, eliminar o adicionar pagos haga clic en "Regresar".
     </p>
     <table class="datos v-alignT">
-      <tbody ng-repeat="payingAccount in ownpayingAccounts">
+      <tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validateInterbankPayment">
       <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
         <td class="width4p" rowspan="2">
           <div class="head">Num.</div>

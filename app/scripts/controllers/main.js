@@ -294,7 +294,9 @@ angular.module('bnePaymentsOldFashionedApp')
 		  $scope.orderpayingAccounts = [];
 
       $scope.addMoreThirdPayments();
-      $scope.addMoreOwnPayments();
+      for(var i = 0; i < 4; i++) {
+        $scope.addMoreOwnPayments();
+      }
       $scope.addMoreInterbankPayments();
       $scope.addMoreOrderPayments();
       $scope.collapseOne = true;
@@ -506,6 +508,7 @@ angular.module('bnePaymentsOldFashionedApp')
           success(function(responseData, status, headers, config) {
             //$scope.groupItems = responseData;
             $scope.ownpayingAccounts = responseData.docs;
+            $scope.addMoreOwnPayments();
           }).
         error(function(data, status, headers, config) {
           console.log("error");

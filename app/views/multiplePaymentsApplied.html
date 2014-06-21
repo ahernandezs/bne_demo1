@@ -36,7 +36,7 @@
     </div>
 
     <table class="datos v-alignT">
-      <tbody ng-repeat="payingAccount in ownpayingAccounts">
+      <tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validateInterbankPayment">
       <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
         <td>{{$index + 1}}</td>
         <td>{{payingAccount.source.originalObject.name}}</td>
