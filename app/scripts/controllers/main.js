@@ -294,7 +294,9 @@ angular.module('bnePaymentsOldFashionedApp')
 		  $scope.orderpayingAccounts = [];
 
       $scope.addMoreThirdPayments();
-      $scope.addMoreOwnPayments();
+      for(var i = 0; i < 4; i++) {
+        $scope.addMoreOwnPayments();
+      }
       $scope.addMoreInterbankPayments();
       $scope.addMoreOrderPayments();
       $scope.collapseOne = true;
@@ -473,6 +475,7 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.acceptApplied = function () {
       $scope.applied = false;
       $scope.showAccounts = true;
+      $scope.state = 'multiplePayments';
       $scope.setup();
     };
 
@@ -506,6 +509,7 @@ angular.module('bnePaymentsOldFashionedApp')
           success(function(responseData, status, headers, config) {
             //$scope.groupItems = responseData;
             $scope.ownpayingAccounts = responseData.docs;
+            $scope.addMoreOwnPayments();
           }).
         error(function(data, status, headers, config) {
           console.log("error");
@@ -548,6 +552,17 @@ angular.module('bnePaymentsOldFashionedApp')
       event.preventDefault();
       event.stopPropagation();
     }
+
+    $scope.changeTab = function(tab) {
+      if ($scope.stepState === 'capture') {
+        $scope.state = tab;
+        $scope.ownpayingAccounts = [];
+        if (tab === 'multiplePayments') {
+          $scope.setup();
+        }
+      }
+    }
+
     $location.hash('top');
     $anchorScroll();
 

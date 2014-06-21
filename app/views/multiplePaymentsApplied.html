@@ -5,7 +5,9 @@
       <p class="paginador">Paso <span>3</span> de <span>3</span></p>
     </div>
 
-    <p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
+    <div class="alert-succes">
+      <p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
+    </div>
 
     <div class="content-box">
       <p class="title pull-left">Autorizadores</p>
@@ -34,7 +36,7 @@
     </div>
 
     <table class="datos v-alignT">
-      <tbody ng-repeat="payingAccount in ownpayingAccounts">
+      <tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validateInterbankPayment">
       <tr ng-class="{bgf0f4f9: $index % 2 == 0}">
         <td>{{$index + 1}}</td>
         <td>{{payingAccount.source.originalObject.name}}</td>
