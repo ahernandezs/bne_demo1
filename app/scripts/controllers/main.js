@@ -475,6 +475,7 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.acceptApplied = function () {
       $scope.applied = false;
       $scope.showAccounts = true;
+      $scope.state = 'multiplePayments';
       $scope.setup();
     };
 
