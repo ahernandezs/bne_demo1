@@ -481,6 +481,10 @@ angular.module('bnePaymentsOldFashionedApp')
       return date;
     };
 
+    $scope.selectGroup = function (group) {
+      $scope.selectedGroup = group;
+    };
+
 		$scope.changeGroup = function () {
       if($scope.selectedGroup) {
         $http.get($scope.base_url + "/groups/" + $scope.selectedGroup.id + "/items", {}).
