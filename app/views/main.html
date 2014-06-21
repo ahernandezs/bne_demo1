@@ -77,7 +77,9 @@
               </div>
               <div ng-switch-when="beneficiaryGroups">
                 <div ng-include="'views/multiplePayments2.html'" ng-show="stepState === 'capture'"></div>
-                <div ng-include="'views/beneficiaryGroups.html'" ng-show="stepState === 'group'"></div>
+                <div ng-include="'views/multiplePayments.html'" ng-show="stepState === 'group'"></div>
+                <div ng-include="'views/multiplePaymentsConfirmation.html'" ng-show="stepState === 'confirmation'"></div>
+                <div ng-include="'views/multiplePaymentsApplied.html'" ng-show="applied"></div>
               </div>
             </div>
           </div>
@@ -95,7 +97,7 @@
       <button ng-show="stepState === 'capture'" class="btn btn-primary pull-right" ng-click="stepState='group'; changeGroup()">Continuar</button>
 			<button ng-show="stepState === 'group'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
       <button ng-show="stepState === 'group'" class="btn btn-primary pull-right" ng-click="stepState='confirmation'; jumpToTop($even)">Continuar</button>
-			<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
+			<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'group'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar</button>
 			<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
 			<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Aceptar</button>
     </div>
