@@ -548,6 +548,17 @@ angular.module('bnePaymentsOldFashionedApp')
       event.preventDefault();
       event.stopPropagation();
     }
+
+    $scope.changeTab = function(tab) {
+      if ($scope.stepState === 'capture') {
+        $scope.state = tab;
+        $scope.ownpayingAccounts = [];
+        if (tab === 'multiplePayments') {
+          $scope.setup();
+        }
+      }
+    }
+
     $location.hash('top');
     $anchorScroll();
 

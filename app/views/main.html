@@ -66,8 +66,8 @@
         <div class="panel-collapse" ng-show="collapseOne">
           <div class="content-panel">
             <ul class="nav nav-tabs">
-              <li ng-class="{active: state === 'multiplePayments'}"><a href="" ng-click="state='multiplePayments'">Pagos Múltiples</a></li>
-              <li ng-class="{active: state === 'beneficiaryGroups'}"><a href="" ng-click="state='beneficiaryGroups'">Pagar a un grupo de beneficiarios</a></li>
+              <li ng-class="{active: state === 'multiplePayments'}"><a href="" ng-click="changeTab('multiplePayments')">Pagos Múltiples</a></li>
+              <li ng-class="{active: state === 'beneficiaryGroups'}"><a href="" ng-click="changeTab('beneficiaryGroups')">Pagar a un grupo de beneficiarios</a></li>
             </ul>
             <div class="" ng-switch on="state">
               <div ng-switch-when="multiplePayments">
