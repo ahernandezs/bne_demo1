@@ -133,7 +133,7 @@ input.search{
 	background: #ffffff url(/images/ico-lupa.png) right 5px no-repeat;
 	background-size: 20px;
 	padding-right: 20px!important;
-	margin:5px 10px 0 10px!important;
+	margin:5px 10px 0 0!important;
 	width: 220px;
 	display: inline;
 }
@@ -334,6 +334,9 @@ input.num{
 	margin-left: 15px;
 }
 /* PADDINGS PIX */
+.padding5{
+	padding:5px;
+}
 .padding10{
 	padding:10px;
 }
@@ -366,6 +369,9 @@ input.num{
 }
 .paddingL15{
 	padding-left:15px!important;
+}
+.paddingL116{
+	padding-left:116px!important;
 }
 .paddingL125{
 	padding-left:125px!important;
@@ -440,6 +446,7 @@ input.num{
 	margin: 0 auto;
 	text-align: left!important;
 	clear: both;
+	font-size:11px;
 }
 .span310{
 	width: 310px;
@@ -856,6 +863,7 @@ p.instrucciones{
 							border-color: #09347a;
 							color: #1e87dd;
 							font-weight: bold;
+							text-decoration:none;
 						}
 					}
 					li.active{
@@ -882,7 +890,7 @@ p.instrucciones{
 					}
 					.cuenta{
 						width: 75%;
-						margin-left: 15px;
+						margin-left: 0;
 					}
 					p{
 						font-size: 12px;
@@ -902,7 +910,7 @@ p.instrucciones{
 								font-size: 11px;
 								color: #666666;
 								border-top: none;
-								border-right: 1px solid #d0d0d0!important;
+								border-right: 1px solid #d0d0d0;
 								padding: 0;
 								.btn-expasor,
 								.btn-expasor:hover{
@@ -1032,13 +1040,32 @@ p.instrucciones{
 							}
 						}
 						thead{
-							td{
+							th{
 								border:none!important;
+								border-right: 1px solid #d0d0d0!important;
+								border-bottom: 1px solid #FFFFFF!important;
 								padding: 5px!important;
+								font-size: 11px;
+								.head{
+									font-size: 11px;
+								}
 							}
 							td.border{
 								border-right: 1px solid #d0d0d0!important;
 							}
+						}
+						tfoot{
+							td{
+								padding: 10px 0;
+								font-size: 12px;
+								color: #000000;
+								font-weight: bold;
+								border:none!important;
+								border-top: 1px solid #d0d0d0!important;
+								border-bottom: 1px solid #d0d0d0!important;
+							}
+							
+
 						}
 						strong{
 							font-size: 11px;
@@ -1082,7 +1109,7 @@ p.instrucciones{
 							font-size: 11px;
 							color: #666666;
 							border-top: none;
-							border-right: 1px solid #d0d0d0!important;
+							border-right: 1px solid #d0d0d0;
 							padding: 0;
 							.btn-expasor,
 							.btn-expasor:hover{
@@ -1193,7 +1220,7 @@ p.instrucciones{
 					thead{
 						td{
 							border:none!important;
-							padding: 5px!important;
+							padding: 0;
 						}
 						td.border{
 							border-right: 1px solid #d0d0d0!important;
@@ -1292,7 +1319,7 @@ p.instrucciones{
 				font-size: 11px;
 				color: #666666;
 				border-top: none;
-				border-right: 1px solid #d0d0d0!important;
+				border-right: 1px solid #d0d0d0;
 				padding: 0;
 				.btn-expasor,
 				.btn-expasor:hover{
@@ -1389,13 +1416,11 @@ p.instrucciones{
 				color: #333333;
 			}
 		}
-		// thead{
-		// 	td{
-		// 		border:none!important;
-		// 		padding: 5px!important;
-		// 	}
-
-		// }
+		thead{
+			th{
+				padding: 0!important;
+			}
+		}
 		strong{
 			font-size: 11px;
 		}
@@ -1405,105 +1430,87 @@ p.instrucciones{
 			padding-top: 3px;
 		}
 	}
-	table.datos{
-		width: 100%;
-		border-collapse: separate;
-		margin-bottom: 10px;
-		thead{
-			td{
-				font-weight: bold;
-				color: #333333;
-			}
-			td.border{
-				border-right: 1px solid #d0d0d0!important;
-			}
-
-		}
-		td{
-			border-right: 1px solid #cdcecf;
-			padding: 2px 5px;
-			font-size: 11px;
-		}
-		td:last-child{
-			border-right: none;
-		}
-		td.row-error{
-			color: #ee2e24!important;
-		}
-		td.borderNone{
-			border-right: none !important;
-		}
-
-		.head{
-			border-bottom:none;
-			color: #333333;
-			height: 28px;
-			font-weight: bold;
-			font-size: 11px;
-			label{
-				font-size: 11px!important;
-			}
-		}
-		.content{
-			font-size: 11px;
-			// form{
-			// 	font-size: 11px!important;
-			// }
-			// input[type="text"]{
-			// 	margin-bottom: 5px;
-			// }
-			// select{
-			// 	margin: 3px 0;
-			// }
-			span{
-				font-size: 11px;
-			}
-			strong,
-			label{
-				color: #333333;
-				font-size: 11px;
-			}
-			a{
-				font-size: 11px;
-				color: #1e87dd;
-				text-decoration: underline;
-			}
-			a:hover{
-				color: #09347a;
-			}
-
-		}
-		.fila-interna{
-			font-size: 11px;
-			width: auto;
-			margin-right: 20px;
-			margin-bottom: 3px;
-			border-bottom: 1px dotted #b7b7b7!important;;
-		}
-		table{
-			clear: none!important;
-			border:none;
-			margin-bottom: 5px;
-			td{
-				border:none!important;
-				border-bottom: 1px dotted #b7b7b7!important;;
-			}
-			// table.tabla-interna{
-			// 	width: 100%;
-			// 	background: #f3f3f3;
-
-			// 	td{
-			// 		border-right:none!important;
-			// 		border-bottom: 1px solid #b7b7b7;
-			// 		padding: 10px 5px;
-			// 	}
-			// }
-		}
-	}
+	
 	strong{
 		color: #333333;
 	}
 }
+table.datos{
+	width: 100%;
+	border-collapse: separate;
+	margin-bottom: 10px;
+	thead{
+		tr{
+			td{
+				font-weight: bold!important;
+				color: #333333!important;
+				padding: 2px 5px!important;
+			}
+			td.border{
+				border-right: 1px solid #d0d0d0!important;
+			}	
+		}
+		
+
+	}
+	td{
+		border-right: 1px solid #cdcecf;
+		padding: 2px 5px!important;
+		font-size: 11px;
+		text-align: left!important;
+	}
+	td:last-child{
+		border-right: none;
+	}
+	td.row-error{
+		color: #ee2e24!important;
+	}
+	td.borderNone{
+		border-right: none !important;
+	}
+
+	.head{
+		border-bottom:none;
+		color: #333333;
+		height: 28px;
+		font-weight: bold;
+		font-size: 11px;
+		padding: 0!important;
+		border-bottom: none!important;
+		label{
+			font-size: 11px!important;
+		}
+	}
+	.content{
+		font-size: 11px;
+		padding: 0!important;
+		span{
+			font-size: 11px;
+		}
+		strong,
+		label{
+			color: #333333;
+			font-size: 11px;
+		}
+		a{
+			font-size: 11px;
+			color: #1e87dd;
+			text-decoration: underline;
+		}
+		a:hover{
+			color: #09347a;
+		}
+
+	}
+	.fila-interna{
+		font-size: 11px;
+		width: auto;
+		margin-right: 20px;
+		margin-bottom: 3px;
+		border-bottom: 1px dotted #b7b7b7!important;;
+	}
+}
+
 
 .area-botones{
 	clear: both;
@@ -1630,5 +1637,6 @@ footer{
 .total-payment {
   margin: 0 0 30px 0;
   padding: 0 0 20px 700px;
+  border-top: solid 1px #d0d0d0;
   border-bottom: solid 1px #d0d0d0;
 }

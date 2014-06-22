@@ -24,6 +24,7 @@
     cursor: pointer;
     z-index: 9999;
     position: absolute;
+    text-align: left;
     /*top: 32px;
     left: 0px;
     */

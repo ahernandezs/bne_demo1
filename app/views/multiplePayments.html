@@ -12,17 +12,17 @@
 				<table class="table">
 					<thead>
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
-							<th>&nbsp;</th>
+							<th><div class="head">&nbsp;</div></th>
 							<th><div class="head textL paddingL10">Cuentas</div></th>
 							<th><div class="head"><span class="span175">Importe MXN</span></div></th>
 							<th><div class="head"><label class="span175">Fecha de pago</label></div></th>
-							<th>&nbsp;</th>
+							<th><div class="head">&nbsp;</div></th>
 						</tr>
 					</thead>				
 					<tbody ng-repeat="payingAccount in ownpayingAccounts">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td class="width25">
-								<div class="head textC">{{$index + 1}}</div>
+								<div class="textC">{{$index + 1}}</div>
 							</td>
 							<td>
 								<div class="content paddingL10">
@@ -156,7 +156,8 @@
 
             <!-- third account type -->
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-show="payingAccount.target.originalObject.type_i === 2">
-							<td colspan="5">
+							<td></td>
+							<td colspan="4">
 								<div class="content pull-left paddingL10">
 									<label class="span175">
 										<input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal<br>
@@ -169,7 +170,7 @@
 									</label>
 
 								</div>
-								<div class="content pull-left textL paddingL143">
+								<div class="content pull-left textL paddingL116">
 									<label class="paddingL10">
 										<input type="checkbox" ng-click="payingAccount.editNumeric=!payingAccount.editNumeric;payingAccount.editAlpha=!payingAccount.editAlpha" ng-model="payingAccount.concentradora"/> Cuenta concentradora
 									</label>
@@ -196,9 +197,10 @@
 							</td>
 						</tr>
 
-            <!-- interbank type -->
-            <tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-show="payingAccount.target.originalObject.type_i === 1">
-							<td colspan="5">
+			            <!-- interbank type -->
+			            <tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-show="payingAccount.target.originalObject.type_i === 1">
+							<td></td>
+							<td colspan="4">
 								<div class="content pull-left paddingL10">
 									<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal">
 										Comprobante Fiscal<br>
@@ -211,7 +213,7 @@
 									</label>
 
 								</div>
-								<div class="content pull-left textL paddingL143">
+								<div class="content pull-left textL paddingL116">
 									<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references"/> Referencias</label>
 									<form class="form-inline paddingL3">
 										<label class="paddingL10">
@@ -229,13 +231,15 @@
 								</div>
 							</td>
 						</tr>
-
 					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="2" class="textR paddingR10">TOTAL A PAGAR:</td>
+							<td class="textL paddingL10">{{ getTotalPayment(ownpayingAccounts) | currency}}</td>
+							<td colspan="2"></td>
+						</tr>
+					</tfoot>
 				</table>
-        <div class="total-payment">
-          <br>
-          <strong class="padddingR15">TOTAL A PAGAR: {{ getTotalPayment(ownpayingAccounts) | currency}}</strong>
-        </div>
 				<button type="button" class="btn btn-primary" ng-click="addMoreOwnPayments()">Agregar m&aacute;s pagos</button>
 			</div>
 		</div>
