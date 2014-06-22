@@ -10,13 +10,21 @@
 					Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en a"Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 				</p>
 				<table class="table">
+					<thead>
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<th>&nbsp;</th>
+							<th><div class="head textL paddingL10">Cuentas</div></th>
+							<th><div class="head"><span class="span175">Importe MXN</span></div></th>
+							<th><div class="head"><label class="span175">Fecha de pago</label></div></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>				
 					<tbody ng-repeat="payingAccount in ownpayingAccounts">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td class="width25">
 								<div class="head textC">{{$index + 1}}</div>
 							</td>
 							<td>
-								<div class="head textL paddingL10">Cuentas</div>
 								<div class="content paddingL10">
 									<div class="pull-left paddingR10">
 									<div class="pull-left width40p">
@@ -69,7 +77,6 @@
 								</div>
 							</td>
 							<td class="width200">
-								<div class="head"><span class="span175">Importe MXN</span></div>
 								<div class="content">
 									<form class="form-inline span175" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
                     <span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
@@ -98,9 +105,6 @@
 								</div>
 							</td>
 							<td class="width230">
-								<div class="head">
-									<label class="span175">Fecha de pago</label>
-								</div>
 								<div class="content">
 									<form class="form-inline span175">
 										<span class="paddingR3">Fecha</span> <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">

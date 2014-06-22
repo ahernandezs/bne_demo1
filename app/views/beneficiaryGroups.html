@@ -8,14 +8,21 @@
     <p class="title">Pagar a un Grupo de Beneficiarios</p>
     <p class="intrucciones"><strong>Nombre del grupo: </strong>{{selectedGroup.name}}</p>
     <table class="table">
+      <thead>
+        <tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+          <th>&nbsp;</th>
+          <th><div class="head textL paddingL10">Cuentas</div></th>
+          <th><div class="head"><span class="span175">Importe MXN</span></div></th>
+          <th><div class="head"><label class="span175">Fecha de operaci&oacute;n</label></div></th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
       <tbody ng-repeat="payingAccount in groupItems.docs">
       <tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
         <td rowspan="2">
           <div class="head textC">{{$index + 1}}</div>
         </td>
         <td>
-          <div class="head textL paddingL10">Cuentas</div>
-
           <div class="content paddingL10">
             <div class="pull-left paddingR10">
               <div class="pull-left width40p">
@@ -69,7 +76,6 @@
 
         </td>
         <td>
-          <div class="head"><span class="span140">Importe MXN</span></div>
           <div class="content">
             <form class="form-inline span140">
               <span class="paddingR3">$</span> <input ng-class="{'gray-input' : !payingAccount.editAmount}" class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" ng-change="fiscalVerify(payingAccount); payingAccount.editAmount = true" maxlength="16" numbers-only="numbers-only" currency="">
@@ -77,9 +83,6 @@
           </div>
         </td>
         <td>
-          <div class="head">
-            <span class="span175">Fecha de operaci&oacute;n</span>
-          </div>
           <div class="content">
             <form class="form-inline span175">
               <span class="paddingR3">Fecha</span> <input ng-class="{'gray-input' : !payingAccount.editDate}" class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true; payingAccount.editDate = true" maxlength="10">
