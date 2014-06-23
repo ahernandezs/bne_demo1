@@ -874,33 +874,31 @@ p.instrucciones{
 				margin: 10px;
 
         .nav-tabs{
+			border-color: #09347a;
+			li{
+				a{
+					background:#f0f4f9;
+					padding: 15px 60px;
+					font-size: 12px;
 					border-color: #09347a;
-					li{
-						a{
-							background:#f0f4f9;
-							padding: 15px 60px;
-							font-size: 12px;
-							border-color: #09347a;
-							color: #1e87dd;
-							font-weight: bold;
-							text-decoration:none;
-						}
-					}
-					li.active{
-
-						a{
-							background: #FFFFFF;
-							color: #000000;
-							border-color: #09347a;
-							border-bottom: 1px solid #FFFFFF;
-						}
-					}
+					color: #1e87dd;
+					font-weight: bold;
+					text-decoration:none;
 				}
+			}
+			li.active{
+
+				a{
+					background: #FFFFFF;
+					color: #000000;
+					border-color: #09347a;
+					border-bottom: 1px solid #FFFFFF;
+				}
+			}
+		}
         .content-tabs{
 					border: 1px solid #09347a;
 					border-top: none;
-					overflow-y: scroll;
-        			max-height: 950px;
 					padding: 10px 5px 20px 5px;
 					margin-top: -1px;
 					@include border_bottom_radius(5px);
