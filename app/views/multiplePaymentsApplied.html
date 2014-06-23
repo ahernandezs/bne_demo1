@@ -76,6 +76,9 @@
 		</table>
 	</div>
 </div>
+
+<div class="" ng-switch on="state">
+<div ng-switch-when="multiplePayments">
 		<div class="area-botones">
 			<div class="pull-left" ng-hide="selectedGroup">
 				<label class="fontNormal"><input type="checkbox" ng-model="addToNewGroup"> Agregar estos pagos a un grupo</label>
@@ -85,3 +88,10 @@
 				<button type="button" class="btn btn-primary marginT5" ng-show="addToNewGroup">Crear un nuevo grupo para estos pagos</button>
 			</div>
 		</div>
+</div>
+<div ng-switch-when="beneficiaryGroups">
+		<div class="clear-fix marginT15">
+			<button type="button" class="btn btn-primary pull-right">Guardar como nuevo pago</button>
+		</div>
+</div>
+</div>
