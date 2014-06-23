@@ -55,6 +55,16 @@
 					<td class="width14-2p">Autorizaci&oacute;n</td>
 				</tr>
 			</thead>
+      <tfoot>
+        <tr>
+          <td colspan="2" class="textR paddingR10">TOTAL A PAGAR:</td>
+          <td class="textR ">
+            <div class="paddingR25">{{ getTotalPayment(ownpayingAccounts) | currency}}</div>
+          </td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+
 		</table>
 	</div>
 </div>
