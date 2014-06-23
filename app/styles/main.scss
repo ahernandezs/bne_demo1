@@ -355,6 +355,9 @@ input.num{
 .paddingR3{
 	padding-right:3px;
 }
+.paddingR5{
+	padding-right:5px;
+}
 .paddingR10{
 	padding-right:10px;
 }
@@ -1081,8 +1084,6 @@ p.instrucciones{
 								border-top: 1px solid #d0d0d0!important;
 								border-bottom: 1px solid #d0d0d0!important;
 							}
-							
-
 						}
 						strong{
 							font-size: 11px;
@@ -1470,6 +1471,7 @@ table.datos{
 		
 
 	}
+
 	td{
 		border-right: 1px solid #cdcecf;
 		padding: 2px 5px!important;
@@ -1525,6 +1527,18 @@ table.datos{
 		margin-right: 20px;
 		margin-bottom: 3px;
 		border-bottom: 1px dotted #b7b7b7!important;;
+	}
+	tfoot{
+		td{
+			padding: 10px 0!important;
+			text-align: right!important;
+			font-size: 12px;
+			color: #000000;
+			font-weight: bold;
+			border:none!important;
+			border-top: 1px solid #d0d0d0!important;
+			border-bottom: 1px solid #d0d0d0!important;
+		}
 	}
 }
 
