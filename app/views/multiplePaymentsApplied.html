@@ -1,8 +1,17 @@
 <div class="content-tabs">
 	<div class="tab-pagos-multiples">
-		<div class="clear-fix">
-			<p class="paginador">Paso <span>3</span> de <span>3</span></p>
-		</div>
+<div class="" ng-switch on="state">
+<div ng-switch-when="multiplePayments">
+				<div class="clear-fix">
+					<p class="paginador" ng-hide="collapseFive">Paso <span>3</span> de <span>3</span></p>
+				</div>
+</div>
+<div ng-switch-when="beneficiaryGroups">
+				<div class="clear-fix">
+					<p class="paginador" ng-hide="collapseFive">Paso <span>4</span> de <span>4</span></p>
+				</div>
+</div>
+</div>
 		<div class="alert-succes">
 			<p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
 		</div>

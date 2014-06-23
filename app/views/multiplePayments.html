@@ -1,11 +1,18 @@
 
 		<div class="content-tabs">
 			<div class="tab-pagos-multiples">
-
+<div class="" ng-switch on="state">
+<div ng-switch-when="multiplePayments">
 				<div class="clear-fix">
 					<p class="paginador" ng-hide="collapseFive">Paso <span>1</span> de <span>3</span></p>
 				</div>
-
+</div>
+<div ng-switch-when="beneficiaryGroups">
+				<div class="clear-fix">
+					<p class="paginador" ng-hide="collapseFive">Paso <span>2</span> de <span>4</span></p>
+				</div>
+</div>
+</div>
 				<p>
 					Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en a"Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 				</p>
