@@ -226,6 +226,9 @@ input.num{
 .width145{
 	width:145px!important;
 }
+.width160{
+	width:160px!important;
+}
 .width180{
 	width:180px!important;
 }
@@ -346,6 +349,9 @@ input.num{
 .paddingT17{
 	padding-top:17px;
 }
+.paddingT19{
+	padding-top:19px;
+}
 .paddingR3{
 	padding-right:3px;
 }
@@ -354,6 +360,9 @@ input.num{
 }
 .paddingR15{
 	padding-right:15px;
+}
+.paddingR25{
+	padding-right:25px!important;
 }
 .paddingL0{
 	padding-left:0px!important;
@@ -442,6 +451,14 @@ input.num{
 }
 .span175{
 	width: 175px;
+	display: block;
+	margin: 0 auto;
+	text-align: left!important;
+	clear: both;
+	font-size:11px;
+}
+.span180{
+	width: 180px;
 	display: block;
 	margin: 0 auto;
 	text-align: left!important;

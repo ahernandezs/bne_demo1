@@ -78,23 +78,23 @@
 							</td>
 							<td class="width200">
 								<div class="content">
-									<form class="form-inline span175" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-                    <span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
+									<form class="form-inline paddingT19 span180" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
+                    					<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width160" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
-										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
+										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
 											<input class="v-alignT" type="radio" name="radio1">
 											<span class="displayIB paddingL3">
 												Pago m&iacute;nimo MXN<br><span class="color666666">$250.00</span>
 											</span>
 										</label>
-										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
+										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
 											<input class="v-alignT" type="radio" name="radio1">
 											<span class="displayIB paddingL3">
 												Pago para no generar<br>intereses MXN<br><span class="color666666">$100.00</span>
 											</span>
 										</label>
-										<label class="fontNormal paddingT10 clear-fix span175 paddingL3">
+										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
 											<input class="v-alignT" type="radio" name="radio1">
 											<span class="displayIB paddingL3">
 												Otro importe
@@ -235,7 +235,9 @@
 					<tfoot>
 						<tr>
 							<td colspan="2" class="textR paddingR10">TOTAL A PAGAR:</td>
-							<td class="textL paddingL10">{{ getTotalPayment(ownpayingAccounts) | currency}}</td>
+							<td class="textR ">
+								<div class="paddingR25">{{ getTotalPayment(ownpayingAccounts) | currency}}</div>
+							</td>
 							<td colspan="2"></td>
 						</tr>
 					</tfoot>
