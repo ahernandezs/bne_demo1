@@ -18,7 +18,7 @@
 							<th><div class="head"><label class="span175">Fecha de pago</label></div></th>
 							<th><div class="head">&nbsp;</div></th>
 						</tr>
-					</thead>				
+					</thead>
 					<tbody ng-repeat="payingAccount in ownpayingAccounts">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td class="width25">
@@ -52,7 +52,7 @@
 													selectedobject="payingAccount.target"
 													url="http://projects.anzen.com.mx:4567/api/allaccounts?query="
 													datafield="docs"
-													titlefield="name,bank_t,format_amount_t,currency_t"
+													titlefield="name,bank_t,format_amount_t,currency_t,type_name"
 													minlength="1"
 													enabledefault="true"
 													inputclass="form-control form-control-small search"/>
