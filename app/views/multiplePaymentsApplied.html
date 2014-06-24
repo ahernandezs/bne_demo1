@@ -83,9 +83,9 @@
 			<div class="pull-left" ng-hide="selectedGroup">
 				<label class="fontNormal"><input type="checkbox" ng-model="addToNewGroup"> Agregar estos pagos a un grupo </label>
 				<select ng-options="group.name for group in groups.docs" ng-show="addToNewGroup" ng-model="addToGroupSelection">
-					<option value="">Seleccione uno</option>
+					<option value="">Nuevo grupo</option>
 				</select><br>
-				<button type="button" class="btn btn-primary marginT5" ng-show="addToNewGroup">Crear un nuevo grupo para estos pagos</button>
+				<!--button type="button" class="btn btn-primary marginT5" ng-show="addToNewGroup">Crear un nuevo grupo para estos pagos</button-->
 			</div>
 		</div>
 </div>
