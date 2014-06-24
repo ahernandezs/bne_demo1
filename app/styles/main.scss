@@ -825,16 +825,16 @@ p.instrucciones{
 }
 .panels-container{
 	border: 1px solid #09347a;
-	overflow: hidden;
+	overflow: visible;
 	clear: both;
 	@include border_bottom_radius(5px);
 	.panel{
 		clear: both;
-		overflow: hidden;
+		overflow: visible;
 		margin: 0;
 		border: none;
 		margin-top: -1px;
-		@include border_radius(0px);
+		@include border_radius(5px);
 
 		.panel-heading{
 			background: #09347a;
@@ -869,7 +869,7 @@ p.instrucciones{
 			}
 		}
 		.panel-collapse{
-			overflow: hidden;
+			overflow: visible;
 			.content-panel{
 				margin: 10px;
 
