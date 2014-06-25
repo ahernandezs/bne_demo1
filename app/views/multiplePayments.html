@@ -67,9 +67,11 @@
 													enabledefault="true"
 													inputclass="form-control form-control-small search"/>
 											</span>
-											<!--span class="pull-left paddingT17 paddingL10">
-												<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
-											</span-->
+											<div ng-show="state=='multiplePayments'">
+												<span class="pull-left paddingT17 paddingL10">
+													<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
+												</span>
+											</div>
 										</span>
 										<div class="clear-fix textL">
 											<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span>
