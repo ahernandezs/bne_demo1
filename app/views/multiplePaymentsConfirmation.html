@@ -15,6 +15,9 @@
 		<p>
 			Confirme los datos de su(s) pago(s) y haga clic en "Aceptar". Si desea modificar, eliminar o adicionar pagos haga clic en "Regresar".
 		</p>
+		<div ng-show="state=='beneficiaryGroups'">
+	        <p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
+		</div>		
 		<table class="datos v-alignT">
 			<tbody ng-repeat="payingAccount in ownpayingAccounts | filter:validateInterbankPayment">
 				<tr ng-class="{bgf0f4f9: $index % 2 == 0}">
