@@ -171,7 +171,7 @@
 							<td></td>
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
-									<label class="span175">
+									<div class="span175">
 										<input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
 											<strong class="width30 inline">RFC</strong> <input class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
@@ -179,8 +179,7 @@
 										<form class="form-inline paddingL3">
 											<strong class="width30 inline">IVA</strong> <input class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
 										</form>
-									</label>
-
+									</div>
 								</div>
 								<div class="content pull-left textL paddingL116">
 									<label class="paddingL10">
@@ -214,7 +213,7 @@
 							<td></td>
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
-									<label class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal">
+									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal">
 										Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
 											<strong class="inline width30">RFC</strong> <input class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
@@ -222,7 +221,7 @@
 										<form class="form-inline paddingL3">
 											<strong class="inline width30">IVA&nbsp;&nbsp;</strong> <input class="form-control width80" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
 										</form>
-									</label>
+									</div>
 
 								</div>
 								<div class="content pull-left textL paddingL116">
