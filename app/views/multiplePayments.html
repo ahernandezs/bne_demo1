@@ -91,7 +91,7 @@
 							<td class="width200">
 								<div class="content">
 									<form class="form-inline paddingT19 span180" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width160" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="12" numbers-only="numbers-only" currency="">
+										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width160" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="10" numbers-only="numbers-only" currency="">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
@@ -172,7 +172,7 @@
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
 									<div class="span175">
-										<input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal"> Comprobante Fiscal<br>
+										<input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc"> Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
 											<strong class="width30 inline">RFC</strong> <input class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
 										</form>
@@ -187,7 +187,7 @@
 									</label>
 									<span class="paddingL3">(L&iacute;nea Banamex)</span>
 									<br>
-									<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references"/> Referencias</label>
+									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editAlpha"/> Referencias</label>
 									<form class="form-inline paddingL3">
 										<label class="paddingL10">
 											<span>Referencia num&eacute;rica</span><br>
@@ -213,7 +213,7 @@
 							<td></td>
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
-									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox"  ng-model="payingAccount.fiscal">
+									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc">
 										Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
 											<strong class="inline width30">RFC</strong> <input class="form-control width100" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
@@ -225,7 +225,7 @@
 
 								</div>
 								<div class="content pull-left textL paddingL116">
-									<label class="paddingL10"><input type="checkbox" ng-model="payingAccount.references"/> Referencias</label>
+									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editConcept"/> Referencias</label>
 									<form class="form-inline paddingL3">
 										<label class="paddingL10">
 											<span>N&uacute;mero de referencia</span><br>
