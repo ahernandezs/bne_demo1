@@ -90,7 +90,7 @@
 							<td class="width200">
 								<div class="content">
 									<form class="form-inline paddingT19 span180" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="12" numbers-only="numbers-only" currency="">
+										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="12" numbers-only="numbers-only" currency="" onkeypress="return NumCheck(event, this)">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
