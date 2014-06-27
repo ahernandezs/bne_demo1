@@ -258,18 +258,21 @@
 <SCRIPT LANGUAGE="JavaScript"> 
 function NumCheck(e, field) {
 
+  key = e.keyCode ? e.keyCode : e.which
+
 if(field.value != ""){
 
-if(field.value.indexOf('.')!=-1){
+  if (key == 8) return true
+	if(field.value.indexOf('.')!=-1){
 
-	var tmp = field.value.split('.');
-	
-	console.log(tmp);
-	if(tmp[1].length==2){
-		return false
+		var tmp = field.value.split('.');
+		
+		console.log(tmp);
+		if(tmp[1].length==2){
+			return false
+		}
+
 	}
-
-}
 
 }
 
