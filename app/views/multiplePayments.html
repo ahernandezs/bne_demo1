@@ -75,15 +75,15 @@
 										<div class="clear-fix textL">
 											<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span>
 										</div>
-					<div class="clear-fix textL" ng-show="payingAccount.target.originalObject.type_i === 3">
-					  <span>Sucursal</span>
-					  <div class="content paddingL0">
-						<form class="form-inline">
-						  <input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
-						</form>
-						<a href="">Ver el directorio de sucursales</a>
-					  </div>
-					</div>
+										<div class="clear-fix textL" ng-show="payingAccount.target.originalObject.type_i === 3">
+											<span>Sucursal</span>
+											<div class="content paddingL0">
+												<form class="form-inline">
+													<input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
+												</form>
+												<a href="">Ver el directorio de sucursales</a>
+											</div>
+										</div>
 									</div>
 								</div>
 							</td>
@@ -221,7 +221,6 @@
 											<strong class="inline width30">IVA&nbsp;&nbsp;</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
 										</form>
 									</div>
-
 								</div>
 								<div class="content pull-left textL paddingL65">
 									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editConcept"/> Referencias</label>
@@ -236,7 +235,6 @@
 												<input type="text" class="form-control width340" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
 											</label>
 										</div>
-
 									</form>
 								</div>
 							</td>
