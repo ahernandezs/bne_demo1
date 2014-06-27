@@ -1,23 +1,22 @@
-
 		<div class="content-tabs">
 			<div class="tab-pagos-multiples">
-<div class="" ng-switch on="state">
-<div ng-switch-when="multiplePayments">
-				<div class="clear-fix">
-					<p class="paginador" ng-hide="collapseFive">Paso <span>1</span> de <span>3</span></p>
+				<div class="" ng-switch on="state">
+					<div ng-switch-when="multiplePayments">
+						<div class="clear-fix">
+							<p class="paginador" ng-hide="collapseFive">Paso <span>1</span> de <span>3</span></p>
+						</div>
+					</div>
+					<div ng-switch-when="beneficiaryGroups">
+						<div class="clear-fix">
+							<p class="paginador" ng-hide="collapseFive">Paso <span>2</span> de <span>4</span></p>
+						</div>
+					</div>
 				</div>
-</div>
-<div ng-switch-when="beneficiaryGroups">
-				<div class="clear-fix">
-					<p class="paginador" ng-hide="collapseFive">Paso <span>2</span> de <span>4</span></p>
-				</div>
-</div>
-</div>
 				<p>
 					Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en a"Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
 				</p>
 			<div ng-show="state=='beneficiaryGroups'">
-	            <p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
+				<p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
 			</div>
 				<table class="table">
 					<thead>
@@ -68,7 +67,7 @@
 													inputclass="form-control form-control-small search"/>
 											</span>
 											<div ng-show="state=='multiplePayments'">
-												<span class="pull-left paddingT17 paddingL10">
+												<span class="pull-left paddingT17">
 													<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
 												</span>
 											</div>
@@ -76,22 +75,22 @@
 										<div class="clear-fix textL">
 											<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span>
 										</div>
-                    <div class="clear-fix textL" ng-show="payingAccount.target.originalObject.type_i === 3">
-                      <span>Sucursal</span>
-                      <div class="content paddingL0">
-                        <form class="form-inline">
-                          <input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
-                        </form>
-                        <a href="">Ver el directorio de sucursales</a>
-                      </div>
-                    </div>
+					<div class="clear-fix textL" ng-show="payingAccount.target.originalObject.type_i === 3">
+					  <span>Sucursal</span>
+					  <div class="content paddingL0">
+						<form class="form-inline">
+						  <input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
+						</form>
+						<a href="">Ver el directorio de sucursales</a>
+					  </div>
+					</div>
 									</div>
 								</div>
 							</td>
 							<td class="width200">
 								<div class="content">
 									<form class="form-inline paddingT19 span180" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width160" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="12" numbers-only="numbers-only" currency="">
+										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="12" numbers-only="numbers-only" currency="">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
@@ -122,15 +121,15 @@
 										<span class="paddingR3">Fecha</span> <input class="form-control calendario " type="text" value="" jqdatepicker ng-model="payingAccount.date" ng-change="payingAccount.programming = true" maxlength="10">
 										<span class="ico-calendar"></span>
 									</form>
-                  <span class="span175" ng-show="payingAccount.target.originalObject.type_i === 1">
-                    <strong >Fecha de aplicaci&oacute;n</strong>
-                    <form class="form-inline">
-                      <select ng-model="payingAccount.application_date_s">
-                        <option value="">Mismo d&iacute;a</option>
-                        <option>24 horas</option>
-                      </select>
-                    </form>
-                  </span>
+									<span class="span175" ng-show="payingAccount.target.originalObject.type_i === 1">
+										<strong >Fecha de aplicaci&oacute;n</strong>
+										<form class="form-inline">
+											<select ng-model="payingAccount.application_date_s">
+												<option value="">Mismo d&iacute;a</option>
+												<option>24 horas</option>
+											</select>
+										</form>
+									</span>
 									<form class="form-inline span175" ng-show="payingAccount.target.originalObject.type_i !== 1">
 										<strong>Hora&nbsp;&nbsp;</strong>
 										<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
@@ -146,7 +145,7 @@
 									<p>Eliminar</p>
 									<div class="arrow"></div>
 								</div>
-                <div class="tooltip-eliminar tooltip-agregar{{$index}}" ng-show="$index + 1 === ownpayingAccounts.length">
+								<div class="tooltip-eliminar tooltip-agregar{{$index}}" ng-show="$index + 1 === ownpayingAccounts.length">
 									<p>Agregar</p>
 									<div class="arrow"></div>
 								</div>
@@ -166,7 +165,7 @@
 							</td>
 						</tr>
 
-            <!-- third account type -->
+						<!-- third account type -->
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-show="payingAccount.target.originalObject.type_i === 2">
 							<td></td>
 							<td colspan="4">
@@ -191,16 +190,16 @@
 									<form class="form-inline paddingL3">
 										<label class="paddingL10">
 											<span>Referencia num&eacute;rica</span><br>
-											<input type="text" class="form-control width180" maxlength="30" ng-model="payingAccount.numeric" ng-change="payingAccount.references = true; payingAccount.editNumeric = true" numbers-only="numbers-only" ng-click="payingAccount.editNumeric = true">
+											<input type="text" class="form-control width215" maxlength="30" ng-model="payingAccount.numeric" ng-change="payingAccount.references = true; payingAccount.editNumeric = true" numbers-only="numbers-only" ng-click="payingAccount.editNumeric = true">
 										</label>
 										<label class="paddingL10">
 											<span>Referencia alfanum&eacute;rica</span><br>
-											<input type="text" class="form-control width180" maxlength="30" ng-model="payingAccount.alpha" ng-change="payingAccount.references = true; payingAccount.editAlpha = true" ng-click="payingAccount.editAlpha = true">
+											<input type="text" class="form-control width260" maxlength="30" ng-model="payingAccount.alpha" ng-change="payingAccount.references = true; payingAccount.editAlpha = true" ng-click="payingAccount.editAlpha = true">
 										</label>
 										<div class="clear-fix">
 											<label class="paddingL10">
 												<span>Concepto del pago</span><br>
-												<input type="text" class="form-control width280" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
+												<input type="text" class="form-control width340" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
 											</label>
 										</div>
 									</form>
@@ -208,8 +207,8 @@
 							</td>
 						</tr>
 
-			            <!-- interbank type -->
-			            <tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-show="payingAccount.target.originalObject.type_i === 1">
+						<!-- interbank type -->
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="" ng-show="payingAccount.target.originalObject.type_i === 1">
 							<td></td>
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
@@ -234,7 +233,7 @@
 										<div class="clear-fix">
 											<label class="paddingL10">
 												<span>Concepto del pago</span><br>
-												<input type="text" class="form-control width290" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
+												<input type="text" class="form-control width340" maxlength="40" ng-model="payingAccount.concept" ng-change="payingAccount.references = true; payingAccount.editConcept = true" ng-click="payingAccount.editConcept = true">
 											</label>
 										</div>
 
@@ -279,15 +278,15 @@ if(field.value.indexOf('.')!=-1){
   if (key == 8) return true
   // 0-9
   if (key > 47 && key < 58) {
-    if (field.value == "") return true
-    regexp = /.[0-9]{2}$/
-    return !(regexp.test(field.value))
+	if (field.value == "") return true
+	regexp = /.[0-9]{2}$/
+	return !(regexp.test(field.value))
   }
   // .
   if (key == 46) {
-    if (field.value == "") return false
-    regexp = /^[0-9]+$/
-    return regexp.test(field.value)
+	if (field.value == "") return false
+	regexp = /^[0-9]+$/
+	return regexp.test(field.value)
   }
   // other key
   return false
