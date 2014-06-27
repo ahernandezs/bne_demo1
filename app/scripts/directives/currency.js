@@ -11,7 +11,10 @@ angular.module('bnePaymentsOldFashionedApp')
 
 				ctrl.$parsers.push(function(viewValue) {
 					var value = parseFloat(viewValue.replace(/,|\$/g, ''));
-					if(value) return value;
+
+					if(value){
+						return value;
+					}
 					return "";
 				});
 
@@ -20,11 +23,11 @@ angular.module('bnePaymentsOldFashionedApp')
 					var formattedModel = format(ctrl.$modelValue);
 					if( formattedModel !== ctrl.$viewValue ) {
 						element.val(formattedModel);
-            if(formattedModel !== '') {
-              element.addClass('monto');
-            } else {
-              element.removeClass('monto');
-            }
+			            if(formattedModel !== '') {
+			              element.addClass('monto');
+			            } else {
+			              element.removeClass('monto');
+			            }
 					}
 				});
 
@@ -38,14 +41,15 @@ angular.module('bnePaymentsOldFashionedApp')
 				element.bind("blur", function() {
 					var formattedModel = format(ctrl.$modelValue);
 					element.val(formattedModel);
-          if(formattedModel !== '') {
-            element.addClass('monto');
-          } else {
-            element.removeClass('monto');
-          }
+			          if(formattedModel !== '') {
+			            element.addClass('monto');
+			          } else {
+			            element.removeClass('monto');
+			          }
 				});
 
 				function format(modelValue) {
+
 					var value = modelValue ? modelValue.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ',') : undefined;
 
 					if(value){
