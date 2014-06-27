@@ -130,7 +130,7 @@
 											</select>
 										</form>
 									</span>
-									<form class="form-inline span175" ng-show="payingAccount.target.originalObject.type_i !== 1">
+									<form class="form-inline span175 paddingB15" ng-show="payingAccount.target.originalObject.type_i !== 1">
 										<strong>Hora&nbsp;&nbsp;</strong>
 										<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
 											<option value="">Ahora</option>
