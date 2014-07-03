@@ -90,7 +90,7 @@
     	<button ng-show="stepState === 'capture'" ng-disabled="!allowNext" class="btn btn-primary pull-right" ng-click="stepState='confirmation'">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
-		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Aceptar</button>
+		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
     </div>
 
     <div class="area-botones" ng-show="state === 'beneficiaryGroups'">

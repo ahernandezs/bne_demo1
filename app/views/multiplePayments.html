@@ -49,6 +49,8 @@
 												enabledefault="true"
 												class="pull-left cuenta"
 												inputclass="form-control form-control-small search"/>
+											<br><br>
+											<input type="checkbox" ng-model="sameAccount4All">&nbsp;Usar la misma cuenta para todos los pagos			
 										</span>
 									</div>
 									<div class="pull-left">
@@ -141,21 +143,21 @@
 								</div>
 							</td>
 							<td class="v-alignM">
-								<div class="tooltip-eliminar tooltip-propias{{$index}}" ng-show="$index + 1 !== ownpayingAccounts.length">
+								<div class="tooltip-eliminar tooltip-propias{{$index}}" ng-show="ownpayingAccounts.length != 1">
 									<p>Eliminar</p>
 									<div class="arrow"></div>
 								</div>
-								<div class="tooltip-eliminar tooltip-agregar{{$index}}" ng-show="$index + 1 === ownpayingAccounts.length">
+								<div class="tooltip-eliminar tooltip-agregar{{$index}}" ng-show="ownpayingAccounts.length == 1">
 									<p>Agregar</p>
 									<div class="arrow"></div>
 								</div>
-								<button ng-show="$index + 1 !== ownpayingAccounts.length" class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
+								<button ng-show="ownpayingAccounts.length != 1" class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
 									ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
 									ng-mouseleave="hide_tltp('.tooltip-propias'+$index)"
 									ng-click="removePayment(ownpayingAccounts, $index)" >
 									<span class="ico-basurero"></span>
 								</button>
-								<button title="Agregar pago" ng-show="$index + 1 === ownpayingAccounts.length" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
+								<button title="Agregar pago" ng-show="ownpayingAccounts.length == 1" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
 									ng-mouseover="show_tltp('.tooltip-agregar' + $index, '.btn-tooltip-agregar' + $index)"
 									ng-mouseleave="hide_tltp('.tooltip-agregar'+$index)"
 									ng-click="addMoreOwnPayments()" >
