@@ -155,7 +155,7 @@
 									ng-click="removePayment(ownpayingAccounts, $index)" >
 									<span class="ico-basurero"></span>
 								</button>
-								<button ng-show="$index + 1 === ownpayingAccounts.length" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
+								<button title="Agregar pago" ng-show="$index + 1 === ownpayingAccounts.length" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
 									ng-mouseover="show_tltp('.tooltip-agregar' + $index, '.btn-tooltip-agregar' + $index)"
 									ng-mouseleave="hide_tltp('.tooltip-agregar'+$index)"
 									ng-click="addMoreOwnPayments()" >
