@@ -1524,6 +1524,12 @@ table.datos{
 		padding: 2px 5px!important;
 		font-size: 11px;
 		text-align: left!important;
+		span{
+			font-size: 11px;
+		}
+	}
+	td.textR{
+		text-align: right!important;
 	}
 	td:last-child{
 		border-right: none;

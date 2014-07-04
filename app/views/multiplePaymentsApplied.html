@@ -50,7 +50,7 @@
 					<td>{{$index + 1}}</td>
 					<td>{{payingAccount.source.originalObject.name}}</td>
 					<td>{{payingAccount.target.originalObject.name}} {{payingAccount.target.originalObject.bank_t}} {{payingAccount.target.originalObject.account_t}} - {{payingAccount.target.originalObject.currency_t}}</td>
-					<td class="textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</td>
+					<td><span class="displayB textR">{{payingAccount.amount | currency}} {{payingAccount.target.currency_t}}</span></td>
 					<td>{{payingAccount.appliedDate}}</td>
 					<td>Aplicada</td>
 					<td>001005</td>
@@ -71,7 +71,7 @@
 				<tr>
 					<td colspan="3" class="textR paddingR10">TOTAL A PAGAR:</td>
 					<td>
-						<div class="textL paddingL5">{{ getTotalPayment(ownpayingAccounts) | currency}}</div>
+						<div class="textR paddingR5">{{ getTotalPayment(ownpayingAccounts) | currency}}</div>
 					</td>
 					<td colspan="3"></td>
 				</tr>
