@@ -520,6 +520,10 @@ angular.module('bnePaymentsOldFashionedApp')
         $http.get($scope.base_url + "/allgroups/" + $scope.selectedGroup.id + "/items", {}).
           success(function(responseData, status, headers, config) {
             //$scope.groupItems = responseData;
+            for(var x = 0 ; x<responseData.docs.length; x++){
+              //Esto es para que el importe por default sea el mismo que el último pago
+              responseData.docs[x].amount = responseData.docs[x].target.originalObject.last_payment_d;
+            }
             $scope.ownpayingAccounts = responseData.docs;
             $scope.addMoreOwnPayments();
           }).
@@ -527,7 +531,6 @@ angular.module('bnePaymentsOldFashionedApp')
           console.log("error");
         });
       }
-
 		};
 
 		$scope.getAccountsByType = function (id) {
