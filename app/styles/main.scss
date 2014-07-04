@@ -130,7 +130,7 @@ input.monto{
 	text-align: right;
 }
 input.search{
-	background: #ffffff url(/images/ico-lupa.png) right 5px no-repeat;
+	background: #ffffff url(../images/ico-lupa.png) right 5px no-repeat;
 	background-size: 20px;
 	padding-right: 20px!important;
 	margin:5px 10px 0 0!important;
@@ -548,13 +548,13 @@ input.num{
 
 /* ICONOS */
 .ico-ayuda{
-	background: url(/images/ico-ayuda.png) left no-repeat;
+	background: url(../images/ico-ayuda.png) left no-repeat;
 	background-size: 42px;
 	width: 20px;
 	height: 20px;
 	display: inline-block;
 	.ico-ayuda-h{
-		background: url(/images/ico-ayuda.png) right no-repeat;
+		background: url(../images/ico-ayuda.png) right no-repeat;
 		background-size: 42px;
 		width: 20px;
 		height: 20px;
@@ -577,13 +577,13 @@ input.num{
 	}
 }
 .ico-print{
-	background: url(/images/ico-print.png) left no-repeat;
+	background: url(../images/ico-print.png) left no-repeat;
 	background-size: 48px;
 	width: 23px;
 	height: 21px;
 	display: inline-block;
 	.ico-print-h{
-		background: url(/images/ico-print.png) right no-repeat;
+		background: url(../images/ico-print.png) right no-repeat;
 		background-size: 48px;
 		width: 23px;
 		height: 21px;
@@ -606,7 +606,7 @@ input.num{
 	}
 }
 .ico-calendar{
-	background: url(/images/ico-calendar.png) no-repeat;
+	background: url(../images/ico-calendar.png) no-repeat;
 	background-size: 20px;
 	width: 20px;
 	height: 23px;
@@ -616,7 +616,7 @@ input.num{
 	margin-bottom: -8px;
 }
 .ico-exclama{
-	background: url(/images/ico-exclama.png) no-repeat;
+	background: url(../images/ico-exclama.png) no-repeat;
 	background-size: 12px;
 	width: 12px;
 	height: 12px;
@@ -625,7 +625,7 @@ input.num{
 	top: 1px;
 }
 .ico-basurero{
-	background: url(/images/ico-basurero.png) no-repeat;
+	background: url(../images/ico-basurero.png) no-repeat;
 	background-size: 13px;
 	width: 13px;
 	height: 16px;
@@ -636,7 +636,7 @@ input.num{
 
 header{
 	.logo-bnmx{
-		background: url(/images/logo.png) no-repeat;
+		background: url(../images/logo.png) no-repeat;
 		background-size: 184px;
 		width: 184px;
 		height: 41px;
@@ -658,7 +658,7 @@ header{
 		}
 	}
 	.logo-bancanet{
-		background: url(/images/bancanet.png) no-repeat;
+		background: url(../images/bancanet.png) no-repeat;
 		background-size: 89px;
 		width: 89px;
 		height: 30px;
@@ -719,7 +719,7 @@ header{
 			padding: 5px 15px 3px 15px;
 			@include border_radius(5px);
 			span.arrow{
-				background: url(/images/ico-salir.png) left no-repeat;
+				background: url(../images/ico-salir.png) left no-repeat;
 				background-size: 38px;
 				width: 19px;
 				height: 18px;
@@ -727,7 +727,7 @@ header{
 				position: absolute;
 				margin: -1px 0 0 -24px;
 				span.arrow-h{
-					background: url(/images/ico-salir.png) right no-repeat;
+					background: url(../images/ico-salir.png) right no-repeat;
 					background-size: 38px;
 					width: 19px;
 					height: 18px;
@@ -792,7 +792,7 @@ header{
 			display: inline-block;
 			margin-left: 15px;
 			.sobre{
-				background: url(/images/ico-sobre.png) no-repeat;
+				background: url(../images/ico-sobre.png) no-repeat;
 				background-size: 16px;
 				width: 30px;
 				height: 13px;
@@ -822,7 +822,7 @@ header{
 	clear: both;
 	overflow: hidden;
 	h1{
-		background: url(/images/ico-titulo.png) 0 4px no-repeat;
+		background: url(../images/ico-titulo.png) 0 4px no-repeat;
 		font-size: 20px;
 		color: #09347a;
 		margin: 0 0 15px 0;
@@ -831,7 +831,7 @@ header{
 		@include anim_transicion_linear(0.3s);
 	}
 	h1:hover{
-		background: url(/images/ico-titulo.png) 3px 4px no-repeat;
+		background: url(../images/ico-titulo.png) 3px 4px no-repeat;
 	}
 	a,
 	a:hover{
@@ -1061,7 +1061,7 @@ p.instrucciones{
 											@include border_radius( 5px );
 											padding: 5px 5px 0 5px;
 											.arrow{
-												background: url(/images/white_arrow_down.png) no-repeat;
+												background: url(../images/white_arrow_down.png) no-repeat;
 												background-size: 10px;
 												width: 10px;
 												height: 7px;
@@ -1246,7 +1246,7 @@ p.instrucciones{
 								@include border_radius( 5px );
 								padding: 5px 5px 0 5px;
 								.arrow{
-									background: url(/images/white_arrow_down.png) no-repeat;
+									background: url(../images/white_arrow_down.png) no-repeat;
 									background-size: 10px;
 									width: 10px;
 									height: 7px;
@@ -1455,7 +1455,7 @@ p.instrucciones{
 					@include border_radius( 5px );
 					padding: 5px 5px 0 5px;
 					.arrow{
-						background: url(/images/white_arrow_down.png) no-repeat;
+						background: url(../images/white_arrow_down.png) no-repeat;
 						background-size: 10px;
 						width: 10px;
 						height: 7px;
@@ -1610,7 +1610,7 @@ table.datos{
 	font-size: 12px;
 	@include border_radius(5px);
 	.titulo{
-		background: #1e87dd url(/images/bg-que-hacer.png) top right no-repeat;
+		background: #1e87dd url(../images/bg-que-hacer.png) top right no-repeat;
 		color: #FFFFFF;
 		padding: 1px 30px 1px 10px;
 		float: left;

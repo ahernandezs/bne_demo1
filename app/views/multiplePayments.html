@@ -36,7 +36,7 @@
 							<td>
 								<div class="content paddingL10">
 									<div class="pull-left paddingR10 textL">
-										<div>
+										<span>
 											Cuenta retiro<br>
 											<angucomplete id="origin-account"
 												placeholder="Cuenta / Alias"
@@ -49,11 +49,11 @@
 												enabledefault="true"
 												class="pull-left cuenta"
 												inputclass="form-control form-control-small search"/>
-										</div>
+										</span>
 										<br><br>
 										<div ng-show="$index == 0 && state=='multiplePayments'" class="clear-fix textL">
 											<span class="ultimo-pago">
-											<input type="checkbox" ng-model="sameAccount4All"/>&nbsp;Usar la misma cuenta para todos los pagos
+												<input type="checkbox" ng-model="sameAccount4All"/>&nbsp;Usar la misma cuenta para todos los pagos
 											</span>
 										</div>
 									</div>
@@ -161,8 +161,8 @@
 									ng-click="removePayment(ownpayingAccounts, $index)" >
 									<span class="ico-basurero"></span>
 								</button>
-								<button title="Agregar pago" ng-show="ownpayingAccounts.length == 1" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
-									ng-mouseover="show_tltp('.tooltip-agregar' + $index, '.btn-tooltip-agregar' + $index)"
+								<button ng-show="ownpayingAccounts.length == 1" class="btn btn-primary btn-cuadrado btn-tooltip-mas{{$index}}"
+									ng-mouseover="show_tltp_eliminar('.tooltip-agregar' + $index, '.btn-tooltip-mas' + $index)"
 									ng-mouseleave="hide_tltp('.tooltip-agregar'+$index)"
 									ng-click="addMoreOwnPayments()" >
 									+
