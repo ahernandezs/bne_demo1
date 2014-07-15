@@ -591,4 +591,8 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.state = "multiplePayments";
 
+    $scope.showBeneficiary = function(){
+      $scope.addBenef = true;
+    }
+
 }]);

@@ -74,7 +74,7 @@
 											</span>
 											<div ng-show="state=='multiplePayments'">
 												<span class="pull-left paddingT17">
-													<a href="javascript:void(0);">Agregar un<br>beneficiario</a>
+													<a href="javascript:void(0);" ng-click="showBeneficiary()">Agregar un<br>beneficiario</a>
 												</span>
 											</div>
 										</span>
@@ -229,7 +229,7 @@
 									</div>
 								</div>
 								<div class="content pull-left textL paddingL65">
-									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editConcept"/> Referencias</label>
+									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editConcept || true"/> Referencias</label>
 									<form class="form-inline paddingL3">
 										<label class="paddingL10">
 											<span>N&uacute;mero de referencia</span><br>
