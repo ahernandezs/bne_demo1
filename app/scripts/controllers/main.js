@@ -595,4 +595,14 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addBenef = true;
     }
 
+    $scope.oneAccount4All = function($event){
+      if($event){
+        $("input").each(function(){
+            if ($(this).attr("id")=="origin-account_value") {
+              $(this).val($("#origin-account_value").val());
+            }
+        });
+      }
+    }
+
 }]);

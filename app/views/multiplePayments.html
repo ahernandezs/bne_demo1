@@ -53,7 +53,7 @@
 										<br><br>
 										<div ng-show="$index == 0 && state=='multiplePayments'" class="clear-fix textL">
 											<span class="ultimo-pago">
-												<input type="checkbox" ng-model="sameAccount4All"/>&nbsp;Usar la misma cuenta para todos los pagos
+												<input type="checkbox" ng-model="sameAccount4All" ng-change="oneAccount4All(sameAccount4All);"/>&nbsp;Usar la misma cuenta para todos los pagos
 											</span>
 										</div>
 									</div>
