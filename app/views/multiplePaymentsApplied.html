@@ -15,9 +15,6 @@
 		<div class="alert-succes">
 			<p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
 		</div>
-		<div ng-show="state=='beneficiaryGroups'">
-            <p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
-		</div>		
 		<div class="content-box">
 			<p class="title pull-left">Autorizadores</p>
 			<div class="contenido pull-right">
@@ -35,7 +32,9 @@
 				</table>
 			</div>
 		</div>
-
+		<div ng-show="state=='beneficiaryGroups'">
+            <p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
+		</div>
 		<div class="clear-fix">
 			<a href="" class="pull-right">
 				<span class="ico-print">
