@@ -28,6 +28,16 @@ angular.module('bnePaymentsOldFashionedApp')
 			{name: '24:00'}
 		];
 
+    $scope.hoursCombo2 = [
+      {name: '9:00'},
+      {name: '10:00'},
+      {name: '11:00'},
+      {name: '12:00'},
+      {name: '13:00'},
+      {name: '14:00'},
+      {name: '15:00'}
+    ];
+
     $scope.minutesCombo = [
       {name: '00'},
       {name: '01'},
