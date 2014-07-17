@@ -2,6 +2,9 @@
 
 angular.module('bnePaymentsOldFashionedApp')
   .controller('MainCtrl', ['$scope', '$http', '$location', '$anchorScroll', function ($scope, $http, $location, $anchorScroll) {
+
+    $scope.firstObject = {};
+
 		$scope.hoursCombo = [
 			{name: '1:00'},
 			{name: '2:00'},
@@ -213,7 +216,6 @@ angular.module('bnePaymentsOldFashionedApp')
 
 		$scope.addThirdPayment = function () {
 			if($scope.thirdpayingAccounts.length >= 15) return;
-
 			var firstPayment = {
         enabled: false,
         fiscal: false,
@@ -230,9 +232,17 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.addOwnPayment = function () {
       if($scope.ownpayingAccounts.length >= 15) return;
 
-      var firstPayment = {
-        enabled: false,
-        date: $scope.getCurrentDate()
+      if($scope.sameAccount){
+        var firstPayment = {
+          enabled: false,
+          date: $scope.getCurrentDate(),
+          source: $scope.firstObject.source
+        }
+      }else{
+        var firstPayment = {
+          enabled: false,
+          date: $scope.getCurrentDate()
+        }
       }
 
       $scope.ownpayingAccounts.push(firstPayment);
@@ -598,14 +608,14 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.groupSelected = false;
     $scope.multiplePayments = true;
     $scope.collapseOne = true;
-
+    $scope.sameAccount = false;
     $scope.state = "multiplePayments";
 
     $scope.showBeneficiary = function(){
       $scope.addBenef = true;
     }
 
-    $scope.oneAccount4All = function($event){
+    $scope.oneAccount4All = function($event,objeto){
       if($event){
         $("input").each(function(){
             if ($(this).attr("id")=="origin-account_value") {
@@ -613,6 +623,8 @@ angular.module('bnePaymentsOldFashionedApp')
             }
         });
       }
+      $scope.sameAccount = $event ? true : false;
+      $scope.firstObject = objeto;
     }
 
 }]);

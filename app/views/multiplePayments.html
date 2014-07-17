@@ -13,7 +13,7 @@
 					</div>
 				</div>
 				<p>
-					Seleccione una cuenta de retiro, capture la información de su(s) Pago(s) y dé clic en a"Continuar". Si requiere adicionar más pagos de clic en el botón "Agregar más pagos".
+					Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) pago(s) y d&eacute; clic en "Continuar". Si requiere adicionar m&aacute;s pagos d&eacute; clic en el bot&oacute;n "Agregar m&aacute;s pagos".
 				</p>
 			<div ng-show="state=='beneficiaryGroups'">
 				<p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
@@ -53,7 +53,7 @@
 										<br><br>
 										<div ng-show="$index == 0 && state=='multiplePayments'" class="clear-fix textL">
 											<span class="ultimo-pago">
-												<input type="checkbox" ng-model="sameAccount4All" ng-change="oneAccount4All(sameAccount4All);"/>&nbsp;Usar la misma cuenta para todos los pagos
+												<input type="checkbox" ng-model="sameAccount4All" ng-change="oneAccount4All(sameAccount4All,payingAccount);"/>&nbsp;Usar la misma cuenta para todos los pagos
 											</span>
 										</div>
 									</div>
@@ -264,7 +264,7 @@
 						</tr>
 					</tfoot>
 				</table>
-				<button type="button" class="btn btn-primary" ng-click="addMoreOwnPayments()">Agregar m&aacute;s pagos</button>
+				<button type="button" class="btn btn-primary" ng-click="addMoreOwnPayments()">Agregar pagos</button>
 			</div>
 		</div>
 <SCRIPT LANGUAGE="JavaScript"> 
