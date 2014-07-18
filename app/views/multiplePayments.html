@@ -185,7 +185,7 @@
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
 									<div class="span175">
-										<input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc" ng-model="payingAccount.references"> Comprobante Fiscal<br>
+										<input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc || payingAccount.editIva" ng-model="payingAccount.references"> Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
 											<strong class="width30 inline">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
 										</form>
@@ -200,7 +200,7 @@
 									</label>
 									<span class="paddingL3">(L&iacute;nea Banamex)</span>
 									<br>
-									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editAlpha" ng-model="payingAccount.references"/> Referencias</label>
+									<label class="paddingL10"><input type="checkbox" ng-checked="payingAccount.editNumeric || payingAccount.editAlpha || payingAccount.editConcept" ng-model="payingAccount.references"/> Referencias</label>
 									<form class="form-inline paddingL3">
 										<label class="paddingL10">
 											<span>Referencia num&eacute;rica</span><br>
@@ -226,7 +226,7 @@
 							<td></td>
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
-									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc" ng-model="payingAccount.ComprobanteFiscal">
+									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc || payingAccount.editIva" ng-model="payingAccount.ComprobanteFiscal">
 										Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
 											<strong class="inline width30">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
