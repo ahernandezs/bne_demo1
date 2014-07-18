@@ -1,46 +1,4 @@
-<!-- MODALES -->
-<div class="overlay-blk" ng-show="challenge||addBenef">
-	<!-- Centrarla via js al momento de mostrarse -->
-	<div class="modal-bne width500" ng-show="addBenef">
-		<h1 class="title">Alta de Beneficiarios</h1>
-		<p>
-			<label><input type="radio" name="radio-alta-ben"> Alta de Beneficiario</label>
-			<label><input type="radio" name="radio-alta-ben"> Alta de grupo de Beneficiarios</label>
-		</p>
-		<div class="area-botones">
-			<button class="btn btn-danger pull-left" ng-click="addBenef = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="addBenef = false; multipleInterbank=false; groupsInterbank=false; addInterbank=true; jumpToTop($event)">Continuar</button>
-		</div>
-	</div>
-
-	<!-- Centrarla via js al momento de mostrarse -->
-	<div class="modal-bne width700" ng-show="challenge">
-		<h1 class="title nobrdr">Clave din&aacute;mica</h1>
-		<div class="width50p pull-left borderR1-CCCCCC">
-			<div class="padding10">
-				Encienda su NetKey, teclee su PIN; al deplegarse la palabra "HOTS?" digite el n&uacute;mero "9". Al aparecer la palabra "CHALLNG?" introduzca en su NetKey la siguiente clave:
-				<span class="challng">CHALLNG: <span class="num">24011985</span></span>
-			</div>
-		</div>
-		<div class="width50p pull-right">
-			<div class="padding10">
-				Presione ENT. Su NetKey generar&aacute; una clave din&aacute;mica que deber&aacute; digitar en el siguiente campo
-				<br><br>
-				Clave din&aacute;mica<br>
-		<input type="password" class="form-control" maxlength="8" ng-model="dynamicPassword">
-			</div>
-		</div>
-		<div class="area-botones">
-			<button class="btn btn-danger pull-left" ng-click="challenge = false">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="challenge = false; confirmation = false; stepState = ''; applied = true; jumpToTop($event)">Continuar</button>
-		</div>
-	</div>
-</div>
-
-
-
-
-
+<div ng-include="'views/modals.html'"></div>
 <div class="container">
 	<div class="pag-captura" ng-show="showAccounts">
 		<div class="titulo-principal">
@@ -66,7 +24,7 @@
         <div class="panel-collapse" ng-show="collapseOne">
           <div class="content-panel">
             <ul class="nav nav-tabs">
-              <li ng-class="{active: state === 'multiplePayments'}"><a href="" ng-click="changeTab('multiplePayments')">Pagos Múltiples</a></li>
+              <li ng-class="{active: state === 'multiplePayments'}"><a href="" ng-click="changeTab('multiplePayments')">Pagos M&uacute;ltiples</a></li>
               <li ng-class="{active: state === 'beneficiaryGroups'}"><a href="" ng-click="changeTab('beneficiaryGroups')">Pagar a un grupo de beneficiarios</a></li>
             </ul>
             <div class="" ng-switch on="state">
@@ -99,7 +57,7 @@
     	<button ng-show="stepState === 'group'" class="btn btn-primary pull-right" ng-click="stepState='confirmation'; jumpToTop($even)">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'group'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
-		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
+		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Guardar / Finalizar</button>
     </div>
 
   </div>
