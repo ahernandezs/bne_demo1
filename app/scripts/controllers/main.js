@@ -627,4 +627,12 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.firstObject = objeto;
     }
 
+    $scope.removeGroup = function(index) {
+      if(index != -1) {
+        if (confirm('¿Desea eliminar el grupo?')) {
+          $scope.groups.docs.splice(index, 1);
+        }
+      }
+    };
+
 }]);
