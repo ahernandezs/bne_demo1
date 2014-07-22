@@ -637,6 +637,9 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.algo = function(){
       $scope.stepState = 'newBeneficiaryGroups';
+      for(var i = 0; i < 4; i++) {
+        $scope.addMoreOwnPayments();
+      }
     }
 
 }]);
