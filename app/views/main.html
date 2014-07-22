@@ -76,6 +76,7 @@
               </div>
               <div ng-switch-when="beneficiaryGroups">
                 <div ng-include="'views/multiplePayments2.html'" ng-show="stepState === 'capture'"></div>
+                <div ng-include="'views/multiplePayments.html'" ng-show="stepState === 'newBeneficiaryGroups'"></div>
                 <div ng-include="'views/multiplePayments.html'" ng-show="stepState === 'group'"></div>
                 <div ng-include="'views/multiplePaymentsConfirmation.html'" ng-show="stepState === 'confirmation'"></div>
                 <div ng-include="'views/multiplePaymentsApplied.html'" ng-show="applied"></div>

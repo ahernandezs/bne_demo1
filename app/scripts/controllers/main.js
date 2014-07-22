@@ -635,4 +635,8 @@ angular.module('bnePaymentsOldFashionedApp')
       }
     };
 
+    $scope.algo = function(){
+      $scope.stepState = 'newBeneficiaryGroups';
+    }
+
 }]);
