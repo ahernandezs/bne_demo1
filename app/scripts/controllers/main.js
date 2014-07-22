@@ -341,6 +341,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
       $scope.addToNewGroup = undefined;
       $scope.addToGroupSelect= undefined;
+      $scope.newGroupName = "";
 
       $scope.stepState="capture";
     };
@@ -584,8 +585,10 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.jumpToTop = function(event){
       $location.hash('top');
       $anchorScroll();
-      event.preventDefault();
-      event.stopPropagation();
+      if(event!=undefined){
+        event.preventDefault();
+        event.stopPropagation();
+      }
     }
 
     $scope.changeTab = function(tab) {
@@ -635,11 +638,15 @@ angular.module('bnePaymentsOldFashionedApp')
       }
     };
 
-    $scope.algo = function(){
+    $scope.newGroup = function(){
+      $scope.setup();
       $scope.stepState = 'newBeneficiaryGroups';
-      for(var i = 0; i < 4; i++) {
-        $scope.addMoreOwnPayments();
-      }
+    }
+
+    $scope.newGroupName = "";
+
+    $scope.saveNewBeneficiaryGroup = function(){
+      $scope.newGroupName = $('#newNameGroup').val();
     }
 
 }]);

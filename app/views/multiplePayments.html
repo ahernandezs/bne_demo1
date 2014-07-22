@@ -14,13 +14,13 @@
 				</div>
 			<div ng-show="stepState==='newBeneficiaryGroups'">
 				<p><strong>Capture el nombre del grupo:&nbsp;&nbsp;</strong>
-				<input class="width120 textR" type="text" value="" ng-model="newGroupName" maxlength="25">
+				<input class="width120 textR" type="text" value="" ng-model="newGroupName" id="newNameGroup" maxlength="25">
 				</p>
 			</div>
 				<p>
 					Seleccione una cuenta de retiro, capture la informaci&oacute;n de su(s) pago(s) y d&eacute; clic en "Continuar". Si requiere adicionar m&aacute;s pagos d&eacute; clic en el bot&oacute;n "Agregar m&aacute;s pagos".
 				</p>
-			<div ng-show="state=='beneficiaryGroups'">
+			<div ng-show="state=='beneficiaryGroups' && stepState!=='newBeneficiaryGroups'">
 				<p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}</p>
 			</div>
 				<table class="table">
