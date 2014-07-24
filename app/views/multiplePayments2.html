@@ -90,7 +90,7 @@
           </button> -->
           <button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
             ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
-            ng-mouseleave="hide_tltp('.tooltip-propias'+$index)" ng-click="showDeleteGroups()">
+            ng-mouseleave="hide_tltp('.tooltip-propias'+$index)" ng-click="showDeleteGroups(group.name);">
             <span class="ico-basurero"></span>
           </button>
         </td>

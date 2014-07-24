@@ -200,12 +200,12 @@
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
 									<div class="span175">
-										<input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc || payingAccount.editIva" ng-model="payingAccount.references"> Comprobante Fiscal<br>
+										<input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-model="payingAccount.fiscal_b"> Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
-											<strong class="width30 inline">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
+											<strong class="width30 inline">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true;payingAccount.fiscal_b=true">
 										</form>
 										<form class="form-inline paddingL3">
-											<strong class="width30 inline">IVA</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
+											<strong class="width30 inline">IVA</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true;payingAccount.fiscal_b=true">
 										</form>
 									</div>
 								</div>
@@ -241,13 +241,13 @@
 							<td></td>
 							<td colspan="4">
 								<div class="content pull-left paddingL10">
-									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-checked="payingAccount.editRfc || payingAccount.editIva" ng-model="payingAccount.ComprobanteFiscal">
+									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-model="payingAccount.fiscal">
 										Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
-											<strong class="inline width30">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true">
+											<strong class="inline width30">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true;payingAccount.fiscal = true;">
 										</form>
 										<form class="form-inline paddingL3">
-											<strong class="inline width30">IVA&nbsp;&nbsp;</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true">
+											<strong class="inline width30">IVA&nbsp;&nbsp;</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true;payingAccount.fiscal = true;">
 										</form>
 									</div>
 								</div>

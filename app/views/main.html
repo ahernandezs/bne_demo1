@@ -159,12 +159,12 @@
 		<h1 class="title">Eliminar</h1>
 		<div class="">
 			<p>
-				&iquest;Esta seguro que desea eliminar el grupo "Grupo 1"?
+				&iquest;Esta seguro que desea eliminar el grupo "{{grupoaborrar}}"?
 			</p>
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_deleteGroup = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_deleteGroup = false; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="modal_deleteGroup = false; jumpToTop($event); removeGroup($index)">Continuar</button>
 		</div>
 	</div>
 
@@ -273,7 +273,7 @@
 		<button ng-show="stepState === 'capture'" ng-disabled="!allowNext" class="btn btn-primary pull-right" ng-click="validate();">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
-		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
+		<button ng-show="applied" ng-click="acceptAppliedOptions()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
     </div>
 
     <div class="area-botones" ng-show="state === 'beneficiaryGroups'">
