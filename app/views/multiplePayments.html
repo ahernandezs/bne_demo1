@@ -43,7 +43,8 @@
 									<div class="pull-left paddingR10 textL">
 										<span>
 											Cuenta retiro<br>
-											<angucomplete id="origin-account"
+											<angucomplete
+												id="origin-account"
 												placeholder="Cuenta / Alias"
 												pause="20"
 												selectedobject="payingAccount.source"
@@ -58,7 +59,7 @@
 										<br><br>
 										<div ng-show="$index == 0 && state=='multiplePayments'" class="clear-fix textL">
 											<span class="ultimo-pago">
-												<input type="checkbox" ng-model="sameAccount4All" ng-change="oneAccount4All(sameAccount4All,payingAccount);"/>&nbsp;Usar la misma cuenta para todos los pagos
+												<input type="checkbox" ng-model="sameAccount4All" ng-change="oneAccount4All(sameAccount4All,payingAccount);" ng-disabled="false"/>&nbsp;Usar la misma cuenta para todos los pagos
 											</span>
 										</div>
 										<span class="error">
@@ -96,9 +97,9 @@
 											<span>Sucursal</span>
 											<div class="content paddingL0">
 												<form class="form-inline">
-													<input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
+													<input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only" id="sucursal{{$index}}">
 												</form>
-												<a href="javascript:void(0);" ng-click="showSuc()">Ver el directorio de sucursales</a>
+												<a href="javascript:void(0);" ng-click="showSuc($index)">Ver el directorio de sucursales</a>
 											</div>
 										</div>
 									</div>

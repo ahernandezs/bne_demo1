@@ -618,9 +618,17 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addBenef = true;
     }
 
-    $scope.showSuc = function(){
+    $scope.sucNum = "";
+    $scope.showSuc = function(index){
+      $scope.sucNum = index;
       $scope.modal_sucursales = true;
     }
+    $scope.asignarSuc = function(){
+      var tmp = 'sucursal'+$scope.sucNum;
+      $scope.sucNum
+      $("#"+tmp).val('000');
+    }
+
     $scope.showPrint = function(){
       $scope.modal_impresion = true;
     }
@@ -699,5 +707,6 @@ angular.module('bnePaymentsOldFashionedApp')
         }
       });
     }
+
 
 }]);
