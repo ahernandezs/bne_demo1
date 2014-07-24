@@ -674,8 +674,8 @@ angular.module('bnePaymentsOldFashionedApp')
     }
 
     $scope.validate = function(){
+      var ok = true;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
-        var ok = true;
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
           if(renglon.source === undefined){
@@ -687,12 +687,15 @@ angular.module('bnePaymentsOldFashionedApp')
             ok = false;
           }
           if(renglon.amount === undefined){
-            renglon.errorAmount = 'Ingrese el importe';
+            renglon.errorAmount = 'Ingresa un importe';
             ok = false;
           }
-          if(ok){
-            $scope.stepState='confirmation';
-          }
+        }
+        if(ok){
+          $scope.stepState='confirmation';
+        }else{
+          $location.hash('top');
+          $anchorScroll();
         }
       });
     }
