@@ -658,10 +658,14 @@ angular.module('bnePaymentsOldFashionedApp')
             }
         });
       }else{
+        var contador = 0;
         $("input").each(function(){
-            if ($(this).attr("id")=="origin-account_value") {
+          if ($(this).attr("id")=="origin-account_value") {   
+            if(contador>0){        
               $(this).val("");
             }
+            contador++;
+          }
         });
       }
       $scope.sameAccount = $event ? true : false;
