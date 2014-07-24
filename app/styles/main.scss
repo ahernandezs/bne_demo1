@@ -380,6 +380,9 @@ span.error{
 .marginR10{
 	margin-right: 10px;
 }
+.marginB0{
+	margin-bottom: 0px!important;
+}
 .marginB15{
 	margin-bottom: 15px;
 }
@@ -1636,12 +1639,13 @@ table.datos{
 		float: left;
 		a{
 			font-size: 11px;
+			text-decoration: none!important;
 		}
 		a.deactive,
 		a.deactive:hover{
-			color: #cccccc;
-			cursor: default;
-			text-decoration: none;
+			color: #cccccc!important;
+			cursor: default!important;
+			text-decoration: none!important;
 		}
 		.number{
 			display: inline-block;
@@ -1650,7 +1654,7 @@ table.datos{
 		}
 		.number.active{
 			background: #ee813a;
-			color: #FFFFFF;
+			color: #FFFFFF!important;
 			border-right:none;
 		}
 	}
