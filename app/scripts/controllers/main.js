@@ -708,7 +708,7 @@ angular.module('bnePaymentsOldFashionedApp')
     }
 
     $scope.validate = function(){
-      var ok = true;
+      var ok = true ;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
@@ -725,13 +725,13 @@ angular.module('bnePaymentsOldFashionedApp')
             ok = false;
           }
         }
-        if(ok){
-          $scope.stepState='confirmation';
-        }else{
-          $location.hash('top');
-          $anchorScroll();
-        }
       });
+      if(ok){
+        $scope.stepState='confirmation';
+      }else{
+        $location.hash('top');
+        $anchorScroll();
+      }
     }
 
 
