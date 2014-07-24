@@ -673,4 +673,10 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.newGroupName = $('#newNameGroup').val();
     }
 
+    $scope.validate = function(){
+
+      console.log('validando');
+
+    }
+
 }]);

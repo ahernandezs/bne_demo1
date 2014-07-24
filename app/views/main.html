@@ -270,16 +270,16 @@
       </div>
     </div>
     <div class="area-botones" ng-show="state === 'multiplePayments'">
-    	<button ng-show="stepState === 'capture'" ng-disabled="!allowNext" class="btn btn-primary pull-right" ng-click="stepState='confirmation'">Continuar</button>
+		<button ng-show="stepState === 'capture'" ng-disabled="!allowNext" class="btn btn-primary pull-right" ng-click="stepState='confirmation'; validate();">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
     </div>
 
     <div class="area-botones" ng-show="state === 'beneficiaryGroups'">
-		<button ng-disabled="!selectedGroup" ng-show="stepState === 'capture'" class="btn btn-primary pull-right" ng-click="stepState='group'; changeGroup()">Continuar</button>
+		<button ng-disabled="!selectedGroup" ng-show="stepState === 'capture'" class="btn btn-primary pull-right" ng-click="stepState='group'; changeGroup(); ">Continuar</button>
 		<button ng-show="stepState === 'group' || stepState === 'newBeneficiaryGroups'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
-		<button ng-show="stepState === 'group' || stepState === 'newBeneficiaryGroups'" class="btn btn-primary pull-right" ng-click="stepState='confirmation'; jumpToTop($even); saveNewBeneficiaryGroup();">Continuar</button>
+		<button ng-show="stepState === 'group' || stepState === 'newBeneficiaryGroups'" class="btn btn-primary pull-right" ng-click="stepState='confirmation'; jumpToTop($even); saveNewBeneficiaryGroup(); validate(); ">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'group'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Guardar / Finalizar</button>

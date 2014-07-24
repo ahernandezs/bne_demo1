@@ -12,7 +12,7 @@
         <angucomplete id="groups"
                         placeholder="Nombre del grupo"
                         pause="20"
-                        selectedobject="payingAccount.source"
+                        selectedobject="payingAccount.source.originalObject"
                         url="http://projects.anzen.com.mx:4567/api/allgroups?query="
                         datafield="docs"
                         titlefield="name"
@@ -23,6 +23,8 @@
           <a class="pull-right displayB paddingT10 width110" href="javascript:void(0);" ng-click="newGroup()">Dar de alta a un grupo</a>
           <!--p class="paginador">Paso <span>1</span> de <span>4</span></p-->
         </p>
+
+{{results}}
 
     </div>
     <br>
