@@ -657,6 +657,12 @@ angular.module('bnePaymentsOldFashionedApp')
               $(this).val($("#origin-account_value").val());
             }
         });
+      }else{
+        $("input").each(function(){
+            if ($(this).attr("id")=="origin-account_value") {
+              $(this).val("");
+            }
+        });
       }
       $scope.sameAccount = $event ? true : false;
       $scope.firstObject = objeto;
