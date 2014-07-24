@@ -374,7 +374,7 @@ angular.module('bnePaymentsOldFashionedApp')
     };
 
 		$scope.btn_openclose = function( btn ) {
-			console.log( $(btn) );
+			// console.log( $(btn) );
 			if( $(btn).find('span').html() == '+' ){
 				$(btn).find('span').html('-');
 			}else{
@@ -616,6 +616,30 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.showBeneficiary = function(){
       $scope.addBenef = true;
+    }
+
+    $scope.showSuc = function(){
+      $scope.modal_sucursales = true;
+    }
+    $scope.showPrint = function(){
+      $scope.modal_impresion = true;
+    }
+    $scope.showNewGroup = function(){
+      $scope.modal_nuevogrupo = true;
+    }
+    $scope.showGroups = function(){
+      $scope.modal_grupos = true;
+    }
+    $scope.showAddGroup = function(){
+      if( $('.select_addGroup').val() == '0' ){
+        showNewGroup();
+      }
+      if( $('.select_addGroup').val() == '1' ){
+        showGroups();
+      }
+    }
+    $scope.showDeleteGroups = function(){
+      $scope.modal_deleteGroup = true;
     }
 
     $scope.oneAccount4All = function($event,objeto){

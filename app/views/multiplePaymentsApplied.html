@@ -36,7 +36,7 @@
             <p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}{{newGroupName}}</p>
 		</div>
 		<div class="clear-fix">
-			<a href="" class="pull-right">
+			<a href="javascript:void(0);" class="pull-right" ng-click="showPrint()">
 				<span class="ico-print">
 					<span class="ico-print-h"></span>
 				</span>
@@ -84,7 +84,7 @@
 		<div class="area-botones">
 			<div class="pull-left" ng-hide="selectedGroup">
 				<label class="fontNormal paddingTB10"><input type="checkbox" ng-model="addToNewGroup">&nbsp;Agregar estos pagos a un grupo&nbsp;&nbsp;</label>
-				<select ng-options="value.name for value in groupsSelect" ng-show="addToNewGroup" ng-model="addToGroupSelection">
+				<select class="select_addGroup" ng-change="showAddGroup()" ng-options="value.name for value in groupsSelect" ng-show="addToNewGroup" ng-model="addToGroupSelection">
 					<option value="">Seleccione una opción</option>
 				</select><br>
 				<!--button type="button" class="btn btn-primary marginT5" ng-show="addToNewGroup">Crear un nuevo grupo para estos pagos</button-->
@@ -93,7 +93,7 @@
 </div>
 <div ng-switch-when="beneficiaryGroups">
 		<div class="clear-fix marginT15">
-			<button type="button" class="btn btn-primary pull-right">Guardar como nuevo grupo</button>
+			<button type="button" class="btn btn-primary pull-right" ng-click="showGroups()">Guardar como nuevo grupo</button>
 		</div>
 </div>
 </div>

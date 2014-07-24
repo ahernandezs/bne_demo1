@@ -18,9 +18,9 @@
                         titlefield="name"
                         minlength="1"
                         enabledefault="true"
-                        class="pull-left cuenta"
+                        class="pull-left"
                         inputclass="form-control form-control-small search"/>
-          <a href="javascript:void(0);" ng-click="newGroup()">Dar de alta a un grupo</a>
+          <a class="pull-right displayB paddingT10 width110" href="javascript:void(0);" ng-click="newGroup()">Dar de alta a un grupo</a>
           <!--p class="paginador">Paso <span>1</span> de <span>4</span></p-->
         </p>
 
@@ -81,9 +81,14 @@
             <p>Eliminar</p>
             <div class="arrow"></div>
           </div>
-          <button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
+          <!-- <button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
             ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
             ng-mouseleave="hide_tltp('.tooltip-propias'+$index)" ng-click="removeGroup($index)">
+            <span class="ico-basurero"></span>
+          </button> -->
+          <button class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
+            ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
+            ng-mouseleave="hide_tltp('.tooltip-propias'+$index)" ng-click="showDeleteGroups()">
             <span class="ico-basurero"></span>
           </button>
         </td>

@@ -92,7 +92,7 @@
 												<form class="form-inline">
 													<input class="form-control width40" type="text" value="" ng-model="payingAccount.branch" maxlength="4" numbers-only="numbers-only">
 												</form>
-												<a href="">Ver el directorio de sucursales</a>
+												<a href="javascript:void(0);" ng-click="showSuc()">Ver el directorio de sucursales</a>
 											</div>
 										</div>
 									</div>
@@ -101,7 +101,7 @@
 							<td>
 								<div class="content">
 									<form class="form-inline paddingT19 span180" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="12" numbers-only="numbers-only" currency="" onkeypress="return NumCheck(event, this)">
+										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="10" numbers-only="numbers-only" currency="" onkeypress="return NumCheck(event, this)">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
@@ -292,25 +292,6 @@ if(field.value != ""){
 	}
 
 }
-
-  /*key = e.keyCode ? e.keyCode : e.which
-  // backspace
-  if (key == 8) return true
-  // 0-9
-  if (key > 47 && key < 58) {
-	if (field.value == "") return true
-	regexp = /.[0-9]{2}$/
-	return !(regexp.test(field.value))
-  }
-  // .
-  if (key == 46) {
-	if (field.value == "") return false
-	regexp = /^[0-9]+$/
-	return regexp.test(field.value)
-  }
-  // other key
-  return false
-*/
 }
 
 </script> 
