@@ -61,6 +61,9 @@
 												<input type="checkbox" ng-model="sameAccount4All" ng-change="oneAccount4All(sameAccount4All,payingAccount);"/>&nbsp;Usar la misma cuenta para todos los pagos
 											</span>
 										</div>
+										<span class="error">
+											{{payingAccount.errorMsgSource}}
+										</span>
 									</div>
 									<div class="pull-left">
 										<span class="span310">
@@ -82,6 +85,9 @@
 													<a href="javascript:void(0);" ng-click="showBeneficiary()">Agregar un<br>beneficiario</a>
 												</span>
 											</div>
+										</span>
+										<span class="error">
+											{{payingAccount.errorMsgTarget}}
 										</span>
 										<div class="clear-fix textL">
 											<span class="ultimo-pago" ng-class="{'v-hidden': !payingAccount.target}">Último pago: {{payingAccount.target.originalObject.last_payment_d | currency}} {{payingAccount.target.originalObject.last_date_t | date:'dd/MM/yyyy'}}</span>
@@ -124,6 +130,9 @@
 											</span>
 										</label>
 									</form>
+									<span class="error">
+										{{payingAccount.errorAmount}}
+									</span>
 								</div>
 							</td>
 							<td>
