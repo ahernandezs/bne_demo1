@@ -149,11 +149,13 @@ input.num{
 	text-align:center;
 }
 span.error{
+	background: url(../images/ico-exclama.png) no-repeat;
 	color: #ff0000;
 	display: block;
 	clear: both;
 	font-size: 11px;
 	padding-left: 20px;
+	text-align: left;
 }
 .inline{
 	display:inline-block!important;
