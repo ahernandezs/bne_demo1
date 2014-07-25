@@ -114,15 +114,11 @@
 		</table>
 		<br>
 		<div class="paginacion">
-			<div class="pages">1 a 10 de 100</div>
+			<div class="pages">1 a 4 de 4</div>
 			<div class="numbers">
 				<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
 				<a href="javascript:void(0);" class="number active">1</a>
-				<a href="javascript:void(0);" class="number">2</a>
-				<a href="javascript:void(0);" class="number">3</a>
-				<a href="javascript:void(0);" class="number">4</a>
-				<a href="javascript:void(0);" class="number">5</a>
-				<a href="javascript:void(0);">Siguiente &raquo;</a>
+				<a href="javascript:void(0);" class="deactive">Siguiente &raquo;</a>
 			</div>
 		</div>
 		<div class="area-botones">
@@ -138,7 +134,7 @@
 			<p>
 				<span class="pull-left width280">Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
 				</span>
-				<span class="pull-right"><input maxlength="25" type="text" value="" ng-model="nombreNuevoGrupo"></span>
+				<span class="pull-right"><input maxlength="25" type="text" value="" ng-model="nombreNuevoGrupo"></span><br>
 			</p>
 			<p ng-show="errorNombreNuevoGrupo">
 				<span class="error">El campo no puede estar vac&iacute;o</span>
@@ -149,10 +145,14 @@
 				El grupo de pagos Programadores V2 se guard&oacute; de forma exitosa.
 			</p>
 		</div>
-		<div class="area-botones">
+		<br>
+		<div class="area-botones" ng-show="inicioNombreNuevoGrupo">
 			<button class="btn btn-danger pull-left" ng-click="modal_nuevogrupo = false; jumpToTop($event)">Cancelar</button>
 			<button class="btn btn-primary pull-right" ng-click="guardarNuevoGrupo()">Continuar</button>
 		</div>
+		<div class="area-botones" ng-show="okNombreNuevoGrupo">
+			<button class="btn btn-primary pull-right" ng-click="guardarNuevoGrupo()">Aceptar</button>
+		</div>		
 	</div>
 
 	<!-- Centrarla via js al momento de mostrarse -->
@@ -222,7 +222,7 @@
 	</div>
 
 	<!-- Centrarla via js al momento de mostrarse -->
-	<div class="modal-bne width700" ng-show="modal_savegroups" style="display:block!important;">
+	<div class="modal-bne width700" ng-show="modal_savegroups2">
 		<h1 class="title">Guardar pagos en un grupo existente</h1>
 		<p>
 			Para agregar pagos a un grupo existente de clic en "+"

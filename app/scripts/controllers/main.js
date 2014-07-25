@@ -339,7 +339,6 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addNewBeneficiary();
       $scope.addInterbank = false;
 
-      $scope.addToNewGroup = undefined;
       $scope.addToGroupSelect= undefined;
       $scope.newGroupName = "";
 
@@ -648,10 +647,10 @@ angular.module('bnePaymentsOldFashionedApp')
     }
     $scope.imprimir = function(){
       if($('input[name=radio-impresion]:checked').val()=='individual'){
-window.open ("print1.html","impresion");
+        window.open("print1.html","impresion");
       }
       if($('input[name=radio-impresion]:checked').val()=='lista'){
-window.open ("print2.html","impresion");
+        window.open("print2.html","impresion");
       }
       $scope.modal_impresion = false;
     }
@@ -746,8 +745,7 @@ window.open ("print2.html","impresion");
     $scope.errorNombreNuevoGrupo = false;
     $scope.inicioNombreNuevoGrupo = true;
     $scope.guardarNuevoGrupo = function(){
-
-    if($scope.inicioNombreNuevoGrupo){
+        if($scope.inicioNombreNuevoGrupo){
           if($scope.nombreNuevoGrupo === ''){
             $scope.errorNombreNuevoGrupo = true;
           }else{
@@ -756,10 +754,16 @@ window.open ("print2.html","impresion");
             $scope.errorNombreNuevoGrupo = false;   
           }
         }else{
+          $scope.inicioNombreNuevoGrupo = true;
+          $scope.okNombreNuevoGrupo = false;
+          $scope.nombreNuevoGrupo = '';
           $scope.modal_nuevogrupo = false;
           $scope.applied=false;
           $scope.state = 'multiplePayments';
           $scope.stepState = 'capture';
+          $("#finalOption").val('-1');
+          $scope.deshabilitar = false;   
+          $scope.addToNewGroup = false;    
           $scope.setup();
         }
     }

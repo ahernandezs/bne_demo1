@@ -82,10 +82,13 @@
 <div ng-switch-when="multiplePayments">
 		<div class="area-botones">
 			<div class="pull-left" ng-hide="selectedGroup">
-				<label class="fontNormal paddingTB10"><input type="checkbox" ng-model="addToNewGroup">&nbsp;Agregar estos pagos a un grupo&nbsp;&nbsp;</label>
-				<select class="select_addGroup" ng-options="value.name for value in groupsSelect" ng-show="addToNewGroup" ng-model="addToGroupSelection" id="finalOption">
+				<label class="fontNormal paddingTB10"><input type="checkbox" ng-checked="deshabilitar" ng-model="addToNewGroup">&nbsp;Agregar estos pagos a un grupo&nbsp;&nbsp;</label>
+				<span ng-show='addToNewGroup'>
+				<select class="select_addGroup" ng-options="value.name for value in groupsSelect" ng-model="addToGroupSelection" id="finalOption">
 					<option value="" selected="selected">Seleccione una opción</option>
-				</select><br>
+				</span>
+			</div>
+				<br>
 				<!--button type="button" class="btn btn-primary marginT5" ng-show="addToNewGroup">Crear un nuevo grupo para estos pagos</button-->
 			</div>
 		</div>
