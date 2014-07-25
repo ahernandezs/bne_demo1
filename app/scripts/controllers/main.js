@@ -509,11 +509,13 @@ angular.module('bnePaymentsOldFashionedApp')
         $scope.modal_nuevogrupo=true;
       }else if($("#finalOption").val()=='1'){
         $scope.modal_grupos=true;
+      }else if($("#finalOption").val()=='3' || $("#finalOption").val()=='4' || $("#finalOption").val()=='5' || $("#finalOption").val()=='6' || $("#finalOption").val()=='7'){
+        $scope.modal_savegroups = true;
       }else{
-            $scope.applied = false;
-            $scope.showAccounts = true;
-            $scope.state = 'multiplePayments';
-            $scope.setup();
+        $scope.applied = false;
+        $scope.showAccounts = true;
+        $scope.state = 'multiplePayments';
+        $scope.setup();
       }
     };
 
@@ -809,29 +811,46 @@ angular.module('bnePaymentsOldFashionedApp')
   }
 
   $scope.beneficiariosNuevos = [
-    {name:'Jazmin Bautista',nuevo:true},
-    {name:'Ingrid Holsm',nuevo:true},
-    {name:'Marlen Dietrich',nuevo:true},
-    {name:'Adriana Ochoa',nuevo:true},
-    {name:'Gabriela Mistral',nuevo:true}
+    {name:'Jazmin Bautista',cta:'25444',nuevo:true},
+    {name:'Ingrid Holsm',cta:'74765',nuevo:true},
+    {name:'Marlen Dietrich',cta:'89355',nuevo:true},
+    {name:'Adriana Ochoa',cta:'26597',nuevo:true},
+    {name:'Gabriela Mistral',cta:'67345',nuevo:true}
   ];
 
   $scope.beneficiariosExistentes = [
-    {name:'Octavio Guerra',nuevo:true},
-    {name:'Jose Emilio Mota',nuevo:false},
-    {name:'Alfonso Principes',nuevo:false},
-    {name:'Carlos Lopez',nuevo:false},
-    {name:'Sergey Brin',nuevo:false}
+    {name:'Octavio Guerra',cta:'15926',nuevo:false},
+    {name:'Jose Emilio Mota',cta:'73546',nuevo:false},
+    {name:'Alfonso Principes',cta:'78566',nuevo:false},
+    {name:'Carlos Lopez',cta:'13256',nuevo:false},
+    {name:'Sergey Brin',cta:'84309',nuevo:false}
   ];
 
+  var beneficiariosExistentesOriginal = $scope.beneficiariosExistentes.slice(0);
+
   $scope.agregaBeneficiario = function(indx,obj){
+
+    console.log($scope.puedeGuardar);
+
     $scope.beneficiariosNuevos.splice(indx,1);
     $scope.beneficiariosExistentes.splice(0,0,obj);
+    if(beneficiariosExistentesOriginal!=$scope.beneficiariosExistentes){
+      $scope.puedeGuardar = false;
+    }
   }
 
   $scope.quitaBeneficiario = function(indx,obj){
+
+    console.log($scope.puedeGuardar);
+
     $scope.beneficiariosExistentes.splice(indx,1);
     $scope.beneficiariosNuevos.splice(0,0,obj);
+    if(beneficiariosExistentesOriginal!=$scope.beneficiariosExistentes){
+      $scope.puedeGuardar = false;
+    }
   }
+  
+  $scope.puedeGuardar = true;
+  //$scope.modal_savegroups = true;
 
 }]);

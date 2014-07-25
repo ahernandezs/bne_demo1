@@ -263,7 +263,7 @@
 					<tbody ng-repeat="bnf in beneficiariosNuevos">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td><strong>{{ $index + 1 }}</strong></td>
-							<td>{{bnf.name}}</td>
+							<td>{{bnf.name}} {{bnf.cta}}</td>
 							<td><a href="javascript:void(0);" ng-click="agregaBeneficiario($index,bnf);" class="mas"></a></td>
 						</tr>
 					</tbody>
@@ -291,7 +291,7 @@
 					<tbody ng-repeat="bnf in beneficiariosExistentes">
 						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
 							<td><a ng-show='{{bnf.nuevo}}' href="javascript:void(0);" ng-click="quitaBeneficiario($index,bnf)" class="menos"></a></td>
-							<td>{{bnf.name}}</td>
+							<td>{{bnf.name}} {{bnf.cta}}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -308,7 +308,7 @@
 		
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_savegroups = false;">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_savegroups = false;">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="acceptApplied();modal_savegroups = false" ng-disabled="puedeGuardar">Guardar</button>
 		</div>
 	</div>
 
