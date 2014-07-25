@@ -260,59 +260,15 @@
 							<td>Beneficiario</td>
 						</tr>
 					</thead>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td><strong>1</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr>
-							<td><strong>2</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>3</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr>
-							<td><strong>4</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>5</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr>
-							<td><strong>6</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>7</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr>
-							<td><strong>8</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><strong>9</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
-						</tr>
-						<tr>
-							<td><strong>10</strong></td>
-							<td>Javier Martinez BBV 456789</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
+					<tbody ng-repeat="bnf in beneficiariosNuevos">
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<td><strong>{{ $index + 1 }}</strong></td>
+							<td>{{bnf.name}}</td>
+							<td><a href="javascript:void(0);" ng-click="agregaBeneficiario($index,bnf);" class="mas"></a></td>
 						</tr>
 					</tbody>
 				</table>
+				<br>
 				<div class="paginacion">
 					<div class="numbers">
 						<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
@@ -332,49 +288,14 @@
 							<td>Beneficiario</td>
 						</tr>
 					</thead>
-					<tbody>
-						<tr class="bgf0f4f9">
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr>
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr>
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr>
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr>
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr class="bgf0f4f9">
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
-						</tr>
-						<tr>
-							<td><a href="javascript:void(0);" class="menos"></a></td>
-							<td>Javier Martinez BBV 456789</td>
+					<tbody ng-repeat="bnf in beneficiariosExistentes">
+						<tr ng-class-odd="'bgf0f4f9'" ng-class-even="">
+							<td><a ng-show='{{bnf.nuevo}}' href="javascript:void(0);" ng-click="quitaBeneficiario($index,bnf)" class="menos"></a></td>
+							<td>{{bnf.name}}</td>
 						</tr>
 					</tbody>
 				</table>
+				<br>
 				<div class="paginacion">
 					<div class="numbers">
 						<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>

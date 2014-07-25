@@ -807,9 +807,31 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.noseleccionogrupo = true;
     }
   }
-  
-//    $scope.modal_grupos = true;
 
+  $scope.beneficiariosNuevos = [
+    {name:'Jazmin Bautista',nuevo:true},
+    {name:'Ingrid Holsm',nuevo:true},
+    {name:'Marlen Dietrich',nuevo:true},
+    {name:'Adriana Ochoa',nuevo:true},
+    {name:'Gabriela Mistral',nuevo:true}
+  ];
 
+  $scope.beneficiariosExistentes = [
+    {name:'Octavio Guerra',nuevo:true},
+    {name:'Jose Emilio Mota',nuevo:false},
+    {name:'Alfonso Principes',nuevo:false},
+    {name:'Carlos Lopez',nuevo:false},
+    {name:'Sergey Brin',nuevo:false}
+  ];
+
+  $scope.agregaBeneficiario = function(indx,obj){
+    $scope.beneficiariosNuevos.splice(indx,1);
+    $scope.beneficiariosExistentes.splice(0,0,obj);
+  }
+
+  $scope.quitaBeneficiario = function(indx,obj){
+    $scope.beneficiariosExistentes.splice(indx,1);
+    $scope.beneficiariosNuevos.splice(0,0,obj);
+  }
 
 }]);
