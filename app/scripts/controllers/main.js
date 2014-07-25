@@ -794,8 +794,8 @@ angular.module('bnePaymentsOldFashionedApp')
     }
   }
   
-$scope.noseleccionogrupo = false;
-    $scope.modal_grupos = true;
+    $scope.noseleccionogrupo = false;
+    //$scope.modal_grupos = true;
 
 
 
