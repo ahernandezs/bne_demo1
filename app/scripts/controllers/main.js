@@ -757,7 +757,7 @@ angular.module('bnePaymentsOldFashionedApp')
             renglon.errorMsgTarget = 'Seleccione una cuenta destino';
             ok = false;
           }
-          if(renglon.amount === undefined){
+          if(renglon.amount === undefined || renglon.amount=='' || renglon.amount==0){
             renglon.errorAmount = 'Ingresa un importe';
             ok = false;
           }
@@ -829,9 +829,6 @@ angular.module('bnePaymentsOldFashionedApp')
   var beneficiariosExistentesOriginal = $scope.beneficiariosExistentes.slice(0);
 
   $scope.agregaBeneficiario = function(indx,obj){
-
-    console.log($scope.puedeGuardar);
-
     $scope.beneficiariosNuevos.splice(indx,1);
     $scope.beneficiariosExistentes.splice(0,0,obj);
     if(beneficiariosExistentesOriginal!=$scope.beneficiariosExistentes){
@@ -840,9 +837,6 @@ angular.module('bnePaymentsOldFashionedApp')
   }
 
   $scope.quitaBeneficiario = function(indx,obj){
-
-    console.log($scope.puedeGuardar);
-
     $scope.beneficiariosExistentes.splice(indx,1);
     $scope.beneficiariosNuevos.splice(0,0,obj);
     if(beneficiariosExistentesOriginal!=$scope.beneficiariosExistentes){
@@ -851,6 +845,39 @@ angular.module('bnePaymentsOldFashionedApp')
   }
   
   $scope.puedeGuardar = true;
-  //$scope.modal_savegroups = true;
+
+  $scope.guardarBeneficiario = function(){
+
+      $scope.addToNewGroup=false;
+      $scope.deshabilitar=false;
+      $('select').val('Seleccione una opcion'); ;
+      $scope.nombreNuevoGrupo = '';
+
+      $("#groups_value").val('');
+      $('input[name=grupos]').attr('checked',false);
+
+      $scope.noseleccionogrupo = false;
+      $scope.modal_savegroups = false;
+      $scope.applied = false;
+      $scope.showAccounts = true;
+      $scope.state = 'multiplePayments';
+      $scope.setup();
+
+      $scope.beneficiariosNuevos = [
+        {name:'Inez Sastre',cta:'25444',nuevo:true},
+        {name:'Ingrid Holsm',cta:'74765',nuevo:true},
+        {name:'Marlen Dietrich',cta:'89355',nuevo:true},
+        {name:'Adriana Ochoa',cta:'26597',nuevo:true},
+        {name:'Gabriela Mistral',cta:'67345',nuevo:true}
+      ];
+
+      $scope.beneficiariosExistentes = [
+        {name:'Octavio Guerra',cta:'15926',nuevo:false},
+        {name:'Jose Emilio Mota',cta:'73546',nuevo:false},
+        {name:'Alfonso Principes',cta:'78566',nuevo:false},
+        {name:'Carlos Lopez',cta:'13256',nuevo:false},
+        {name:'Sergey Brin',cta:'84309',nuevo:false}
+      ];
+  }
 
 }]);
