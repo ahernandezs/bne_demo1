@@ -13,7 +13,9 @@
 			</div>
 		</div>
 		<div class="alert-succes">
-			<p>Sus pagos han sido transferidos. <span>Por favor verifique el estatus de sus movimientos.</span></p>
+			<p>Sus pagos han sido transferidos.
+				<span>Por favor verifique el estatus de sus movimientos.</span>
+			</p>
 		</div>
 		<div ng-show="state=='beneficiaryGroups'">
             <p class="intrucciones"><strong>Nombre del grupo:&nbsp;&nbsp;</strong>{{selectedGroup.name}}{{newGroupName}}</p>
@@ -84,19 +86,15 @@
 			<button type="button" class="btn btn-primary pull-right" ng-click="showGroups()">Guardar como nuevo grupo</button>
 		</div>
 	</div>
-		<div ng-show="state=='multiplePayments'">
-			<div class="area-botones">
-				<div class="pull-left" ng-hide="selectedGroup">
-					<label class="fontNormal paddingTB10"><input type="checkbox" ng-checked="deshabilitar" ng-model="addToNewGroup">&nbsp;Agregar estos pagos a un grupo&nbsp;&nbsp;</label>
-					<span ng-show='addToNewGroup'>
-					<select class="select_addGroup" ng-options="value.name for value in groupsSelect" ng-model="addToGroupSelection" id="finalOption">
-						<option value="" selected="selected">Seleccione una opcion</option>
-					</span>
-				</div>
-					<br>
-					<!--button type="button" class="btn btn-primary marginT5" ng-show="addToNewGroup">Crear un nuevo grupo para estos pagos</button-->
-			</div>
+	<div class="area-botones" ng-show="state=='multiplePayments';">
+		<div class="pull-left" ng-hide="selectedGroup">
+			<label class="fontNormal paddingTB10">
+			<input type="checkbox" name="addToNewGroup-check" ng-model="addToNewGroup">&nbsp;Agregar estos pagos a un grupo&nbsp;&nbsp;
+			</label>
+			<span ng-show='addToNewGroup'>
+				<select class="select_addGroup" ng-options="value.name for value in groupsSelect" ng-model="addToGroupSelection" id="finalOption">
+				<option value="" selected="selected">Seleccione una opcion</option>
+			</span>
 		</div>
-
 	</div>
 </div>

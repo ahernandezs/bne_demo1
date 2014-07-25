@@ -504,21 +504,6 @@ angular.module('bnePaymentsOldFashionedApp')
       return false;
     };
 
-    $scope.acceptAppliedOptions = function () {
-      if($("#finalOption").val()=='0'){
-        $scope.modal_nuevogrupo=true;
-      }else if($("#finalOption").val()=='1'){
-        $scope.modal_grupos=true;
-      }else if($("#finalOption").val()=='3' || $("#finalOption").val()=='4' || $("#finalOption").val()=='5' || $("#finalOption").val()=='6' || $("#finalOption").val()=='7'){
-        $scope.modal_savegroups = true;
-      }else{
-        $scope.applied = false;
-        $scope.showAccounts = true;
-        $scope.state = 'multiplePayments';
-        $scope.setup();
-      }
-    };
-
     $scope.acceptApplied = function () {
       $scope.applied = false;
       $scope.showAccounts = true;
@@ -771,33 +756,6 @@ angular.module('bnePaymentsOldFashionedApp')
       }
     }
 
-    $scope.nombreNuevoGrupo = "";
-    $scope.errorNombreNuevoGrupo = false;
-    $scope.inicioNombreNuevoGrupo = true;
-    $scope.guardarNuevoGrupo = function(){
-        if($scope.inicioNombreNuevoGrupo){
-          if($scope.nombreNuevoGrupo === ''){
-            $scope.errorNombreNuevoGrupo = true;
-          }else{
-            $scope.inicioNombreNuevoGrupo = false;
-            $scope.okNombreNuevoGrupo = true;
-            $scope.errorNombreNuevoGrupo = false;   
-          }
-        }else{
-          $scope.inicioNombreNuevoGrupo = true;
-          $scope.okNombreNuevoGrupo = false;
-          $scope.nombreNuevoGrupo = '';
-          $scope.modal_nuevogrupo = false;
-          $scope.applied=false;
-          $scope.state = 'multiplePayments';
-          $scope.stepState = 'capture';
-          $("#finalOption").val('-1');
-          $scope.deshabilitar = false;   
-          $scope.addToNewGroup = false;    
-          $scope.setup();
-        }
-  }
-
   $scope.previousState="";
   $scope.noseleccionogrupo = false;
 
@@ -843,17 +801,80 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.puedeGuardar = false;
     }
   }
-  
+
   $scope.puedeGuardar = true;
 
+    //no guarda nada
+    $scope.acceptAppliedOptions = function () {
+      if($("#finalOption").val()=='0'){
+        $scope.modal_nuevogrupo=true;
+      }else if($("#finalOption").val()=='1'){
+        $scope.modal_grupos=true;
+      }else if($("#finalOption").val()=='3' || $("#finalOption").val()=='4' || $("#finalOption").val()=='5' || $("#finalOption").val()=='6' || $("#finalOption").val()=='7'){
+        $scope.modal_savegroups = true;
+      }else{
+
+        //otra vez el check y el select
+        $scope.addToNewGroup=false;
+        $('input[name=addToNewGroup-check]').attr('checked', false);
+        $('#finalOption').val('Seleccione una opcion');
+
+        $scope.applied = false;
+        $scope.showAccounts = true;
+        $scope.state = 'multiplePayments';
+        $scope.setup();
+      }
+    };
+
+//Para guardar solo el nombre del grupo
+  $scope.nombreNuevoGrupo = "";
+  $scope.errorNombreNuevoGrupo = false;
+  $scope.inicioNombreNuevoGrupo = true;
+  $scope.guardarNuevoGrupo = function(){
+    // inicioNombreNuevoGrupo -> muestra input para capturar el nombre
+      if($scope.inicioNombreNuevoGrupo){
+        if($scope.nombreNuevoGrupo === ''){
+          //nombre vacio, muestra error
+          $scope.errorNombreNuevoGrupo = true;
+        }else{
+          //despliega la sig pantalla
+          $scope.inicioNombreNuevoGrupo = false;
+          $scope.okNombreNuevoGrupo = true;
+          $scope.errorNombreNuevoGrupo = false;   
+        }
+      }else{
+        //guarda el nombre del grupo y resetea... según
+        $scope.inicioNombreNuevoGrupo = true;
+        $scope.okNombreNuevoGrupo = false;
+        $scope.errorNombreNuevoGrupo = false;   
+        $scope.nombreNuevoGrupo = '';
+        //resetear el check y el select
+        $scope.addToNewGroup=false;
+        $('input[name=addToNewGroup-check]').attr('checked', false);
+        $('#finalOption').val('Seleccione una opcion');
+        //cierra modal
+        $scope.modal_nuevogrupo = false;
+        //quita estado de aplicado
+        $scope.applied=false;
+        //reinicia
+        $scope.state = 'multiplePayments';
+        $scope.stepState = 'capture';
+        $scope.setup();
+      }
+  }
+
+  //para segun modificar el grupo y resetear.
   $scope.guardarBeneficiario = function(){
 
-      $scope.addToNewGroup=false;
-      $scope.deshabilitar=false;
-      $('select').val('Seleccione una opcion'); ;
-      $scope.nombreNuevoGrupo = '';
+      $scope.puedeGuardar = true;
 
+      $scope.addToNewGroup=false;
+      $('input[name=addToNewGroup-check]').attr('checked', false);
+      $('#finalOption').val('Seleccione una opcion');
+
+      //aungucomplete
       $("#groups_value").val('');
+      //radiobotones
       $('input[name=grupos]').attr('checked',false);
 
       $scope.noseleccionogrupo = false;
