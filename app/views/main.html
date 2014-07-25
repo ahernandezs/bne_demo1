@@ -433,8 +433,9 @@
     <div class="area-botones" ng-show="state === 'beneficiaryGroups'">
 		<button ng-disabled="!selectedGroup" ng-show="stepState === 'capture'" class="btn btn-primary pull-right" ng-click="stepState='group'; changeGroup(); ">Continuar</button>
 		<button ng-show="stepState === 'group' || stepState === 'newBeneficiaryGroups'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
-		<button ng-show="stepState === 'group' || stepState === 'newBeneficiaryGroups'" class="btn btn-primary pull-right" ng-click=" validate(); jumpToTop($even); saveNewBeneficiaryGroup();">Continuar</button>
-		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'group'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
+		<button ng-show="stepState === 'group'" class="btn btn-primary pull-right" ng-click=" validate(); jumpToTop($even); saveNewBeneficiaryGroup(); previousState='group'">Continuar</button>
+		<button ng-show="stepState === 'newBeneficiaryGroups'" class="btn btn-primary pull-right" ng-click=" validate(); jumpToTop($even); saveNewBeneficiaryGroup(); previousState='newBeneficiaryGroups'">Continuar</button>
+		<button ng-show="stepState === 'confirmation'" ng-click="stepState = previousState; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
 		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Guardar / Finalizar</button>
     </div>

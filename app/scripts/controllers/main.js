@@ -715,8 +715,6 @@ angular.module('bnePaymentsOldFashionedApp')
     }
 
     $scope.validate = function(){
-//para 'newBeneficiaryGroups' validar que haya algo
-
       var noHayNada = true;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
@@ -783,6 +781,9 @@ angular.module('bnePaymentsOldFashionedApp')
           $scope.addToNewGroup = false;    
           $scope.setup();
         }
-    }
+  }
+
+  $scope.previousState="";
+
 
 }]);
