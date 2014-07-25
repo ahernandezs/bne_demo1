@@ -646,11 +646,26 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.modal_impresion = true;
     }
     $scope.imprimir = function(){
+
+      var width = 1200;
+      var height = 600;
+      var left = (screen.width - width)/2;
+      var top = (screen.height - height)/2;
+      var params =  'width='+width+', height='+height;
+         params += ', top='+top+', left='+left;
+         params += ', directories=no';
+         params += ', location=no';
+         params += ', menubar=no';
+         params += ', resizable=no';
+         params += ', scrollbars=no';
+         params += ', status=no';
+         params += ', toolbar=no';
+
       if($('input[name=radio-impresion]:checked').val()=='individual'){
-        window.open("print1.html","impresion");
+        window.open("print1.html","impresion",params);
       }
       if($('input[name=radio-impresion]:checked').val()=='lista'){
-        window.open("print2.html","impresion");
+        window.open("print2.html","impresion",params);
       }
       $scope.modal_impresion = false;
     }
@@ -784,6 +799,7 @@ angular.module('bnePaymentsOldFashionedApp')
   }
 
   $scope.previousState="";
+  $scope.noseleccionogrupo = false;
 
   $scope.continueSavingToAGroup = function(){
     if($('input[name=grupos]:checked').val()!=undefined){
@@ -794,8 +810,7 @@ angular.module('bnePaymentsOldFashionedApp')
     }
   }
   
-    $scope.noseleccionogrupo = false;
-    //$scope.modal_grupos = true;
+//    $scope.modal_grupos = true;
 
 
 
