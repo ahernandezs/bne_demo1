@@ -785,5 +785,18 @@ angular.module('bnePaymentsOldFashionedApp')
 
   $scope.previousState="";
 
+  $scope.continueSavingToAGroup = function(){
+    if($('input[name=grupos]:checked').val()!=undefined){
+      $scope.modal_grupos = false;
+      $scope.modal_savegroups = true;
+    }else{
+      $scope.noseleccionogrupo = true;
+    }
+  }
+  
+$scope.noseleccionogrupo = false;
+    $scope.modal_grupos = true;
+
+
 
 }]);

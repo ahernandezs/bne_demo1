@@ -64,7 +64,17 @@
 			Seleccione un grupo o realize la b&uacute;squeda capturando el nombre.
 		</p>
 		<p>
-			<input type="text" placeholder="Nombre del grupo" class="search">
+        <angucomplete id="groups"
+                        placeholder="Nombre del grupo"
+                        pause="20"
+                        selectedobject="payingAccount.source.originalObject"
+                        url="http://projects.anzen.com.mx:4567/api/allgroups?query="
+                        datafield="docs"
+                        titlefield="name"
+                        minlength="1"
+                        enabledefault="true"
+                        class="search"
+                        inputclass="form-control form-control-small search"/>
 		</p>
 		<table>
 			<thead>
@@ -79,33 +89,41 @@
 			</thead>
 			<tbody>
 				<tr class="bgf0f4f9">
-					<td class="width30 textC"><input type="radio" name="lista_sucursales"></td>
+					<td class="width30 textC"><input type="radio" name="grupos" value="1"></td>
 					<td class="width30 textC">1</td>
-					<td>Nombre de la sucursal</td>
+					<td>Programadores V1.2 (Norte)</td>
 					<td>23/06/2014 12:12 hrs.</td>
 					<td>$40,500.00</td>
 					<td>23/06/2014 12:12 hrs.</td>
 				</tr>
 				<tr>
-					<td class="width30 textC"><input type="radio" name="lista_sucursales"></td>
+					<td class="width30 textC"><input type="radio" name="grupos" value="2"></td>
 					<td class="width30 textC">2</td>
-					<td>Nombre de la sucursal</td>
+					<td>Grupo de diseño</td>
 					<td>23/06/2014 12:12 hrs.</td>
 					<td>$40,500.00</td>
 					<td>23/06/2014 12:12 hrs.</td>
 				</tr>
 				<tr class="bgf0f4f9">
-					<td class="width30 textC"><input type="radio" name="lista_sucursales"></td>
+					<td class="width30 textC"><input type="radio" name="grupos" value="3"></td>
 					<td class="width30 textC">3</td>
-					<td>Nombre de la sucursal</td>
+					<td>Ventas area local</td>
 					<td>23/06/2014 12:12 hrs.</td>
 					<td>$40,500.00</td>
 					<td>23/06/2014 12:12 hrs.</td>
 				</tr>
 				<tr>
-					<td class="width30 textC"><input type="radio" name="lista_sucursales"></td>
+					<td class="width30 textC"><input type="radio" name="grupos" value="4"></td>
 					<td class="width30 textC">4</td>
-					<td>Nombre de la sucursal</td>
+					<td>Proveedores</td>
+					<td>23/06/2014 12:12 hrs.</td>
+					<td>$40,500.00</td>
+					<td>23/06/2014 12:12 hrs.</td>
+				</tr>
+				<tr>
+					<td class="width30 textC"><input type="radio" name="grupos" value="5"></td>
+					<td class="width30 textC">5</td>
+					<td>Programadores V2.2 (Sur)</td>
 					<td>23/06/2014 12:12 hrs.</td>
 					<td>$40,500.00</td>
 					<td>23/06/2014 12:12 hrs.</td>
@@ -114,16 +132,19 @@
 		</table>
 		<br>
 		<div class="paginacion">
-			<div class="pages">1 a 4 de 4</div>
+			<div class="pages">1 a 5 de 5</div>
 			<div class="numbers">
 				<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
 				<a href="javascript:void(0);" class="number active">1</a>
 				<a href="javascript:void(0);" class="deactive">Siguiente &raquo;</a>
 			</div>
 		</div>
+		<span class="error" ng-show="noseleccionogrupo">
+			Selecciona un grupo
+		</span>		
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_grupos = false;">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_grupos = false;">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="continueSavingToAGroup()">Continuar</button>
 		</div>
 	</div>
 
@@ -132,7 +153,7 @@
 		<h1 class="title">Guardar pagos en un nuevo grupo</h1>
 		<div ng-show="inicioNombreNuevoGrupo">
 			<p>
-				<span class="pull-left width280">Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
+				<span class="pull-left width280">Por favor introduzca el nombre del grupo
 				</span>
 				<span class="pull-right"><input maxlength="25" type="text" value="" ng-model="nombreNuevoGrupo"></span><br>
 			</p>
@@ -222,7 +243,7 @@
 	</div>
 
 	<!-- Centrarla via js al momento de mostrarse -->
-	<div class="modal-bne width700" ng-show="modal_savegroups2">
+	<div class="modal-bne width700" ng-show="modal_savegroups">
 		<h1 class="title">Guardar pagos en un grupo existente</h1>
 		<p>
 			Para agregar pagos a un grupo existente de clic en "+"
@@ -237,7 +258,6 @@
 						<tr>
 							<td>Num.</td>
 							<td>Beneficiario</td>
-							<td><a href="javascript:void(0);" class="mas"></a></td>
 						</tr>
 					</thead>
 					<tbody>
@@ -297,8 +317,7 @@
 					<div class="numbers">
 						<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
 						<a href="javascript:void(0);" class="number active">1</a>
-						<a href="javascript:void(0);" class="number">2</a>
-						<a href="javascript:void(0);">Siguiente &raquo;</a>
+						<a href="javascript:void(0);" class="deactive">Siguiente &raquo;</a>
 					</div>
 				</div>
 			</div>
@@ -360,8 +379,7 @@
 					<div class="numbers">
 						<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
 						<a href="javascript:void(0);" class="number active">1</a>
-						<a href="javascript:void(0);" class="number">2</a>
-						<a href="javascript:void(0);">Siguiente &raquo;</a>
+						<a href="javascript:void(0);" class="deactive">Siguiente &raquo;</a>
 					</div>
 				</div>
 			</div>
