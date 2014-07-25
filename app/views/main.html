@@ -153,8 +153,8 @@
 		<h1 class="title">Guardar pagos en un nuevo grupo</h1>
 		<div ng-show="inicioNombreNuevoGrupo">
 			<p>
-				<span class="pull-left width280">Por favor introduzca el nombre del grupo
-				</span>
+				<span class="pull-left width280" ng-show="state === 'beneficiaryGroups'">Por favor introduzca el nombre del grupo</span>
+				<span class="pull-left width280" ng-show="state === 'multiplePayments'">Por favor introduzca el nombre del grupo donde se guardarán sus pagos</span>
 				<span class="pull-right"><input maxlength="25" type="text" value="" ng-model="nombreNuevoGrupo"></span><br>
 			</p>
 			<p ng-show="errorNombreNuevoGrupo">

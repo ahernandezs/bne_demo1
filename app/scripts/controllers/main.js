@@ -653,13 +653,11 @@ angular.module('bnePaymentsOldFashionedApp')
       var top = (screen.height - height)/2;
       var params =  'width='+width+', height='+height;
          params += ', top='+top+', left='+left;
-         params += ', directories=no';
          params += ', location=no';
          params += ', menubar=no';
-         params += ', resizable=no';
-         params += ', scrollbars=no';
          params += ', status=no';
          params += ', toolbar=no';
+         params += ', scrollbars=yes';
 
       if($('input[name=radio-impresion]:checked').val()=='individual'){
         window.open("print1.html","impresion",params);
