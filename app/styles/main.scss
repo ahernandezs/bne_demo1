@@ -1142,6 +1142,9 @@ p.instrucciones{
 									font-size: 11px;
 								}
 							}
+							th:last-child{
+								border-right: none!important;
+							}
 							td.border{
 								border-right: 1px solid #d0d0d0!important;
 							}
@@ -1482,6 +1485,7 @@ p.instrucciones{
 					border: 1px solid #dadde2;
 					@include border_radius( 5px );
 					padding: 5px 5px 0 5px;
+					z-index: 9999999999;
 					.arrow{
 						background: url(../images/white_arrow_down.png) no-repeat;
 						background-size: 10px;
@@ -1727,7 +1731,7 @@ table.datos{
 	padding: 20px;
 	position: relative;
 	z-index:9999999;
-	top:140px;
+	top:100px;
 	.title{
 		margin: 0 0 20px 0;
 		font-size: 15px;
@@ -1770,6 +1774,24 @@ table.datos{
 				font-size: 11px;
 				padding:2px 5px;
 				border-right: 1px solid #CCCCCC;
+				strong{
+					font-size: 11px;
+					color: #000000;
+				}
+				a.mas{
+					background: url(../images/ico-mas.png) no-repeat;
+					width: 14px;
+					height: 15px;
+					display: block;
+					margin: 1px auto;
+				}
+				a.menos{
+					background: url(../images/ico-menos.png) no-repeat;
+					width: 14px;
+					height: 15px;
+					display: block;
+					margin: 1px auto;
+				}
 			}
 			td:last-child{
 				border-right:none;

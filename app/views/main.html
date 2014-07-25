@@ -1,6 +1,5 @@
 <!--Modales-->
-
-<div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup">
+<div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup||modal_savegroups" style="display:block!important;">
 	<!-- Centrarla via js al momento de mostrarse -->
 	<div class="modal-bne width500" ng-show="modal_sucursales">
 		<h1 class="title">Sucursales</h1>
@@ -219,6 +218,159 @@
 			<button class="btn btn-primary pull-right" ng-click="challenge = false; confirmation = false; stepState = ''; applied = true; jumpToTop($event)">Continuar</button>
 		</div>
 	</div>
+
+	<!-- Centrarla via js al momento de mostrarse -->
+	<div class="modal-bne width700" ng-show="modal_savegroups" style="display:block!important;">
+		<h1 class="title">Guardar pagos en un grupo existente</h1>
+		<p>
+			Para agregar pagos a un grupo existente de clic en "+"
+		</p>
+		<div class="row">
+			<div class="col-md-6 borderR1-CCCCCC">
+				<p>
+					Pagos realizados
+				</p>
+				<table>
+					<thead>
+						<tr>
+							<td>Num.</td>
+							<td>Beneficiario</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bgf0f4f9">
+							<td><strong>1</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr>
+							<td><strong>2</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>3</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr>
+							<td><strong>4</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>5</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr>
+							<td><strong>6</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>7</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr>
+							<td><strong>8</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><strong>9</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+						<tr>
+							<td><strong>10</strong></td>
+							<td>Javier Martinez BBV 456789</td>
+							<td><a href="javascript:void(0);" class="mas"></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="paginacion">
+					<div class="numbers">
+						<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
+						<a href="javascript:void(0);" class="number active">1</a>
+						<a href="javascript:void(0);" class="number">2</a>
+						<a href="javascript:void(0);">Siguiente &raquo;</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<p>
+					<strong>Nombre del grupo:</strong> Programadores V.2
+				</p>
+				<table>
+					<thead>
+						<tr>
+							<td></td>
+							<td>Beneficiario</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bgf0f4f9">
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr class="bgf0f4f9">
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);" class="menos"></a></td>
+							<td>Javier Martinez BBV 456789</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="paginacion">
+					<div class="numbers">
+						<a href="javascript:void(0);" class="deactive">&laquo; Anterior</a>
+						<a href="javascript:void(0);" class="number active">1</a>
+						<a href="javascript:void(0);" class="number">2</a>
+						<a href="javascript:void(0);">Siguiente &raquo;</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="area-botones">
+			<button class="btn btn-danger pull-left" ng-click="modal_savegroups = false;">Cancelar</button>
+			<button class="btn btn-primary pull-right" ng-click="modal_savegroups = false;">Continuar</button>
+		</div>
+	</div>
+
 </div>
 
 <!--Fin de Modales-->

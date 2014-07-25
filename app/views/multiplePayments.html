@@ -169,7 +169,7 @@
 								</div>
 							</td>
 							<td class="v-alignM">
-								<div class="tooltip-eliminar tooltip-propias{{$index}}" ng-show="ownpayingAccounts.length != 1">
+								<div class="tooltip-eliminar tooltip-pagos{{$index}}" ng-show="ownpayingAccounts.length != 1">
 									<p>Eliminar</p>
 									<div class="arrow"></div>
 								</div>
@@ -177,9 +177,9 @@
 									<p>Agregar</p>
 									<div class="arrow"></div>
 								</div>
-								<button ng-show="ownpayingAccounts.length != 1" class="btn btn-danger btn-cuadrado btn-tltp-propias{{$index}}"
-									ng-mouseover="show_tltp_eliminar('.tooltip-propias'+$index, '.btn-tltp-propias'+$index)"
-									ng-mouseleave="hide_tltp('.tooltip-propias'+$index)"
+								<button ng-show="ownpayingAccounts.length != 1" class="btn btn-danger btn-cuadrado btn-tltp-pagos{{$index}}"
+									ng-mouseover="show_tltp_eliminar('.tooltip-pagos'+$index, '.btn-tltp-pagos'+$index)"
+									ng-mouseleave="hide_tltp('.tooltip-pagos'+$index)"
 									ng-click="removePayment(ownpayingAccounts, $index)" >
 									<span class="ico-basurero"></span>
 								</button>
