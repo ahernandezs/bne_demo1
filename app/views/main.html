@@ -1,6 +1,6 @@
 <!--Modales-->
-<div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup||modal_savegroups" style="display:block!important;">
-	<!-- Centrarla via js al momento de mostrarse -->
+<div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup||modal_savegroups">
+	<!-- Centrarla via js al momento de mostrarse OK -->
 	<div class="modal-bne width500" ng-show="modal_sucursales">
 		<h1 class="title">Sucursales</h1>
 		<p>
@@ -53,11 +53,11 @@
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_sucursales = false;">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_sucursales = false;">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="modal_sucursales = false;asignarSuc()">Continuar</button>
 		</div>
 	</div>
 
-	<!-- Centrarla via js al momento de mostrarse -->
+	<!-- Centrarla via js al momento de mostrarse OK-->
 	<div class="modal-bne width700" ng-show="modal_grupos">
 		<h1 class="title">B&uacute;squeda de grupos de pagos</h1>
 		<p>
@@ -112,6 +112,7 @@
 				</tr>
 			</tbody>
 		</table>
+		<br>
 		<div class="paginacion">
 			<div class="pages">1 a 10 de 100</div>
 			<div class="numbers">
@@ -130,26 +131,27 @@
 		</div>
 	</div>
 
-	<!-- Centrarla via js al momento de mostrarse -->
+	<!-- Centrarla via js al momento de mostrarse OK-->
 	<div class="modal-bne width500" ng-show="modal_nuevogrupo">
 		<h1 class="title">Guardar pagos en un nuevo grupo</h1>
-		<div class="">
+		<div ng-show="inicioNombreNuevoGrupo">
 			<p>
-				Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
+				<span class="pull-left width280">Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
+				</span>
+				<span class="pull-right"><input maxlength="25" type="text" value="" ng-model="nombreNuevoGrupo"></span>
 			</p>
-			<p class="displayN">
-				<input type="text">
+			<p ng-show="errorNombreNuevoGrupo">
 				<span class="error">El campo no puede estar vac&iacute;o</span>
 			</p>
 		</div>
-		<div class="displayN">
+		<div ng-show="okNombreNuevoGrupo">
 			<p>
 				El grupo de pagos Programadores V2 se guard&oacute; de forma exitosa.
 			</p>
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_nuevogrupo = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_nuevogrupo = false; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="guardarNuevoGrupo()">Continuar</button>
 		</div>
 	</div>
 
@@ -158,12 +160,12 @@
 		<h1 class="title">Eliminar</h1>
 		<div class="">
 			<p>
-				&iquest;Esta seguro que desea eliminar el grupo "Grupo 1"?
+				&iquest;Esta seguro que desea eliminar el grupo "{{grupoaborrar}}"?
 			</p>
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_deleteGroup = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_deleteGroup = false; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="modal_deleteGroup = false; jumpToTop($event); removeGroup($index)">Continuar</button>
 		</div>
 	</div>
 
@@ -174,12 +176,12 @@
 			Selecciona la opci&oacute;n para imprimir tus reportes.
 		</p>
 		<p>
-			<label><input type="radio" name="radio-impresion"> <strong>Individual</strong> Se emite un comprobante por cada operaci&oacute;n realizada</label>
-			<label><input type="radio" name="radio-impresion"> <strong>Lista</strong> Reporte general que inlista todas las operaciones realizadas</label>
+			<label><input type="radio" name="radio-impresion" value="individual" id="imprimirIndividual"> <strong>Individual</strong> Se emite un comprobante por cada operaci&oacute;n realizada</label>
+			<label><input type="radio" name="radio-impresion" value="lista" id="imprimirLista"> <strong>Lista</strong> Reporte general que inlista todas las operaciones realizadas</label>
 		</p>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_impresion = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_impresion = false; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="imprimir();">Continuar</button>
 		</div>
 	</div>
 
@@ -425,7 +427,7 @@
 		<button ng-show="stepState === 'capture'" ng-disabled="!allowNext" class="btn btn-primary pull-right" ng-click="validate();">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
-		<button ng-show="applied" ng-click="acceptApplied()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
+		<button ng-show="applied" ng-click="acceptAppliedOptions()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
     </div>
 
     <div class="area-botones" ng-show="state === 'beneficiaryGroups'">

@@ -505,12 +505,25 @@ angular.module('bnePaymentsOldFashionedApp')
       return false;
     };
 
+    $scope.acceptAppliedOptions = function () {
+      if($("#finalOption").val()=='0'){
+        $scope.modal_nuevogrupo=true;
+      }else if($("#finalOption").val()=='1'){
+        $scope.modal_grupos=true;
+      }else{
+            $scope.applied = false;
+            $scope.showAccounts = true;
+            $scope.state = 'multiplePayments';
+            $scope.setup();
+      }
+    };
+
     $scope.acceptApplied = function () {
       $scope.applied = false;
       $scope.showAccounts = true;
       $scope.state = 'multiplePayments';
       $scope.setup();
-    };
+    };    
 
     $scope.fiscalVerify = function (payment) {
       if(payment.fiscal && payment.amount > 0) {
@@ -544,6 +557,7 @@ angular.module('bnePaymentsOldFashionedApp')
             for(var x = 0 ; x<responseData.docs.length; x++){
               //Esto es para que el importe por default sea el mismo que el último pago
               responseData.docs[x].amount = responseData.docs[x].target.originalObject.last_payment_d;
+              responseData.docs[x].date = $scope.getCurrentDate();
             }
             $scope.ownpayingAccounts = responseData.docs;
             $scope.addMoreOwnPayments();
@@ -618,11 +632,28 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addBenef = true;
     }
 
-    $scope.showSuc = function(){
+    $scope.sucNum = "";
+    $scope.showSuc = function(index){
+      $scope.sucNum = index;
       $scope.modal_sucursales = true;
     }
+    $scope.asignarSuc = function(){
+      var tmp = 'sucursal'+$scope.sucNum;
+      $scope.sucNum
+      $("#"+tmp).val('000');
+    }
+
     $scope.showPrint = function(){
       $scope.modal_impresion = true;
+    }
+    $scope.imprimir = function(){
+      if($('input[name=radio-impresion]:checked').val()=='individual'){
+window.open ("print1.html","impresion");
+      }
+      if($('input[name=radio-impresion]:checked').val()=='lista'){
+window.open ("print2.html","impresion");
+      }
+      $scope.modal_impresion = false;
     }
     $scope.showNewGroup = function(){
       $scope.modal_nuevogrupo = true;
@@ -638,7 +669,10 @@ angular.module('bnePaymentsOldFashionedApp')
         showGroups();
       }
     }
-    $scope.showDeleteGroups = function(){
+
+    $scope.grupoaborrar ="";
+    $scope.showDeleteGroups = function(nombre){
+      $scope.grupoaborrar =nombre;
       $scope.modal_deleteGroup = true;
     }
 
@@ -649,6 +683,16 @@ angular.module('bnePaymentsOldFashionedApp')
               $(this).val($("#origin-account_value").val());
             }
         });
+      }else{
+        var contador = 0;
+        $("input").each(function(){
+          if ($(this).attr("id")=="origin-account_value") {   
+            if(contador>0){        
+              $(this).val("");
+            }
+            contador++;
+          }
+        });
       }
       $scope.sameAccount = $event ? true : false;
       $scope.firstObject = objeto;
@@ -656,9 +700,7 @@ angular.module('bnePaymentsOldFashionedApp')
 
     $scope.removeGroup = function(index) {
       if(index != -1) {
-        if (confirm('¿Desea eliminar el grupo?')) {
-          $scope.groups.docs.splice(index, 1);
-        }
+        $scope.groups.docs.splice(index, 1);
       }
     };
 
@@ -674,7 +716,7 @@ angular.module('bnePaymentsOldFashionedApp')
     }
 
     $scope.validate = function(){
-      var ok = true;
+      var ok = true ;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
@@ -691,13 +733,35 @@ angular.module('bnePaymentsOldFashionedApp')
             ok = false;
           }
         }
-        if(ok){
-          $scope.stepState='confirmation';
-        }else{
-          $location.hash('top');
-          $anchorScroll();
-        }
       });
+      if(ok){
+        $scope.stepState='confirmation';
+      }else{
+        $location.hash('top');
+        $anchorScroll();
+      }
+    }
+
+    $scope.nombreNuevoGrupo = "";
+    $scope.errorNombreNuevoGrupo = false;
+    $scope.inicioNombreNuevoGrupo = true;
+    $scope.guardarNuevoGrupo = function(){
+
+    if($scope.inicioNombreNuevoGrupo){
+          if($scope.nombreNuevoGrupo === ''){
+            $scope.errorNombreNuevoGrupo = true;
+          }else{
+            $scope.inicioNombreNuevoGrupo = false;
+            $scope.okNombreNuevoGrupo = true;
+            $scope.errorNombreNuevoGrupo = false;   
+          }
+        }else{
+          $scope.modal_nuevogrupo = false;
+          $scope.applied=false;
+          $scope.state = 'multiplePayments';
+          $scope.stepState = 'capture';
+          $scope.setup();
+        }
     }
 
 }]);
