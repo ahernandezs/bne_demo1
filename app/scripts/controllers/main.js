@@ -734,5 +734,24 @@ angular.module('bnePaymentsOldFashionedApp')
       }
     }
 
+    $scope.nombreNuevoGrupo = "";
+    $scope.errorNombreNuevoGrupo = false;
+    $scope.inicioNombreNuevoGrupo = true;
+    $scope.guardarNuevoGrupo = function(){
+
+if($scope.inicioNombreNuevoGrupo){
+      if($scope.nombreNuevoGrupo === ''){
+        $scope.errorNombreNuevoGrupo = true;
+      }else{
+        $scope.inicioNombreNuevoGrupo = false;
+        $scope.okNombreNuevoGrupo = true;
+        $scope.errorNombreNuevoGrupo = false;   
+      }
+    }else{
+            $scope.modal_nuevogrupo = false;
+            $location.hash('top');
+            $anchorScroll();   
+    }
+}
 
 }]);

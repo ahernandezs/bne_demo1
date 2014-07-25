@@ -1,7 +1,7 @@
 <!--Modales-->
 
 <div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup">
-	<!-- Centrarla via js al momento de mostrarse -->
+	<!-- Centrarla via js al momento de mostrarse OK -->
 	<div class="modal-bne width500" ng-show="modal_sucursales">
 		<h1 class="title">Sucursales</h1>
 		<p>
@@ -58,7 +58,7 @@
 		</div>
 	</div>
 
-	<!-- Centrarla via js al momento de mostrarse -->
+	<!-- Centrarla via js al momento de mostrarse OK-->
 	<div class="modal-bne width700" ng-show="modal_grupos">
 		<h1 class="title">B&uacute;squeda de grupos de pagos</h1>
 		<p>
@@ -135,24 +135,24 @@
 	<!-- Centrarla via js al momento de mostrarse -->
 	<div class="modal-bne width500" ng-show="modal_nuevogrupo">
 		<h1 class="title">Guardar pagos en un nuevo grupo</h1>
-		<div class="">
+		<div ng-show="inicioNombreNuevoGrupo">
 			<p>
-				Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
-				<input type="text" value="">
+				<span class="pull-left width280">Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
+				</span>
+				<span class="pull-right"><input type="text" value="" ng-model="nombreNuevoGrupo"></span>
 			</p>
-			<p class="displayN">
-				<input type="text">
+			<p ng-show="errorNombreNuevoGrupo">
 				<span class="error">El campo no puede estar vac&iacute;o</span>
 			</p>
 		</div>
-		<div class="displayN">
+		<div ng-show="okNombreNuevoGrupo">
 			<p>
 				El grupo de pagos Programadores V2 se guard&oacute; de forma exitosa.
 			</p>
 		</div>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_nuevogrupo = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_nuevogrupo = false; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="guardarNuevoGrupo()">Continuar</button>
 		</div>
 	</div>
 
