@@ -658,7 +658,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.modal_nuevogrupo = true;
     }
     $scope.showGroups = function(){
-      $scope.modal_grupos = true;
+      $scope.modal_nuevogrupo = true;
     }
     $scope.showAddGroup = function(){
       if( $('.select_addGroup').val() == '0' ){
@@ -715,6 +715,23 @@ angular.module('bnePaymentsOldFashionedApp')
     }
 
     $scope.validate = function(){
+//para 'newBeneficiaryGroups' validar que haya algo
+
+      var noHayNada = true;
+      $scope.ownpayingAccounts.forEach(function(renglon, index){
+        if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
+          noHayNada = false;
+        }
+      });
+      if(noHayNada){
+        $scope.ownpayingAccounts[0].errorMsgSource = 'Seleccione una cuenta origen';
+        $scope.ownpayingAccounts[0].errorMsgTarget = 'Seleccione una cuenta destino';
+        $scope.ownpayingAccounts[0].errorAmount = 'Ingresa un importe';
+        $location.hash('top');
+        $anchorScroll();
+        return;
+      }
+
       var ok = true ;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
