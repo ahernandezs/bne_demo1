@@ -506,10 +506,9 @@ angular.module('bnePaymentsOldFashionedApp')
     };
 
     $scope.acceptAppliedOptions = function () {
-
-      if($("#finalOption").val()==0){
+      if($("#finalOption").val()=='0'){
         $scope.modal_nuevogrupo=true;
-      }else if($("#finalOption").val()==1){
+      }else if($("#finalOption").val()=='1'){
         $scope.modal_grupos=true;
       }else{
             $scope.applied = false;
@@ -647,6 +646,15 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.showPrint = function(){
       $scope.modal_impresion = true;
     }
+    $scope.imprimir = function(){
+      if($('input[name=radio-impresion]:checked').val()=='individual'){
+window.open ("print1.html","impresion");
+      }
+      if($('input[name=radio-impresion]:checked').val()=='lista'){
+window.open ("print2.html","impresion");
+      }
+      $scope.modal_impresion = false;
+    }
     $scope.showNewGroup = function(){
       $scope.modal_nuevogrupo = true;
     }
@@ -739,19 +747,21 @@ angular.module('bnePaymentsOldFashionedApp')
     $scope.inicioNombreNuevoGrupo = true;
     $scope.guardarNuevoGrupo = function(){
 
-if($scope.inicioNombreNuevoGrupo){
-      if($scope.nombreNuevoGrupo === ''){
-        $scope.errorNombreNuevoGrupo = true;
-      }else{
-        $scope.inicioNombreNuevoGrupo = false;
-        $scope.okNombreNuevoGrupo = true;
-        $scope.errorNombreNuevoGrupo = false;   
-      }
-    }else{
-            $scope.modal_nuevogrupo = false;
-            $location.hash('top');
-            $anchorScroll();   
+    if($scope.inicioNombreNuevoGrupo){
+          if($scope.nombreNuevoGrupo === ''){
+            $scope.errorNombreNuevoGrupo = true;
+          }else{
+            $scope.inicioNombreNuevoGrupo = false;
+            $scope.okNombreNuevoGrupo = true;
+            $scope.errorNombreNuevoGrupo = false;   
+          }
+        }else{
+          $scope.modal_nuevogrupo = false;
+          $scope.applied=false;
+          $scope.state = 'multiplePayments';
+          $scope.stepState = 'capture';
+          $scope.setup();
+        }
     }
-}
 
 }]);

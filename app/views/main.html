@@ -132,14 +132,14 @@
 		</div>
 	</div>
 
-	<!-- Centrarla via js al momento de mostrarse -->
+	<!-- Centrarla via js al momento de mostrarse OK-->
 	<div class="modal-bne width500" ng-show="modal_nuevogrupo">
 		<h1 class="title">Guardar pagos en un nuevo grupo</h1>
 		<div ng-show="inicioNombreNuevoGrupo">
 			<p>
 				<span class="pull-left width280">Por favor introduzca el nombre del grupo donde se guardar&aacute;n sus pagos
 				</span>
-				<span class="pull-right"><input type="text" value="" ng-model="nombreNuevoGrupo"></span>
+				<span class="pull-right"><input maxlength="25" type="text" value="" ng-model="nombreNuevoGrupo"></span>
 			</p>
 			<p ng-show="errorNombreNuevoGrupo">
 				<span class="error">El campo no puede estar vac&iacute;o</span>
@@ -177,12 +177,12 @@
 			Selecciona la opci&oacute;n para imprimir tus reportes.
 		</p>
 		<p>
-			<label><input type="radio" name="radio-impresion"> <strong>Individual</strong> Se emite un comprobante por cada operaci&oacute;n realizada</label>
-			<label><input type="radio" name="radio-impresion"> <strong>Lista</strong> Reporte general que inlista todas las operaciones realizadas</label>
+			<label><input type="radio" name="radio-impresion" value="individual" id="imprimirIndividual"> <strong>Individual</strong> Se emite un comprobante por cada operaci&oacute;n realizada</label>
+			<label><input type="radio" name="radio-impresion" value="lista" id="imprimirLista"> <strong>Lista</strong> Reporte general que inlista todas las operaciones realizadas</label>
 		</p>
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_impresion = false; jumpToTop($event)">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="modal_impresion = false; jumpToTop($event)">Continuar</button>
+			<button class="btn btn-primary pull-right" ng-click="imprimir();">Continuar</button>
 		</div>
 	</div>
 
