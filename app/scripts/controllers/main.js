@@ -310,6 +310,10 @@ angular.module('bnePaymentsOldFashionedApp')
     // setup
 
     $scope.setup = function () {
+
+$scope.muestraelselect = false;
+
+
 		  $scope.ownpayingAccounts = [];
       $scope.interbankPayments = [];
       $scope.thirdpayingAccounts = [];
@@ -802,9 +806,11 @@ angular.module('bnePaymentsOldFashionedApp')
     }
   }
 
+$scope.muestraelselect = false;
+
   $scope.puedeGuardar = true;
 
-    //no guarda nada
+    //no guarda nada, solo termina
     $scope.acceptAppliedOptions = function () {
       if($("#finalOption").val()=='0'){
         $scope.modal_nuevogrupo=true;
@@ -818,6 +824,7 @@ angular.module('bnePaymentsOldFashionedApp')
         $scope.addToNewGroup=false;
         $('input[name=addToNewGroup-check]').attr('checked', false);
         $('#finalOption').val('Seleccione una opcion');
+$scope.muestraelselect = false;
 
         $scope.applied = false;
         $scope.showAccounts = true;
@@ -852,6 +859,8 @@ angular.module('bnePaymentsOldFashionedApp')
         $scope.addToNewGroup=false;
         $('input[name=addToNewGroup-check]').attr('checked', false);
         $('#finalOption').val('Seleccione una opcion');
+$scope.muestraelselect = false;
+
         //cierra modal
         $scope.modal_nuevogrupo = false;
         //quita estado de aplicado
@@ -871,6 +880,7 @@ angular.module('bnePaymentsOldFashionedApp')
       $scope.addToNewGroup=false;
       $('input[name=addToNewGroup-check]').attr('checked', false);
       $('#finalOption').val('Seleccione una opcion');
+$scope.muestraelselect = false;
 
       //aungucomplete
       $("#groups_value").val('');
@@ -900,5 +910,9 @@ angular.module('bnePaymentsOldFashionedApp')
         {name:'Sergey Brin',cta:'84309',nuevo:false}
       ];
   }
+
+$scope.showwwww = function(){
+  $scope.muestraelselect=true
+}
 
 }]);
