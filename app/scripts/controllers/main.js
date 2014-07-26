@@ -874,7 +874,7 @@ $scope.muestraelselect = false;
         $scope.addToNewGroup=false;
         $('input[name=addToNewGroup-check]').attr('checked', false);
         $('#finalOption').val('Seleccione una opcion');
-$scope.muestraelselect = false;
+        $scope.muestraelselect = false;
 
         //cierra modal
         $scope.modal_nuevogrupo = false;
@@ -895,7 +895,7 @@ $scope.muestraelselect = false;
       $scope.addToNewGroup=false;
       $('input[name=addToNewGroup-check]').attr('checked', false);
       $('#finalOption').val('Seleccione una opcion');
-$scope.muestraelselect = false;
+      $scope.muestraelselect = false;
 
       //aungucomplete
       $("#groups_value").val('');
@@ -926,14 +926,13 @@ $scope.muestraelselect = false;
       ];
   }
 
-$scope.showwwww = function(){
-
-//aqui ver qué tiene el check y poner
-      if($("#el_checkkk").is(':checked')){
-        $scope.muestraelselect=true;
-      }else{
-        $scope.muestraelselect=false;
+  $scope.showwwww = function(){
+    if($("#el_checkkk").is(':checked')){
+      $('#finalOption').val('100');
+       $scope.muestraelselect=true;
+    }else{
+       $scope.muestraelselect=false;
       }
-}
+  }
 
 }]);
