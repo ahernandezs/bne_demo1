@@ -812,25 +812,40 @@ $scope.muestraelselect = false;
 
     //no guarda nada, solo termina
     $scope.acceptAppliedOptions = function () {
-      if($("#finalOption").val()=='0'){
-        $scope.modal_nuevogrupo=true;
-      }else if($("#finalOption").val()=='1'){
-        $scope.modal_grupos=true;
-      }else if($("#finalOption").val()=='3' || $("#finalOption").val()=='4' || $("#finalOption").val()=='5' || $("#finalOption").val()=='6' || $("#finalOption").val()=='7'){
-        $scope.modal_savegroups = true;
+
+
+      if($("#el_checkkk").is(':checked')){
+
+        if($("#finalOption").val()=='0'){
+          $scope.modal_nuevogrupo=true;
+        }else if($("#finalOption").val()=='1'){
+          $scope.modal_grupos=true;
+        }else if($("#finalOption").val()=='3' || $("#finalOption").val()=='4' || $("#finalOption").val()=='5' || $("#finalOption").val()=='6' || $("#finalOption").val()=='7'){
+          $scope.modal_savegroups = true;
+        }else{
+
+          //otra vez el check y el select
+          $scope.addToNewGroup=false;
+          $('input[name=addToNewGroup-check]').attr('checked', false);
+          $('#finalOption').val('Seleccione una opcion');
+          $scope.muestraelselect = false;
+          $scope.applied = false;
+          $scope.showAccounts = true;
+          $scope.state = 'multiplePayments';
+          $scope.setup();
+        }
       }else{
-
-        //otra vez el check y el select
-        $scope.addToNewGroup=false;
-        $('input[name=addToNewGroup-check]').attr('checked', false);
-        $('#finalOption').val('Seleccione una opcion');
-$scope.muestraelselect = false;
-
-        $scope.applied = false;
-        $scope.showAccounts = true;
-        $scope.state = 'multiplePayments';
-        $scope.setup();
+          $scope.addToNewGroup=false;
+          $('input[name=addToNewGroup-check]').attr('checked', false);
+          $('#finalOption').val('Seleccione una opcion');
+          $scope.muestraelselect = false;
+          $scope.applied = false;
+          $scope.showAccounts = true;
+          $scope.state = 'multiplePayments';
+          $scope.setup();
       }
+
+
     };
 
 //Para guardar solo el nombre del grupo
@@ -912,7 +927,13 @@ $scope.muestraelselect = false;
   }
 
 $scope.showwwww = function(){
-  $scope.muestraelselect=true
+
+//aqui ver qué tiene el check y poner
+      if($("#el_checkkk").is(':checked')){
+        $scope.muestraelselect=true;
+      }else{
+        $scope.muestraelselect=false;
+      }
 }
 
 }]);
