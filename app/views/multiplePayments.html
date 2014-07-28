@@ -153,13 +153,13 @@
 									</span>
 									<form class="form-inline span175 paddingB15" ng-show="payingAccount.target.originalObject.type_i !== 1">
 										<strong>Hora&nbsp;&nbsp;</strong>
-										<div class="clear-fix textL" ng-show="payingAccount.target.originalObject.type_i === 3">
+										<div class="displayIB paddingL5 textL" ng-show="payingAccount.target.originalObject.type_i === 3">
 											<select ng-options="hour.name for hour in hoursCombo2" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
 												<option value="">Ahora</option>
 											</select>
 											hrs
 										</div>
-										<div class="clear-fix textL" ng-show="payingAccount.target.originalObject.type_i !== 3">
+										<div class="displayIB paddingL5 textL" ng-show="payingAccount.target.originalObject.type_i !== 3">
 											<select ng-options="hour.name for hour in hoursCombo" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
 												<option value="">Ahora</option>
 											</select>
