@@ -736,6 +736,7 @@ $scope.muestraelselect = false;
 
       var ok = true ;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
+
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
           if(renglon.source === undefined){
@@ -747,8 +748,19 @@ $scope.muestraelselect = false;
             ok = false;
           }
           if(renglon.amount === undefined || renglon.amount=='' || renglon.amount==0){
-            renglon.errorAmount = 'Ingresa un importe';
-            ok = false;
+            if(renglon.target.originalObject.account_type_i==3){
+              if($('input[name=pagosTarjeta'+index+']:checked').val()==undefined){
+                renglon.errorAmount = 'Selecciona el pago';
+                ok = false;
+              }else if($('input[name=pagosTarjeta'+index+']:checked').val()=='otroimporte'){
+                //si es tarjeta y está 
+                renglon.errorAmount = 'Ingresa un importe';
+                ok = false;
+              }
+            }else{
+              renglon.errorAmount = 'Ingresa un importe';
+              ok = false;
+            }
           }
         }
       });
