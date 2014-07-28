@@ -680,13 +680,27 @@ $scope.muestraelselect = false;
     }
 
     $scope.oneAccount4All = function($event,objeto){
+
       if($event){
+        var tmp = undefined;
+        $scope.ownpayingAccounts.forEach(function(renglon, index){
+          if(index==0){
+            tmp = renglon.source;
+          }else{
+            renglon.source = tmp;
+          }
+        });
         $("input").each(function(){
             if ($(this).attr("id")=="origin-account_value") {
               $(this).val($("#origin-account_value").val());
             }
         });
       }else{
+        $scope.ownpayingAccounts.forEach(function(renglon, index){
+          if(index>0){
+            renglon.source = undefined;
+          }
+        });
         var contador = 0;
         $("input").each(function(){
           if ($(this).attr("id")=="origin-account_value") {   
@@ -737,6 +751,8 @@ $scope.muestraelselect = false;
       var ok = true ;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
 
+        console.log(index+': '+renglon.source + ' / ' +renglon.target + ' / ' +renglon.amount);
+
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
           if(renglon.source === undefined){
@@ -748,7 +764,10 @@ $scope.muestraelselect = false;
             ok = false;
           }
           if(renglon.amount === undefined || renglon.amount=='' || renglon.amount==0){
-            if(renglon.target.originalObject.account_type_i==3){
+            if(renglon.target == undefined){
+                renglon.errorAmount = 'Ingresa un importe';
+                ok = false;
+            }else if(renglon.target.originalObject.account_type_i==3){
               if($('input[name=pagosTarjeta'+index+']:checked').val()==undefined){
                 renglon.errorAmount = 'Selecciona el pago';
                 ok = false;
