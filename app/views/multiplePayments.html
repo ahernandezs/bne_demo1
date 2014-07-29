@@ -125,11 +125,11 @@
 										</label>
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
 											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="otroimporte">
-											<span class="displayIB paddingL3">
-												Otro importe
-												<br><input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
-											</span>
+											Otro importe
 										</label>
+											<span class="displayIB paddingL3">
+												<input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
+											</span>
 									</form>
 									<span class="error marginL15">
 										{{payingAccount.errorAmount}}

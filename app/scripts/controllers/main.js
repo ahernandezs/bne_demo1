@@ -772,10 +772,13 @@ $scope.muestraelselect = false;
                 renglon.errorAmount = 'Selecciona el pago';
                 ok = false;
               }else if($('input[name=pagosTarjeta'+index+']:checked').val()=='otroimporte'){
-                //si es tarjeta y está 
                 renglon.errorAmount = 'Ingresa un importe';
                 ok = false;
               }
+
+
+//falta poner el importe minimo y demás para que lo sume y lo muestre.
+
             }else{
               renglon.errorAmount = 'Ingresa un importe';
               ok = false;
