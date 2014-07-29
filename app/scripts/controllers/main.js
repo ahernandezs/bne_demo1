@@ -837,16 +837,13 @@ $scope.muestraelselect = false;
     }
   }
 
-$scope.muestraelselect = false;
+  $scope.muestraelselect = false;
 
   $scope.puedeGuardar = true;
 
     //no guarda nada, solo termina
     $scope.acceptAppliedOptions = function () {
-
-
       if($("#el_checkkk").is(':checked')){
-
         if($("#finalOption").val()=='0'){
           $scope.modal_nuevogrupo=true;
         }else if($("#finalOption").val()=='1'){
@@ -854,7 +851,6 @@ $scope.muestraelselect = false;
         }else if($("#finalOption").val()=='3' || $("#finalOption").val()=='4' || $("#finalOption").val()=='5' || $("#finalOption").val()=='6' || $("#finalOption").val()=='7'){
           $scope.modal_savegroups = true;
         }else{
-
           //otra vez el check y el select
           $scope.addToNewGroup=false;
           $('input[name=addToNewGroup-check]').attr('checked', false);
@@ -875,8 +871,6 @@ $scope.muestraelselect = false;
           $scope.state = 'multiplePayments';
           $scope.setup();
       }
-
-
     };
 
 //Para guardar solo el nombre del grupo

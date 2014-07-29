@@ -1,5 +1,5 @@
 <!--Modales-->
-<div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup||modal_savegroups">
+<div class="overlay-blk" ng-show="challenge||addBenef||modal_sucursales||modal_impresion||modal_nuevogrupo||modal_grupos||modal_deleteGroup||modal_savegroups||modal_savegroups_OK">
 	<!-- Centrarla via js al momento de mostrarse OK -->
 	<div class="modal-bne width500" ng-show="modal_sucursales">
 		<h1 class="title">Sucursales</h1>
@@ -311,12 +311,26 @@
 				</div>
 			</div>
 		</div>
-		
 		<div class="area-botones">
 			<button class="btn btn-danger pull-left" ng-click="modal_savegroups = false;">Cancelar</button>
-			<button class="btn btn-primary pull-right" ng-click="guardarBeneficiario();" ng-disabled="puedeGuardar">Guardar</button>
+			<button class="btn btn-primary pull-right" ng-click="modal_savegroups=false;modal_savegroups_OK=true;" ng-disabled="puedeGuardar">Guardar</button>
 		</div>
 	</div>
+
+
+	<!-- Centrarla via js al momento de mostrarse -->
+	<div class="modal-bne width700" ng-show="modal_savegroups_OK">
+		<h1 class="title">Guardar pagos en un grupo existente</h1>
+		<div>
+			<p>
+				El grupo de pagos Programadores V2 se guard&oacute; de forma exitosa.
+			</p>
+		</div>
+		<div class="area-botones">
+			<button class="btn btn-primary pull-right" ng-click="guardarBeneficiario();modal_savegroups_OK=false;">Aceptar</button>
+		</div>
+	</div>
+
 
 </div>
 
