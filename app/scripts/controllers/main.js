@@ -750,9 +750,6 @@ $scope.muestraelselect = false;
 
       var ok = true ;
       $scope.ownpayingAccounts.forEach(function(renglon, index){
-
-        console.log(index+': '+renglon.source + ' / ' +renglon.target + ' / ' +renglon.amount);
-
         renglon.errorMsgSource = renglon.errorMsgTarget = renglon.errorAmount = '';
         if(renglon.source !== undefined || renglon.target !== undefined || renglon.amount !== undefined){
           if(renglon.source === undefined){
@@ -960,11 +957,15 @@ $scope.muestraelselect = false;
       ];
   }
 
+  $scope.disableFinalButton = false;
+
   $scope.showwwww = function(){
     if($("#el_checkkk").is(':checked')){
+      $scope.disableFinalButton = true;
       $('#finalOption').val('100');
        $scope.muestraelselect=true;
     }else{
+      $scope.disableFinalButton = false;
        $scope.muestraelselect=false;
       }
   }

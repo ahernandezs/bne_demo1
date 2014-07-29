@@ -250,7 +250,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para agregar pagos a un grupo existente de clic en "+"
 			</span>
 			<span class="pull-right">
-				{{beneficiariosExistentes.length}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				{{beneficiariosExistentes.length}} / 1500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			</span>
 		</div>
 		<br>
@@ -372,7 +372,7 @@
 		<button ng-show="stepState === 'capture'" ng-disabled="!allowNext" class="btn btn-primary pull-right" ng-click="validate();">Continuar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="stepState = 'capture'; jumpToTop($event)" type="button" class="btn btn-danger pull-left">Regresar / Modificar</button>
 		<button ng-show="stepState === 'confirmation'" ng-click="challenge = true; jumpToTop($event)" type="button" class="btn btn-primary pull-right">Aceptar</button>
-		<button ng-show="applied" ng-click="acceptAppliedOptions()" type="button" class="btn btn-primary pull-right marginT35">Finalizar</button>
+		<button ng-show="applied" ng-click="acceptAppliedOptions()" type="button" class="btn btn-primary pull-right marginT35" ng-disabled="disableFinalButton">Finalizar</button>
     </div>
 
     <div class="area-botones" ng-show="state === 'beneficiaryGroups'">

@@ -90,21 +90,17 @@
 			<input type="checkbox" name="addToNewGroup-check" ng-click="showwwww()" id="el_checkkk">&nbsp;Agregar estos pagos a un grupo&nbsp;&nbsp;
 			</label>
 			<span ng-show='muestraelselect'>
-
-<select id="finalOption" name="nombre_del_select">
-<option value="100" selected="selected">Seleccione una opcion</option>
-<option value="0">Nuevo grupo</option>
-<option value="1">Ver más grupos</option>
-<option value="2">-----------------</option>
-<option value="3">Programadores V1.2 (norte)</option>
-<option value="4">Grupo de diseño</option>
-<option value="5">Ventas area local</option>
-<option value="6">Proveedores</option>
-<option value="7">Programadores V2.2 (sur)</option>
-</select>
-
-
-
+				<select id="finalOption" name="nombre_del_select" ng-change="acceptAppliedOptions()" ng-model="opcionesSelectFinal">
+					<option value="100" selected="selected">Seleccione una opcion</option>
+					<option value="0">Nuevo grupo</option>
+					<option value="1">Ver más grupos</option>
+					<option value="2">-----------------</option>
+					<option value="3">Programadores V1.2 (norte)</option>
+					<option value="4">Grupo de diseño</option>
+					<option value="5">Ventas area local</option>
+					<option value="6">Proveedores</option>
+					<option value="7">Programadores V2.2 (sur)</option>
+				</select>
 			</span>
 		</div>
 	</div>

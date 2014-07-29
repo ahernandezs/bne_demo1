@@ -112,19 +112,19 @@
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
-											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="minimo">
+											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="minimo" ng-click="payingAccount.amount = 250">
 											<span class="displayIB paddingL3">
 												Pago m&iacute;nimo MXN<br><span class="color666666">$250.00</span>
 											</span>
 										</label>
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
-											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="sininteres">
+											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="sininteres" ng-click="payingAccount.amount = 100">
 											<span class="displayIB paddingL3">
 												Pago para no generar<br>intereses MXN<br><span class="color666666">$100.00</span>
 											</span>
 										</label>
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
-											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="otroimporte">
+											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="otroimporte" ng-click="payingAccount.amount = 0">
 											Otro importe
 										</label>
 											<span class="displayIB paddingL3">
