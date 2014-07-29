@@ -245,9 +245,15 @@
 	<!-- Centrarla via js al momento de mostrarse -->
 	<div class="modal-bne width700" ng-show="modal_savegroups">
 		<h1 class="title">Guardar pagos en un grupo existente</h1>
-		<p>
-			Para agregar pagos a un grupo existente de clic en "+"
-		</p>
+		<div class="row">
+			<span class="pull-left">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Para agregar pagos a un grupo existente de clic en "+"
+			</span>
+			<span class="pull-right">
+				{{beneficiariosExistentes.length}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>
+		</div>
+		<br>
 		<div class="row">
 			<div class="col-md-6 borderR1-CCCCCC">
 				<p>
