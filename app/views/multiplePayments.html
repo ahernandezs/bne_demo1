@@ -108,7 +108,7 @@
 							<td>
 								<div class="content">
 									<form class="form-inline paddingT19 span180" ng-show="payingAccount.target.originalObject.account_type_i !== 3">
-										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="10" numbers-only="numbers-only" currency="" onkeypress="return NumCheck(event, this)">
+										<span class="paddingR3">$</span> <input placeholder="Importe" class="form-control width120" ng-class="{'textR': payingAccount.amount }" type="text" value="" ng-model="payingAccount.amount" maxlength="13" numbers-only="numbers-only" currency="" onkeypress="return NumCheck(event, this)">
 									</form>
 									<form class="form-inline" ng-show="payingAccount.target.originalObject.account_type_i === 3">
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
@@ -124,11 +124,11 @@
 											</span>
 										</label>
 										<label class="fontNormal paddingT10 clear-fix span180 paddingL3">
-											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="otroimporte" ng-click="payingAccount.amount = 0">
+											<input class="v-alignT" type="radio" name="pagosTarjeta{{$index}}" value="otroimporte" checked ng-click="payingAccount.amount = 0">
 											Otro importe
 										</label>
 											<span class="displayIB paddingL3">
-												<input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="">
+												<input class="form-control width120 textR" type="text" value="" ng-model="payingAccount.amount" maxlength="16" numbers-only="numbers-only" currency="" onkeypress="return NumCheck(event, this)">
 											</span>
 									</form>
 									<span class="error marginL15">
@@ -283,25 +283,29 @@
 			</div>
 		</div>
 <SCRIPT LANGUAGE="JavaScript"> 
-function NumCheck(e, field) {
+	function NumCheck(e, field) {
+		var punto = false;
+		key = e.keyCode ? e.keyCode : e.which
+		if(field.value != ""){
+			if (key == 8) return true;
+			//si tiene punto, el max lenght es 13, si no es 10
+			if(field.value.indexOf('.')!=-1 || punto){
+				var tmp = field.value.split('.');
+				if(tmp[1].length<2){
+					return true;
+				}else{
+					return false;
+				}			
+			}else{
 
-  key = e.keyCode ? e.keyCode : e.which
+				if (key == 46) {return true; punto = true};
+				if(field.value.length >= 10){
+					return false;
+				}
+			}
 
-if(field.value != ""){
 
-  if (key == 8) return true
-	if(field.value.indexOf('.')!=-1){
-
-		var tmp = field.value.split('.');
-		
-		console.log(tmp);
-		if(tmp[1].length==2){
-			return false
 		}
-
 	}
-
-}
-}
 
 </script> 
