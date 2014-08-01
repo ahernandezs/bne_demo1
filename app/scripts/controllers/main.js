@@ -119,6 +119,8 @@ angular.module('bnePaymentsOldFashionedApp')
     ];
 
     $scope.base_url = "http://projects.anzen.com.mx:4567/api";
+    //$scope.base_url = "http://localhost:4567/api";
+
 		$scope.ownpayingAccounts = [];
 		$scope.thirdpayingAccounts = [];
     $scope.interbankPayments = [];
@@ -173,6 +175,7 @@ angular.module('bnePaymentsOldFashionedApp')
     });
 
 		$scope.groups = [];
+
 
 		$http.get($scope.base_url + "/allgroups", {}).
 			success(function(responseData, status, headers, config) {
