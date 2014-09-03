@@ -122,6 +122,10 @@ input[type="email"]:disabled,
 input[type="tel"]:disabled{
 	background: #e5e5e5;
 }
+label{
+	font-weight: normal!important;
+	color: #666666!important;
+}
 
 .gray-input {
 	background: #e5e5e5!important;

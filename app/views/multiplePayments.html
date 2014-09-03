@@ -29,7 +29,7 @@
 							<th class="width25"><div class="head">&nbsp;</div></th>
 							<th><div class="head textL paddingL10">Cuentas</div></th>
 							<th class="width200"><div class="head"><span class="span175">Importe MXN</span></div></th>
-							<th class="width230"><div class="head"><label class="span175">Fecha de pago</label></div></th>
+							<th class="width230"><div class="head"><span class="span175">Fecha de pago</span></div></th>
 							<th class="width50"><div class="head">&nbsp;</div></th>
 						</tr>
 					</thead>
@@ -152,7 +152,7 @@
 										</form>
 									</span>
 									<form class="form-inline span175 paddingB15" ng-show="payingAccount.target.originalObject.type_i !== 1">
-										<strong>Hora&nbsp;&nbsp;</strong>
+										Hora&nbsp;&nbsp;
 										<div class="displayIB paddingL5 textL" ng-show="payingAccount.target.originalObject.type_i === 3">
 											<select ng-options="hour.name for hour in hoursCombo2" ng-model="payingAccount.hours" ng-change="payingAccount.programming = true">
 												<option value="">Ahora</option>
@@ -202,10 +202,10 @@
 									<div class="span175">
 										<input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-model="payingAccount.fiscal_b"> Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
-											<strong class="width30 inline">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true;payingAccount.fiscal_b=true">
+											<span class="width30 inline">RFC</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true;payingAccount.fiscal_b=true">
 										</form>
 										<form class="form-inline paddingL3">
-											<strong class="width30 inline">IVA</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true;payingAccount.fiscal_b=true">
+											<span class="width30 inline">IVA</span> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true;payingAccount.fiscal_b=true">
 										</form>
 									</div>
 								</div>
@@ -244,10 +244,10 @@
 									<div class="span175"><input ng-change="fiscalVerify(payingAccount)" type="checkbox" ng-model="payingAccount.fiscal">
 										Comprobante Fiscal<br>
 										<form class="form-inline paddingL3">
-											<strong class="inline width30">RFC</strong> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true;payingAccount.fiscal = true;">
+											<span class="inline width30">RFC</span> <input class="form-control width120" type="text" value="" ng-model="payingAccount.rfc" maxlength="13" ng-change="payingAccount.fiscal = true; payingAccount.editRfc = true" ng-click="payingAccount.editRfc = true;payingAccount.fiscal = true;">
 										</form>
 										<form class="form-inline paddingL3">
-											<strong class="inline width30">IVA&nbsp;&nbsp;</strong> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true;payingAccount.fiscal = true;">
+											<span class="inline width30">IVA&nbsp;&nbsp;</span> <input class="form-control width110" maxlength="10" type="text" value="" ng-model="payingAccount.iva" ng-change="payingAccount.fiscal = true; payingAccount.editIva = true" numbers-only="numbers-only" ng-click="payingAccount.editIva = true;payingAccount.fiscal = true;">
 										</form>
 									</div>
 								</div>
